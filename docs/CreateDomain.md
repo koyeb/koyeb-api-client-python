@@ -1,0 +1,30 @@
+# CreateDomain
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** |  | [optional] 
+**type** | [**DomainType**](DomainType.md) |  | [optional] 
+**app_id** | **str** |  | [optional] 
+
+## Example
+
+```python
+from koyeb.models.create_domain import CreateDomain
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of CreateDomain from a JSON string
+create_domain_instance = CreateDomain.from_json(json)
+# print the JSON string representation of the object
+print CreateDomain.to_json()
+
+# convert the object into a dict
+create_domain_dict = create_domain_instance.to_dict()
+# create an instance of CreateDomain from a dict
+create_domain_form_dict = create_domain.from_dict(create_domain_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

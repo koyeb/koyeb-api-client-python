@@ -1,0 +1,29 @@
+# UpdateService
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**definition** | [**DeploymentDefinition**](DeploymentDefinition.md) |  | [optional] 
+**metadata** | [**DeploymentMetadata**](DeploymentMetadata.md) |  | [optional] 
+
+## Example
+
+```python
+from koyeb.models.update_service import UpdateService
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of UpdateService from a JSON string
+update_service_instance = UpdateService.from_json(json)
+# print the JSON string representation of the object
+print UpdateService.to_json()
+
+# convert the object into a dict
+update_service_dict = update_service_instance.to_dict()
+# create an instance of UpdateService from a dict
+update_service_form_dict = update_service.from_dict(update_service_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
