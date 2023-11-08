@@ -82,8 +82,14 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = "OpenAPI-Generator/2023.11.0/python"
+        self.user_agent = "OpenAPI-Generator/2023.11.4/python"
         self.client_side_validation = configuration.client_side_validation
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        pass
 
     @property
     def user_agent(self):
@@ -279,23 +285,22 @@ class ApiClient:
                 str(response_data.status)[0] + "XX", None
             )
 
-        if response_type is None:
-            if not 200 <= response_data.status <= 299:
-                if response_data.status == 400:
-                    raise BadRequestException(http_resp=response_data)
+        if not 200 <= response_data.status <= 299:
+            if response_data.status == 400:
+                raise BadRequestException(http_resp=response_data)
 
-                if response_data.status == 401:
-                    raise UnauthorizedException(http_resp=response_data)
+            if response_data.status == 401:
+                raise UnauthorizedException(http_resp=response_data)
 
-                if response_data.status == 403:
-                    raise ForbiddenException(http_resp=response_data)
+            if response_data.status == 403:
+                raise ForbiddenException(http_resp=response_data)
 
-                if response_data.status == 404:
-                    raise NotFoundException(http_resp=response_data)
+            if response_data.status == 404:
+                raise NotFoundException(http_resp=response_data)
 
-                if 500 <= response_data.status <= 599:
-                    raise ServiceException(http_resp=response_data)
-                raise ApiException(http_resp=response_data)
+            if 500 <= response_data.status <= 599:
+                raise ServiceException(http_resp=response_data)
+            raise ApiException(http_resp=response_data)
 
         # deserialize response data
 
