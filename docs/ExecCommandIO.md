@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | **bytearray** | Data is base64 encoded | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ExecCommandIO from a JSON string
 exec_command_io_instance = ExecCommandIO.from_json(json)
 # print the JSON string representation of the object
-print ExecCommandIO.to_json()
+print(ExecCommandIO.to_json())
 
 # convert the object into a dict
 exec_command_io_dict = exec_command_io_instance.to_dict()

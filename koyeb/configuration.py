@@ -14,7 +14,10 @@
 
 import copy
 import logging
+from logging import FileHandler
+import multiprocessing
 import sys
+from typing import Optional
 import urllib3
 
 import http.client as httplib
@@ -147,7 +150,7 @@ class Configuration:
         self.logger_stream_handler = None
         """Log stream handler
         """
-        self.logger_file_handler = None
+        self.logger_file_handler: Optional[FileHandler] = None
         """Log file handler
         """
         self.logger_file = None
@@ -179,7 +182,15 @@ class Configuration:
            Set this to the SNI value expected by the server.
         """
 
-        self.proxy = None
+        self.connection_pool_maxsize = multiprocessing.cpu_count() * 5
+        """urllib3 connection pool's maximum number of connections saved
+           per pool. urllib3 uses 1 connection as default value, but this is
+           not the best value when you are making a lot of possibly parallel
+           requests to the same host, which is often the case here.
+           cpu_count * 5 is used as default value to increase performance.
+        """
+
+        self.proxy: Optional[str] = None
         """Proxy URL
         """
         self.proxy_headers = None
@@ -404,7 +415,7 @@ class Configuration:
             "OS: {env}\n"
             "Python Version: {pyversion}\n"
             "Version of the API: 1.0.0\n"
-            "SDK Package Version: 2023.11.4".format(
+            "SDK Package Version: 2024.3.0".format(
                 env=sys.platform, pyversion=sys.version
             )
         )

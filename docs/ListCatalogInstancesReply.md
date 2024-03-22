@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instances** | [**List[CatalogInstanceListItem]**](CatalogInstanceListItem.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListCatalogInstancesReply from a JSON string
 list_catalog_instances_reply_instance = ListCatalogInstancesReply.from_json(json)
 # print the JSON string representation of the object
-print ListCatalogInstancesReply.to_json()
+print(ListCatalogInstancesReply.to_json())
 
 # convert the object into a dict
 list_catalog_instances_reply_dict = list_catalog_instances_reply_instance.to_dict()

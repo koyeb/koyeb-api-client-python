@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GitHubRegistryConfiguration from a JSON string
 git_hub_registry_configuration_instance = GitHubRegistryConfiguration.from_json(json)
 # print the JSON string representation of the object
-print GitHubRegistryConfiguration.to_json()
+print(GitHubRegistryConfiguration.to_json())
 
 # convert the object into a dict
 git_hub_registry_configuration_dict = git_hub_registry_configuration_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **branches** | [**List[KgitproxyBranch]**](KgitproxyBranch.md) | The collection of branches. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of KgitproxyListBranchesReply from a JSON string
 kgitproxy_list_branches_reply_instance = KgitproxyListBranchesReply.from_json(json)
 # print the JSON string representation of the object
-print KgitproxyListBranchesReply.to_json()
+print(KgitproxyListBranchesReply.to_json())
 
 # convert the object into a dict
 kgitproxy_list_branches_reply_dict = kgitproxy_list_branches_reply_instance.to_dict()

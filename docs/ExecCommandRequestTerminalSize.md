@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **height** | **int** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ExecCommandRequestTerminalSize from a JSON string
 exec_command_request_terminal_size_instance = ExecCommandRequestTerminalSize.from_json(json)
 # print the JSON string representation of the object
-print ExecCommandRequestTerminalSize.to_json()
+print(ExecCommandRequestTerminalSize.to_json())
 
 # convert the object into a dict
 exec_command_request_terminal_size_dict = exec_command_request_terminal_size_instance.to_dict()

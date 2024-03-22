@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **installation_id** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of GithubInstallationCallbackRequest from a JSON string
 github_installation_callback_request_instance = GithubInstallationCallbackRequest.from_json(json)
 # print the JSON string representation of the object
-print GithubInstallationCallbackRequest.to_json()
+print(GithubInstallationCallbackRequest.to_json())
 
 # convert the object into a dict
 github_installation_callback_request_dict = github_installation_callback_request_instance.to_dict()

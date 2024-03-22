@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.database_deployment_metadata import DatabaseDeploymentMetadata
 

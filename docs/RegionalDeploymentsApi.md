@@ -17,9 +17,8 @@ Experimental: Get regional deployment Use at your own risk
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.get_regional_deployment_reply import GetRegionalDeploymentReply
 from koyeb.rest import ApiException
@@ -61,6 +60,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the regional deployment | 
@@ -79,6 +79,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -99,9 +100,8 @@ List Regional Deployment events
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_regional_deployment_events_reply import ListRegionalDeploymentEventsReply
 from koyeb.rest import ApiException
@@ -147,6 +147,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **regional_deployment_id** | **str**| (Optional) Filter on regional deployment id | [optional] 
@@ -169,6 +170,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -189,9 +191,8 @@ Experimental: List regional deployments Use at your own risk
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_regional_deployments_reply import ListRegionalDeploymentsReply
 from koyeb.rest import ApiException
@@ -235,6 +236,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **str**| (Optional) Filter on deployment id | [optional] 
@@ -255,6 +257,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

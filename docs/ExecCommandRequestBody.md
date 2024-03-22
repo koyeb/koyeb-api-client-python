@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **command** | **List[str]** | Command to exec. Mandatory in the first frame sent | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of ExecCommandRequestBody from a JSON string
 exec_command_request_body_instance = ExecCommandRequestBody.from_json(json)
 # print the JSON string representation of the object
-print ExecCommandRequestBody.to_json()
+print(ExecCommandRequestBody.to_json())
 
 # convert the object into a dict
 exec_command_request_body_dict = exec_command_request_body_instance.to_dict()

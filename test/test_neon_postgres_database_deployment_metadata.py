@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.neon_postgres_database_deployment_metadata import (
     NeonPostgresDatabaseDeploymentMetadata,

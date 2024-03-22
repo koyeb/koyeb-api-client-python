@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of CreateOrganizationRequest from a JSON string
 create_organization_request_instance = CreateOrganizationRequest.from_json(json)
 # print the JSON string representation of the object
-print CreateOrganizationRequest.to_json()
+print(CreateOrganizationRequest.to_json())
 
 # convert the object into a dict
 create_organization_request_dict = create_organization_request_instance.to_dict()

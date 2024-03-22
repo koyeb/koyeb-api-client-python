@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **region** | [**Region**](Region.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetRegionReply from a JSON string
 get_region_reply_instance = GetRegionReply.from_json(json)
 # print the JSON string representation of the object
-print GetRegionReply.to_json()
+print(GetRegionReply.to_json())
 
 # convert the object into a dict
 get_region_reply_dict = get_region_reply_instance.to_dict()

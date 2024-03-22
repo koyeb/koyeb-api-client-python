@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **services** | [**List[ServiceListItem]**](ServiceListItem.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListServicesReply from a JSON string
 list_services_reply_instance = ListServicesReply.from_json(json)
 # print the JSON string representation of the object
-print ListServicesReply.to_json()
+print(ListServicesReply.to_json())
 
 # convert the object into a dict
 list_services_reply_dict = list_services_reply_instance.to_dict()

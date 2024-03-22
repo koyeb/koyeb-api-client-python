@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reset_role_passwords** | **List[str]** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of NeonPostgresDatabaseDeploymentMetadata from a JSON string
 neon_postgres_database_deployment_metadata_instance = NeonPostgresDatabaseDeploymentMetadata.from_json(json)
 # print the JSON string representation of the object
-print NeonPostgresDatabaseDeploymentMetadata.to_json()
+print(NeonPostgresDatabaseDeploymentMetadata.to_json())
 
 # convert the object into a dict
 neon_postgres_database_deployment_metadata_dict = neon_postgres_database_deployment_metadata_instance.to_dict()

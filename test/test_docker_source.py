@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.docker_source import DockerSource
 

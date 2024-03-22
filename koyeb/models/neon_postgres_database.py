@@ -17,18 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.neon_postgres_database_neon_database import (
     NeonPostgresDatabaseNeonDatabase,
 )
 from koyeb.models.neon_postgres_database_neon_role import NeonPostgresDatabaseNeonRole
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class NeonPostgresDatabase(BaseModel):
@@ -42,7 +38,11 @@ class NeonPostgresDatabase(BaseModel):
     databases: Optional[List[NeonPostgresDatabaseNeonDatabase]] = None
     __properties: ClassVar[List[str]] = ["pg_version", "region", "roles", "databases"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -54,7 +54,7 @@ class NeonPostgresDatabase(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NeonPostgresDatabase from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,9 +68,11 @@ class NeonPostgresDatabase(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in roles (list)
@@ -90,7 +92,7 @@ class NeonPostgresDatabase(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NeonPostgresDatabase from a dict"""
         if obj is None:
             return None
@@ -104,13 +106,13 @@ class NeonPostgresDatabase(BaseModel):
                 "region": obj.get("region"),
                 "roles": [
                     NeonPostgresDatabaseNeonRole.from_dict(_item)
-                    for _item in obj.get("roles")
+                    for _item in obj["roles"]
                 ]
                 if obj.get("roles") is not None
                 else None,
                 "databases": [
                     NeonPostgresDatabaseNeonDatabase.from_dict(_item)
-                    for _item in obj.get("databases")
+                    for _item in obj["databases"]
                 ]
                 if obj.get("databases") is not None
                 else None,

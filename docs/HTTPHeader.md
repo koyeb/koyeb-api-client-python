@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of HTTPHeader from a JSON string
 http_header_instance = HTTPHeader.from_json(json)
 # print the JSON string representation of the object
-print HTTPHeader.to_json()
+print(HTTPHeader.to_json())
 
 # convert the object into a dict
 http_header_dict = http_header_instance.to_dict()

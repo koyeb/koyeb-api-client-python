@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **github_id** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of KgitproxyGitHubRepository from a JSON string
 kgitproxy_git_hub_repository_instance = KgitproxyGitHubRepository.from_json(json)
 # print the JSON string representation of the object
-print KgitproxyGitHubRepository.to_json()
+print(KgitproxyGitHubRepository.to_json())
 
 # convert the object into a dict
 kgitproxy_git_hub_repository_dict = kgitproxy_git_hub_repository_instance.to_dict()

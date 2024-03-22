@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DeploymentNeonPostgresDatabaseInfoRole from a JSON string
 deployment_neon_postgres_database_info_role_instance = DeploymentNeonPostgresDatabaseInfoRole.from_json(json)
 # print the JSON string representation of the object
-print DeploymentNeonPostgresDatabaseInfoRole.to_json()
+print(DeploymentNeonPostgresDatabaseInfoRole.to_json())
 
 # convert the object into a dict
 deployment_neon_postgres_database_info_role_dict = deployment_neon_postgres_database_info_role_instance.to_dict()

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **build_command** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of BuildpackBuilder from a JSON string
 buildpack_builder_instance = BuildpackBuilder.from_json(json)
 # print the JSON string representation of the object
-print BuildpackBuilder.to_json()
+print(BuildpackBuilder.to_json())
 
 # convert the object into a dict
 buildpack_builder_dict = buildpack_builder_instance.to_dict()

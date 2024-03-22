@@ -3,6 +3,7 @@
 A list of providers which you can use for single sign-on.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **oauth_providers** | [**List[OAuthProvider]**](OAuthProvider.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GetOAuthOptionsReply from a JSON string
 get_o_auth_options_reply_instance = GetOAuthOptionsReply.from_json(json)
 # print the JSON string representation of the object
-print GetOAuthOptionsReply.to_json()
+print(GetOAuthOptionsReply.to_json())
 
 # convert the object into a dict
 get_o_auth_options_reply_dict = get_o_auth_options_reply_instance.to_dict()

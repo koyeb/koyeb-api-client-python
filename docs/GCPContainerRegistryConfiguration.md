@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **keyfile_content** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GCPContainerRegistryConfiguration from a JSON string
 gcp_container_registry_configuration_instance = GCPContainerRegistryConfiguration.from_json(json)
 # print the JSON string representation of the object
-print GCPContainerRegistryConfiguration.to_json()
+print(GCPContainerRegistryConfiguration.to_json())
 
 # convert the object into a dict
 gcp_container_registry_configuration_dict = gcp_container_registry_configuration_instance.to_dict()

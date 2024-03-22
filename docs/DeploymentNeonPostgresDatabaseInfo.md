@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active_time_seconds** | **str** |  | [optional] 
@@ -29,7 +30,7 @@ json = "{}"
 # create an instance of DeploymentNeonPostgresDatabaseInfo from a JSON string
 deployment_neon_postgres_database_info_instance = DeploymentNeonPostgresDatabaseInfo.from_json(json)
 # print the JSON string representation of the object
-print DeploymentNeonPostgresDatabaseInfo.to_json()
+print(DeploymentNeonPostgresDatabaseInfo.to_json())
 
 # convert the object into a dict
 deployment_neon_postgres_database_info_dict = deployment_neon_postgres_database_info_instance.to_dict()

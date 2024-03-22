@@ -17,9 +17,8 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.kgitproxy_list_branches_reply import KgitproxyListBranchesReply
 from koyeb.rest import ApiException
@@ -63,6 +62,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repository_id** | **str**| (Optional) Filter on one repository. | [optional] 
@@ -84,6 +84,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -102,9 +103,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.kgitproxy_list_repositories_reply import KgitproxyListRepositoriesReply
 from koyeb.rest import ApiException
@@ -147,6 +147,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| (Optional) Filter on repository name using a fuzzy search. | [optional] 
@@ -167,6 +168,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -185,9 +187,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.rest import ApiException
 from pprint import pprint
@@ -227,6 +228,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**|  | 
@@ -245,6 +247,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

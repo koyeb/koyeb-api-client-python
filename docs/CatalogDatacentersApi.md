@@ -15,9 +15,8 @@ List datacenters
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_datacenters_reply import ListDatacentersReply
 from koyeb.rest import ApiException
@@ -57,6 +56,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -73,6 +73,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

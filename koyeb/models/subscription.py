@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.subscription_payment_failure import SubscriptionPaymentFailure
 from koyeb.models.subscription_status import SubscriptionStatus
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class Subscription(BaseModel):
@@ -77,7 +74,11 @@ class Subscription(BaseModel):
         "payment_failure",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +90,7 @@ class Subscription(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Subscription from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -103,9 +104,11 @@ class Subscription(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of payment_failure
@@ -114,7 +117,7 @@ class Subscription(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Subscription from a dict"""
         if obj is None:
             return None
@@ -144,7 +147,7 @@ class Subscription(BaseModel):
                 "amount_paid": obj.get("amount_paid"),
                 "amount_remaining": obj.get("amount_remaining"),
                 "payment_failure": SubscriptionPaymentFailure.from_dict(
-                    obj.get("payment_failure")
+                    obj["payment_failure"]
                 )
                 if obj.get("payment_failure") is not None
                 else None,

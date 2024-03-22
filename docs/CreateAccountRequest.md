@@ -3,6 +3,7 @@
 Create new account
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of CreateAccountRequest from a JSON string
 create_account_request_instance = CreateAccountRequest.from_json(json)
 # print the JSON string representation of the object
-print CreateAccountRequest.to_json()
+print(CreateAccountRequest.to_json())
 
 # convert the object into a dict
 create_account_request_dict = create_account_request_instance.to_dict()

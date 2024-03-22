@@ -15,9 +15,8 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.invite_user_request import InviteUserRequest
 from koyeb.rest import ApiException
@@ -58,6 +57,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**InviteUserRequest**](InviteUserRequest.md)|  | 
@@ -76,6 +76,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

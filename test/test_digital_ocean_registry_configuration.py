@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.digital_ocean_registry_configuration import (
     DigitalOceanRegistryConfiguration,

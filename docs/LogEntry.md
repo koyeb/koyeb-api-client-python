@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **msg** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of LogEntry from a JSON string
 log_entry_instance = LogEntry.from_json(json)
 # print the JSON string representation of the object
-print LogEntry.to_json()
+print(LogEntry.to_json())
 
 # convert the object into a dict
 log_entry_dict = log_entry_instance.to_dict()

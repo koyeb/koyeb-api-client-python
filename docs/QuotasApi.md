@@ -15,9 +15,8 @@ Review Organization Capacity
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.review_organization_capacity_reply import ReviewOrganizationCapacityReply
 from koyeb.models.review_organization_capacity_request import ReviewOrganizationCapacityRequest
@@ -60,6 +59,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**ReviewOrganizationCapacityRequest**](ReviewOrganizationCapacityRequest.md)|  | 
@@ -78,6 +78,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

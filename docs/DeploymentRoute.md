@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **port** | **int** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DeploymentRoute from a JSON string
 deployment_route_instance = DeploymentRoute.from_json(json)
 # print the JSON string representation of the object
-print DeploymentRoute.to_json()
+print(DeploymentRoute.to_json())
 
 # convert the object into a dict
 deployment_route_dict = deployment_route_instance.to_dict()

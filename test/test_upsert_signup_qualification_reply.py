@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.upsert_signup_qualification_reply import (
     UpsertSignupQualificationReply,

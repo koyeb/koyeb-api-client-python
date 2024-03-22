@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organizations** | [**List[KsearchOrganization]**](KsearchOrganization.md) |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of KsearchSearchReply from a JSON string
 ksearch_search_reply_instance = KsearchSearchReply.from_json(json)
 # print the JSON string representation of the object
-print KsearchSearchReply.to_json()
+print(KsearchSearchReply.to_json())
 
 # convert the object into a dict
 ksearch_search_reply_dict = ksearch_search_reply_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment_group** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of RedeployRequestInfo from a JSON string
 redeploy_request_info_instance = RedeployRequestInfo.from_json(json)
 # print the JSON string representation of the object
-print RedeployRequestInfo.to_json()
+print(RedeployRequestInfo.to_json())
 
 # convert the object into a dict
 redeploy_request_info_dict = redeploy_request_info_instance.to_dict()

@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.usage_details import UsageDetails
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class GetOrganizationUsageDetailsReply(BaseModel):
@@ -46,7 +42,11 @@ class GetOrganizationUsageDetailsReply(BaseModel):
         "order",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -58,7 +58,7 @@ class GetOrganizationUsageDetailsReply(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of GetOrganizationUsageDetailsReply from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,9 +72,11 @@ class GetOrganizationUsageDetailsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in usage_details (list)
@@ -87,7 +89,7 @@ class GetOrganizationUsageDetailsReply(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of GetOrganizationUsageDetailsReply from a dict"""
         if obj is None:
             return None
@@ -98,7 +100,7 @@ class GetOrganizationUsageDetailsReply(BaseModel):
         _obj = cls.model_validate(
             {
                 "usage_details": [
-                    UsageDetails.from_dict(_item) for _item in obj.get("usage_details")
+                    UsageDetails.from_dict(_item) for _item in obj["usage_details"]
                 ]
                 if obj.get("usage_details") is not None
                 else None,

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sha** | **str** | The git sha for this build (we resolve the reference at the start of the build). | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of DeploymentProvisioningInfo from a JSON string
 deployment_provisioning_info_instance = DeploymentProvisioningInfo.from_json(json)
 # print the JSON string representation of the object
-print DeploymentProvisioningInfo.to_json()
+print(DeploymentProvisioningInfo.to_json())
 
 # convert the object into a dict
 deployment_provisioning_info_dict = deployment_provisioning_info_instance.to_dict()

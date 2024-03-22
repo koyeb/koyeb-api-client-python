@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **min** | **int** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of Scaling from a JSON string
 scaling_instance = Scaling.from_json(json)
 # print the JSON string representation of the object
-print Scaling.to_json()
+print(Scaling.to_json())
 
 # convert the object into a dict
 scaling_dict = scaling_instance.to_dict()

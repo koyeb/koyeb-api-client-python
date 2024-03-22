@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **secret** | [**Secret**](Secret.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of UpdateSecretReply from a JSON string
 update_secret_reply_instance = UpdateSecretReply.from_json(json)
 # print the JSON string representation of the object
-print UpdateSecretReply.to_json()
+print(UpdateSecretReply.to_json())
 
 # convert the object into a dict
 update_secret_reply_dict = update_secret_reply_instance.to_dict()

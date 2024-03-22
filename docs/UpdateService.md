@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **definition** | [**DeploymentDefinition**](DeploymentDefinition.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of UpdateService from a JSON string
 update_service_instance = UpdateService.from_json(json)
 # print the JSON string representation of the object
-print UpdateService.to_json()
+print(UpdateService.to_json())
 
 # convert the object into a dict
 update_service_dict = update_service_instance.to_dict()

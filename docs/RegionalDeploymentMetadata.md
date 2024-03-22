@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **runtime_job_id** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of RegionalDeploymentMetadata from a JSON string
 regional_deployment_metadata_instance = RegionalDeploymentMetadata.from_json(json)
 # print the JSON string representation of the object
-print RegionalDeploymentMetadata.to_json()
+print(RegionalDeploymentMetadata.to_json())
 
 # convert the object into a dict
 regional_deployment_metadata_dict = regional_deployment_metadata_instance.to_dict()

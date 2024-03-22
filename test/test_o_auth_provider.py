@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.o_auth_provider import OAuthProvider
 

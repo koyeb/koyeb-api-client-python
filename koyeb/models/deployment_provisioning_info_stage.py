@@ -18,19 +18,16 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.deployment_provisioning_info_stage_build_attempt import (
     DeploymentProvisioningInfoStageBuildAttempt,
 )
 from koyeb.models.deployment_provisioning_info_stage_status import (
     DeploymentProvisioningInfoStageStatus,
 )
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class DeploymentProvisioningInfoStage(BaseModel):
@@ -53,7 +50,11 @@ class DeploymentProvisioningInfoStage(BaseModel):
         "build_attempts",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +66,7 @@ class DeploymentProvisioningInfoStage(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DeploymentProvisioningInfoStage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,9 +80,11 @@ class DeploymentProvisioningInfoStage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in build_attempts (list)
@@ -94,7 +97,7 @@ class DeploymentProvisioningInfoStage(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DeploymentProvisioningInfoStage from a dict"""
         if obj is None:
             return None
@@ -111,7 +114,7 @@ class DeploymentProvisioningInfoStage(BaseModel):
                 "finished_at": obj.get("finished_at"),
                 "build_attempts": [
                     DeploymentProvisioningInfoStageBuildAttempt.from_dict(_item)
-                    for _item in obj.get("build_attempts")
+                    for _item in obj["build_attempts"]
                 ]
                 if obj.get("build_attempts") is not None
                 else None,

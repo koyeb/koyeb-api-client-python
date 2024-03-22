@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domains** | [**List[Domain]**](Domain.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListDomainsReply from a JSON string
 list_domains_reply_instance = ListDomainsReply.from_json(json)
 # print the JSON string representation of the object
-print ListDomainsReply.to_json()
+print(ListDomainsReply.to_json())
 
 # convert the object into a dict
 list_domains_reply_dict = list_domains_reply_instance.to_dict()

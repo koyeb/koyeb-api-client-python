@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.kgitproxy_git_hub_repository import KgitproxyGitHubRepository
 from koyeb.models.kgitproxy_repository_provider import KgitproxyRepositoryProvider
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class KgitproxyRepository(BaseModel):
@@ -59,7 +56,11 @@ class KgitproxyRepository(BaseModel):
         "github",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +72,7 @@ class KgitproxyRepository(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of KgitproxyRepository from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -85,9 +86,11 @@ class KgitproxyRepository(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of github
@@ -96,7 +99,7 @@ class KgitproxyRepository(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of KgitproxyRepository from a dict"""
         if obj is None:
             return None
@@ -116,7 +119,7 @@ class KgitproxyRepository(BaseModel):
                 "default_branch": obj.get("default_branch"),
                 "provider": obj.get("provider"),
                 "last_push_date": obj.get("last_push_date"),
-                "github": KgitproxyGitHubRepository.from_dict(obj.get("github"))
+                "github": KgitproxyGitHubRepository.from_dict(obj["github"])
                 if obj.get("github") is not None
                 else None,
             }

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.region_list_item import RegionListItem
 

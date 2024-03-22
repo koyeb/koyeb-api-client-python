@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of GoogleRpcStatus from a JSON string
 google_rpc_status_instance = GoogleRpcStatus.from_json(json)
 # print the JSON string representation of the object
-print GoogleRpcStatus.to_json()
+print(GoogleRpcStatus.to_json())
 
 # convert the object into a dict
 google_rpc_status_dict = google_rpc_status_instance.to_dict()

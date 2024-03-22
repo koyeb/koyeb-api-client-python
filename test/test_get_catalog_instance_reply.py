@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.get_catalog_instance_reply import GetCatalogInstanceReply
 

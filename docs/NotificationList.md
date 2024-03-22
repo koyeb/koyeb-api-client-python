@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notifications** | [**List[Notification]**](Notification.md) |  | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of NotificationList from a JSON string
 notification_list_instance = NotificationList.from_json(json)
 # print the JSON string representation of the object
-print NotificationList.to_json()
+print(NotificationList.to_json())
 
 # convert the object into a dict
 notification_list_dict = notification_list_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **grace_period** | **int** |  | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of DeploymentHealthCheck from a JSON string
 deployment_health_check_instance = DeploymentHealthCheck.from_json(json)
 # print the JSON string representation of the object
-print DeploymentHealthCheck.to_json()
+print(DeploymentHealthCheck.to_json())
 
 # convert the object into a dict
 deployment_health_check_dict = deployment_health_check_instance.to_dict()

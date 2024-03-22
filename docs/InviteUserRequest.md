@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of InviteUserRequest from a JSON string
 invite_user_request_instance = InviteUserRequest.from_json(json)
 # print the JSON string representation of the object
-print InviteUserRequest.to_json()
+print(InviteUserRequest.to_json())
 
 # convert the object into a dict
 invite_user_request_dict = invite_user_request_instance.to_dict()

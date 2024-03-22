@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **regions** | [**List[RegionListItem]**](RegionListItem.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListRegionsReply from a JSON string
 list_regions_reply_instance = ListRegionsReply.from_json(json)
 # print the JSON string representation of the object
-print ListRegionsReply.to_json()
+print(ListRegionsReply.to_json())
 
 # convert the object into a dict
 list_regions_reply_dict = list_regions_reply_instance.to_dict()

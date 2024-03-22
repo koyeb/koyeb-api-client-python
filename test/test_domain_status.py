@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.domain_status import DomainStatus
 

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.ksearch_user import KsearchUser
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **invitations** | [**List[OrganizationInvitation]**](OrganizationInvitation.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListUserOrganizationInvitationsReply from a JSON string
 list_user_organization_invitations_reply_instance = ListUserOrganizationInvitationsReply.from_json(json)
 # print the JSON string representation of the object
-print ListUserOrganizationInvitationsReply.to_json()
+print(ListUserOrganizationInvitationsReply.to_json())
 
 # convert the object into a dict
 list_user_organization_invitations_reply_dict = list_user_organization_invitations_reply_instance.to_dict()

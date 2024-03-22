@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instance** | [**Instance**](Instance.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetInstanceReply from a JSON string
 get_instance_reply_instance = GetInstanceReply.from_json(json)
 # print the JSON string representation of the object
-print GetInstanceReply.to_json()
+print(GetInstanceReply.to_json())
 
 # convert the object into a dict
 get_instance_reply_dict = get_instance_reply_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of ResetPasswordRequest from a JSON string
 reset_password_request_instance = ResetPasswordRequest.from_json(json)
 # print the JSON string representation of the object
-print ResetPasswordRequest.to_json()
+print(ResetPasswordRequest.to_json())
 
 # convert the object into a dict
 reset_password_request_dict = reset_password_request_instance.to_dict()

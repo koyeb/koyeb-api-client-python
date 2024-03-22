@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.gcp_container_registry_configuration import (
     GCPContainerRegistryConfiguration,

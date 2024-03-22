@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **object** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of RevealSecretReply from a JSON string
 reveal_secret_reply_instance = RevealSecretReply.from_json(json)
 # print the JSON string representation of the object
-print RevealSecretReply.to_json()
+print(RevealSecretReply.to_json())
 
 # convert the object into a dict
 reveal_secret_reply_dict = reveal_secret_reply_instance.to_dict()

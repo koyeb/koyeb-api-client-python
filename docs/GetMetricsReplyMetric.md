@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **labels** | **Dict[str, str]** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GetMetricsReplyMetric from a JSON string
 get_metrics_reply_metric_instance = GetMetricsReplyMetric.from_json(json)
 # print the JSON string representation of the object
-print GetMetricsReplyMetric.to_json()
+print(GetMetricsReplyMetric.to_json())
 
 # convert the object into a dict
 get_metrics_reply_metric_dict = get_metrics_reply_metric_instance.to_dict()

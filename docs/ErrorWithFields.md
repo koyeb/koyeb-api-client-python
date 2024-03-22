@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **int** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ErrorWithFields from a JSON string
 error_with_fields_instance = ErrorWithFields.from_json(json)
 # print the JSON string representation of the object
-print ErrorWithFields.to_json()
+print(ErrorWithFields.to_json())
 
 # convert the object into a dict
 error_with_fields_dict = error_with_fields_instance.to_dict()

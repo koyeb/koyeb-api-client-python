@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GitLabRegistryConfiguration from a JSON string
 git_lab_registry_configuration_instance = GitLabRegistryConfiguration.from_json(json)
 # print the JSON string representation of the object
-print GitLabRegistryConfiguration.to_json()
+print(GitLabRegistryConfiguration.to_json())
 
 # convert the object into a dict
 git_lab_registry_configuration_dict = git_lab_registry_configuration_instance.to_dict()

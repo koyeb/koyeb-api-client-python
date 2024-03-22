@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of CreateApp from a JSON string
 create_app_instance = CreateApp.from_json(json)
 # print the JSON string representation of the object
-print CreateApp.to_json()
+print(CreateApp.to_json())
 
 # convert the object into a dict
 create_app_dict = create_app_instance.to_dict()

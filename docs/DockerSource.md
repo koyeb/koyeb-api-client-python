@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **image** | **str** |  | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of DockerSource from a JSON string
 docker_source_instance = DockerSource.from_json(json)
 # print the JSON string representation of the object
-print DockerSource.to_json()
+print(DockerSource.to_json())
 
 # convert the object into a dict
 docker_source_dict = docker_source_instance.to_dict()

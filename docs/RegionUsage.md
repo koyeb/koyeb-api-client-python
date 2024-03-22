@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instances** | [**Dict[str, InstanceUsage]**](InstanceUsage.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of RegionUsage from a JSON string
 region_usage_instance = RegionUsage.from_json(json)
 # print the JSON string representation of the object
-print RegionUsage.to_json()
+print(RegionUsage.to_json())
 
 # convert the object into a dict
 region_usage_dict = region_usage_instance.to_dict()

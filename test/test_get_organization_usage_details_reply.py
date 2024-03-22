@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.get_organization_usage_details_reply import (
     GetOrganizationUsageDetailsReply,

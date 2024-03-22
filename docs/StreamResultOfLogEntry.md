@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **result** | [**LogEntry**](LogEntry.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of StreamResultOfLogEntry from a JSON string
 stream_result_of_log_entry_instance = StreamResultOfLogEntry.from_json(json)
 # print the JSON string representation of the object
-print StreamResultOfLogEntry.to_json()
+print(StreamResultOfLogEntry.to_json())
 
 # convert the object into a dict
 stream_result_of_log_entry_dict = stream_result_of_log_entry_instance.to_dict()

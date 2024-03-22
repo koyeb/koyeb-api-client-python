@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of KsearchRegionalDeployment from a JSON string
 ksearch_regional_deployment_instance = KsearchRegionalDeployment.from_json(json)
 # print the JSON string representation of the object
-print KsearchRegionalDeployment.to_json()
+print(KsearchRegionalDeployment.to_json())
 
 # convert the object into a dict
 ksearch_regional_deployment_dict = ksearch_regional_deployment_instance.to_dict()

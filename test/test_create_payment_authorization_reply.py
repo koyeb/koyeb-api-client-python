@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.create_payment_authorization_reply import (
     CreatePaymentAuthorizationReply,

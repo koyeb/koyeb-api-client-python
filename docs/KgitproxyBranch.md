@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of KgitproxyBranch from a JSON string
 kgitproxy_branch_instance = KgitproxyBranch.from_json(json)
 # print the JSON string representation of the object
-print KgitproxyBranch.to_json()
+print(KgitproxyBranch.to_json())
 
 # convert the object into a dict
 kgitproxy_branch_dict = kgitproxy_branch_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payload** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DiscourseAuthRequest from a JSON string
 discourse_auth_request_instance = DiscourseAuthRequest.from_json(json)
 # print the JSON string representation of the object
-print DiscourseAuthRequest.to_json()
+print(DiscourseAuthRequest.to_json())
 
 # convert the object into a dict
 discourse_auth_request_dict = discourse_auth_request_instance.to_dict()

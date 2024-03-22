@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.organization_invitation_status import OrganizationInvitationStatus
 from koyeb.models.public_organization import PublicOrganization
 from koyeb.models.public_user import PublicUser
 from koyeb.models.user_role_role import UserRoleRole
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class OrganizationInvitation(BaseModel):
@@ -61,7 +58,11 @@ class OrganizationInvitation(BaseModel):
         "inviter",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +74,7 @@ class OrganizationInvitation(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrganizationInvitation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -87,9 +88,11 @@ class OrganizationInvitation(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of organization
@@ -104,7 +107,7 @@ class OrganizationInvitation(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrganizationInvitation from a dict"""
         if obj is None:
             return None
@@ -120,15 +123,15 @@ class OrganizationInvitation(BaseModel):
                 "status": obj.get("status"),
                 "expires_at": obj.get("expires_at"),
                 "organization_id": obj.get("organization_id"),
-                "organization": PublicOrganization.from_dict(obj.get("organization"))
+                "organization": PublicOrganization.from_dict(obj["organization"])
                 if obj.get("organization") is not None
                 else None,
                 "invitee_id": obj.get("invitee_id"),
-                "invitee": PublicUser.from_dict(obj.get("invitee"))
+                "invitee": PublicUser.from_dict(obj["invitee"])
                 if obj.get("invitee") is not None
                 else None,
                 "inviter_id": obj.get("inviter_id"),
-                "inviter": PublicUser.from_dict(obj.get("inviter"))
+                "inviter": PublicUser.from_dict(obj["inviter"])
                 if obj.get("inviter") is not None
                 else None,
             }

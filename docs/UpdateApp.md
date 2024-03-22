@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of UpdateApp from a JSON string
 update_app_instance = UpdateApp.from_json(json)
 # print the JSON string representation of the object
-print UpdateApp.to_json()
+print(UpdateApp.to_json())
 
 # convert the object into a dict
 update_app_dict = update_app_instance.to_dict()

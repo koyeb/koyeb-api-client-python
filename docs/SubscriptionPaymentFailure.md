@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **failed_at** | **datetime** |  | [optional] 
@@ -25,7 +26,7 @@ json = "{}"
 # create an instance of SubscriptionPaymentFailure from a JSON string
 subscription_payment_failure_instance = SubscriptionPaymentFailure.from_json(json)
 # print the JSON string representation of the object
-print SubscriptionPaymentFailure.to_json()
+print(SubscriptionPaymentFailure.to_json())
 
 # convert the object into a dict
 subscription_payment_failure_dict = subscription_payment_failure_instance.to_dict()

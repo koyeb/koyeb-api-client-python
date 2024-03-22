@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DatabaseRolePassword from a JSON string
 database_role_password_instance = DatabaseRolePassword.from_json(json)
 # print the JSON string representation of the object
-print DatabaseRolePassword.to_json()
+print(DatabaseRolePassword.to_json())
 
 # convert the object into a dict
 database_role_password_dict = database_role_password_instance.to_dict()

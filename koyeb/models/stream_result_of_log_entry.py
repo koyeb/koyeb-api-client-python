@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
 from koyeb.models.google_rpc_status import GoogleRpcStatus
 from koyeb.models.log_entry import LogEntry
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class StreamResultOfLogEntry(BaseModel):
@@ -38,7 +34,11 @@ class StreamResultOfLogEntry(BaseModel):
     error: Optional[GoogleRpcStatus] = None
     __properties: ClassVar[List[str]] = ["result", "error"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -50,7 +50,7 @@ class StreamResultOfLogEntry(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of StreamResultOfLogEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -64,9 +64,11 @@ class StreamResultOfLogEntry(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of result
@@ -78,7 +80,7 @@ class StreamResultOfLogEntry(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of StreamResultOfLogEntry from a dict"""
         if obj is None:
             return None
@@ -88,10 +90,10 @@ class StreamResultOfLogEntry(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "result": LogEntry.from_dict(obj.get("result"))
+                "result": LogEntry.from_dict(obj["result"])
                 if obj.get("result") is not None
                 else None,
-                "error": GoogleRpcStatus.from_dict(obj.get("error"))
+                "error": GoogleRpcStatus.from_dict(obj["error"])
                 if obj.get("error") is not None
                 else None,
             }

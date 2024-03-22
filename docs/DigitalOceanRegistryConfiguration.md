@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DigitalOceanRegistryConfiguration from a JSON string
 digital_ocean_registry_configuration_instance = DigitalOceanRegistryConfiguration.from_json(json)
 # print the JSON string representation of the object
-print DigitalOceanRegistryConfiguration.to_json()
+print(DigitalOceanRegistryConfiguration.to_json())
 
 # convert the object into a dict
 digital_ocean_registry_configuration_dict = digital_ocean_registry_configuration_instance.to_dict()

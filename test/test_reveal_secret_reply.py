@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.reveal_secret_reply import RevealSecretReply
 

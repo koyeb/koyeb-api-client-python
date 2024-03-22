@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **apps** | [**List[AppListItem]**](AppListItem.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListAppsReply from a JSON string
 list_apps_reply_instance = ListAppsReply.from_json(json)
 # print the JSON string representation of the object
-print ListAppsReply.to_json()
+print(ListAppsReply.to_json())
 
 # convert the object into a dict
 list_apps_reply_dict = list_apps_reply_instance.to_dict()

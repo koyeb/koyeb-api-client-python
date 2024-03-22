@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of CreateDomain from a JSON string
 create_domain_instance = CreateDomain.from_json(json)
 # print the JSON string representation of the object
-print CreateDomain.to_json()
+print(CreateDomain.to_json())
 
 # convert the object into a dict
 create_domain_dict = create_domain_instance.to_dict()

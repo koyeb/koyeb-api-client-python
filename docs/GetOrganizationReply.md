@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organization** | [**Organization**](Organization.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetOrganizationReply from a JSON string
 get_organization_reply_instance = GetOrganizationReply.from_json(json)
 # print the JSON string representation of the object
-print GetOrganizationReply.to_json()
+print(GetOrganizationReply.to_json())
 
 # convert the object into a dict
 get_organization_reply_dict = get_organization_reply_instance.to_dict()

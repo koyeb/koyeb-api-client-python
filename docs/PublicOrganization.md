@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of PublicOrganization from a JSON string
 public_organization_instance = PublicOrganization.from_json(json)
 # print the JSON string representation of the object
-print PublicOrganization.to_json()
+print(PublicOrganization.to_json())
 
 # convert the object into a dict
 public_organization_dict = public_organization_instance.to_dict()

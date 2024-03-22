@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -24,7 +25,7 @@ json = "{}"
 # create an instance of Credential from a JSON string
 credential_instance = Credential.from_json(json)
 # print the JSON string representation of the object
-print Credential.to_json()
+print(Credential.to_json())
 
 # convert the object into a dict
 credential_dict = credential_instance.to_dict()

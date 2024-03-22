@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of OAuthProvider from a JSON string
 o_auth_provider_instance = OAuthProvider.from_json(json)
 # print the JSON string representation of the object
-print OAuthProvider.to_json()
+print(OAuthProvider.to_json())
 
 # convert the object into a dict
 o_auth_provider_dict = o_auth_provider_instance.to_dict()

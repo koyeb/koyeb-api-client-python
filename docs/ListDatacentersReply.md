@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **datacenters** | [**List[DatacenterListItem]**](DatacenterListItem.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of ListDatacentersReply from a JSON string
 list_datacenters_reply_instance = ListDatacentersReply.from_json(json)
 # print the JSON string representation of the object
-print ListDatacentersReply.to_json()
+print(ListDatacentersReply.to_json())
 
 # convert the object into a dict
 list_datacenters_reply_dict = list_datacenters_reply_instance.to_dict()

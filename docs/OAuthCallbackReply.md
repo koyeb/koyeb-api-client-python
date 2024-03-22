@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **token** | [**Token**](Token.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of OAuthCallbackReply from a JSON string
 o_auth_callback_reply_instance = OAuthCallbackReply.from_json(json)
 # print the JSON string representation of the object
-print OAuthCallbackReply.to_json()
+print(OAuthCallbackReply.to_json())
 
 # convert the object into a dict
 o_auth_callback_reply_dict = o_auth_callback_reply_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **repositories** | [**List[KgitproxyRepository]**](KgitproxyRepository.md) | The collection of repositories. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of KgitproxyListRepositoriesReply from a JSON string
 kgitproxy_list_repositories_reply_instance = KgitproxyListRepositoriesReply.from_json(json)
 # print the JSON string representation of the object
-print KgitproxyListRepositoriesReply.to_json()
+print(KgitproxyListRepositoriesReply.to_json())
 
 # convert the object into a dict
 kgitproxy_list_repositories_reply_dict = kgitproxy_list_repositories_reply_instance.to_dict()

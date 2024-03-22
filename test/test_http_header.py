@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.http_header import HTTPHeader
 

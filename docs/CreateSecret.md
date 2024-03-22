@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -25,7 +26,7 @@ json = "{}"
 # create an instance of CreateSecret from a JSON string
 create_secret_instance = CreateSecret.from_json(json)
 # print the JSON string representation of the object
-print CreateSecret.to_json()
+print(CreateSecret.to_json())
 
 # convert the object into a dict
 create_secret_dict = create_secret_instance.to_dict()

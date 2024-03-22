@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**TriggerDeploymentMetadataTriggerType**](TriggerDeploymentMetadataTriggerType.md) |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of TriggerDeploymentMetadata from a JSON string
 trigger_deployment_metadata_instance = TriggerDeploymentMetadata.from_json(json)
 # print the JSON string representation of the object
-print TriggerDeploymentMetadata.to_json()
+print(TriggerDeploymentMetadata.to_json())
 
 # convert the object into a dict
 trigger_deployment_metadata_dict = trigger_deployment_metadata_instance.to_dict()

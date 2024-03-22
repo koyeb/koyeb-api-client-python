@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2023.11.4"
+__version__ = "2024.3.0"
 
 # import apis into sdk package
 from koyeb.api.apps_api import AppsApi

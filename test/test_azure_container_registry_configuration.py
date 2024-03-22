@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.azure_container_registry_configuration import (
     AzureContainerRegistryConfiguration,

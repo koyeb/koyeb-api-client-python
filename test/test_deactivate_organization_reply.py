@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.deactivate_organization_reply import DeactivateOrganizationReply
 

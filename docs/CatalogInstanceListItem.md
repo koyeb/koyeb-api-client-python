@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -26,7 +27,7 @@ json = "{}"
 # create an instance of CatalogInstanceListItem from a JSON string
 catalog_instance_list_item_instance = CatalogInstanceListItem.from_json(json)
 # print the JSON string representation of the object
-print CatalogInstanceListItem.to_json()
+print(CatalogInstanceListItem.to_json())
 
 # convert the object into a dict
 catalog_instance_list_item_dict = catalog_instance_list_item_instance.to_dict()

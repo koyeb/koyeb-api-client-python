@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.app_status import AppStatus
 from koyeb.models.domain import Domain
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class AppListItem(BaseModel):
@@ -53,7 +50,11 @@ class AppListItem(BaseModel):
         "messages",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +66,7 @@ class AppListItem(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AppListItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,9 +80,11 @@ class AppListItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in domains (list)
@@ -94,7 +97,7 @@ class AppListItem(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AppListItem from a dict"""
         if obj is None:
             return None
@@ -109,7 +112,7 @@ class AppListItem(BaseModel):
                 "organization_id": obj.get("organization_id"),
                 "updated_at": obj.get("updated_at"),
                 "created_at": obj.get("created_at"),
-                "domains": [Domain.from_dict(_item) for _item in obj.get("domains")]
+                "domains": [Domain.from_dict(_item) for _item in obj["domains"]]
                 if obj.get("domains") is not None
                 else None,
                 "status": obj.get("status"),

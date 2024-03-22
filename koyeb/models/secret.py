@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.azure_container_registry_configuration import (
     AzureContainerRegistryConfiguration,
 )
@@ -37,11 +37,8 @@ from koyeb.models.git_hub_registry_configuration import GitHubRegistryConfigurat
 from koyeb.models.git_lab_registry_configuration import GitLabRegistryConfiguration
 from koyeb.models.private_registry_configuration import PrivateRegistryConfiguration
 from koyeb.models.secret_type import SecretType
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class Secret(BaseModel):
@@ -82,7 +79,11 @@ class Secret(BaseModel):
         "database_role_password",
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -94,7 +95,7 @@ class Secret(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Secret from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -108,9 +109,11 @@ class Secret(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of docker_hub_registry
@@ -140,7 +143,7 @@ class Secret(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Secret from a dict"""
         if obj is None:
             return None
@@ -158,42 +161,42 @@ class Secret(BaseModel):
                 "created_at": obj.get("created_at"),
                 "value": obj.get("value"),
                 "docker_hub_registry": DockerHubRegistryConfiguration.from_dict(
-                    obj.get("docker_hub_registry")
+                    obj["docker_hub_registry"]
                 )
                 if obj.get("docker_hub_registry") is not None
                 else None,
                 "private_registry": PrivateRegistryConfiguration.from_dict(
-                    obj.get("private_registry")
+                    obj["private_registry"]
                 )
                 if obj.get("private_registry") is not None
                 else None,
                 "digital_ocean_registry": DigitalOceanRegistryConfiguration.from_dict(
-                    obj.get("digital_ocean_registry")
+                    obj["digital_ocean_registry"]
                 )
                 if obj.get("digital_ocean_registry") is not None
                 else None,
                 "github_registry": GitHubRegistryConfiguration.from_dict(
-                    obj.get("github_registry")
+                    obj["github_registry"]
                 )
                 if obj.get("github_registry") is not None
                 else None,
                 "gitlab_registry": GitLabRegistryConfiguration.from_dict(
-                    obj.get("gitlab_registry")
+                    obj["gitlab_registry"]
                 )
                 if obj.get("gitlab_registry") is not None
                 else None,
                 "gcp_container_registry": GCPContainerRegistryConfiguration.from_dict(
-                    obj.get("gcp_container_registry")
+                    obj["gcp_container_registry"]
                 )
                 if obj.get("gcp_container_registry") is not None
                 else None,
                 "azure_container_registry": AzureContainerRegistryConfiguration.from_dict(
-                    obj.get("azure_container_registry")
+                    obj["azure_container_registry"]
                 )
                 if obj.get("azure_container_registry") is not None
                 else None,
                 "database_role_password": DatabaseRolePassword.from_dict(
-                    obj.get("database_role_password")
+                    obj["database_role_password"]
                 )
                 if obj.get("database_role_password") is not None
                 else None,

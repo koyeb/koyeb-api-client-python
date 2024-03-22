@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.create_credential_reply import CreateCredentialReply
 

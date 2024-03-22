@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of RegionListItem from a JSON string
 region_list_item_instance = RegionListItem.from_json(json)
 # print the JSON string representation of the object
-print RegionListItem.to_json()
+print(RegionListItem.to_json())
 
 # convert the object into a dict
 region_list_item_dict = region_list_item_instance.to_dict()

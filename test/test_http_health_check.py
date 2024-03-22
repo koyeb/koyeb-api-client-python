@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.http_health_check import HTTPHealthCheck
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **port** | **int** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of Route from a JSON string
 route_instance = Route.from_json(json)
 # print the JSON string representation of the object
-print Route.to_json()
+print(Route.to_json())
 
 # convert the object into a dict
 route_dict = route_instance.to_dict()

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.exec_command_reply import ExecCommandReply
 

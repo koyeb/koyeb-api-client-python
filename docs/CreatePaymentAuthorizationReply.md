@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_method** | [**PaymentMethod**](PaymentMethod.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of CreatePaymentAuthorizationReply from a JSON string
 create_payment_authorization_reply_instance = CreatePaymentAuthorizationReply.from_json(json)
 # print the JSON string representation of the object
-print CreatePaymentAuthorizationReply.to_json()
+print(CreatePaymentAuthorizationReply.to_json())
 
 # convert the object into a dict
 create_payment_authorization_reply_dict = create_payment_authorization_reply_instance.to_dict()

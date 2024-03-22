@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.github_installation_reply import GithubInstallationReply
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **scopes** | **List[str]** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of DeploymentScaling from a JSON string
 deployment_scaling_instance = DeploymentScaling.from_json(json)
 # print the JSON string representation of the object
-print DeploymentScaling.to_json()
+print(DeploymentScaling.to_json())
 
 # convert the object into a dict
 deployment_scaling_dict = deployment_scaling_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GithubInstallationRequest from a JSON string
 github_installation_request_instance = GithubInstallationRequest.from_json(json)
 # print the JSON string representation of the object
-print GithubInstallationRequest.to_json()
+print(GithubInstallationRequest.to_json())
 
 # convert the object into a dict
 github_installation_request_dict = github_installation_request_instance.to_dict()

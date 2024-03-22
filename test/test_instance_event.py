@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.instance_event import InstanceEvent
 

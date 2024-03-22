@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DockerHubRegistryConfiguration from a JSON string
 docker_hub_registry_configuration_instance = DockerHubRegistryConfiguration.from_json(json)
 # print the JSON string representation of the object
-print DockerHubRegistryConfiguration.to_json()
+print(DockerHubRegistryConfiguration.to_json())
 
 # convert the object into a dict
 docker_hub_registry_configuration_dict = docker_hub_registry_configuration_instance.to_dict()
