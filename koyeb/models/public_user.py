@@ -20,34 +20,28 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class PublicUser(BaseModel):
     """
     PublicUser
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     avatar_url: Optional[StrictStr] = None
     github_id: Optional[StrictStr] = None
     github_user: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "email",
-        "name",
-        "avatar_url",
-        "github_id",
-        "github_user",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "email", "name", "avatar_url", "github_id", "github_user"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +69,8 @@ class PublicUser(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,14 +84,14 @@ class PublicUser(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "email": obj.get("email"),
-                "name": obj.get("name"),
-                "avatar_url": obj.get("avatar_url"),
-                "github_id": obj.get("github_id"),
-                "github_user": obj.get("github_user"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "email": obj.get("email"),
+            "name": obj.get("name"),
+            "avatar_url": obj.get("avatar_url"),
+            "github_id": obj.get("github_id"),
+            "github_user": obj.get("github_user")
+        })
         return _obj
+
+

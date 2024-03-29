@@ -20,24 +20,25 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Env(BaseModel):
     """
     Env
-    """  # noqa: E501
-
+    """ # noqa: E501
     key: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
     secret: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["key", "value", "secret"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +66,8 @@ class Env(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -79,11 +81,11 @@ class Env(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "key": obj.get("key"),
-                "value": obj.get("value"),
-                "secret": obj.get("secret"),
-            }
-        )
+        _obj = cls.model_validate({
+            "key": obj.get("key"),
+            "value": obj.get("value"),
+            "secret": obj.get("secret")
+        })
         return _obj
+
+

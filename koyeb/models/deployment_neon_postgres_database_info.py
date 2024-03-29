@@ -20,21 +20,16 @@ import json
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
-from koyeb.models.deployment_neon_postgres_database_info_role import (
-    DeploymentNeonPostgresDatabaseInfoRole,
-)
-
+from koyeb.models.deployment_neon_postgres_database_info_role import DeploymentNeonPostgresDatabaseInfoRole
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DeploymentNeonPostgresDatabaseInfo(BaseModel):
     """
     DeploymentNeonPostgresDatabaseInfo
-    """  # noqa: E501
-
+    """ # noqa: E501
     active_time_seconds: Optional[StrictStr] = None
     compute_time_seconds: Optional[StrictStr] = None
     written_data_bytes: Optional[StrictStr] = None
@@ -49,24 +44,13 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
     default_branch_state: Optional[StrictStr] = None
     default_branch_logical_size: Optional[StrictStr] = None
     roles: Optional[List[DeploymentNeonPostgresDatabaseInfoRole]] = None
-    __properties: ClassVar[List[str]] = [
-        "active_time_seconds",
-        "compute_time_seconds",
-        "written_data_bytes",
-        "data_transfer_bytes",
-        "data_storage_bytes_hour",
-        "server_host",
-        "server_port",
-        "endpoint_state",
-        "endpoint_last_active",
-        "default_branch_id",
-        "default_branch_name",
-        "default_branch_state",
-        "default_branch_logical_size",
-        "roles",
-    ]
+    __properties: ClassVar[List[str]] = ["active_time_seconds", "compute_time_seconds", "written_data_bytes", "data_transfer_bytes", "data_storage_bytes_hour", "server_host", "server_port", "endpoint_state", "endpoint_last_active", "default_branch_id", "default_branch_name", "default_branch_state", "default_branch_logical_size", "roles"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -94,7 +78,8 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in roles (list)
@@ -103,7 +88,7 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
             for _item in self.roles:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["roles"] = _items
+            _dict['roles'] = _items
         return _dict
 
     @classmethod
@@ -115,27 +100,22 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "active_time_seconds": obj.get("active_time_seconds"),
-                "compute_time_seconds": obj.get("compute_time_seconds"),
-                "written_data_bytes": obj.get("written_data_bytes"),
-                "data_transfer_bytes": obj.get("data_transfer_bytes"),
-                "data_storage_bytes_hour": obj.get("data_storage_bytes_hour"),
-                "server_host": obj.get("server_host"),
-                "server_port": obj.get("server_port"),
-                "endpoint_state": obj.get("endpoint_state"),
-                "endpoint_last_active": obj.get("endpoint_last_active"),
-                "default_branch_id": obj.get("default_branch_id"),
-                "default_branch_name": obj.get("default_branch_name"),
-                "default_branch_state": obj.get("default_branch_state"),
-                "default_branch_logical_size": obj.get("default_branch_logical_size"),
-                "roles": [
-                    DeploymentNeonPostgresDatabaseInfoRole.from_dict(_item)
-                    for _item in obj.get("roles")
-                ]
-                if obj.get("roles") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "active_time_seconds": obj.get("active_time_seconds"),
+            "compute_time_seconds": obj.get("compute_time_seconds"),
+            "written_data_bytes": obj.get("written_data_bytes"),
+            "data_transfer_bytes": obj.get("data_transfer_bytes"),
+            "data_storage_bytes_hour": obj.get("data_storage_bytes_hour"),
+            "server_host": obj.get("server_host"),
+            "server_port": obj.get("server_port"),
+            "endpoint_state": obj.get("endpoint_state"),
+            "endpoint_last_active": obj.get("endpoint_last_active"),
+            "default_branch_id": obj.get("default_branch_id"),
+            "default_branch_name": obj.get("default_branch_name"),
+            "default_branch_state": obj.get("default_branch_state"),
+            "default_branch_logical_size": obj.get("default_branch_logical_size"),
+            "roles": [DeploymentNeonPostgresDatabaseInfoRole.from_dict(_item) for _item in obj.get("roles")] if obj.get("roles") is not None else None
+        })
         return _obj
+
+

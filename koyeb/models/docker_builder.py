@@ -20,34 +20,28 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DockerBuilder(BaseModel):
     """
     DockerBuilder
-    """  # noqa: E501
-
+    """ # noqa: E501
     dockerfile: Optional[StrictStr] = None
     entrypoint: Optional[List[StrictStr]] = None
     command: Optional[StrictStr] = None
     args: Optional[List[StrictStr]] = None
     target: Optional[StrictStr] = None
     privileged: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "dockerfile",
-        "entrypoint",
-        "command",
-        "args",
-        "target",
-        "privileged",
-    ]
+    __properties: ClassVar[List[str]] = ["dockerfile", "entrypoint", "command", "args", "target", "privileged"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +69,8 @@ class DockerBuilder(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,14 +84,14 @@ class DockerBuilder(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "dockerfile": obj.get("dockerfile"),
-                "entrypoint": obj.get("entrypoint"),
-                "command": obj.get("command"),
-                "args": obj.get("args"),
-                "target": obj.get("target"),
-                "privileged": obj.get("privileged"),
-            }
-        )
+        _obj = cls.model_validate({
+            "dockerfile": obj.get("dockerfile"),
+            "entrypoint": obj.get("entrypoint"),
+            "command": obj.get("command"),
+            "args": obj.get("args"),
+            "target": obj.get("target"),
+            "privileged": obj.get("privileged")
+        })
         return _obj
+
+

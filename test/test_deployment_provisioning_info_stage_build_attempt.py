@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.deployment_provisioning_info_stage_build_attempt import (
-    DeploymentProvisioningInfoStageBuildAttempt,
-)
-
+from koyeb.models.deployment_provisioning_info_stage_build_attempt import DeploymentProvisioningInfoStageBuildAttempt
 
 class TestDeploymentProvisioningInfoStageBuildAttempt(unittest.TestCase):
     """DeploymentProvisioningInfoStageBuildAttempt unit test stubs"""
@@ -29,13 +26,11 @@ class TestDeploymentProvisioningInfoStageBuildAttempt(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> DeploymentProvisioningInfoStageBuildAttempt:
+    def make_instance(self, include_optional) -> DeploymentProvisioningInfoStageBuildAttempt:
         """Test DeploymentProvisioningInfoStageBuildAttempt
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `DeploymentProvisioningInfoStageBuildAttempt`
         """
         model = DeploymentProvisioningInfoStageBuildAttempt()
@@ -59,6 +54,5 @@ class TestDeploymentProvisioningInfoStageBuildAttempt(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

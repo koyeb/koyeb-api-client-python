@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.error_field import ErrorField
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ErrorWithFields(BaseModel):
     """
     ErrorWithFields
-    """  # noqa: E501
-
+    """ # noqa: E501
     status: Optional[StrictInt] = None
     code: Optional[StrictStr] = None
     message: Optional[StrictStr] = None
     fields: Optional[List[ErrorField]] = None
     __properties: ClassVar[List[str]] = ["status", "code", "message", "fields"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class ErrorWithFields(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in fields (list)
@@ -76,7 +78,7 @@ class ErrorWithFields(BaseModel):
             for _item in self.fields:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["fields"] = _items
+            _dict['fields'] = _items
         return _dict
 
     @classmethod
@@ -88,14 +90,12 @@ class ErrorWithFields(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "status": obj.get("status"),
-                "code": obj.get("code"),
-                "message": obj.get("message"),
-                "fields": [ErrorField.from_dict(_item) for _item in obj.get("fields")]
-                if obj.get("fields") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "status": obj.get("status"),
+            "code": obj.get("code"),
+            "message": obj.get("message"),
+            "fields": [ErrorField.from_dict(_item) for _item in obj.get("fields")] if obj.get("fields") is not None else None
+        })
         return _obj
+
+

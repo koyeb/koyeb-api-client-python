@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.app_status import AppStatus
 
-
 class TestAppStatus(unittest.TestCase):
     """AppStatus unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestAppStatus(unittest.TestCase):
         """Test AppStatus"""
         # inst = AppStatus()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

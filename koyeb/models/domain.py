@@ -22,18 +22,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from koyeb.models.domain_status import DomainStatus
 from koyeb.models.domain_type import DomainType
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Domain(BaseModel):
     """
     Domain
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
@@ -47,23 +44,13 @@ class Domain(BaseModel):
     intended_cname: Optional[StrictStr] = None
     messages: Optional[List[StrictStr]] = None
     version: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "organization_id",
-        "name",
-        "created_at",
-        "updated_at",
-        "status",
-        "type",
-        "app_id",
-        "deployment_group",
-        "verified_at",
-        "intended_cname",
-        "messages",
-        "version",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "organization_id", "name", "created_at", "updated_at", "status", "type", "app_id", "deployment_group", "verified_at", "intended_cname", "messages", "version"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -91,7 +78,8 @@ class Domain(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -105,21 +93,21 @@ class Domain(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "organization_id": obj.get("organization_id"),
-                "name": obj.get("name"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
-                "status": obj.get("status"),
-                "type": obj.get("type"),
-                "app_id": obj.get("app_id"),
-                "deployment_group": obj.get("deployment_group"),
-                "verified_at": obj.get("verified_at"),
-                "intended_cname": obj.get("intended_cname"),
-                "messages": obj.get("messages"),
-                "version": obj.get("version"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "organization_id": obj.get("organization_id"),
+            "name": obj.get("name"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "status": obj.get("status"),
+            "type": obj.get("type"),
+            "app_id": obj.get("app_id"),
+            "deployment_group": obj.get("deployment_group"),
+            "verified_at": obj.get("verified_at"),
+            "intended_cname": obj.get("intended_cname"),
+            "messages": obj.get("messages"),
+            "version": obj.get("version")
+        })
         return _obj
+
+

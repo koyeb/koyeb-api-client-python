@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.organization_deactivation_reason import OrganizationDeactivationReason
 
-
 class TestOrganizationDeactivationReason(unittest.TestCase):
     """OrganizationDeactivationReason unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestOrganizationDeactivationReason(unittest.TestCase):
         """Test OrganizationDeactivationReason"""
         # inst = OrganizationDeactivationReason()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

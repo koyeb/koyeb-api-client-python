@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.http_header import HTTPHeader
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class HTTPHealthCheck(BaseModel):
     """
     HTTPHealthCheck
-    """  # noqa: E501
-
+    """ # noqa: E501
     port: Optional[StrictInt] = None
     path: Optional[StrictStr] = None
     method: Optional[StrictStr] = None
     headers: Optional[List[HTTPHeader]] = None
     __properties: ClassVar[List[str]] = ["port", "path", "method", "headers"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class HTTPHealthCheck(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in headers (list)
@@ -76,7 +78,7 @@ class HTTPHealthCheck(BaseModel):
             for _item in self.headers:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["headers"] = _items
+            _dict['headers'] = _items
         return _dict
 
     @classmethod
@@ -88,14 +90,12 @@ class HTTPHealthCheck(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "port": obj.get("port"),
-                "path": obj.get("path"),
-                "method": obj.get("method"),
-                "headers": [HTTPHeader.from_dict(_item) for _item in obj.get("headers")]
-                if obj.get("headers") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "port": obj.get("port"),
+            "path": obj.get("path"),
+            "method": obj.get("method"),
+            "headers": [HTTPHeader.from_dict(_item) for _item in obj.get("headers")] if obj.get("headers") is not None else None
+        })
         return _obj
+
+

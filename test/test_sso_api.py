@@ -27,13 +27,17 @@ class TestSsoApi(unittest.TestCase):
         pass
 
     def test_canny_auth(self) -> None:
-        """Test case for canny_auth"""
+        """Test case for canny_auth
+
+        """
         pass
 
     def test_discourse_auth(self) -> None:
-        """Test case for discourse_auth"""
+        """Test case for discourse_auth
+
+        """
         pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

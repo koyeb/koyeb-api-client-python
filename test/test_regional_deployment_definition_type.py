@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.regional_deployment_definition_type import (
-    RegionalDeploymentDefinitionType,
-)
-
+from koyeb.models.regional_deployment_definition_type import RegionalDeploymentDefinitionType
 
 class TestRegionalDeploymentDefinitionType(unittest.TestCase):
     """RegionalDeploymentDefinitionType unit test stubs"""
@@ -33,6 +30,5 @@ class TestRegionalDeploymentDefinitionType(unittest.TestCase):
         """Test RegionalDeploymentDefinitionType"""
         # inst = RegionalDeploymentDefinitionType()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

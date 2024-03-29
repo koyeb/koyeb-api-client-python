@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **labels** | **Dict[str, str]** |  | [optional] 
-**values** | **List[List[str]]** |  | [optional] 
+**samples** | [**List[Sample]**](Sample.md) |  | [optional] 
 
 ## Example
 

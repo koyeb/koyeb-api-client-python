@@ -88,14 +88,16 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_repositories**
-> KgitproxyListRepositoriesReply list_repositories(name=name, limit=limit, offset=offset)
+> KgitproxyListRepositoriesReply list_repositories(name=name, name_search_op=name_search_op, limit=limit, offset=offset)
 
 
 
@@ -132,11 +134,12 @@ with koyeb.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = koyeb.RepositoriesApi(api_client)
     name = 'name_example' # str | (Optional) Filter on repository name using a fuzzy search. (optional)
+    name_search_op = 'name_search_op_example' # str | (Optional) Define search operation for repository name. Accept either \"fuzzy\" or \"equality\", use \"fuzzy\" by default. (optional)
     limit = 'limit_example' # str | (Optional) The number of items to return. (optional)
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return. (optional)
 
     try:
-        api_response = api_instance.list_repositories(name=name, limit=limit, offset=offset)
+        api_response = api_instance.list_repositories(name=name, name_search_op=name_search_op, limit=limit, offset=offset)
         print("The response of RepositoriesApi->list_repositories:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,6 +153,7 @@ with koyeb.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| (Optional) Filter on repository name using a fuzzy search. | [optional] 
+ **name_search_op** | **str**| (Optional) Define search operation for repository name. Accept either \&quot;fuzzy\&quot; or \&quot;equality\&quot;, use \&quot;fuzzy\&quot; by default. | [optional] 
  **limit** | **str**| (Optional) The number of items to return. | [optional] 
  **offset** | **str**| (Optional) The offset in the list of item to return. | [optional] 
 
@@ -171,8 +175,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -249,8 +255,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

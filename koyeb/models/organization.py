@@ -24,18 +24,15 @@ from koyeb.models.organization_deactivation_reason import OrganizationDeactivati
 from koyeb.models.organization_detailed_status import OrganizationDetailedStatus
 from koyeb.models.organization_status import OrganizationStatus
 from koyeb.models.plan import Plan
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Organization(BaseModel):
     """
     Organization
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     address1: Optional[StrictStr] = None
     address2: Optional[StrictStr] = None
@@ -60,34 +57,14 @@ class Organization(BaseModel):
     deactivation_reason: Optional[OrganizationDeactivationReason] = None
     verified: Optional[StrictBool] = None
     qualifies_for_hobby23: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "address1",
-        "address2",
-        "city",
-        "postal_code",
-        "state",
-        "country",
-        "company",
-        "vat_number",
-        "billing_name",
-        "billing_email",
-        "name",
-        "plan",
-        "plan_updated_at",
-        "has_payment_method",
-        "subscription_id",
-        "current_subscription_id",
-        "latest_subscription_id",
-        "signup_qualification",
-        "status",
-        "status_message",
-        "deactivation_reason",
-        "verified",
-        "qualifies_for_hobby23",
-    ]
+    reprocess_after: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = ["id", "address1", "address2", "city", "postal_code", "state", "country", "company", "vat_number", "billing_name", "billing_email", "name", "plan", "plan_updated_at", "has_payment_method", "subscription_id", "current_subscription_id", "latest_subscription_id", "signup_qualification", "status", "status_message", "deactivation_reason", "verified", "qualifies_for_hobby23", "reprocess_after"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -115,7 +92,8 @@ class Organization(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -129,32 +107,33 @@ class Organization(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "address1": obj.get("address1"),
-                "address2": obj.get("address2"),
-                "city": obj.get("city"),
-                "postal_code": obj.get("postal_code"),
-                "state": obj.get("state"),
-                "country": obj.get("country"),
-                "company": obj.get("company"),
-                "vat_number": obj.get("vat_number"),
-                "billing_name": obj.get("billing_name"),
-                "billing_email": obj.get("billing_email"),
-                "name": obj.get("name"),
-                "plan": obj.get("plan"),
-                "plan_updated_at": obj.get("plan_updated_at"),
-                "has_payment_method": obj.get("has_payment_method"),
-                "subscription_id": obj.get("subscription_id"),
-                "current_subscription_id": obj.get("current_subscription_id"),
-                "latest_subscription_id": obj.get("latest_subscription_id"),
-                "signup_qualification": obj.get("signup_qualification"),
-                "status": obj.get("status"),
-                "status_message": obj.get("status_message"),
-                "deactivation_reason": obj.get("deactivation_reason"),
-                "verified": obj.get("verified"),
-                "qualifies_for_hobby23": obj.get("qualifies_for_hobby23"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "address1": obj.get("address1"),
+            "address2": obj.get("address2"),
+            "city": obj.get("city"),
+            "postal_code": obj.get("postal_code"),
+            "state": obj.get("state"),
+            "country": obj.get("country"),
+            "company": obj.get("company"),
+            "vat_number": obj.get("vat_number"),
+            "billing_name": obj.get("billing_name"),
+            "billing_email": obj.get("billing_email"),
+            "name": obj.get("name"),
+            "plan": obj.get("plan"),
+            "plan_updated_at": obj.get("plan_updated_at"),
+            "has_payment_method": obj.get("has_payment_method"),
+            "subscription_id": obj.get("subscription_id"),
+            "current_subscription_id": obj.get("current_subscription_id"),
+            "latest_subscription_id": obj.get("latest_subscription_id"),
+            "signup_qualification": obj.get("signup_qualification"),
+            "status": obj.get("status"),
+            "status_message": obj.get("status_message"),
+            "deactivation_reason": obj.get("deactivation_reason"),
+            "verified": obj.get("verified"),
+            "qualifies_for_hobby23": obj.get("qualifies_for_hobby23"),
+            "reprocess_after": obj.get("reprocess_after")
+        })
         return _obj
+
+

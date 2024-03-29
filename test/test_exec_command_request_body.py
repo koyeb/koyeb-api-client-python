@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.exec_command_request_body import ExecCommandRequestBody
 
-
 class TestExecCommandRequestBody(unittest.TestCase):
     """ExecCommandRequestBody unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestExecCommandRequestBody(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ExecCommandRequestBody:
         """Test ExecCommandRequestBody
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `ExecCommandRequestBody`
         """
         model = ExecCommandRequestBody()
@@ -45,7 +44,8 @@ class TestExecCommandRequestBody(unittest.TestCase):
                     width = 56, ),
                 stdin = koyeb.models.exec_command_io.ExecCommandIO(
                     data = 'YQ==', 
-                    close = True, )
+                    close = True, ),
+                disable_tty = True
             )
         else:
             return ExecCommandRequestBody(
@@ -57,6 +57,5 @@ class TestExecCommandRequestBody(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

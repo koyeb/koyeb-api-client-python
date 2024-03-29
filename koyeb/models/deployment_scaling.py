@@ -20,24 +20,27 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
-
+from koyeb.models.deployment_scaling_target import DeploymentScalingTarget
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DeploymentScaling(BaseModel):
     """
     DeploymentScaling
-    """  # noqa: E501
-
+    """ # noqa: E501
     scopes: Optional[List[StrictStr]] = None
     min: Optional[StrictInt] = None
     max: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["scopes", "min", "max"]
+    targets: Optional[List[DeploymentScalingTarget]] = None
+    __properties: ClassVar[List[str]] = ["scopes", "min", "max", "targets"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,9 +68,17 @@ class DeploymentScaling(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in targets (list)
+        _items = []
+        if self.targets:
+            for _item in self.targets:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['targets'] = _items
         return _dict
 
     @classmethod
@@ -79,7 +90,12 @@ class DeploymentScaling(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"scopes": obj.get("scopes"), "min": obj.get("min"), "max": obj.get("max")}
-        )
+        _obj = cls.model_validate({
+            "scopes": obj.get("scopes"),
+            "min": obj.get("min"),
+            "max": obj.get("max"),
+            "targets": [DeploymentScalingTarget.from_dict(_item) for _item in obj.get("targets")] if obj.get("targets") is not None else None
+        })
         return _obj
+
+

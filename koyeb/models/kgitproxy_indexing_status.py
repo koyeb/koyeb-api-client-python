@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,12 +34,14 @@ class KgitproxyIndexingStatus(str, Enum):
     """
     allowed enum values
     """
-    INVALID_INDEXING_STATUS = "INVALID_INDEXING_STATUS"
-    NOT_STARTED = "NOT_STARTED"
-    IN_PROGRESS = "IN_PROGRESS"
-    COMPLETED = "COMPLETED"
+    INVALID_INDEXING_STATUS = 'INVALID_INDEXING_STATUS'
+    NOT_STARTED = 'NOT_STARTED'
+    IN_PROGRESS = 'IN_PROGRESS'
+    COMPLETED = 'COMPLETED'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of KgitproxyIndexingStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

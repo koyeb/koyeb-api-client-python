@@ -21,34 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
-from koyeb.models.deployment_provisioning_info_stage import (
-    DeploymentProvisioningInfoStage,
-)
-
+from koyeb.models.deployment_provisioning_info_stage import DeploymentProvisioningInfoStage
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DeploymentProvisioningInfo(BaseModel):
     """
     DeploymentProvisioningInfo
-    """  # noqa: E501
-
-    sha: Optional[StrictStr] = Field(
-        default=None,
-        description="The git sha for this build (we resolve the reference at the start of the build).",
-    )
-    image: Optional[StrictStr] = Field(
-        default=None, description="The docker image built as a result of this build."
-    )
-    stages: Optional[List[DeploymentProvisioningInfoStage]] = Field(
-        default=None, description="Some info about the build."
-    )
+    """ # noqa: E501
+    sha: Optional[StrictStr] = Field(default=None, description="The git sha for this build (we resolve the reference at the start of the build).")
+    image: Optional[StrictStr] = Field(default=None, description="The docker image built as a result of this build.")
+    stages: Optional[List[DeploymentProvisioningInfoStage]] = Field(default=None, description="Some info about the build.")
     __properties: ClassVar[List[str]] = ["sha", "image", "stages"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +68,8 @@ class DeploymentProvisioningInfo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in stages (list)
@@ -85,7 +78,7 @@ class DeploymentProvisioningInfo(BaseModel):
             for _item in self.stages:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["stages"] = _items
+            _dict['stages'] = _items
         return _dict
 
     @classmethod
@@ -97,16 +90,11 @@ class DeploymentProvisioningInfo(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "sha": obj.get("sha"),
-                "image": obj.get("image"),
-                "stages": [
-                    DeploymentProvisioningInfoStage.from_dict(_item)
-                    for _item in obj.get("stages")
-                ]
-                if obj.get("stages") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "sha": obj.get("sha"),
+            "image": obj.get("image"),
+            "stages": [DeploymentProvisioningInfoStage.from_dict(_item) for _item in obj.get("stages")] if obj.get("stages") is not None else None
+        })
         return _obj
+
+

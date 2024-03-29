@@ -50,41 +50,23 @@ class MetricsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
+
     @validate_call
     def get_metrics(
         self,
-        service_id: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="ID of the service to query instances metrics for. Ignored if instance_id is set."
-            ),
-        ] = None,
-        instance_id: Annotated[
-            Optional[StrictStr],
-            Field(description="ID of the instance to query metrics for."),
-        ] = None,
-        name: Annotated[
-            Optional[StrictStr], Field(description="Metric to query.")
-        ] = None,
-        start: Annotated[
-            Optional[datetime],
-            Field(description="(Optional) Defaults to an hour prior to end."),
-        ] = None,
-        end: Annotated[
-            Optional[datetime], Field(description="(Optional) Defaults to now.")
-        ] = None,
-        step: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="(Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m."
-            ),
-        ] = None,
+        service_id: Annotated[Optional[StrictStr], Field(description="ID of the service to query instances metrics for. Ignored if instance_id is set.")] = None,
+        instance_id: Annotated[Optional[StrictStr], Field(description="ID of the instance to query metrics for.")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="Metric to query.")] = None,
+        start: Annotated[Optional[datetime], Field(description="(Optional) Defaults to an hour prior to end.")] = None,
+        end: Annotated[Optional[datetime], Field(description="(Optional) Defaults to now.")] = None,
+        step: Annotated[Optional[StrictStr], Field(description="(Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -126,7 +108,7 @@ class MetricsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_metrics_serialize(
             service_id=service_id,
@@ -138,17 +120,22 @@ class MetricsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "GetMetricsReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "GetMetricsReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -156,41 +143,23 @@ class MetricsApi:
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_metrics_with_http_info(
         self,
-        service_id: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="ID of the service to query instances metrics for. Ignored if instance_id is set."
-            ),
-        ] = None,
-        instance_id: Annotated[
-            Optional[StrictStr],
-            Field(description="ID of the instance to query metrics for."),
-        ] = None,
-        name: Annotated[
-            Optional[StrictStr], Field(description="Metric to query.")
-        ] = None,
-        start: Annotated[
-            Optional[datetime],
-            Field(description="(Optional) Defaults to an hour prior to end."),
-        ] = None,
-        end: Annotated[
-            Optional[datetime], Field(description="(Optional) Defaults to now.")
-        ] = None,
-        step: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="(Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m."
-            ),
-        ] = None,
+        service_id: Annotated[Optional[StrictStr], Field(description="ID of the service to query instances metrics for. Ignored if instance_id is set.")] = None,
+        instance_id: Annotated[Optional[StrictStr], Field(description="ID of the instance to query metrics for.")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="Metric to query.")] = None,
+        start: Annotated[Optional[datetime], Field(description="(Optional) Defaults to an hour prior to end.")] = None,
+        end: Annotated[Optional[datetime], Field(description="(Optional) Defaults to now.")] = None,
+        step: Annotated[Optional[StrictStr], Field(description="(Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -232,7 +201,7 @@ class MetricsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_metrics_serialize(
             service_id=service_id,
@@ -244,17 +213,22 @@ class MetricsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "GetMetricsReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "GetMetricsReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -262,41 +236,23 @@ class MetricsApi:
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_metrics_without_preload_content(
         self,
-        service_id: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="ID of the service to query instances metrics for. Ignored if instance_id is set."
-            ),
-        ] = None,
-        instance_id: Annotated[
-            Optional[StrictStr],
-            Field(description="ID of the instance to query metrics for."),
-        ] = None,
-        name: Annotated[
-            Optional[StrictStr], Field(description="Metric to query.")
-        ] = None,
-        start: Annotated[
-            Optional[datetime],
-            Field(description="(Optional) Defaults to an hour prior to end."),
-        ] = None,
-        end: Annotated[
-            Optional[datetime], Field(description="(Optional) Defaults to now.")
-        ] = None,
-        step: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="(Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m."
-            ),
-        ] = None,
+        service_id: Annotated[Optional[StrictStr], Field(description="ID of the service to query instances metrics for. Ignored if instance_id is set.")] = None,
+        instance_id: Annotated[Optional[StrictStr], Field(description="ID of the instance to query metrics for.")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="Metric to query.")] = None,
+        start: Annotated[Optional[datetime], Field(description="(Optional) Defaults to an hour prior to end.")] = None,
+        end: Annotated[Optional[datetime], Field(description="(Optional) Defaults to now.")] = None,
+        step: Annotated[Optional[StrictStr], Field(description="(Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -338,7 +294,7 @@ class MetricsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_metrics_serialize(
             service_id=service_id,
@@ -350,19 +306,25 @@ class MetricsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "GetMetricsReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "GetMetricsReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _get_metrics_serialize(
         self,
@@ -377,9 +339,12 @@ class MetricsApi:
         _headers,
         _host_index,
     ) -> Tuple:
+
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -391,49 +356,68 @@ class MetricsApi:
         # process the path parameters
         # process the query parameters
         if service_id is not None:
-            _query_params.append(("service_id", service_id))
-
+            
+            _query_params.append(('service_id', service_id))
+            
         if instance_id is not None:
-            _query_params.append(("instance_id", instance_id))
-
+            
+            _query_params.append(('instance_id', instance_id))
+            
         if name is not None:
-            _query_params.append(("name", name))
-
+            
+            _query_params.append(('name', name))
+            
         if start is not None:
             if isinstance(start, datetime):
                 _query_params.append(
                     (
-                        "start",
-                        start.strftime(self.api_client.configuration.datetime_format),
+                        'start',
+                        start.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
                     )
                 )
             else:
-                _query_params.append(("start", start))
-
+                _query_params.append(('start', start))
+            
         if end is not None:
             if isinstance(end, datetime):
                 _query_params.append(
-                    ("end", end.strftime(self.api_client.configuration.datetime_format))
+                    (
+                        'end',
+                        end.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
                 )
             else:
-                _query_params.append(("end", end))
-
+                _query_params.append(('end', end))
+            
         if step is not None:
-            _query_params.append(("step", step))
-
+            
+            _query_params.append(('step', step))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                '*/*'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ["Bearer"]
+        _auth_settings: List[str] = [
+            'Bearer'
+        ]
 
         return self.api_client.param_serialize(
-            method="GET",
-            resource_path="/v1/streams/metrics",
+            method='GET',
+            resource_path='/v1/streams/metrics',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -443,5 +427,7 @@ class MetricsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth,
+            _request_auth=_request_auth
         )
+
+

@@ -22,18 +22,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from koyeb.models.app_status import AppStatus
 from koyeb.models.domain import Domain
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class AppListItem(BaseModel):
     """
     AppListItem
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
@@ -42,18 +39,13 @@ class AppListItem(BaseModel):
     domains: Optional[List[Domain]] = None
     status: Optional[AppStatus] = None
     messages: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "organization_id",
-        "updated_at",
-        "created_at",
-        "domains",
-        "status",
-        "messages",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "organization_id", "updated_at", "created_at", "domains", "status", "messages"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +73,8 @@ class AppListItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in domains (list)
@@ -90,7 +83,7 @@ class AppListItem(BaseModel):
             for _item in self.domains:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["domains"] = _items
+            _dict['domains'] = _items
         return _dict
 
     @classmethod
@@ -102,18 +95,16 @@ class AppListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "organization_id": obj.get("organization_id"),
-                "updated_at": obj.get("updated_at"),
-                "created_at": obj.get("created_at"),
-                "domains": [Domain.from_dict(_item) for _item in obj.get("domains")]
-                if obj.get("domains") is not None
-                else None,
-                "status": obj.get("status"),
-                "messages": obj.get("messages"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "organization_id": obj.get("organization_id"),
+            "updated_at": obj.get("updated_at"),
+            "created_at": obj.get("created_at"),
+            "domains": [Domain.from_dict(_item) for _item in obj.get("domains")] if obj.get("domains") is not None else None,
+            "status": obj.get("status"),
+            "messages": obj.get("messages")
+        })
         return _obj
+
+

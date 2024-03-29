@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **command** | **List[str]** | Command to exec. Mandatory in the first frame sent | [optional] 
 **tty_size** | [**ExecCommandRequestTerminalSize**](ExecCommandRequestTerminalSize.md) |  | [optional] 
 **stdin** | [**ExecCommandIO**](ExecCommandIO.md) |  | [optional] 
+**disable_tty** | **bool** | Disable TTY. It&#39;s enough to specify it in the first frame | [optional] 
 
 ## Example
 

@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.credential import Credential
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class CreateCredentialReply(BaseModel):
     """
     CreateCredentialReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     credential: Optional[Credential] = None
     __properties: ClassVar[List[str]] = ["credential"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class CreateCredentialReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of credential
         if self.credential:
-            _dict["credential"] = self.credential.to_dict()
+            _dict['credential'] = self.credential.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class CreateCredentialReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "credential": Credential.from_dict(obj.get("credential"))
-                if obj.get("credential") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "credential": Credential.from_dict(obj.get("credential")) if obj.get("credential") is not None else None
+        })
         return _obj
+
+

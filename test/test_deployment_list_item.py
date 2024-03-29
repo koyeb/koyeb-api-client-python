@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.deployment_list_item import DeploymentListItem
 
-
 class TestDeploymentListItem(unittest.TestCase):
     """DeploymentListItem unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestDeploymentListItem(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DeploymentListItem:
         """Test DeploymentListItem
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `DeploymentListItem`
         """
         model = DeploymentListItem()
@@ -54,7 +53,7 @@ class TestDeploymentListItem(unittest.TestCase):
                     trigger = koyeb.models.trigger_deployment_metadata.TriggerDeploymentMetadata(
                         type = 'UNKNOWN_TYPE', 
                         actor = 'UNKNOWN_ACTOR', 
-                        git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                        git = koyeb.models.trigger_git_deployment_metadata.TriggerGitDeploymentMetadata(
                             provider = 'UNKNOWN', 
                             repository = '', 
                             branch = '', 
@@ -67,7 +66,9 @@ class TestDeploymentListItem(unittest.TestCase):
                         neon_postgres = koyeb.models.neon_postgres_database_deployment_metadata.NeonPostgresDatabaseDeploymentMetadata(
                             reset_role_passwords = [
                                 ''
-                                ], ), ), ),
+                                ], ), ), 
+                    git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                        last_provisioned_deployment_id = '', ), ),
                 definition = koyeb.models.deployment_definition.DeploymentDefinition(
                     name = '', 
                     type = 'INVALID', 
@@ -96,7 +97,16 @@ class TestDeploymentListItem(unittest.TestCase):
                     scalings = [
                         koyeb.models.deployment_scaling.DeploymentScaling(
                             min = 56, 
-                            max = 56, )
+                            max = 56, 
+                            targets = [
+                                koyeb.models.deployment_scaling_target.DeploymentScalingTarget(
+                                    average_cpu = koyeb.models.deployment_scaling_target_average_cpu.DeploymentScalingTargetAverageCPU(
+                                        value = 56, ), 
+                                    average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
+                                        value = 56, ), 
+                                    requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
+                                        value = 56, ), )
+                                ], )
                         ], 
                     instance_types = [
                         koyeb.models.deployment_instance_type.DeploymentInstanceType()
@@ -148,6 +158,7 @@ class TestDeploymentListItem(unittest.TestCase):
                         neon_postgres = koyeb.models.neon_postgres_database.NeonPostgresDatabase(
                             pg_version = 56, 
                             region = '', 
+                            instance_type = '', 
                             roles = [
                                 koyeb.models.neon_postgres_database/neon_role.NeonPostgresDatabase.NeonRole(
                                     name = '', 
@@ -213,6 +224,5 @@ class TestDeploymentListItem(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

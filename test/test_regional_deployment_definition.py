@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
 
-
 class TestRegionalDeploymentDefinition(unittest.TestCase):
     """RegionalDeploymentDefinition unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
 
     def make_instance(self, include_optional) -> RegionalDeploymentDefinition:
         """Test RegionalDeploymentDefinition
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `RegionalDeploymentDefinition`
         """
         model = RegionalDeploymentDefinition()
@@ -58,7 +57,16 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
                 region = '',
                 scaling = koyeb.models.scaling.Scaling(
                     min = 56, 
-                    max = 56, ),
+                    max = 56, 
+                    targets = [
+                        koyeb.models.deployment_scaling_target.DeploymentScalingTarget(
+                            average_cpu = koyeb.models.deployment_scaling_target_average_cpu.DeploymentScalingTargetAverageCPU(
+                                value = 56, ), 
+                            average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
+                                value = 56, ), 
+                            requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
+                                value = 56, ), )
+                        ], ),
                 instance_type = '',
                 deployment_group = '',
                 health_checks = [
@@ -80,6 +88,7 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
                                 ], ), )
                     ],
                 skip_cache = True,
+                use_kuma_v2 = True,
                 docker = koyeb.models.docker_source.DockerSource(
                     image = '', 
                     command = '', 
@@ -126,6 +135,5 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -22,42 +22,34 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictBool, field_validator
 from pydantic import Field
 from typing_extensions import Annotated
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ExecCommandIO(BaseModel):
     """
     ExecCommandIO
-    """  # noqa: E501
-
-    data: Optional[
-        Union[Annotated[bytes, Field(strict=True)], Annotated[str, Field(strict=True)]]
-    ] = Field(default=None, description="Data is base64 encoded")
-    close: Optional[StrictBool] = Field(
-        default=None, description="Indicate last data frame"
-    )
+    """ # noqa: E501
+    data: Optional[Union[Annotated[bytes, Field(strict=True)], Annotated[str, Field(strict=True)]]] = Field(default=None, description="Data is base64 encoded")
+    close: Optional[StrictBool] = Field(default=None, description="Indicate last data frame")
     __properties: ClassVar[List[str]] = ["data", "close"]
 
-    @field_validator("data")
+    @field_validator('data')
     def data_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(
-            r"^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$",
-            value,
-        ):
-            raise ValueError(
-                r"must validate the regular expression /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/"
-            )
+        if not re.match(r"^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$", value):
+            raise ValueError(r"must validate the regular expression /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +77,8 @@ class ExecCommandIO(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,5 +92,10 @@ class ExecCommandIO(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"data": obj.get("data"), "close": obj.get("close")})
+        _obj = cls.model_validate({
+            "data": obj.get("data"),
+            "close": obj.get("close")
+        })
         return _obj
+
+

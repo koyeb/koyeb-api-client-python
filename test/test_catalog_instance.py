@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.catalog_instance import CatalogInstance
 
-
 class TestCatalogInstance(unittest.TestCase):
     """CatalogInstance unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestCatalogInstance(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CatalogInstance:
         """Test CatalogInstance
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `CatalogInstance`
         """
         model = CatalogInstance()
@@ -51,7 +50,8 @@ class TestCatalogInstance(unittest.TestCase):
                 require_plan = [
                     ''
                     ],
-                vcpu_shares = 1.337
+                vcpu_shares = 1.337,
+                display_name = ''
             )
         else:
             return CatalogInstance(
@@ -63,6 +63,5 @@ class TestCatalogInstance(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

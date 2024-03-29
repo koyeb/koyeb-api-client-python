@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **installation_id** | **str** |  | [optional] 
 **installation_url** | **str** |  | [optional] 
+**name** | **str** |  | [optional] 
 **avatar_url** | **str** |  | [optional] 
 **status** | [**KgitproxyGithubInstallationStatus**](KgitproxyGithubInstallationStatus.md) |  | [optional] 
 **installed_at** | **datetime** |  | [optional] 

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.service_event import ServiceEvent
 
-
 class TestServiceEvent(unittest.TestCase):
     """ServiceEvent unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestServiceEvent(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ServiceEvent:
         """Test ServiceEvent
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `ServiceEvent`
         """
         model = ServiceEvent()
@@ -55,6 +54,5 @@ class TestServiceEvent(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,18 +34,20 @@ class MetricName(str, Enum):
     """
     allowed enum values
     """
-    UNKNOWN = "UNKNOWN"
-    CPU_TOTAL_PERCENT = "CPU_TOTAL_PERCENT"
-    MEM_RSS = "MEM_RSS"
-    HTTP_THROUGHPUT = "HTTP_THROUGHPUT"
-    HTTP_RESPONSE_TIME_50_P = "HTTP_RESPONSE_TIME_50P"
-    HTTP_RESPONSE_TIME_90_P = "HTTP_RESPONSE_TIME_90P"
-    HTTP_RESPONSE_TIME_99_P = "HTTP_RESPONSE_TIME_99P"
-    HTTP_RESPONSE_TIME_MAX = "HTTP_RESPONSE_TIME_MAX"
-    PUBLIC_DATA_TRANSFER_IN = "PUBLIC_DATA_TRANSFER_IN"
-    PUBLIC_DATA_TRANSFER_OUT = "PUBLIC_DATA_TRANSFER_OUT"
+    UNKNOWN = 'UNKNOWN'
+    CPU_TOTAL_PERCENT = 'CPU_TOTAL_PERCENT'
+    MEM_RSS = 'MEM_RSS'
+    HTTP_THROUGHPUT = 'HTTP_THROUGHPUT'
+    HTTP_RESPONSE_TIME_50_P = 'HTTP_RESPONSE_TIME_50P'
+    HTTP_RESPONSE_TIME_90_P = 'HTTP_RESPONSE_TIME_90P'
+    HTTP_RESPONSE_TIME_99_P = 'HTTP_RESPONSE_TIME_99P'
+    HTTP_RESPONSE_TIME_MAX = 'HTTP_RESPONSE_TIME_MAX'
+    PUBLIC_DATA_TRANSFER_IN = 'PUBLIC_DATA_TRANSFER_IN'
+    PUBLIC_DATA_TRANSFER_OUT = 'PUBLIC_DATA_TRANSFER_OUT'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of MetricName from a JSON string"""
         return cls(json.loads(json_str))
+
+

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.update_service_reply import UpdateServiceReply
 
-
 class TestUpdateServiceReply(unittest.TestCase):
     """UpdateServiceReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestUpdateServiceReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> UpdateServiceReply:
         """Test UpdateServiceReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `UpdateServiceReply`
         """
         model = UpdateServiceReply()
@@ -57,6 +56,7 @@ class TestUpdateServiceReply(unittest.TestCase):
                     version = '', 
                     active_deployment_id = '', 
                     latest_deployment_id = '', 
+                    last_provisioned_deployment_id = '', 
                     state = koyeb.models.service_state.ServiceState(
                         desired_deployment = koyeb.models.desired_deployment.DesiredDeployment(
                             groups = [
@@ -78,6 +78,5 @@ class TestUpdateServiceReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.organization_member import OrganizationMember
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class RemoveOrganizationMemberReply(BaseModel):
     """
     RemoveOrganizationMemberReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     member: Optional[OrganizationMember] = None
     __properties: ClassVar[List[str]] = ["member"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class RemoveOrganizationMemberReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of member
         if self.member:
-            _dict["member"] = self.member.to_dict()
+            _dict['member'] = self.member.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class RemoveOrganizationMemberReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "member": OrganizationMember.from_dict(obj.get("member"))
-                if obj.get("member") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "member": OrganizationMember.from_dict(obj.get("member")) if obj.get("member") is not None else None
+        })
         return _obj
+
+

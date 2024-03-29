@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
 from koyeb.models.deployment_list_item import DeploymentListItem
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ListDeploymentsReply(BaseModel):
     """
     ListDeploymentsReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     deployments: Optional[List[DeploymentListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["deployments", "limit", "offset", "count"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class ListDeploymentsReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in deployments (list)
@@ -76,7 +78,7 @@ class ListDeploymentsReply(BaseModel):
             for _item in self.deployments:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["deployments"] = _items
+            _dict['deployments'] = _items
         return _dict
 
     @classmethod
@@ -88,17 +90,12 @@ class ListDeploymentsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "deployments": [
-                    DeploymentListItem.from_dict(_item)
-                    for _item in obj.get("deployments")
-                ]
-                if obj.get("deployments") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-            }
-        )
+        _obj = cls.model_validate({
+            "deployments": [DeploymentListItem.from_dict(_item) for _item in obj.get("deployments")] if obj.get("deployments") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count")
+        })
         return _obj
+
+

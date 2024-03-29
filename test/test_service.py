@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.service import Service
 
-
 class TestService(unittest.TestCase):
     """Service unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestService(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Service:
         """Test Service
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `Service`
         """
         model = Service()
@@ -56,6 +55,7 @@ class TestService(unittest.TestCase):
                 version = '',
                 active_deployment_id = '',
                 latest_deployment_id = '',
+                last_provisioned_deployment_id = '',
                 state = koyeb.models.service_state.ServiceState(
                     desired_deployment = koyeb.models.desired_deployment.DesiredDeployment(
                         groups = [
@@ -77,6 +77,5 @@ class TestService(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

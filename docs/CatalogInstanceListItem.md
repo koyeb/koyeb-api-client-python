@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **require_plan** | **List[str]** |  | [optional] 
 **vcpu_shares** | **float** | The number of vcpu shares reserved for the instance. | [optional] 
+**display_name** | **str** |  | [optional] 
 
 ## Example
 

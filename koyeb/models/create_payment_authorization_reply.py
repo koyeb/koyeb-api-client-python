@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.payment_method import PaymentMethod
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class CreatePaymentAuthorizationReply(BaseModel):
     """
     CreatePaymentAuthorizationReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     payment_method: Optional[PaymentMethod] = None
     __properties: ClassVar[List[str]] = ["payment_method"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class CreatePaymentAuthorizationReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of payment_method
         if self.payment_method:
-            _dict["payment_method"] = self.payment_method.to_dict()
+            _dict['payment_method'] = self.payment_method.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class CreatePaymentAuthorizationReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "payment_method": PaymentMethod.from_dict(obj.get("payment_method"))
-                if obj.get("payment_method") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "payment_method": PaymentMethod.from_dict(obj.get("payment_method")) if obj.get("payment_method") is not None else None
+        })
         return _obj
+
+

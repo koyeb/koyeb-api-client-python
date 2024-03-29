@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.deployment_provisioning_info_stage_status import (
-    DeploymentProvisioningInfoStageStatus,
-)
-
+from koyeb.models.deployment_provisioning_info_stage_status import DeploymentProvisioningInfoStageStatus
 
 class TestDeploymentProvisioningInfoStageStatus(unittest.TestCase):
     """DeploymentProvisioningInfoStageStatus unit test stubs"""
@@ -33,6 +30,5 @@ class TestDeploymentProvisioningInfoStageStatus(unittest.TestCase):
         """Test DeploymentProvisioningInfoStageStatus"""
         # inst = DeploymentProvisioningInfoStageStatus()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

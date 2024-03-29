@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.usage import Usage
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GetOrganizationUsageReply(BaseModel):
     """
     GetOrganizationUsageReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     usage: Optional[Usage] = None
     __properties: ClassVar[List[str]] = ["usage"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class GetOrganizationUsageReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of usage
         if self.usage:
-            _dict["usage"] = self.usage.to_dict()
+            _dict['usage'] = self.usage.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class GetOrganizationUsageReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "usage": Usage.from_dict(obj.get("usage"))
-                if obj.get("usage") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "usage": Usage.from_dict(obj.get("usage")) if obj.get("usage") is not None else None
+        })
         return _obj
+
+

@@ -22,18 +22,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from koyeb.models.app_status import AppStatus
 from koyeb.models.domain import Domain
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class App(BaseModel):
     """
     App
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
@@ -48,24 +45,13 @@ class App(BaseModel):
     messages: Optional[List[StrictStr]] = None
     version: Optional[StrictStr] = None
     domains: Optional[List[Domain]] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "organization_id",
-        "created_at",
-        "updated_at",
-        "started_at",
-        "succeeded_at",
-        "paused_at",
-        "resumed_at",
-        "terminated_at",
-        "status",
-        "messages",
-        "version",
-        "domains",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "organization_id", "created_at", "updated_at", "started_at", "succeeded_at", "paused_at", "resumed_at", "terminated_at", "status", "messages", "version", "domains"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -93,7 +79,8 @@ class App(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in domains (list)
@@ -102,7 +89,7 @@ class App(BaseModel):
             for _item in self.domains:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["domains"] = _items
+            _dict['domains'] = _items
         return _dict
 
     @classmethod
@@ -114,24 +101,22 @@ class App(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "organization_id": obj.get("organization_id"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
-                "started_at": obj.get("started_at"),
-                "succeeded_at": obj.get("succeeded_at"),
-                "paused_at": obj.get("paused_at"),
-                "resumed_at": obj.get("resumed_at"),
-                "terminated_at": obj.get("terminated_at"),
-                "status": obj.get("status"),
-                "messages": obj.get("messages"),
-                "version": obj.get("version"),
-                "domains": [Domain.from_dict(_item) for _item in obj.get("domains")]
-                if obj.get("domains") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "organization_id": obj.get("organization_id"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "started_at": obj.get("started_at"),
+            "succeeded_at": obj.get("succeeded_at"),
+            "paused_at": obj.get("paused_at"),
+            "resumed_at": obj.get("resumed_at"),
+            "terminated_at": obj.get("terminated_at"),
+            "status": obj.get("status"),
+            "messages": obj.get("messages"),
+            "version": obj.get("version"),
+            "domains": [Domain.from_dict(_item) for _item in obj.get("domains")] if obj.get("domains") is not None else None
+        })
         return _obj
+
+

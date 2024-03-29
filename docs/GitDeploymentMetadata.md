@@ -4,14 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | [**GitDeploymentMetadataProvider**](GitDeploymentMetadataProvider.md) |  | [optional] 
-**repository** | **str** |  | [optional] 
-**branch** | **str** |  | [optional] 
-**sha** | **str** |  | [optional] 
-**message** | **str** |  | [optional] 
-**sender_username** | **str** |  | [optional] 
-**sender_avatar_url** | **str** |  | [optional] 
-**sender_profile_url** | **str** |  | [optional] 
+**last_provisioned_deployment_id** | **str** |  | [optional] 
 
 ## Example
 

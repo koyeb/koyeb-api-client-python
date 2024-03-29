@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.kgitproxy_list_repositories_reply import (
-    KgitproxyListRepositoriesReply,
-)
-
+from koyeb.models.kgitproxy_list_repositories_reply import KgitproxyListRepositoriesReply
 
 class TestKgitproxyListRepositoriesReply(unittest.TestCase):
     """KgitproxyListRepositoriesReply unit test stubs"""
@@ -31,9 +28,9 @@ class TestKgitproxyListRepositoriesReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> KgitproxyListRepositoriesReply:
         """Test KgitproxyListRepositoriesReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `KgitproxyListRepositoriesReply`
         """
         model = KgitproxyListRepositoriesReply()
@@ -68,6 +65,5 @@ class TestKgitproxyListRepositoriesReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

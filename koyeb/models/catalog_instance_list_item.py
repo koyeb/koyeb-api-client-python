@@ -21,24 +21,18 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
 from pydantic import Field
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class CatalogInstanceListItem(BaseModel):
     """
     CatalogInstanceListItem
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    vcpu: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of cpus. Deprecated. Use vcpu_shares instead.",
-    )
+    vcpu: Optional[StrictInt] = Field(default=None, description="The number of cpus. Deprecated. Use vcpu_shares instead.")
     memory: Optional[StrictStr] = None
     disk: Optional[StrictStr] = None
     price_hourly: Optional[StrictStr] = None
@@ -46,24 +40,15 @@ class CatalogInstanceListItem(BaseModel):
     regions: Optional[List[StrictStr]] = None
     status: Optional[StrictStr] = None
     require_plan: Optional[List[StrictStr]] = None
-    vcpu_shares: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None, description="The number of vcpu shares reserved for the instance."
-    )
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "description",
-        "vcpu",
-        "memory",
-        "disk",
-        "price_hourly",
-        "price_monthly",
-        "regions",
-        "status",
-        "require_plan",
-        "vcpu_shares",
-    ]
+    vcpu_shares: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of vcpu shares reserved for the instance.")
+    display_name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "description", "vcpu", "memory", "disk", "price_hourly", "price_monthly", "regions", "status", "require_plan", "vcpu_shares", "display_name"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -91,7 +76,8 @@ class CatalogInstanceListItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -105,19 +91,20 @@ class CatalogInstanceListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "description": obj.get("description"),
-                "vcpu": obj.get("vcpu"),
-                "memory": obj.get("memory"),
-                "disk": obj.get("disk"),
-                "price_hourly": obj.get("price_hourly"),
-                "price_monthly": obj.get("price_monthly"),
-                "regions": obj.get("regions"),
-                "status": obj.get("status"),
-                "require_plan": obj.get("require_plan"),
-                "vcpu_shares": obj.get("vcpu_shares"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "description": obj.get("description"),
+            "vcpu": obj.get("vcpu"),
+            "memory": obj.get("memory"),
+            "disk": obj.get("disk"),
+            "price_hourly": obj.get("price_hourly"),
+            "price_monthly": obj.get("price_monthly"),
+            "regions": obj.get("regions"),
+            "status": obj.get("status"),
+            "require_plan": obj.get("require_plan"),
+            "vcpu_shares": obj.get("vcpu_shares"),
+            "display_name": obj.get("display_name")
+        })
         return _obj
+
+

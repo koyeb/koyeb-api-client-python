@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.neon_postgres_database import NeonPostgresDatabase
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DatabaseSource(BaseModel):
     """
     DatabaseSource
-    """  # noqa: E501
-
+    """ # noqa: E501
     neon_postgres: Optional[NeonPostgresDatabase] = None
     __properties: ClassVar[List[str]] = ["neon_postgres"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class DatabaseSource(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of neon_postgres
         if self.neon_postgres:
-            _dict["neon_postgres"] = self.neon_postgres.to_dict()
+            _dict['neon_postgres'] = self.neon_postgres.to_dict()
         return _dict
 
     @classmethod
@@ -81,13 +83,9 @@ class DatabaseSource(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "neon_postgres": NeonPostgresDatabase.from_dict(
-                    obj.get("neon_postgres")
-                )
-                if obj.get("neon_postgres") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "neon_postgres": NeonPostgresDatabase.from_dict(obj.get("neon_postgres")) if obj.get("neon_postgres") is not None else None
+        })
         return _obj
+
+

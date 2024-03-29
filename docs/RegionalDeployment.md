@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **datacenters** | **List[str]** |  | [optional] 
 **metadata** | [**RegionalDeploymentMetadata**](RegionalDeploymentMetadata.md) |  | [optional] 
 **provisioning_info** | [**DeploymentProvisioningInfo**](DeploymentProvisioningInfo.md) |  | [optional] 
+**use_kuma_v2** | **bool** |  | [optional] 
 **version** | **str** |  | [optional] 
 **deployment_group** | **str** |  | [optional] 
 **deployment_id** | **str** |  | [optional] 

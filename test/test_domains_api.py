@@ -27,29 +27,41 @@ class TestDomainsApi(unittest.TestCase):
         pass
 
     def test_create_domain(self) -> None:
-        """Test case for create_domain"""
+        """Test case for create_domain
+
+        """
         pass
 
     def test_delete_domain(self) -> None:
-        """Test case for delete_domain"""
+        """Test case for delete_domain
+
+        """
         pass
 
     def test_get_domain(self) -> None:
-        """Test case for get_domain"""
+        """Test case for get_domain
+
+        """
         pass
 
     def test_list_domains(self) -> None:
-        """Test case for list_domains"""
+        """Test case for list_domains
+
+        """
         pass
 
     def test_refresh_domain_status(self) -> None:
-        """Test case for refresh_domain_status"""
+        """Test case for refresh_domain_status
+
+        """
         pass
 
     def test_update_domain(self) -> None:
-        """Test case for update_domain"""
+        """Test case for update_domain
+
+        """
         pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

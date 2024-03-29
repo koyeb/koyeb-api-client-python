@@ -21,32 +21,27 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.instance_list_item import InstanceListItem
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ListInstancesReply(BaseModel):
     """
     ListInstancesReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     instances: Optional[List[InstanceListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
     order: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "instances",
-        "limit",
-        "offset",
-        "count",
-        "order",
-    ]
+    __properties: ClassVar[List[str]] = ["instances", "limit", "offset", "count", "order"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +69,8 @@ class ListInstancesReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in instances (list)
@@ -83,7 +79,7 @@ class ListInstancesReply(BaseModel):
             for _item in self.instances:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["instances"] = _items
+            _dict['instances'] = _items
         return _dict
 
     @classmethod
@@ -95,17 +91,13 @@ class ListInstancesReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "instances": [
-                    InstanceListItem.from_dict(_item) for _item in obj.get("instances")
-                ]
-                if obj.get("instances") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-                "order": obj.get("order"),
-            }
-        )
+        _obj = cls.model_validate({
+            "instances": [InstanceListItem.from_dict(_item) for _item in obj.get("instances")] if obj.get("instances") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count"),
+            "order": obj.get("order")
+        })
         return _obj
+
+

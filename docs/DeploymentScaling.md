@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **scopes** | **List[str]** |  | [optional] 
 **min** | **int** |  | [optional] 
 **max** | **int** |  | [optional] 
+**targets** | [**List[DeploymentScalingTarget]**](DeploymentScalingTarget.md) |  | [optional] 
 
 ## Example
 

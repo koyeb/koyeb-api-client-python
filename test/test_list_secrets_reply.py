@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.list_secrets_reply import ListSecretsReply
 
-
 class TestListSecretsReply(unittest.TestCase):
     """ListSecretsReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestListSecretsReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListSecretsReply:
         """Test ListSecretsReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `ListSecretsReply`
         """
         model = ListSecretsReply()
@@ -87,6 +86,5 @@ class TestListSecretsReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

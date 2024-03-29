@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,13 +34,15 @@ class OrganizationInvitationStatus(str, Enum):
     """
     allowed enum values
     """
-    INVALID = "INVALID"
-    PENDING = "PENDING"
-    ACCEPTED = "ACCEPTED"
-    REFUSED = "REFUSED"
-    EXPIRED = "EXPIRED"
+    INVALID = 'INVALID'
+    PENDING = 'PENDING'
+    ACCEPTED = 'ACCEPTED'
+    REFUSED = 'REFUSED'
+    EXPIRED = 'EXPIRED'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of OrganizationInvitationStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

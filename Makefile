@@ -7,7 +7,7 @@ PACKAGE_VERSION?=2023.11.3
 
 
 .PHONY: gen
-gen: clean# spec/openapi.json
+gen: clean spec/openapi.json
 	docker run --rm -v `pwd`:/builder openapitools/openapi-generator-cli:${OPENAPI_GENERATOR_VERSION} generate --git-user-id ${GIT_USER_ID} --git-repo-id ${GIT_REPO_ID} -i /builder/spec/openapi.json -g python -o /builder --package-name koyeb --additional-properties packageVersion=${PACKAGE_VERSION}
 
 .PHONY: clean

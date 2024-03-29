@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,18 +34,20 @@ class OrganizationDetailedStatus(str, Enum):
     """
     allowed enum values
     """
-    NEW = "NEW"
-    EMAIL_NOT_VALIDATED = "EMAIL_NOT_VALIDATED"
-    BILLING_INFO_MISSING = "BILLING_INFO_MISSING"
-    LOCKED = "LOCKED"
-    PAYMENT_FAILURE = "PAYMENT_FAILURE"
-    VALID = "VALID"
-    PENDING_VERIFICATION = "PENDING_VERIFICATION"
-    VERIFICATION_FAILED = "VERIFICATION_FAILED"
-    REVIEWING_ACCOUNT = "REVIEWING_ACCOUNT"
-    PLAN_UPGRADE_REQUIRED = "PLAN_UPGRADE_REQUIRED"
+    NEW = 'NEW'
+    EMAIL_NOT_VALIDATED = 'EMAIL_NOT_VALIDATED'
+    BILLING_INFO_MISSING = 'BILLING_INFO_MISSING'
+    LOCKED = 'LOCKED'
+    PAYMENT_FAILURE = 'PAYMENT_FAILURE'
+    VALID = 'VALID'
+    PENDING_VERIFICATION = 'PENDING_VERIFICATION'
+    VERIFICATION_FAILED = 'VERIFICATION_FAILED'
+    REVIEWING_ACCOUNT = 'REVIEWING_ACCOUNT'
+    PLAN_UPGRADE_REQUIRED = 'PLAN_UPGRADE_REQUIRED'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of OrganizationDetailedStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

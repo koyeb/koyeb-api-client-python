@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.create_organization_invitation_reply import (
-    CreateOrganizationInvitationReply,
-)
-
+from koyeb.models.create_organization_invitation_reply import CreateOrganizationInvitationReply
 
 class TestCreateOrganizationInvitationReply(unittest.TestCase):
     """CreateOrganizationInvitationReply unit test stubs"""
@@ -31,9 +28,9 @@ class TestCreateOrganizationInvitationReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreateOrganizationInvitationReply:
         """Test CreateOrganizationInvitationReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `CreateOrganizationInvitationReply`
         """
         model = CreateOrganizationInvitationReply()
@@ -77,6 +74,5 @@ class TestCreateOrganizationInvitationReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

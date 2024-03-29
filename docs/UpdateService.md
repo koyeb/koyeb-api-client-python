@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **definition** | [**DeploymentDefinition**](DeploymentDefinition.md) |  | [optional] 
 **metadata** | [**DeploymentMetadata**](DeploymentMetadata.md) |  | [optional] 
+**skip_build** | **bool** | If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened. | [optional] 
+**save_only** | **bool** |  | [optional] 
 
 ## Example
 

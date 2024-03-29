@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.user_role_role import UserRoleRole
 
-
 class TestUserRoleRole(unittest.TestCase):
     """UserRoleRole unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestUserRoleRole(unittest.TestCase):
         """Test UserRoleRole"""
         # inst = UserRoleRole()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

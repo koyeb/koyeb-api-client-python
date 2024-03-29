@@ -15,11 +15,10 @@
 import unittest
 import datetime
 
-from koyeb.models.git_deployment_metadata_provider import GitDeploymentMetadataProvider
+from koyeb.models.verify_docker_image_reply_err_code import VerifyDockerImageReplyErrCode
 
-
-class TestGitDeploymentMetadataProvider(unittest.TestCase):
-    """GitDeploymentMetadataProvider unit test stubs"""
+class TestVerifyDockerImageReplyErrCode(unittest.TestCase):
+    """VerifyDockerImageReplyErrCode unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,10 +26,9 @@ class TestGitDeploymentMetadataProvider(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testGitDeploymentMetadataProvider(self):
-        """Test GitDeploymentMetadataProvider"""
-        # inst = GitDeploymentMetadataProvider()
+    def testVerifyDockerImageReplyErrCode(self):
+        """Test VerifyDockerImageReplyErrCode"""
+        # inst = VerifyDockerImageReplyErrCode()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

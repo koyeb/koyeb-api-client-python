@@ -30,18 +30,15 @@ from koyeb.models.deployment_route import DeploymentRoute
 from koyeb.models.deployment_scaling import DeploymentScaling
 from koyeb.models.docker_source import DockerSource
 from koyeb.models.git_source import GitSource
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DeploymentDefinition(BaseModel):
     """
     DeploymentDefinition
-    """  # noqa: E501
-
+    """ # noqa: E501
     name: Optional[StrictStr] = None
     type: Optional[DeploymentDefinitionType] = None
     routes: Optional[List[DeploymentRoute]] = None
@@ -55,23 +52,13 @@ class DeploymentDefinition(BaseModel):
     docker: Optional[DockerSource] = None
     git: Optional[GitSource] = None
     database: Optional[DatabaseSource] = None
-    __properties: ClassVar[List[str]] = [
-        "name",
-        "type",
-        "routes",
-        "ports",
-        "env",
-        "regions",
-        "scalings",
-        "instance_types",
-        "health_checks",
-        "skip_cache",
-        "docker",
-        "git",
-        "database",
-    ]
+    __properties: ClassVar[List[str]] = ["name", "type", "routes", "ports", "env", "regions", "scalings", "instance_types", "health_checks", "skip_cache", "docker", "git", "database"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -99,7 +86,8 @@ class DeploymentDefinition(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in routes (list)
@@ -108,51 +96,51 @@ class DeploymentDefinition(BaseModel):
             for _item in self.routes:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["routes"] = _items
+            _dict['routes'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ports (list)
         _items = []
         if self.ports:
             for _item in self.ports:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["ports"] = _items
+            _dict['ports'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in env (list)
         _items = []
         if self.env:
             for _item in self.env:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["env"] = _items
+            _dict['env'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in scalings (list)
         _items = []
         if self.scalings:
             for _item in self.scalings:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["scalings"] = _items
+            _dict['scalings'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in instance_types (list)
         _items = []
         if self.instance_types:
             for _item in self.instance_types:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["instance_types"] = _items
+            _dict['instance_types'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in health_checks (list)
         _items = []
         if self.health_checks:
             for _item in self.health_checks:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["health_checks"] = _items
+            _dict['health_checks'] = _items
         # override the default output from pydantic by calling `to_dict()` of docker
         if self.docker:
-            _dict["docker"] = self.docker.to_dict()
+            _dict['docker'] = self.docker.to_dict()
         # override the default output from pydantic by calling `to_dict()` of git
         if self.git:
-            _dict["git"] = self.git.to_dict()
+            _dict['git'] = self.git.to_dict()
         # override the default output from pydantic by calling `to_dict()` of database
         if self.database:
-            _dict["database"] = self.database.to_dict()
+            _dict['database'] = self.database.to_dict()
         return _dict
 
     @classmethod
@@ -164,49 +152,21 @@ class DeploymentDefinition(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "name": obj.get("name"),
-                "type": obj.get("type"),
-                "routes": [
-                    DeploymentRoute.from_dict(_item) for _item in obj.get("routes")
-                ]
-                if obj.get("routes") is not None
-                else None,
-                "ports": [DeploymentPort.from_dict(_item) for _item in obj.get("ports")]
-                if obj.get("ports") is not None
-                else None,
-                "env": [DeploymentEnv.from_dict(_item) for _item in obj.get("env")]
-                if obj.get("env") is not None
-                else None,
-                "regions": obj.get("regions"),
-                "scalings": [
-                    DeploymentScaling.from_dict(_item) for _item in obj.get("scalings")
-                ]
-                if obj.get("scalings") is not None
-                else None,
-                "instance_types": [
-                    DeploymentInstanceType.from_dict(_item)
-                    for _item in obj.get("instance_types")
-                ]
-                if obj.get("instance_types") is not None
-                else None,
-                "health_checks": [
-                    DeploymentHealthCheck.from_dict(_item)
-                    for _item in obj.get("health_checks")
-                ]
-                if obj.get("health_checks") is not None
-                else None,
-                "skip_cache": obj.get("skip_cache"),
-                "docker": DockerSource.from_dict(obj.get("docker"))
-                if obj.get("docker") is not None
-                else None,
-                "git": GitSource.from_dict(obj.get("git"))
-                if obj.get("git") is not None
-                else None,
-                "database": DatabaseSource.from_dict(obj.get("database"))
-                if obj.get("database") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "routes": [DeploymentRoute.from_dict(_item) for _item in obj.get("routes")] if obj.get("routes") is not None else None,
+            "ports": [DeploymentPort.from_dict(_item) for _item in obj.get("ports")] if obj.get("ports") is not None else None,
+            "env": [DeploymentEnv.from_dict(_item) for _item in obj.get("env")] if obj.get("env") is not None else None,
+            "regions": obj.get("regions"),
+            "scalings": [DeploymentScaling.from_dict(_item) for _item in obj.get("scalings")] if obj.get("scalings") is not None else None,
+            "instance_types": [DeploymentInstanceType.from_dict(_item) for _item in obj.get("instance_types")] if obj.get("instance_types") is not None else None,
+            "health_checks": [DeploymentHealthCheck.from_dict(_item) for _item in obj.get("health_checks")] if obj.get("health_checks") is not None else None,
+            "skip_cache": obj.get("skip_cache"),
+            "docker": DockerSource.from_dict(obj.get("docker")) if obj.get("docker") is not None else None,
+            "git": GitSource.from_dict(obj.get("git")) if obj.get("git") is not None else None,
+            "database": DatabaseSource.from_dict(obj.get("database")) if obj.get("database") is not None else None
+        })
         return _obj
+
+

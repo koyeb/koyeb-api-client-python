@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.regional_deployment import RegionalDeployment
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GetRegionalDeploymentReply(BaseModel):
     """
     GetRegionalDeploymentReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     regional_deployment: Optional[RegionalDeployment] = None
     __properties: ClassVar[List[str]] = ["regional_deployment"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class GetRegionalDeploymentReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of regional_deployment
         if self.regional_deployment:
-            _dict["regional_deployment"] = self.regional_deployment.to_dict()
+            _dict['regional_deployment'] = self.regional_deployment.to_dict()
         return _dict
 
     @classmethod
@@ -81,13 +83,9 @@ class GetRegionalDeploymentReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "regional_deployment": RegionalDeployment.from_dict(
-                    obj.get("regional_deployment")
-                )
-                if obj.get("regional_deployment") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "regional_deployment": RegionalDeployment.from_dict(obj.get("regional_deployment")) if obj.get("regional_deployment") is not None else None
+        })
         return _obj
+
+

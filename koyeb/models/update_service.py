@@ -19,26 +19,30 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, StrictBool
+from pydantic import Field
 from koyeb.models.deployment_definition import DeploymentDefinition
 from koyeb.models.deployment_metadata import DeploymentMetadata
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class UpdateService(BaseModel):
     """
     UpdateService
-    """  # noqa: E501
-
+    """ # noqa: E501
     definition: Optional[DeploymentDefinition] = None
     metadata: Optional[DeploymentMetadata] = None
-    __properties: ClassVar[List[str]] = ["definition", "metadata"]
+    skip_build: Optional[StrictBool] = Field(default=None, description="If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.")
+    save_only: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["definition", "metadata", "skip_build", "save_only"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,15 +70,16 @@ class UpdateService(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of definition
         if self.definition:
-            _dict["definition"] = self.definition.to_dict()
+            _dict['definition'] = self.definition.to_dict()
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
-            _dict["metadata"] = self.metadata.to_dict()
+            _dict['metadata'] = self.metadata.to_dict()
         return _dict
 
     @classmethod
@@ -86,14 +91,12 @@ class UpdateService(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "definition": DeploymentDefinition.from_dict(obj.get("definition"))
-                if obj.get("definition") is not None
-                else None,
-                "metadata": DeploymentMetadata.from_dict(obj.get("metadata"))
-                if obj.get("metadata") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "definition": DeploymentDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "metadata": DeploymentMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "skip_build": obj.get("skip_build"),
+            "save_only": obj.get("save_only")
+        })
         return _obj
+
+

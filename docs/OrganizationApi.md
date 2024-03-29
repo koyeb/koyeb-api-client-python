@@ -94,8 +94,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -176,8 +178,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -256,8 +260,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -332,8 +338,10 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -412,8 +420,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -493,8 +503,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -573,8 +585,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -655,8 +669,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -739,8 +755,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -824,8 +842,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -909,8 +929,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -992,8 +1014,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1075,8 +1099,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

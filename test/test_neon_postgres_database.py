@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.neon_postgres_database import NeonPostgresDatabase
 
-
 class TestNeonPostgresDatabase(unittest.TestCase):
     """NeonPostgresDatabase unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestNeonPostgresDatabase(unittest.TestCase):
 
     def make_instance(self, include_optional) -> NeonPostgresDatabase:
         """Test NeonPostgresDatabase
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `NeonPostgresDatabase`
         """
         model = NeonPostgresDatabase()
@@ -39,6 +38,7 @@ class TestNeonPostgresDatabase(unittest.TestCase):
             return NeonPostgresDatabase(
                 pg_version = 56,
                 region = '',
+                instance_type = '',
                 roles = [
                     koyeb.models.neon_postgres_database/neon_role.NeonPostgresDatabase.NeonRole(
                         name = '', 
@@ -60,6 +60,5 @@ class TestNeonPostgresDatabase(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

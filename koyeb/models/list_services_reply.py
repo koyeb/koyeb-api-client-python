@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
 from koyeb.models.service_list_item import ServiceListItem
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ListServicesReply(BaseModel):
     """
     ListServicesReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     services: Optional[List[ServiceListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["services", "limit", "offset", "count"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class ListServicesReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in services (list)
@@ -76,7 +78,7 @@ class ListServicesReply(BaseModel):
             for _item in self.services:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["services"] = _items
+            _dict['services'] = _items
         return _dict
 
     @classmethod
@@ -88,16 +90,12 @@ class ListServicesReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "services": [
-                    ServiceListItem.from_dict(_item) for _item in obj.get("services")
-                ]
-                if obj.get("services") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-            }
-        )
+        _obj = cls.model_validate({
+            "services": [ServiceListItem.from_dict(_item) for _item in obj.get("services")] if obj.get("services") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count")
+        })
         return _obj
+
+

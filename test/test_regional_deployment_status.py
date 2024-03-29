@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
 
-
 class TestRegionalDeploymentStatus(unittest.TestCase):
     """RegionalDeploymentStatus unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestRegionalDeploymentStatus(unittest.TestCase):
         """Test RegionalDeploymentStatus"""
         # inst = RegionalDeploymentStatus()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

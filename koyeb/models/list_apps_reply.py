@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
 from koyeb.models.app_list_item import AppListItem
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ListAppsReply(BaseModel):
     """
     ListAppsReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     apps: Optional[List[AppListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["apps", "limit", "offset", "count"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class ListAppsReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in apps (list)
@@ -76,7 +78,7 @@ class ListAppsReply(BaseModel):
             for _item in self.apps:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["apps"] = _items
+            _dict['apps'] = _items
         return _dict
 
     @classmethod
@@ -88,14 +90,12 @@ class ListAppsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "apps": [AppListItem.from_dict(_item) for _item in obj.get("apps")]
-                if obj.get("apps") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-            }
-        )
+        _obj = cls.model_validate({
+            "apps": [AppListItem.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count")
+        })
         return _obj
+
+

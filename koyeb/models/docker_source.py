@@ -20,34 +20,28 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DockerSource(BaseModel):
     """
     DockerSource
-    """  # noqa: E501
-
+    """ # noqa: E501
     image: Optional[StrictStr] = None
     command: Optional[StrictStr] = None
     args: Optional[List[StrictStr]] = None
     image_registry_secret: Optional[StrictStr] = None
     entrypoint: Optional[List[StrictStr]] = None
     privileged: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "image",
-        "command",
-        "args",
-        "image_registry_secret",
-        "entrypoint",
-        "privileged",
-    ]
+    __properties: ClassVar[List[str]] = ["image", "command", "args", "image_registry_secret", "entrypoint", "privileged"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +69,8 @@ class DockerSource(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,14 +84,14 @@ class DockerSource(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "image": obj.get("image"),
-                "command": obj.get("command"),
-                "args": obj.get("args"),
-                "image_registry_secret": obj.get("image_registry_secret"),
-                "entrypoint": obj.get("entrypoint"),
-                "privileged": obj.get("privileged"),
-            }
-        )
+        _obj = cls.model_validate({
+            "image": obj.get("image"),
+            "command": obj.get("command"),
+            "args": obj.get("args"),
+            "image_registry_secret": obj.get("image_registry_secret"),
+            "entrypoint": obj.get("entrypoint"),
+            "privileged": obj.get("privileged")
+        })
         return _obj
+
+

@@ -20,31 +20,28 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
-from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
-from koyeb.models.trigger_deployment_metadata_actor_type import (
-    TriggerDeploymentMetadataActorType,
-)
-from koyeb.models.trigger_deployment_metadata_trigger_type import (
-    TriggerDeploymentMetadataTriggerType,
-)
-
+from koyeb.models.trigger_deployment_metadata_actor_type import TriggerDeploymentMetadataActorType
+from koyeb.models.trigger_deployment_metadata_trigger_type import TriggerDeploymentMetadataTriggerType
+from koyeb.models.trigger_git_deployment_metadata import TriggerGitDeploymentMetadata
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class TriggerDeploymentMetadata(BaseModel):
     """
     TriggerDeploymentMetadata
-    """  # noqa: E501
-
+    """ # noqa: E501
     type: Optional[TriggerDeploymentMetadataTriggerType] = None
     actor: Optional[TriggerDeploymentMetadataActorType] = None
-    git: Optional[GitDeploymentMetadata] = None
+    git: Optional[TriggerGitDeploymentMetadata] = None
     __properties: ClassVar[List[str]] = ["type", "actor", "git"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,12 +69,13 @@ class TriggerDeploymentMetadata(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of git
         if self.git:
-            _dict["git"] = self.git.to_dict()
+            _dict['git'] = self.git.to_dict()
         return _dict
 
     @classmethod
@@ -89,13 +87,11 @@ class TriggerDeploymentMetadata(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "type": obj.get("type"),
-                "actor": obj.get("actor"),
-                "git": GitDeploymentMetadata.from_dict(obj.get("git"))
-                if obj.get("git") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "type": obj.get("type"),
+            "actor": obj.get("actor"),
+            "git": TriggerGitDeploymentMetadata.from_dict(obj.get("git")) if obj.get("git") is not None else None
+        })
         return _obj
+
+

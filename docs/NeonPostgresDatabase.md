@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pg_version** | **int** |  | [optional] 
 **region** | **str** |  | [optional] 
+**instance_type** | **str** |  | [optional] 
 **roles** | [**List[NeonPostgresDatabaseNeonRole]**](NeonPostgresDatabaseNeonRole.md) |  | [optional] 
 **databases** | [**List[NeonPostgresDatabaseNeonDatabase]**](NeonPostgresDatabaseNeonDatabase.md) |  | [optional] 
 

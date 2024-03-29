@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.exec_command_request_id_type import ExecCommandRequestIdType
 
-
 class TestExecCommandRequestIdType(unittest.TestCase):
     """ExecCommandRequestIdType unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestExecCommandRequestIdType(unittest.TestCase):
         """Test ExecCommandRequestIdType"""
         # inst = ExecCommandRequestIdType()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

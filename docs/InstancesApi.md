@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **exec_command**
-> StreamResultOfExecCommandReply exec_command(id=id, body_command=body_command, body_tty_size_height=body_tty_size_height, body_tty_size_width=body_tty_size_width, body_stdin_data=body_stdin_data, body_stdin_close=body_stdin_close, id_type=id_type)
+> StreamResultOfExecCommandReply exec_command(id=id, body_command=body_command, body_tty_size_height=body_tty_size_height, body_tty_size_width=body_tty_size_width, body_stdin_data=body_stdin_data, body_stdin_close=body_stdin_close, body_disable_tty=body_disable_tty, id_type=id_type)
 
 Exec Command
 
@@ -55,11 +55,12 @@ with koyeb.ApiClient(configuration) as api_client:
     body_tty_size_width = 56 # int |  (optional)
     body_stdin_data = None # bytearray | Data is base64 encoded (optional)
     body_stdin_close = True # bool | Indicate last data frame (optional)
+    body_disable_tty = True # bool | Disable TTY. It's enough to specify it in the first frame (optional)
     id_type = 'INVALID' # str | When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id. (optional) (default to 'INVALID')
 
     try:
         # Exec Command
-        api_response = api_instance.exec_command(id=id, body_command=body_command, body_tty_size_height=body_tty_size_height, body_tty_size_width=body_tty_size_width, body_stdin_data=body_stdin_data, body_stdin_close=body_stdin_close, id_type=id_type)
+        api_response = api_instance.exec_command(id=id, body_command=body_command, body_tty_size_height=body_tty_size_height, body_tty_size_width=body_tty_size_width, body_stdin_data=body_stdin_data, body_stdin_close=body_stdin_close, body_disable_tty=body_disable_tty, id_type=id_type)
         print("The response of InstancesApi->exec_command:\n")
         pprint(api_response)
     except Exception as e:
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
  **body_tty_size_width** | **int**|  | [optional] 
  **body_stdin_data** | **bytearray**| Data is base64 encoded | [optional] 
  **body_stdin_close** | **bool**| Indicate last data frame | [optional] 
+ **body_disable_tty** | **bool**| Disable TTY. It&#39;s enough to specify it in the first frame | [optional] 
  **id_type** | **str**| When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id. | [optional] [default to &#39;INVALID&#39;]
 
 ### Return type
@@ -98,8 +100,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A successful response.(streaming responses) |  -  |
 **400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +191,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_instance_events**
-> ListInstanceEventsReply list_instance_events(instance_id=instance_id, instance_ids=instance_ids, types=types, limit=limit, offset=offset, order=order)
+> ListInstanceEventsReply list_instance_events(instance_ids=instance_ids, types=types, limit=limit, offset=offset, order=order)
 
 List Instance events
 
@@ -223,7 +227,6 @@ configuration.api_key['Bearer'] = os.environ["API_KEY"]
 with koyeb.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = koyeb.InstancesApi(api_client)
-    instance_id = 'instance_id_example' # str | (Optional) Filter on instance id (optional)
     instance_ids = ['instance_ids_example'] # List[str] | (Optional) Filter on list of instance id (optional)
     types = ['types_example'] # List[str] | (Optional) Filter on instance event types (optional)
     limit = 'limit_example' # str | (Optional) The number of items to return (optional)
@@ -232,7 +235,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
     try:
         # List Instance events
-        api_response = api_instance.list_instance_events(instance_id=instance_id, instance_ids=instance_ids, types=types, limit=limit, offset=offset, order=order)
+        api_response = api_instance.list_instance_events(instance_ids=instance_ids, types=types, limit=limit, offset=offset, order=order)
         print("The response of InstancesApi->list_instance_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -245,7 +248,6 @@ with koyeb.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **instance_id** | **str**| (Optional) Filter on instance id | [optional] 
  **instance_ids** | [**List[str]**](str.md)| (Optional) Filter on list of instance id | [optional] 
  **types** | [**List[str]**](str.md)| (Optional) Filter on instance event types | [optional] 
  **limit** | **str**| (Optional) The number of items to return | [optional] 
@@ -279,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_instances**
-> ListInstancesReply list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, statuses=statuses, limit=limit, offset=offset, order=order)
+> ListInstancesReply list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, statuses=statuses, limit=limit, offset=offset, order=order, starting_time=starting_time, ending_time=ending_time)
 
 List Instances
 
@@ -324,10 +326,12 @@ with koyeb.ApiClient(configuration) as api_client:
     limit = 'limit_example' # str | (Optional) The number of items to return (optional)
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return (optional)
     order = 'order_example' # str | (Optional) Sorts the list in the ascending or the descending order (optional)
+    starting_time = '2013-10-20T19:20:30+01:00' # datetime | (Optional) The starting time of the period of running instance (optional)
+    ending_time = '2013-10-20T19:20:30+01:00' # datetime | (Optional) The ending time of the period of running instance (optional)
 
     try:
         # List Instances
-        api_response = api_instance.list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, statuses=statuses, limit=limit, offset=offset, order=order)
+        api_response = api_instance.list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, statuses=statuses, limit=limit, offset=offset, order=order, starting_time=starting_time, ending_time=ending_time)
         print("The response of InstancesApi->list_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -349,6 +353,8 @@ Name | Type | Description  | Notes
  **limit** | **str**| (Optional) The number of items to return | [optional] 
  **offset** | **str**| (Optional) The offset in the list of item to return | [optional] 
  **order** | **str**| (Optional) Sorts the list in the ascending or the descending order | [optional] 
+ **starting_time** | **datetime**| (Optional) The starting time of the period of running instance | [optional] 
+ **ending_time** | **datetime**| (Optional) The ending time of the period of running instance | [optional] 
 
 ### Return type
 

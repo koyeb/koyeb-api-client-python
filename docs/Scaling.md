@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **min** | **int** |  | [optional] 
 **max** | **int** |  | [optional] 
+**targets** | [**List[DeploymentScalingTarget]**](DeploymentScalingTarget.md) |  | [optional] 
 
 ## Example
 

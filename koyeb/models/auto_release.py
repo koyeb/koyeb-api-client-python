@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.auto_release_group import AutoReleaseGroup
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class AutoRelease(BaseModel):
     """
     AutoRelease
-    """  # noqa: E501
-
+    """ # noqa: E501
     groups: Optional[List[AutoReleaseGroup]] = None
     __properties: ClassVar[List[str]] = ["groups"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,7 +65,8 @@ class AutoRelease(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in groups (list)
@@ -73,7 +75,7 @@ class AutoRelease(BaseModel):
             for _item in self.groups:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["groups"] = _items
+            _dict['groups'] = _items
         return _dict
 
     @classmethod
@@ -85,13 +87,9 @@ class AutoRelease(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "groups": [
-                    AutoReleaseGroup.from_dict(_item) for _item in obj.get("groups")
-                ]
-                if obj.get("groups") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "groups": [AutoReleaseGroup.from_dict(_item) for _item in obj.get("groups")] if obj.get("groups") is not None else None
+        })
         return _obj
+
+

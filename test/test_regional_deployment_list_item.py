@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.regional_deployment_list_item import RegionalDeploymentListItem
 
-
 class TestRegionalDeploymentListItem(unittest.TestCase):
     """RegionalDeploymentListItem unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
 
     def make_instance(self, include_optional) -> RegionalDeploymentListItem:
         """Test RegionalDeploymentListItem
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `RegionalDeploymentListItem`
         """
         model = RegionalDeploymentListItem()
@@ -67,7 +66,16 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
                     region = '', 
                     scaling = koyeb.models.scaling.Scaling(
                         min = 56, 
-                        max = 56, ), 
+                        max = 56, 
+                        targets = [
+                            koyeb.models.deployment_scaling_target.DeploymentScalingTarget(
+                                average_cpu = koyeb.models.deployment_scaling_target_average_cpu.DeploymentScalingTargetAverageCPU(
+                                    value = 56, ), 
+                                average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
+                                    value = 56, ), 
+                                requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
+                                    value = 56, ), )
+                            ], ), 
                     instance_type = '', 
                     deployment_group = '', 
                     health_checks = [
@@ -89,6 +97,7 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
                                     ], ), )
                         ], 
                     skip_cache = True, 
+                    use_kuma_v2 = True, 
                     docker = koyeb.models.docker_source.DockerSource(
                         image = '', 
                         command = '', 
@@ -112,7 +121,8 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
                         buildpack = koyeb.models.buildpack_builder.BuildpackBuilder(
                             build_command = '', 
                             run_command = '', 
-                            privileged = True, ), ), )
+                            privileged = True, ), ), ),
+                use_kuma_v2 = True
             )
         else:
             return RegionalDeploymentListItem(
@@ -124,6 +134,5 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

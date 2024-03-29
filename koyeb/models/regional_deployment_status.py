@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,22 +34,24 @@ class RegionalDeploymentStatus(str, Enum):
     """
     allowed enum values
     """
-    PENDING = "PENDING"
-    PROVISIONING = "PROVISIONING"
-    SCHEDULED = "SCHEDULED"
-    CANCELING = "CANCELING"
-    CANCELED = "CANCELED"
-    ALLOCATING = "ALLOCATING"
-    STARTING = "STARTING"
-    HEALTHY = "HEALTHY"
-    DEGRADED = "DEGRADED"
-    UNHEALTHY = "UNHEALTHY"
-    STOPPING = "STOPPING"
-    STOPPED = "STOPPED"
-    ERRORING = "ERRORING"
-    ERROR = "ERROR"
+    PENDING = 'PENDING'
+    PROVISIONING = 'PROVISIONING'
+    SCHEDULED = 'SCHEDULED'
+    CANCELING = 'CANCELING'
+    CANCELED = 'CANCELED'
+    ALLOCATING = 'ALLOCATING'
+    STARTING = 'STARTING'
+    HEALTHY = 'HEALTHY'
+    DEGRADED = 'DEGRADED'
+    UNHEALTHY = 'UNHEALTHY'
+    STOPPING = 'STOPPING'
+    STOPPED = 'STOPPED'
+    ERRORING = 'ERRORING'
+    ERROR = 'ERROR'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of RegionalDeploymentStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

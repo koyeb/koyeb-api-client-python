@@ -21,34 +21,28 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictStr
 from koyeb.models.object import Object
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Activity(BaseModel):
     """
     Activity
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     actor: Optional[Object] = None
     object: Optional[Object] = None
     verb: Optional[StrictStr] = None
     metadata: Optional[Union[str, Any]] = None
     created_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "actor",
-        "object",
-        "verb",
-        "metadata",
-        "created_at",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "actor", "object", "verb", "metadata", "created_at"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,15 +70,16 @@ class Activity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of actor
         if self.actor:
-            _dict["actor"] = self.actor.to_dict()
+            _dict['actor'] = self.actor.to_dict()
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
-            _dict["object"] = self.object.to_dict()
+            _dict['object'] = self.object.to_dict()
         return _dict
 
     @classmethod
@@ -96,18 +91,14 @@ class Activity(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "actor": Object.from_dict(obj.get("actor"))
-                if obj.get("actor") is not None
-                else None,
-                "object": Object.from_dict(obj.get("object"))
-                if obj.get("object") is not None
-                else None,
-                "verb": obj.get("verb"),
-                "metadata": obj.get("metadata"),
-                "created_at": obj.get("created_at"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "actor": Object.from_dict(obj.get("actor")) if obj.get("actor") is not None else None,
+            "object": Object.from_dict(obj.get("object")) if obj.get("object") is not None else None,
+            "verb": obj.get("verb"),
+            "metadata": obj.get("metadata"),
+            "created_at": obj.get("created_at")
+        })
         return _obj
+
+

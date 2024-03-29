@@ -21,32 +21,27 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.activity import Activity
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Notification(BaseModel):
     """
     Notification
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     activity: Optional[Activity] = None
     is_read: Optional[StrictBool] = None
     is_seen: Optional[StrictBool] = None
     created_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "activity",
-        "is_read",
-        "is_seen",
-        "created_at",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "activity", "is_read", "is_seen", "created_at"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,12 +69,13 @@ class Notification(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of activity
         if self.activity:
-            _dict["activity"] = self.activity.to_dict()
+            _dict['activity'] = self.activity.to_dict()
         return _dict
 
     @classmethod
@@ -91,15 +87,13 @@ class Notification(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "activity": Activity.from_dict(obj.get("activity"))
-                if obj.get("activity") is not None
-                else None,
-                "is_read": obj.get("is_read"),
-                "is_seen": obj.get("is_seen"),
-                "created_at": obj.get("created_at"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "activity": Activity.from_dict(obj.get("activity")) if obj.get("activity") is not None else None,
+            "is_read": obj.get("is_read"),
+            "is_seen": obj.get("is_seen"),
+            "created_at": obj.get("created_at")
+        })
         return _obj
+
+

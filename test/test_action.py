@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.action import Action
 
-
 class TestAction(unittest.TestCase):
     """Action unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestAction(unittest.TestCase):
         """Test Action"""
         # inst = Action()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

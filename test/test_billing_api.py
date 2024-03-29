@@ -26,8 +26,17 @@ class TestBillingApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_has_unpaid_invoices(self) -> None:
+        """Test case for has_unpaid_invoices
+
+        Experimental: Has unpaid invoices
+        """
+        pass
+
     def test_manage(self) -> None:
-        """Test case for manage"""
+        """Test case for manage
+
+        """
         pass
 
     def test_next_invoice(self) -> None:
@@ -38,5 +47,5 @@ class TestBillingApi(unittest.TestCase):
         pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

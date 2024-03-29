@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.plan import Plan
 
-
 class TestPlan(unittest.TestCase):
     """Plan unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestPlan(unittest.TestCase):
         """Test Plan"""
         # inst = Plan()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

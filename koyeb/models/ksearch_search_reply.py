@@ -27,18 +27,15 @@ from koyeb.models.ksearch_organization import KsearchOrganization
 from koyeb.models.ksearch_regional_deployment import KsearchRegionalDeployment
 from koyeb.models.ksearch_service import KsearchService
 from koyeb.models.ksearch_user import KsearchUser
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class KsearchSearchReply(BaseModel):
     """
     KsearchSearchReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     organizations: Optional[List[KsearchOrganization]] = None
     users: Optional[List[KsearchUser]] = None
     apps: Optional[List[KsearchApp]] = None
@@ -46,17 +43,13 @@ class KsearchSearchReply(BaseModel):
     global_deployments: Optional[List[KsearchGlobalDeployment]] = None
     regional_deployments: Optional[List[KsearchRegionalDeployment]] = None
     instances: Optional[List[KsearchInstance]] = None
-    __properties: ClassVar[List[str]] = [
-        "organizations",
-        "users",
-        "apps",
-        "services",
-        "global_deployments",
-        "regional_deployments",
-        "instances",
-    ]
+    __properties: ClassVar[List[str]] = ["organizations", "users", "apps", "services", "global_deployments", "regional_deployments", "instances"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +77,8 @@ class KsearchSearchReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in organizations (list)
@@ -93,49 +87,49 @@ class KsearchSearchReply(BaseModel):
             for _item in self.organizations:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["organizations"] = _items
+            _dict['organizations'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in users (list)
         _items = []
         if self.users:
             for _item in self.users:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["users"] = _items
+            _dict['users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in apps (list)
         _items = []
         if self.apps:
             for _item in self.apps:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["apps"] = _items
+            _dict['apps'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in services (list)
         _items = []
         if self.services:
             for _item in self.services:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["services"] = _items
+            _dict['services'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in global_deployments (list)
         _items = []
         if self.global_deployments:
             for _item in self.global_deployments:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["global_deployments"] = _items
+            _dict['global_deployments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in regional_deployments (list)
         _items = []
         if self.regional_deployments:
             for _item in self.regional_deployments:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["regional_deployments"] = _items
+            _dict['regional_deployments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in instances (list)
         _items = []
         if self.instances:
             for _item in self.instances:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["instances"] = _items
+            _dict['instances'] = _items
         return _dict
 
     @classmethod
@@ -147,42 +141,15 @@ class KsearchSearchReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "organizations": [
-                    KsearchOrganization.from_dict(_item)
-                    for _item in obj.get("organizations")
-                ]
-                if obj.get("organizations") is not None
-                else None,
-                "users": [KsearchUser.from_dict(_item) for _item in obj.get("users")]
-                if obj.get("users") is not None
-                else None,
-                "apps": [KsearchApp.from_dict(_item) for _item in obj.get("apps")]
-                if obj.get("apps") is not None
-                else None,
-                "services": [
-                    KsearchService.from_dict(_item) for _item in obj.get("services")
-                ]
-                if obj.get("services") is not None
-                else None,
-                "global_deployments": [
-                    KsearchGlobalDeployment.from_dict(_item)
-                    for _item in obj.get("global_deployments")
-                ]
-                if obj.get("global_deployments") is not None
-                else None,
-                "regional_deployments": [
-                    KsearchRegionalDeployment.from_dict(_item)
-                    for _item in obj.get("regional_deployments")
-                ]
-                if obj.get("regional_deployments") is not None
-                else None,
-                "instances": [
-                    KsearchInstance.from_dict(_item) for _item in obj.get("instances")
-                ]
-                if obj.get("instances") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "organizations": [KsearchOrganization.from_dict(_item) for _item in obj.get("organizations")] if obj.get("organizations") is not None else None,
+            "users": [KsearchUser.from_dict(_item) for _item in obj.get("users")] if obj.get("users") is not None else None,
+            "apps": [KsearchApp.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
+            "services": [KsearchService.from_dict(_item) for _item in obj.get("services")] if obj.get("services") is not None else None,
+            "global_deployments": [KsearchGlobalDeployment.from_dict(_item) for _item in obj.get("global_deployments")] if obj.get("global_deployments") is not None else None,
+            "regional_deployments": [KsearchRegionalDeployment.from_dict(_item) for _item in obj.get("regional_deployments")] if obj.get("regional_deployments") is not None else None,
+            "instances": [KsearchInstance.from_dict(_item) for _item in obj.get("instances")] if obj.get("instances") is not None else None
+        })
         return _obj
+
+

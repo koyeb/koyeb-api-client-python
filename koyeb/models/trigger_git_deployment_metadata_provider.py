@@ -19,24 +19,27 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
 
-class GitDeploymentMetadataProvider(str, Enum):
+class TriggerGitDeploymentMetadataProvider(str, Enum):
     """
-    GitDeploymentMetadataProvider
+    TriggerGitDeploymentMetadataProvider
     """
 
     """
     allowed enum values
     """
-    UNKNOWN = "UNKNOWN"
-    GITHUB = "GITHUB"
+    UNKNOWN = 'UNKNOWN'
+    GITHUB = 'GITHUB'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of GitDeploymentMetadataProvider from a JSON string"""
+        """Create an instance of TriggerGitDeploymentMetadataProvider from a JSON string"""
         return cls(json.loads(json_str))
+
+

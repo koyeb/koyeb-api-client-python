@@ -29,12 +29,8 @@ from pydantic import StrictStr, field_validator
 
 from typing import Any, Dict, List, Optional, Union
 
-from koyeb.models.confirm_payment_authorization_reply import (
-    ConfirmPaymentAuthorizationReply,
-)
-from koyeb.models.create_payment_authorization_reply import (
-    CreatePaymentAuthorizationReply,
-)
+from koyeb.models.confirm_payment_authorization_reply import ConfirmPaymentAuthorizationReply
+from koyeb.models.create_payment_authorization_reply import CreatePaymentAuthorizationReply
 from koyeb.models.get_payment_method_reply import GetPaymentMethodReply
 from koyeb.models.list_payment_methods_reply import ListPaymentMethodsReply
 
@@ -55,6 +51,7 @@ class PaymentMethodsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
+
     @validate_call
     def confirm_payment_authorization(
         self,
@@ -64,8 +61,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -99,7 +97,7 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._confirm_payment_authorization_serialize(
             id=id,
@@ -107,23 +105,29 @@ class PaymentMethodsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "ConfirmPaymentAuthorizationReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "ConfirmPaymentAuthorizationReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     def confirm_payment_authorization_with_http_info(
@@ -134,8 +138,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -169,7 +174,7 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._confirm_payment_authorization_serialize(
             id=id,
@@ -177,23 +182,29 @@ class PaymentMethodsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "ConfirmPaymentAuthorizationReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "ConfirmPaymentAuthorizationReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     def confirm_payment_authorization_without_preload_content(
@@ -204,8 +215,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -239,7 +251,7 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._confirm_payment_authorization_serialize(
             id=id,
@@ -247,19 +259,25 @@ class PaymentMethodsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "ConfirmPaymentAuthorizationReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "ConfirmPaymentAuthorizationReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _confirm_payment_authorization_serialize(
         self,
@@ -270,9 +288,12 @@ class PaymentMethodsApi:
         _headers,
         _host_index,
     ) -> Tuple:
+
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -283,7 +304,7 @@ class PaymentMethodsApi:
 
         # process the path parameters
         if id is not None:
-            _path_params["id"] = id
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -291,15 +312,23 @@ class PaymentMethodsApi:
         if body is not None:
             _body_params = body
 
+
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                '*/*'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ["Bearer"]
+        _auth_settings: List[str] = [
+            'Bearer'
+        ]
 
         return self.api_client.param_serialize(
-            method="POST",
-            resource_path="/v1/payment_methods/{id}/confirm",
+            method='POST',
+            resource_path='/v1/payment_methods/{id}/confirm',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -309,8 +338,11 @@ class PaymentMethodsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth,
+            _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     def create_payment_authorization(
@@ -320,8 +352,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -353,30 +386,36 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._create_payment_authorization_serialize(
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "CreatePaymentAuthorizationReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "CreatePaymentAuthorizationReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     def create_payment_authorization_with_http_info(
@@ -386,8 +425,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -419,30 +459,36 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._create_payment_authorization_serialize(
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "CreatePaymentAuthorizationReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "CreatePaymentAuthorizationReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     def create_payment_authorization_without_preload_content(
@@ -452,8 +498,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -485,26 +532,32 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._create_payment_authorization_serialize(
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "CreatePaymentAuthorizationReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "CreatePaymentAuthorizationReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _create_payment_authorization_serialize(
         self,
@@ -514,9 +567,12 @@ class PaymentMethodsApi:
         _headers,
         _host_index,
     ) -> Tuple:
+
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -533,15 +589,23 @@ class PaymentMethodsApi:
         if body is not None:
             _body_params = body
 
+
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                '*/*'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ["Bearer"]
+        _auth_settings: List[str] = [
+            'Bearer'
+        ]
 
         return self.api_client.param_serialize(
-            method="POST",
-            resource_path="/v1/payment_methods",
+            method='POST',
+            resource_path='/v1/payment_methods',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -551,8 +615,11 @@ class PaymentMethodsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth,
+            _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     def delete_payment_method(
@@ -562,8 +629,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -595,30 +663,36 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._delete_payment_method_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "object",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "object",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     def delete_payment_method_with_http_info(
@@ -628,8 +702,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -661,30 +736,36 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._delete_payment_method_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "object",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "object",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     def delete_payment_method_without_preload_content(
@@ -694,8 +775,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -727,26 +809,32 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._delete_payment_method_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "object",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "object",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _delete_payment_method_serialize(
         self,
@@ -756,9 +844,12 @@ class PaymentMethodsApi:
         _headers,
         _host_index,
     ) -> Tuple:
+
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -769,21 +860,29 @@ class PaymentMethodsApi:
 
         # process the path parameters
         if id is not None:
-            _path_params["id"] = id
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                '*/*'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ["Bearer"]
+        _auth_settings: List[str] = [
+            'Bearer'
+        ]
 
         return self.api_client.param_serialize(
-            method="DELETE",
-            resource_path="/v1/payment_methods/{id}",
+            method='DELETE',
+            resource_path='/v1/payment_methods/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -793,8 +892,11 @@ class PaymentMethodsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth,
+            _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     def get_payment_method(
@@ -804,8 +906,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -837,30 +940,36 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_payment_method_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "GetPaymentMethodReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "GetPaymentMethodReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     def get_payment_method_with_http_info(
@@ -870,8 +979,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -903,30 +1013,36 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_payment_method_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "GetPaymentMethodReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "GetPaymentMethodReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     def get_payment_method_without_preload_content(
@@ -936,8 +1052,9 @@ class PaymentMethodsApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -969,26 +1086,32 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_payment_method_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "GetPaymentMethodReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "GetPaymentMethodReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _get_payment_method_serialize(
         self,
@@ -998,9 +1121,12 @@ class PaymentMethodsApi:
         _headers,
         _host_index,
     ) -> Tuple:
+
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1011,21 +1137,29 @@ class PaymentMethodsApi:
 
         # process the path parameters
         if id is not None:
-            _path_params["id"] = id
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                '*/*'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ["Bearer"]
+        _auth_settings: List[str] = [
+            'Bearer'
+        ]
 
         return self.api_client.param_serialize(
-            method="GET",
-            resource_path="/v1/payment_methods/{id}",
+            method='GET',
+            resource_path='/v1/payment_methods/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1035,30 +1169,25 @@ class PaymentMethodsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth,
+            _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     def list_payment_methods(
         self,
-        limit: Annotated[
-            Optional[StrictStr],
-            Field(description="(Optional) The number of items to return"),
-        ] = None,
-        offset: Annotated[
-            Optional[StrictStr],
-            Field(description="(Optional) The offset in the list of item to return"),
-        ] = None,
-        statuses: Annotated[
-            Optional[List[StrictStr]],
-            Field(description="(Optional) Filter on payment method statuses"),
-        ] = None,
+        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
+        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
+        statuses: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on payment method statuses")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1094,7 +1223,7 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._list_payment_methods_serialize(
             limit=limit,
@@ -1103,17 +1232,22 @@ class PaymentMethodsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "ListPaymentMethodsReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "ListPaymentMethodsReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -1121,27 +1255,20 @@ class PaymentMethodsApi:
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def list_payment_methods_with_http_info(
         self,
-        limit: Annotated[
-            Optional[StrictStr],
-            Field(description="(Optional) The number of items to return"),
-        ] = None,
-        offset: Annotated[
-            Optional[StrictStr],
-            Field(description="(Optional) The offset in the list of item to return"),
-        ] = None,
-        statuses: Annotated[
-            Optional[List[StrictStr]],
-            Field(description="(Optional) Filter on payment method statuses"),
-        ] = None,
+        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
+        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
+        statuses: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on payment method statuses")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1177,7 +1304,7 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._list_payment_methods_serialize(
             limit=limit,
@@ -1186,17 +1313,22 @@ class PaymentMethodsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "ListPaymentMethodsReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "ListPaymentMethodsReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -1204,27 +1336,20 @@ class PaymentMethodsApi:
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def list_payment_methods_without_preload_content(
         self,
-        limit: Annotated[
-            Optional[StrictStr],
-            Field(description="(Optional) The number of items to return"),
-        ] = None,
-        offset: Annotated[
-            Optional[StrictStr],
-            Field(description="(Optional) The offset in the list of item to return"),
-        ] = None,
-        statuses: Annotated[
-            Optional[List[StrictStr]],
-            Field(description="(Optional) Filter on payment method statuses"),
-        ] = None,
+        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
+        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
+        statuses: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on payment method statuses")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
-            ],
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1260,7 +1385,7 @@ class PaymentMethodsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._list_payment_methods_serialize(
             limit=limit,
@@ -1269,19 +1394,25 @@ class PaymentMethodsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index,
+            _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "ListPaymentMethodsReply",
-            "400": "ErrorWithFields",
-            "403": "Error",
-            "404": "Error",
+            '200': "ListPaymentMethodsReply",
+            '400': "ErrorWithFields",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '500': "Error",
+            
+            
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout
+            *_param,
+            _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _list_payment_methods_serialize(
         self,
@@ -1293,10 +1424,12 @@ class PaymentMethodsApi:
         _headers,
         _host_index,
     ) -> Tuple:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            "statuses": "multi",
+            
+            'statuses': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1309,27 +1442,38 @@ class PaymentMethodsApi:
         # process the path parameters
         # process the query parameters
         if limit is not None:
-            _query_params.append(("limit", limit))
-
+            
+            _query_params.append(('limit', limit))
+            
         if offset is not None:
-            _query_params.append(("offset", offset))
-
+            
+            _query_params.append(('offset', offset))
+            
         if statuses is not None:
-            _query_params.append(("statuses", statuses))
-
+            
+            _query_params.append(('statuses', statuses))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                '*/*'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ["Bearer"]
+        _auth_settings: List[str] = [
+            'Bearer'
+        ]
 
         return self.api_client.param_serialize(
-            method="GET",
-            resource_path="/v1/payment_methods",
+            method='GET',
+            resource_path='/v1/payment_methods',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1339,5 +1483,7 @@ class PaymentMethodsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth,
+            _request_auth=_request_auth
         )
+
+

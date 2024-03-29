@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.region import Region
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GetRegionReply(BaseModel):
     """
     GetRegionReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     region: Optional[Region] = None
     __properties: ClassVar[List[str]] = ["region"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class GetRegionReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of region
         if self.region:
-            _dict["region"] = self.region.to_dict()
+            _dict['region'] = self.region.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class GetRegionReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "region": Region.from_dict(obj.get("region"))
-                if obj.get("region") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "region": Region.from_dict(obj.get("region")) if obj.get("region") is not None else None
+        })
         return _obj
+
+

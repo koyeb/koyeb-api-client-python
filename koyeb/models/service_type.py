@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,12 +34,14 @@ class ServiceType(str, Enum):
     """
     allowed enum values
     """
-    INVALID_TYPE = "INVALID_TYPE"
-    WEB = "WEB"
-    WORKER = "WORKER"
-    DATABASE = "DATABASE"
+    INVALID_TYPE = 'INVALID_TYPE'
+    WEB = 'WEB'
+    WORKER = 'WORKER'
+    DATABASE = 'DATABASE'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of ServiceType from a JSON string"""
         return cls(json.loads(json_str))
+
+

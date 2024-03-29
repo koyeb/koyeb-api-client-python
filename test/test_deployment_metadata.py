@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.deployment_metadata import DeploymentMetadata
 
-
 class TestDeploymentMetadata(unittest.TestCase):
     """DeploymentMetadata unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestDeploymentMetadata(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DeploymentMetadata:
         """Test DeploymentMetadata
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `DeploymentMetadata`
         """
         model = DeploymentMetadata()
@@ -40,7 +39,7 @@ class TestDeploymentMetadata(unittest.TestCase):
                 trigger = koyeb.models.trigger_deployment_metadata.TriggerDeploymentMetadata(
                     type = 'UNKNOWN_TYPE', 
                     actor = 'UNKNOWN_ACTOR', 
-                    git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                    git = koyeb.models.trigger_git_deployment_metadata.TriggerGitDeploymentMetadata(
                         provider = 'UNKNOWN', 
                         repository = '', 
                         branch = '', 
@@ -53,7 +52,9 @@ class TestDeploymentMetadata(unittest.TestCase):
                     neon_postgres = koyeb.models.neon_postgres_database_deployment_metadata.NeonPostgresDatabaseDeploymentMetadata(
                         reset_role_passwords = [
                             ''
-                            ], ), )
+                            ], ), ),
+                git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                    last_provisioned_deployment_id = '', )
             )
         else:
             return DeploymentMetadata(
@@ -65,6 +66,5 @@ class TestDeploymentMetadata(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

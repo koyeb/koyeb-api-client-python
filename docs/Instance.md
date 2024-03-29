@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **status** | [**InstanceStatus**](InstanceStatus.md) |  | [optional] 
 **messages** | **List[str]** |  | [optional] 
 **started_at** | **datetime** |  | [optional] 
+**succeeded_at** | **datetime** |  | [optional] 
 **terminated_at** | **datetime** |  | [optional] 
 **xyz_deployment_id** | **str** | WARNING: Please don&#39;t use the following attribute. Koyeb doesn&#39;t guarantee backwards compatible breaking change and reserve the right to completely drop it without notice. USE AT YOUR OWN RISK. | [optional] 
 

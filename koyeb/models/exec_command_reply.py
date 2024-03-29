@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt
 from koyeb.models.exec_command_io import ExecCommandIO
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ExecCommandReply(BaseModel):
     """
     ExecCommandReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     stdout: Optional[ExecCommandIO] = None
     stderr: Optional[ExecCommandIO] = None
     exited: Optional[StrictBool] = None
     exit_code: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["stdout", "stderr", "exited", "exit_code"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,15 +68,16 @@ class ExecCommandReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of stdout
         if self.stdout:
-            _dict["stdout"] = self.stdout.to_dict()
+            _dict['stdout'] = self.stdout.to_dict()
         # override the default output from pydantic by calling `to_dict()` of stderr
         if self.stderr:
-            _dict["stderr"] = self.stderr.to_dict()
+            _dict['stderr'] = self.stderr.to_dict()
         return _dict
 
     @classmethod
@@ -87,16 +89,12 @@ class ExecCommandReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "stdout": ExecCommandIO.from_dict(obj.get("stdout"))
-                if obj.get("stdout") is not None
-                else None,
-                "stderr": ExecCommandIO.from_dict(obj.get("stderr"))
-                if obj.get("stderr") is not None
-                else None,
-                "exited": obj.get("exited"),
-                "exit_code": obj.get("exit_code"),
-            }
-        )
+        _obj = cls.model_validate({
+            "stdout": ExecCommandIO.from_dict(obj.get("stdout")) if obj.get("stdout") is not None else None,
+            "stderr": ExecCommandIO.from_dict(obj.get("stderr")) if obj.get("stderr") is not None else None,
+            "exited": obj.get("exited"),
+            "exit_code": obj.get("exit_code")
+        })
         return _obj
+
+

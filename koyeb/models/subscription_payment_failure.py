@@ -20,21 +20,16 @@ import json
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
-from koyeb.models.subscription_payment_failure_stripe_sdk import (
-    SubscriptionPaymentFailureStripeSDK,
-)
-
+from koyeb.models.subscription_payment_failure_stripe_sdk import SubscriptionPaymentFailureStripeSDK
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class SubscriptionPaymentFailure(BaseModel):
     """
     SubscriptionPaymentFailure
-    """  # noqa: E501
-
+    """ # noqa: E501
     failed_at: Optional[datetime] = None
     next_attempt: Optional[datetime] = None
     attempt_count: Optional[StrictStr] = None
@@ -45,20 +40,13 @@ class SubscriptionPaymentFailure(BaseModel):
     payment_method_required: Optional[StrictBool] = None
     redirect_url: Optional[StrictStr] = None
     stripe_sdk: Optional[SubscriptionPaymentFailureStripeSDK] = None
-    __properties: ClassVar[List[str]] = [
-        "failed_at",
-        "next_attempt",
-        "attempt_count",
-        "error_code",
-        "error_reason",
-        "error_type",
-        "error_message",
-        "payment_method_required",
-        "redirect_url",
-        "stripe_sdk",
-    ]
+    __properties: ClassVar[List[str]] = ["failed_at", "next_attempt", "attempt_count", "error_code", "error_reason", "error_type", "error_message", "payment_method_required", "redirect_url", "stripe_sdk"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,12 +74,13 @@ class SubscriptionPaymentFailure(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of stripe_sdk
         if self.stripe_sdk:
-            _dict["stripe_sdk"] = self.stripe_sdk.to_dict()
+            _dict['stripe_sdk'] = self.stripe_sdk.to_dict()
         return _dict
 
     @classmethod
@@ -103,22 +92,18 @@ class SubscriptionPaymentFailure(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "failed_at": obj.get("failed_at"),
-                "next_attempt": obj.get("next_attempt"),
-                "attempt_count": obj.get("attempt_count"),
-                "error_code": obj.get("error_code"),
-                "error_reason": obj.get("error_reason"),
-                "error_type": obj.get("error_type"),
-                "error_message": obj.get("error_message"),
-                "payment_method_required": obj.get("payment_method_required"),
-                "redirect_url": obj.get("redirect_url"),
-                "stripe_sdk": SubscriptionPaymentFailureStripeSDK.from_dict(
-                    obj.get("stripe_sdk")
-                )
-                if obj.get("stripe_sdk") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "failed_at": obj.get("failed_at"),
+            "next_attempt": obj.get("next_attempt"),
+            "attempt_count": obj.get("attempt_count"),
+            "error_code": obj.get("error_code"),
+            "error_reason": obj.get("error_reason"),
+            "error_type": obj.get("error_type"),
+            "error_message": obj.get("error_message"),
+            "payment_method_required": obj.get("payment_method_required"),
+            "redirect_url": obj.get("redirect_url"),
+            "stripe_sdk": SubscriptionPaymentFailureStripeSDK.from_dict(obj.get("stripe_sdk")) if obj.get("stripe_sdk") is not None else None
+        })
         return _obj
+
+

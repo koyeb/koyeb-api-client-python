@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.subscription_status import SubscriptionStatus
 
-
 class TestSubscriptionStatus(unittest.TestCase):
     """SubscriptionStatus unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestSubscriptionStatus(unittest.TestCase):
         """Test SubscriptionStatus"""
         # inst = SubscriptionStatus()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

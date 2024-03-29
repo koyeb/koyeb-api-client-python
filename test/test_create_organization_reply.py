@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.create_organization_reply import CreateOrganizationReply
 
-
 class TestCreateOrganizationReply(unittest.TestCase):
     """CreateOrganizationReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestCreateOrganizationReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreateOrganizationReply:
         """Test CreateOrganizationReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `CreateOrganizationReply`
         """
         model = CreateOrganizationReply()
@@ -61,7 +60,8 @@ class TestCreateOrganizationReply(unittest.TestCase):
                     status_message = 'NEW', 
                     deactivation_reason = 'INVALID', 
                     verified = True, 
-                    qualifies_for_hobby23 = True, )
+                    qualifies_for_hobby23 = True, 
+                    reprocess_after = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
             )
         else:
             return CreateOrganizationReply(
@@ -73,6 +73,5 @@ class TestCreateOrganizationReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.create_service import CreateService
 
-
 class TestCreateService(unittest.TestCase):
     """CreateService unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestCreateService(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreateService:
         """Test CreateService
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `CreateService`
         """
         model = CreateService()
@@ -66,7 +65,16 @@ class TestCreateService(unittest.TestCase):
                     scalings = [
                         koyeb.models.deployment_scaling.DeploymentScaling(
                             min = 56, 
-                            max = 56, )
+                            max = 56, 
+                            targets = [
+                                koyeb.models.deployment_scaling_target.DeploymentScalingTarget(
+                                    average_cpu = koyeb.models.deployment_scaling_target_average_cpu.DeploymentScalingTargetAverageCPU(
+                                        value = 56, ), 
+                                    average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
+                                        value = 56, ), 
+                                    requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
+                                        value = 56, ), )
+                                ], )
                         ], 
                     instance_types = [
                         koyeb.models.deployment_instance_type.DeploymentInstanceType()
@@ -118,6 +126,7 @@ class TestCreateService(unittest.TestCase):
                         neon_postgres = koyeb.models.neon_postgres_database.NeonPostgresDatabase(
                             pg_version = 56, 
                             region = '', 
+                            instance_type = '', 
                             roles = [
                                 koyeb.models.neon_postgres_database/neon_role.NeonPostgresDatabase.NeonRole(
                                     name = '', 
@@ -139,6 +148,5 @@ class TestCreateService(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.trigger_deployment_metadata import TriggerDeploymentMetadata
 
-
 class TestTriggerDeploymentMetadata(unittest.TestCase):
     """TriggerDeploymentMetadata unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestTriggerDeploymentMetadata(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TriggerDeploymentMetadata:
         """Test TriggerDeploymentMetadata
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `TriggerDeploymentMetadata`
         """
         model = TriggerDeploymentMetadata()
@@ -39,7 +38,7 @@ class TestTriggerDeploymentMetadata(unittest.TestCase):
             return TriggerDeploymentMetadata(
                 type = 'UNKNOWN_TYPE',
                 actor = 'UNKNOWN_ACTOR',
-                git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                git = koyeb.models.trigger_git_deployment_metadata.TriggerGitDeploymentMetadata(
                     provider = 'UNKNOWN', 
                     repository = '', 
                     branch = '', 
@@ -59,6 +58,5 @@ class TestTriggerDeploymentMetadata(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -21,24 +21,25 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.google_protobuf_any import GoogleProtobufAny
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GoogleRpcStatus(BaseModel):
     """
     GoogleRpcStatus
-    """  # noqa: E501
-
+    """ # noqa: E501
     code: Optional[StrictInt] = None
     message: Optional[StrictStr] = None
     details: Optional[List[GoogleProtobufAny]] = None
     __properties: ClassVar[List[str]] = ["code", "message", "details"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +67,8 @@ class GoogleRpcStatus(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in details (list)
@@ -75,7 +77,7 @@ class GoogleRpcStatus(BaseModel):
             for _item in self.details:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["details"] = _items
+            _dict['details'] = _items
         return _dict
 
     @classmethod
@@ -87,15 +89,11 @@ class GoogleRpcStatus(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "code": obj.get("code"),
-                "message": obj.get("message"),
-                "details": [
-                    GoogleProtobufAny.from_dict(_item) for _item in obj.get("details")
-                ]
-                if obj.get("details") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "code": obj.get("code"),
+            "message": obj.get("message"),
+            "details": [GoogleProtobufAny.from_dict(_item) for _item in obj.get("details")] if obj.get("details") is not None else None
+        })
         return _obj
+
+

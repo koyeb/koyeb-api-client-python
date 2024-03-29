@@ -20,24 +20,25 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class BuildpackBuilder(BaseModel):
     """
     BuildpackBuilder
-    """  # noqa: E501
-
+    """ # noqa: E501
     build_command: Optional[StrictStr] = None
     run_command: Optional[StrictStr] = None
     privileged: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["build_command", "run_command", "privileged"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +66,8 @@ class BuildpackBuilder(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -79,11 +81,11 @@ class BuildpackBuilder(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "build_command": obj.get("build_command"),
-                "run_command": obj.get("run_command"),
-                "privileged": obj.get("privileged"),
-            }
-        )
+        _obj = cls.model_validate({
+            "build_command": obj.get("build_command"),
+            "run_command": obj.get("run_command"),
+            "privileged": obj.get("privileged")
+        })
         return _obj
+
+

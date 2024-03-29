@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.get_metrics_reply import GetMetricsReply
 
-
 class TestGetMetricsReply(unittest.TestCase):
     """GetMetricsReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestGetMetricsReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetMetricsReply:
         """Test GetMetricsReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `GetMetricsReply`
         """
         model = GetMetricsReply()
@@ -42,10 +41,10 @@ class TestGetMetricsReply(unittest.TestCase):
                         labels = {
                             'key' : ''
                             }, 
-                        values = [
-                            [
-                                ''
-                                ]
+                        samples = [
+                            koyeb.models.sample.Sample(
+                                timestamp = '', 
+                                value = 1.337, )
                             ], )
                     ]
             )
@@ -59,6 +58,5 @@ class TestGetMetricsReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

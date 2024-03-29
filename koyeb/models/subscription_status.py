@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,17 +34,19 @@ class SubscriptionStatus(str, Enum):
     """
     allowed enum values
     """
-    INVALID = "INVALID"
-    CREATED = "CREATED"
-    ACTIVE = "ACTIVE"
-    WARNING = "WARNING"
-    URGENT = "URGENT"
-    CANCELING = "CANCELING"
-    CANCELED = "CANCELED"
-    TERMINATING = "TERMINATING"
-    TERMINATED = "TERMINATED"
+    INVALID = 'INVALID'
+    CREATED = 'CREATED'
+    ACTIVE = 'ACTIVE'
+    WARNING = 'WARNING'
+    URGENT = 'URGENT'
+    CANCELING = 'CANCELING'
+    CANCELED = 'CANCELED'
+    TERMINATING = 'TERMINATING'
+    TERMINATED = 'TERMINATED'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of SubscriptionStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.regional_deployment_metadata import RegionalDeploymentMetadata
 
-
 class TestRegionalDeploymentMetadata(unittest.TestCase):
     """RegionalDeploymentMetadata unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestRegionalDeploymentMetadata(unittest.TestCase):
 
     def make_instance(self, include_optional) -> RegionalDeploymentMetadata:
         """Test RegionalDeploymentMetadata
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `RegionalDeploymentMetadata`
         """
         model = RegionalDeploymentMetadata()
@@ -49,6 +48,5 @@ class TestRegionalDeploymentMetadata(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

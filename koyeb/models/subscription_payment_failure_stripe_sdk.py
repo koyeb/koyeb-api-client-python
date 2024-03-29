@@ -20,23 +20,24 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class SubscriptionPaymentFailureStripeSDK(BaseModel):
     """
     SubscriptionPaymentFailureStripeSDK
-    """  # noqa: E501
-
+    """ # noqa: E501
     client_secret_key: Optional[StrictStr] = None
     raw_json: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["client_secret_key", "raw_json"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,7 +65,8 @@ class SubscriptionPaymentFailureStripeSDK(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -78,10 +80,10 @@ class SubscriptionPaymentFailureStripeSDK(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "client_secret_key": obj.get("client_secret_key"),
-                "raw_json": obj.get("raw_json"),
-            }
-        )
+        _obj = cls.model_validate({
+            "client_secret_key": obj.get("client_secret_key"),
+            "raw_json": obj.get("raw_json")
+        })
         return _obj
+
+

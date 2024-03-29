@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.list_catalog_instances_reply import ListCatalogInstancesReply
 
-
 class TestListCatalogInstancesReply(unittest.TestCase):
     """ListCatalogInstancesReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestListCatalogInstancesReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListCatalogInstancesReply:
         """Test ListCatalogInstancesReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `ListCatalogInstancesReply`
         """
         model = ListCatalogInstancesReply()
@@ -53,7 +52,8 @@ class TestListCatalogInstancesReply(unittest.TestCase):
                         require_plan = [
                             ''
                             ], 
-                        vcpu_shares = 1.337, )
+                        vcpu_shares = 1.337, 
+                        display_name = '', )
                     ],
                 limit = 56,
                 offset = 56,
@@ -69,6 +69,5 @@ class TestListCatalogInstancesReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -20,30 +20,26 @@ import json
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Token(BaseModel):
     """
     Token
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     user_id: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
     expires_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "user_id",
-        "organization_id",
-        "expires_at",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "user_id", "organization_id", "expires_at"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class Token(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -85,12 +82,12 @@ class Token(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "user_id": obj.get("user_id"),
-                "organization_id": obj.get("organization_id"),
-                "expires_at": obj.get("expires_at"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "user_id": obj.get("user_id"),
+            "organization_id": obj.get("organization_id"),
+            "expires_at": obj.get("expires_at")
+        })
         return _obj
+
+

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **status** | [**RegionalDeploymentStatus**](RegionalDeploymentStatus.md) |  | [optional] 
 **messages** | **List[str]** |  | [optional] 
 **definition** | [**RegionalDeploymentDefinition**](RegionalDeploymentDefinition.md) |  | [optional] 
+**use_kuma_v2** | **bool** |  | [optional] 
 
 ## Example
 

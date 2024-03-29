@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.database_source import DatabaseSource
 
-
 class TestDatabaseSource(unittest.TestCase):
     """DatabaseSource unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestDatabaseSource(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DatabaseSource:
         """Test DatabaseSource
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `DatabaseSource`
         """
         model = DatabaseSource()
@@ -40,6 +39,7 @@ class TestDatabaseSource(unittest.TestCase):
                 neon_postgres = koyeb.models.neon_postgres_database.NeonPostgresDatabase(
                     pg_version = 56, 
                     region = '', 
+                    instance_type = '', 
                     roles = [
                         koyeb.models.neon_postgres_database/neon_role.NeonPostgresDatabase.NeonRole(
                             name = '', 
@@ -61,6 +61,5 @@ class TestDatabaseSource(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

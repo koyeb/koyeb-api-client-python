@@ -20,25 +20,26 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class AutoReleaseGroup(BaseModel):
     """
     AutoReleaseGroup
-    """  # noqa: E501
-
+    """ # noqa: E501
     name: Optional[StrictStr] = None
     repository: Optional[StrictStr] = None
     git_ref: Optional[StrictStr] = None
     latest_sha: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["name", "repository", "git_ref", "latest_sha"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +67,8 @@ class AutoReleaseGroup(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -80,12 +82,12 @@ class AutoReleaseGroup(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "name": obj.get("name"),
-                "repository": obj.get("repository"),
-                "git_ref": obj.get("git_ref"),
-                "latest_sha": obj.get("latest_sha"),
-            }
-        )
+        _obj = cls.model_validate({
+            "name": obj.get("name"),
+            "repository": obj.get("repository"),
+            "git_ref": obj.get("git_ref"),
+            "latest_sha": obj.get("latest_sha")
+        })
         return _obj
+
+

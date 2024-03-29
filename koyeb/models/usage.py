@@ -21,23 +21,24 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from koyeb.models.period_usage import PeriodUsage
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Usage(BaseModel):
     """
     Usage
-    """  # noqa: E501
-
+    """ # noqa: E501
     organization_id: Optional[StrictStr] = None
     periods: Optional[Dict[str, PeriodUsage]] = None
     __properties: ClassVar[List[str]] = ["organization_id", "periods"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +66,8 @@ class Usage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in periods (dict)
@@ -74,7 +76,7 @@ class Usage(BaseModel):
             for _key in self.periods:
                 if self.periods[_key]:
                     _field_dict[_key] = self.periods[_key].to_dict()
-            _dict["periods"] = _field_dict
+            _dict['periods'] = _field_dict
         return _dict
 
     @classmethod
@@ -86,15 +88,15 @@ class Usage(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "organization_id": obj.get("organization_id"),
-                "periods": dict(
-                    (_k, PeriodUsage.from_dict(_v))
-                    for _k, _v in obj.get("periods").items()
-                )
-                if obj.get("periods") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "organization_id": obj.get("organization_id"),
+            "periods": dict(
+                (_k, PeriodUsage.from_dict(_v))
+                for _k, _v in obj.get("periods").items()
+            )
+            if obj.get("periods") is not None
+            else None
+        })
         return _obj
+
+

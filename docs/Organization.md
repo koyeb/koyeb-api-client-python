@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **deactivation_reason** | [**OrganizationDeactivationReason**](OrganizationDeactivationReason.md) |  | [optional] 
 **verified** | **bool** |  | [optional] 
 **qualifies_for_hobby23** | **bool** |  | [optional] 
+**reprocess_after** | **datetime** |  | [optional] 
 
 ## Example
 

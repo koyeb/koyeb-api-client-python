@@ -21,24 +21,27 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.database_deployment_metadata import DatabaseDeploymentMetadata
+from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
 from koyeb.models.trigger_deployment_metadata import TriggerDeploymentMetadata
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class DeploymentMetadata(BaseModel):
     """
     DeploymentMetadata
-    """  # noqa: E501
-
+    """ # noqa: E501
     trigger: Optional[TriggerDeploymentMetadata] = None
     database: Optional[DatabaseDeploymentMetadata] = None
-    __properties: ClassVar[List[str]] = ["trigger", "database"]
+    git: Optional[GitDeploymentMetadata] = None
+    __properties: ClassVar[List[str]] = ["trigger", "database", "git"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,15 +69,19 @@ class DeploymentMetadata(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of trigger
         if self.trigger:
-            _dict["trigger"] = self.trigger.to_dict()
+            _dict['trigger'] = self.trigger.to_dict()
         # override the default output from pydantic by calling `to_dict()` of database
         if self.database:
-            _dict["database"] = self.database.to_dict()
+            _dict['database'] = self.database.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of git
+        if self.git:
+            _dict['git'] = self.git.to_dict()
         return _dict
 
     @classmethod
@@ -86,14 +93,11 @@ class DeploymentMetadata(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "trigger": TriggerDeploymentMetadata.from_dict(obj.get("trigger"))
-                if obj.get("trigger") is not None
-                else None,
-                "database": DatabaseDeploymentMetadata.from_dict(obj.get("database"))
-                if obj.get("database") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "trigger": TriggerDeploymentMetadata.from_dict(obj.get("trigger")) if obj.get("trigger") is not None else None,
+            "database": DatabaseDeploymentMetadata.from_dict(obj.get("database")) if obj.get("database") is not None else None,
+            "git": GitDeploymentMetadata.from_dict(obj.get("git")) if obj.get("git") is not None else None
+        })
         return _obj
+
+

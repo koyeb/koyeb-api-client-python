@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **version** | **str** |  | [optional] 
 **active_deployment_id** | **str** |  | [optional] 
 **latest_deployment_id** | **str** |  | [optional] 
+**last_provisioned_deployment_id** | **str** |  | [optional] 
 **state** | [**ServiceState**](ServiceState.md) |  | [optional] 
 
 ## Example

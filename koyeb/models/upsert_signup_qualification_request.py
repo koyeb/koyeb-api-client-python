@@ -20,22 +20,23 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class UpsertSignupQualificationRequest(BaseModel):
     """
     UpsertSignupQualificationRequest
-    """  # noqa: E501
-
+    """ # noqa: E501
     signup_qualification: Optional[Union[str, Any]] = None
     __properties: ClassVar[List[str]] = ["signup_qualification"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,7 +64,8 @@ class UpsertSignupQualificationRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -77,7 +79,9 @@ class UpsertSignupQualificationRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"signup_qualification": obj.get("signup_qualification")}
-        )
+        _obj = cls.model_validate({
+            "signup_qualification": obj.get("signup_qualification")
+        })
         return _obj
+
+

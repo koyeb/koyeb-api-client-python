@@ -20,18 +20,15 @@ import json
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class UsageDetails(BaseModel):
     """
     UsageDetails
-    """  # noqa: E501
-
+    """ # noqa: E501
     organization_id: Optional[StrictStr] = None
     instance_id: Optional[StrictStr] = None
     app_id: Optional[StrictStr] = None
@@ -45,23 +42,13 @@ class UsageDetails(BaseModel):
     duration_seconds: Optional[StrictInt] = None
     started_at: Optional[datetime] = None
     terminated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "organization_id",
-        "instance_id",
-        "app_id",
-        "app_name",
-        "service_id",
-        "service_name",
-        "regional_deployment_id",
-        "region",
-        "deployment_id",
-        "instance_type",
-        "duration_seconds",
-        "started_at",
-        "terminated_at",
-    ]
+    __properties: ClassVar[List[str]] = ["organization_id", "instance_id", "app_id", "app_name", "service_id", "service_name", "regional_deployment_id", "region", "deployment_id", "instance_type", "duration_seconds", "started_at", "terminated_at"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +76,8 @@ class UsageDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,21 +91,21 @@ class UsageDetails(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "organization_id": obj.get("organization_id"),
-                "instance_id": obj.get("instance_id"),
-                "app_id": obj.get("app_id"),
-                "app_name": obj.get("app_name"),
-                "service_id": obj.get("service_id"),
-                "service_name": obj.get("service_name"),
-                "regional_deployment_id": obj.get("regional_deployment_id"),
-                "region": obj.get("region"),
-                "deployment_id": obj.get("deployment_id"),
-                "instance_type": obj.get("instance_type"),
-                "duration_seconds": obj.get("duration_seconds"),
-                "started_at": obj.get("started_at"),
-                "terminated_at": obj.get("terminated_at"),
-            }
-        )
+        _obj = cls.model_validate({
+            "organization_id": obj.get("organization_id"),
+            "instance_id": obj.get("instance_id"),
+            "app_id": obj.get("app_id"),
+            "app_name": obj.get("app_name"),
+            "service_id": obj.get("service_id"),
+            "service_name": obj.get("service_name"),
+            "regional_deployment_id": obj.get("regional_deployment_id"),
+            "region": obj.get("region"),
+            "deployment_id": obj.get("deployment_id"),
+            "instance_type": obj.get("instance_type"),
+            "duration_seconds": obj.get("duration_seconds"),
+            "started_at": obj.get("started_at"),
+            "terminated_at": obj.get("terminated_at")
+        })
         return _obj
+
+

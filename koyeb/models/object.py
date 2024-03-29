@@ -20,18 +20,15 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictBool, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Object(BaseModel):
     """
     Object
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     type: Optional[StrictStr] = None
@@ -39,7 +36,11 @@ class Object(BaseModel):
     deleted: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["id", "name", "type", "metadata", "deleted"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class Object(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -81,13 +83,13 @@ class Object(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "type": obj.get("type"),
-                "metadata": obj.get("metadata"),
-                "deleted": obj.get("deleted"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "metadata": obj.get("metadata"),
+            "deleted": obj.get("deleted")
+        })
         return _obj
+
+

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.list_instance_events_reply import ListInstanceEventsReply
 
-
 class TestListInstanceEventsReply(unittest.TestCase):
     """ListInstanceEventsReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestListInstanceEventsReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListInstanceEventsReply:
         """Test ListInstanceEventsReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `ListInstanceEventsReply`
         """
         model = ListInstanceEventsReply()
@@ -62,6 +61,5 @@ class TestListInstanceEventsReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

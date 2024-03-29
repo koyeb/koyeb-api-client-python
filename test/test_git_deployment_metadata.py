@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
 
-
 class TestGitDeploymentMetadata(unittest.TestCase):
     """GitDeploymentMetadata unit test stubs"""
 
@@ -29,22 +28,15 @@ class TestGitDeploymentMetadata(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GitDeploymentMetadata:
         """Test GitDeploymentMetadata
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `GitDeploymentMetadata`
         """
         model = GitDeploymentMetadata()
         if include_optional:
             return GitDeploymentMetadata(
-                provider = 'UNKNOWN',
-                repository = '',
-                branch = '',
-                sha = '',
-                message = '',
-                sender_username = '',
-                sender_avatar_url = '',
-                sender_profile_url = ''
+                last_provisioned_deployment_id = ''
             )
         else:
             return GitDeploymentMetadata(
@@ -56,6 +48,5 @@ class TestGitDeploymentMetadata(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

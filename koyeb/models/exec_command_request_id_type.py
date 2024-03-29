@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,11 +34,13 @@ class ExecCommandRequestIdType(str, Enum):
     """
     allowed enum values
     """
-    INVALID = "INVALID"
-    INSTANCE_ID = "INSTANCE_ID"
-    SERVICE_ID = "SERVICE_ID"
+    INVALID = 'INVALID'
+    INSTANCE_ID = 'INSTANCE_ID'
+    SERVICE_ID = 'SERVICE_ID'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of ExecCommandRequestIdType from a JSON string"""
         return cls(json.loads(json_str))
+
+

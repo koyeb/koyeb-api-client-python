@@ -20,30 +20,26 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class KsearchGlobalDeployment(BaseModel):
     """
     KsearchGlobalDeployment
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
     app_id: Optional[StrictStr] = None
     service_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "organization_id",
-        "app_id",
-        "service_id",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "organization_id", "app_id", "service_id"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class KsearchGlobalDeployment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -85,12 +82,12 @@ class KsearchGlobalDeployment(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "organization_id": obj.get("organization_id"),
-                "app_id": obj.get("app_id"),
-                "service_id": obj.get("service_id"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "organization_id": obj.get("organization_id"),
+            "app_id": obj.get("app_id"),
+            "service_id": obj.get("service_id")
+        })
         return _obj
+
+

@@ -21,18 +21,15 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.regional_deployment_event import RegionalDeploymentEvent
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ListRegionalDeploymentEventsReply(BaseModel):
     """
     ListRegionalDeploymentEventsReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     events: Optional[List[RegionalDeploymentEvent]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -40,7 +37,11 @@ class ListRegionalDeploymentEventsReply(BaseModel):
     order: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["events", "limit", "offset", "count", "order"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +69,8 @@ class ListRegionalDeploymentEventsReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in events (list)
@@ -77,7 +79,7 @@ class ListRegionalDeploymentEventsReply(BaseModel):
             for _item in self.events:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["events"] = _items
+            _dict['events'] = _items
         return _dict
 
     @classmethod
@@ -89,18 +91,13 @@ class ListRegionalDeploymentEventsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "events": [
-                    RegionalDeploymentEvent.from_dict(_item)
-                    for _item in obj.get("events")
-                ]
-                if obj.get("events") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-                "order": obj.get("order"),
-            }
-        )
+        _obj = cls.model_validate({
+            "events": [RegionalDeploymentEvent.from_dict(_item) for _item in obj.get("events")] if obj.get("events") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count"),
+            "order": obj.get("order")
+        })
         return _obj
+
+

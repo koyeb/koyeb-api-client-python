@@ -27,17 +27,23 @@ class TestRepositoriesApi(unittest.TestCase):
         pass
 
     def test_list_branches(self) -> None:
-        """Test case for list_branches"""
+        """Test case for list_branches
+
+        """
         pass
 
     def test_list_repositories(self) -> None:
-        """Test case for list_repositories"""
+        """Test case for list_repositories
+
+        """
         pass
 
     def test_resync_organization(self) -> None:
-        """Test case for resync_organization"""
+        """Test case for resync_organization
+
+        """
         pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

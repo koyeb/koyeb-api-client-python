@@ -22,25 +22,26 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from koyeb.models.organization_status import OrganizationStatus
 from koyeb.models.plan import Plan
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class PublicOrganization(BaseModel):
     """
     PublicOrganization
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     plan: Optional[Plan] = None
     status: Optional[OrganizationStatus] = None
     __properties: ClassVar[List[str]] = ["id", "name", "plan", "status"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +69,8 @@ class PublicOrganization(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -82,12 +84,12 @@ class PublicOrganization(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "plan": obj.get("plan"),
-                "status": obj.get("status"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "plan": obj.get("plan"),
+            "status": obj.get("status")
+        })
         return _obj
+
+

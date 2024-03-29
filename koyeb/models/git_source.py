@@ -23,22 +23,16 @@ from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from koyeb.models.buildpack_builder import BuildpackBuilder
 from koyeb.models.docker_builder import DockerBuilder
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GitSource(BaseModel):
     """
     GitSource
-    """  # noqa: E501
-
-    repository: Optional[StrictStr] = Field(
-        default=None,
-        description="A url to a git repository (contains the provider as well) .e.g: github.com/koyeb/test.",
-    )
+    """ # noqa: E501
+    repository: Optional[StrictStr] = Field(default=None, description="A url to a git repository (contains the provider as well) .e.g: github.com/koyeb/test.")
     branch: Optional[StrictStr] = None
     tag: Optional[StrictStr] = None
     sha: Optional[StrictStr] = None
@@ -48,20 +42,13 @@ class GitSource(BaseModel):
     workdir: Optional[StrictStr] = None
     buildpack: Optional[BuildpackBuilder] = None
     docker: Optional[DockerBuilder] = None
-    __properties: ClassVar[List[str]] = [
-        "repository",
-        "branch",
-        "tag",
-        "sha",
-        "build_command",
-        "run_command",
-        "no_deploy_on_push",
-        "workdir",
-        "buildpack",
-        "docker",
-    ]
+    __properties: ClassVar[List[str]] = ["repository", "branch", "tag", "sha", "build_command", "run_command", "no_deploy_on_push", "workdir", "buildpack", "docker"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,15 +76,16 @@ class GitSource(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of buildpack
         if self.buildpack:
-            _dict["buildpack"] = self.buildpack.to_dict()
+            _dict['buildpack'] = self.buildpack.to_dict()
         # override the default output from pydantic by calling `to_dict()` of docker
         if self.docker:
-            _dict["docker"] = self.docker.to_dict()
+            _dict['docker'] = self.docker.to_dict()
         return _dict
 
     @classmethod
@@ -109,22 +97,18 @@ class GitSource(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "repository": obj.get("repository"),
-                "branch": obj.get("branch"),
-                "tag": obj.get("tag"),
-                "sha": obj.get("sha"),
-                "build_command": obj.get("build_command"),
-                "run_command": obj.get("run_command"),
-                "no_deploy_on_push": obj.get("no_deploy_on_push"),
-                "workdir": obj.get("workdir"),
-                "buildpack": BuildpackBuilder.from_dict(obj.get("buildpack"))
-                if obj.get("buildpack") is not None
-                else None,
-                "docker": DockerBuilder.from_dict(obj.get("docker"))
-                if obj.get("docker") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "repository": obj.get("repository"),
+            "branch": obj.get("branch"),
+            "tag": obj.get("tag"),
+            "sha": obj.get("sha"),
+            "build_command": obj.get("build_command"),
+            "run_command": obj.get("run_command"),
+            "no_deploy_on_push": obj.get("no_deploy_on_push"),
+            "workdir": obj.get("workdir"),
+            "buildpack": BuildpackBuilder.from_dict(obj.get("buildpack")) if obj.get("buildpack") is not None else None,
+            "docker": DockerBuilder.from_dict(obj.get("docker")) if obj.get("docker") is not None else None
+        })
         return _obj
+
+

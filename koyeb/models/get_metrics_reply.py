@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.get_metrics_reply_metric import GetMetricsReplyMetric
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GetMetricsReply(BaseModel):
     """
     GetMetricsReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     metrics: Optional[List[GetMetricsReplyMetric]] = None
     __properties: ClassVar[List[str]] = ["metrics"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,7 +65,8 @@ class GetMetricsReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in metrics (list)
@@ -73,7 +75,7 @@ class GetMetricsReply(BaseModel):
             for _item in self.metrics:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["metrics"] = _items
+            _dict['metrics'] = _items
         return _dict
 
     @classmethod
@@ -85,14 +87,9 @@ class GetMetricsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "metrics": [
-                    GetMetricsReplyMetric.from_dict(_item)
-                    for _item in obj.get("metrics")
-                ]
-                if obj.get("metrics") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "metrics": [GetMetricsReplyMetric.from_dict(_item) for _item in obj.get("metrics")] if obj.get("metrics") is not None else None
+        })
         return _obj
+
+

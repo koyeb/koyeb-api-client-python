@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.list_payment_methods_reply import ListPaymentMethodsReply
 
-
 class TestListPaymentMethodsReply(unittest.TestCase):
     """ListPaymentMethodsReply unit test stubs"""
 
@@ -29,9 +28,9 @@ class TestListPaymentMethodsReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListPaymentMethodsReply:
         """Test ListPaymentMethodsReply
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `ListPaymentMethodsReply`
         """
         model = ListPaymentMethodsReply()
@@ -77,6 +76,5 @@ class TestListPaymentMethodsReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -20,34 +20,28 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class RegionListItem(BaseModel):
     """
     RegionListItem
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     coordinates: Optional[List[StrictStr]] = None
     status: Optional[StrictStr] = None
     instances: Optional[List[StrictStr]] = None
     datacenters: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "coordinates",
-        "status",
-        "instances",
-        "datacenters",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "coordinates", "status", "instances", "datacenters"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +69,8 @@ class RegionListItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,14 +84,14 @@ class RegionListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "coordinates": obj.get("coordinates"),
-                "status": obj.get("status"),
-                "instances": obj.get("instances"),
-                "datacenters": obj.get("datacenters"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "coordinates": obj.get("coordinates"),
+            "status": obj.get("status"),
+            "instances": obj.get("instances"),
+            "datacenters": obj.get("datacenters")
+        })
         return _obj
+
+

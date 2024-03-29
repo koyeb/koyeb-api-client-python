@@ -21,25 +21,26 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
 from koyeb.models.secret import Secret
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ListSecretsReply(BaseModel):
     """
     ListSecretsReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     secrets: Optional[List[Secret]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["secrets", "limit", "offset", "count"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +68,8 @@ class ListSecretsReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in secrets (list)
@@ -76,7 +78,7 @@ class ListSecretsReply(BaseModel):
             for _item in self.secrets:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["secrets"] = _items
+            _dict['secrets'] = _items
         return _dict
 
     @classmethod
@@ -88,14 +90,12 @@ class ListSecretsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "secrets": [Secret.from_dict(_item) for _item in obj.get("secrets")]
-                if obj.get("secrets") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-            }
-        )
+        _obj = cls.model_validate({
+            "secrets": [Secret.from_dict(_item) for _item in obj.get("secrets")] if obj.get("secrets") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count")
+        })
         return _obj
+
+

@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.organization_status import OrganizationStatus
 
-
 class TestOrganizationStatus(unittest.TestCase):
     """OrganizationStatus unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestOrganizationStatus(unittest.TestCase):
         """Test OrganizationStatus"""
         # inst = OrganizationStatus()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

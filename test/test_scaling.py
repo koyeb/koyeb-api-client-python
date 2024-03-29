@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.scaling import Scaling
 
-
 class TestScaling(unittest.TestCase):
     """Scaling unit test stubs"""
 
@@ -29,16 +28,25 @@ class TestScaling(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Scaling:
         """Test Scaling
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `Scaling`
         """
         model = Scaling()
         if include_optional:
             return Scaling(
                 min = 56,
-                max = 56
+                max = 56,
+                targets = [
+                    koyeb.models.deployment_scaling_target.DeploymentScalingTarget(
+                        average_cpu = koyeb.models.deployment_scaling_target_average_cpu.DeploymentScalingTargetAverageCPU(
+                            value = 56, ), 
+                        average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
+                            value = 56, ), 
+                        requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
+                            value = 56, ), )
+                    ]
             )
         else:
             return Scaling(
@@ -50,6 +58,5 @@ class TestScaling(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **deployment_group** | **str** |  | [optional] 
 **health_checks** | [**List[DeploymentHealthCheck]**](DeploymentHealthCheck.md) |  | [optional] 
 **skip_cache** | **bool** |  | [optional] 
+**use_kuma_v2** | **bool** |  | [optional] 
 **docker** | [**DockerSource**](DockerSource.md) |  | [optional] 
 **git** | [**GitSource**](GitSource.md) |  | [optional] 
 

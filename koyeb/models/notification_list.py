@@ -21,18 +21,15 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt
 from koyeb.models.notification import Notification
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class NotificationList(BaseModel):
     """
     NotificationList
-    """  # noqa: E501
-
+    """ # noqa: E501
     notifications: Optional[List[Notification]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -41,18 +38,13 @@ class NotificationList(BaseModel):
     is_seen: Optional[StrictBool] = None
     unread: Optional[StrictInt] = None
     unseen: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = [
-        "notifications",
-        "limit",
-        "offset",
-        "count",
-        "is_read",
-        "is_seen",
-        "unread",
-        "unseen",
-    ]
+    __properties: ClassVar[List[str]] = ["notifications", "limit", "offset", "count", "is_read", "is_seen", "unread", "unseen"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +72,8 @@ class NotificationList(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in notifications (list)
@@ -89,7 +82,7 @@ class NotificationList(BaseModel):
             for _item in self.notifications:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict["notifications"] = _items
+            _dict['notifications'] = _items
         return _dict
 
     @classmethod
@@ -101,20 +94,16 @@ class NotificationList(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "notifications": [
-                    Notification.from_dict(_item) for _item in obj.get("notifications")
-                ]
-                if obj.get("notifications") is not None
-                else None,
-                "limit": obj.get("limit"),
-                "offset": obj.get("offset"),
-                "count": obj.get("count"),
-                "is_read": obj.get("is_read"),
-                "is_seen": obj.get("is_seen"),
-                "unread": obj.get("unread"),
-                "unseen": obj.get("unseen"),
-            }
-        )
+        _obj = cls.model_validate({
+            "notifications": [Notification.from_dict(_item) for _item in obj.get("notifications")] if obj.get("notifications") is not None else None,
+            "limit": obj.get("limit"),
+            "offset": obj.get("offset"),
+            "count": obj.get("count"),
+            "is_read": obj.get("is_read"),
+            "is_seen": obj.get("is_seen"),
+            "unread": obj.get("unread"),
+            "unseen": obj.get("unseen")
+        })
         return _obj
+
+

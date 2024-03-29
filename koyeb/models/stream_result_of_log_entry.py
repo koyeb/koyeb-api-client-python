@@ -22,23 +22,24 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.google_rpc_status import GoogleRpcStatus
 from koyeb.models.log_entry import LogEntry
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class StreamResultOfLogEntry(BaseModel):
     """
     StreamResultOfLogEntry
-    """  # noqa: E501
-
+    """ # noqa: E501
     result: Optional[LogEntry] = None
     error: Optional[GoogleRpcStatus] = None
     __properties: ClassVar[List[str]] = ["result", "error"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,15 +67,16 @@ class StreamResultOfLogEntry(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of result
         if self.result:
-            _dict["result"] = self.result.to_dict()
+            _dict['result'] = self.result.to_dict()
         # override the default output from pydantic by calling `to_dict()` of error
         if self.error:
-            _dict["error"] = self.error.to_dict()
+            _dict['error'] = self.error.to_dict()
         return _dict
 
     @classmethod
@@ -86,14 +88,10 @@ class StreamResultOfLogEntry(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "result": LogEntry.from_dict(obj.get("result"))
-                if obj.get("result") is not None
-                else None,
-                "error": GoogleRpcStatus.from_dict(obj.get("error"))
-                if obj.get("error") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "result": LogEntry.from_dict(obj.get("result")) if obj.get("result") is not None else None,
+            "error": GoogleRpcStatus.from_dict(obj.get("error")) if obj.get("error") is not None else None
+        })
         return _obj
+
+

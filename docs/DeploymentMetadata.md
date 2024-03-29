@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **trigger** | [**TriggerDeploymentMetadata**](TriggerDeploymentMetadata.md) |  | [optional] 
 **database** | [**DatabaseDeploymentMetadata**](DatabaseDeploymentMetadata.md) |  | [optional] 
+**git** | [**GitDeploymentMetadata**](GitDeploymentMetadata.md) |  | [optional] 
 
 ## Example
 

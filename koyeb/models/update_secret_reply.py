@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.secret import Secret
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class UpdateSecretReply(BaseModel):
     """
     UpdateSecretReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     secret: Optional[Secret] = None
     __properties: ClassVar[List[str]] = ["secret"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class UpdateSecretReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of secret
         if self.secret:
-            _dict["secret"] = self.secret.to_dict()
+            _dict['secret'] = self.secret.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class UpdateSecretReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "secret": Secret.from_dict(obj.get("secret"))
-                if obj.get("secret") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "secret": Secret.from_dict(obj.get("secret")) if obj.get("secret") is not None else None
+        })
         return _obj
+
+

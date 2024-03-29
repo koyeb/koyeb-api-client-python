@@ -19,21 +19,18 @@ import json
 
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class RegionalDeploymentListItem(BaseModel):
     """
     RegionalDeploymentListItem
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
@@ -41,17 +38,14 @@ class RegionalDeploymentListItem(BaseModel):
     status: Optional[RegionalDeploymentStatus] = None
     messages: Optional[List[StrictStr]] = None
     definition: Optional[RegionalDeploymentDefinition] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "created_at",
-        "updated_at",
-        "region",
-        "status",
-        "messages",
-        "definition",
-    ]
+    use_kuma_v2: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["id", "created_at", "updated_at", "region", "status", "messages", "definition", "use_kuma_v2"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,12 +73,13 @@ class RegionalDeploymentListItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of definition
         if self.definition:
-            _dict["definition"] = self.definition.to_dict()
+            _dict['definition'] = self.definition.to_dict()
         return _dict
 
     @classmethod
@@ -96,19 +91,16 @@ class RegionalDeploymentListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
-                "region": obj.get("region"),
-                "status": obj.get("status"),
-                "messages": obj.get("messages"),
-                "definition": RegionalDeploymentDefinition.from_dict(
-                    obj.get("definition")
-                )
-                if obj.get("definition") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "region": obj.get("region"),
+            "status": obj.get("status"),
+            "messages": obj.get("messages"),
+            "definition": RegionalDeploymentDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "use_kuma_v2": obj.get("use_kuma_v2")
+        })
         return _obj
+
+

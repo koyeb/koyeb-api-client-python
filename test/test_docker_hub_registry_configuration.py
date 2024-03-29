@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.docker_hub_registry_configuration import (
-    DockerHubRegistryConfiguration,
-)
-
+from koyeb.models.docker_hub_registry_configuration import DockerHubRegistryConfiguration
 
 class TestDockerHubRegistryConfiguration(unittest.TestCase):
     """DockerHubRegistryConfiguration unit test stubs"""
@@ -31,9 +28,9 @@ class TestDockerHubRegistryConfiguration(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DockerHubRegistryConfiguration:
         """Test DockerHubRegistryConfiguration
-        include_option is a boolean, when False only required
-        params are included, when True both required and
-        optional params are included"""
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
         # uncomment below to create an instance of `DockerHubRegistryConfiguration`
         """
         model = DockerHubRegistryConfiguration()
@@ -52,6 +49,5 @@ class TestDockerHubRegistryConfiguration(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

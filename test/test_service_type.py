@@ -17,7 +17,6 @@ import datetime
 
 from koyeb.models.service_type import ServiceType
 
-
 class TestServiceType(unittest.TestCase):
     """ServiceType unit test stubs"""
 
@@ -31,6 +30,5 @@ class TestServiceType(unittest.TestCase):
         """Test ServiceType"""
         # inst = ServiceType()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -19,6 +19,7 @@ import re  # noqa: F401
 from enum import Enum
 
 
+
 try:
     from typing import Self
 except ImportError:
@@ -33,13 +34,15 @@ class UserFlags(str, Enum):
     """
     allowed enum values
     """
-    ADMIN = "ADMIN"
-    TEST = "TEST"
-    RESTRICTED = "RESTRICTED"
-    ACTIVE = "ACTIVE"
-    BETA = "BETA"
+    ADMIN = 'ADMIN'
+    TEST = 'TEST'
+    RESTRICTED = 'RESTRICTED'
+    ACTIVE = 'ACTIVE'
+    BETA = 'BETA'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of UserFlags from a JSON string"""
         return cls(json.loads(json_str))
+
+

@@ -21,24 +21,25 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from koyeb.models.region_usage import RegionUsage
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ServiceUsage(BaseModel):
     """
     ServiceUsage
-    """  # noqa: E501
-
+    """ # noqa: E501
     service_id: Optional[StrictStr] = None
     service_name: Optional[StrictStr] = None
     regions: Optional[Dict[str, RegionUsage]] = None
     __properties: ClassVar[List[str]] = ["service_id", "service_name", "regions"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +67,8 @@ class ServiceUsage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in regions (dict)
@@ -75,7 +77,7 @@ class ServiceUsage(BaseModel):
             for _key in self.regions:
                 if self.regions[_key]:
                     _field_dict[_key] = self.regions[_key].to_dict()
-            _dict["regions"] = _field_dict
+            _dict['regions'] = _field_dict
         return _dict
 
     @classmethod
@@ -87,16 +89,16 @@ class ServiceUsage(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "service_id": obj.get("service_id"),
-                "service_name": obj.get("service_name"),
-                "regions": dict(
-                    (_k, RegionUsage.from_dict(_v))
-                    for _k, _v in obj.get("regions").items()
-                )
-                if obj.get("regions") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "service_id": obj.get("service_id"),
+            "service_name": obj.get("service_name"),
+            "regions": dict(
+                (_k, RegionUsage.from_dict(_v))
+                for _k, _v in obj.get("regions").items()
+            )
+            if obj.get("regions") is not None
+            else None
+        })
         return _obj
+
+

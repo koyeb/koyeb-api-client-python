@@ -20,34 +20,28 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class UpdateUserRequestUserUpdateBody(BaseModel):
     """
     UpdateUserRequestUserUpdateBody
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
     current_password: Optional[StrictStr] = None
     password: Optional[StrictStr] = None
     newsletter_subscribed: Optional[StrictBool] = None
     name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "email",
-        "current_password",
-        "password",
-        "newsletter_subscribed",
-        "name",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "email", "current_password", "password", "newsletter_subscribed", "name"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +69,8 @@ class UpdateUserRequestUserUpdateBody(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,14 +84,14 @@ class UpdateUserRequestUserUpdateBody(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "email": obj.get("email"),
-                "current_password": obj.get("current_password"),
-                "password": obj.get("password"),
-                "newsletter_subscribed": obj.get("newsletter_subscribed"),
-                "name": obj.get("name"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "email": obj.get("email"),
+            "current_password": obj.get("current_password"),
+            "password": obj.get("password"),
+            "newsletter_subscribed": obj.get("newsletter_subscribed"),
+            "name": obj.get("name")
+        })
         return _obj
+
+

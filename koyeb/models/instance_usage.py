@@ -20,22 +20,23 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class InstanceUsage(BaseModel):
     """
     InstanceUsage
-    """  # noqa: E501
-
+    """ # noqa: E501
     duration_seconds: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["duration_seconds"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,7 +64,8 @@ class InstanceUsage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -77,5 +79,9 @@ class InstanceUsage(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"duration_seconds": obj.get("duration_seconds")})
+        _obj = cls.model_validate({
+            "duration_seconds": obj.get("duration_seconds")
+        })
         return _obj
+
+

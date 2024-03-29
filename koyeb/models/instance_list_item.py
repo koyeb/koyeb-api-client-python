@@ -22,18 +22,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from koyeb.models.instance_status import InstanceStatus
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class InstanceListItem(BaseModel):
     """
     InstanceListItem
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
@@ -46,27 +43,14 @@ class InstanceListItem(BaseModel):
     datacenter: Optional[StrictStr] = None
     status: Optional[InstanceStatus] = None
     messages: Optional[List[StrictStr]] = None
-    xyz_deployment_id: Optional[StrictStr] = Field(
-        default=None,
-        description="WARNING: Please don't use the following attribute. Koyeb doesn't guarantee backwards compatible breaking change and reserve the right to completely drop it without notice. USE AT YOUR OWN RISK.",
-    )
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "created_at",
-        "updated_at",
-        "organization_id",
-        "app_id",
-        "service_id",
-        "regional_deployment_id",
-        "allocation_id",
-        "region",
-        "datacenter",
-        "status",
-        "messages",
-        "xyz_deployment_id",
-    ]
+    xyz_deployment_id: Optional[StrictStr] = Field(default=None, description="WARNING: Please don't use the following attribute. Koyeb doesn't guarantee backwards compatible breaking change and reserve the right to completely drop it without notice. USE AT YOUR OWN RISK.")
+    __properties: ClassVar[List[str]] = ["id", "created_at", "updated_at", "organization_id", "app_id", "service_id", "regional_deployment_id", "allocation_id", "region", "datacenter", "status", "messages", "xyz_deployment_id"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -94,7 +78,8 @@ class InstanceListItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -108,21 +93,21 @@ class InstanceListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
-                "organization_id": obj.get("organization_id"),
-                "app_id": obj.get("app_id"),
-                "service_id": obj.get("service_id"),
-                "regional_deployment_id": obj.get("regional_deployment_id"),
-                "allocation_id": obj.get("allocation_id"),
-                "region": obj.get("region"),
-                "datacenter": obj.get("datacenter"),
-                "status": obj.get("status"),
-                "messages": obj.get("messages"),
-                "xyz_deployment_id": obj.get("xyz_deployment_id"),
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "organization_id": obj.get("organization_id"),
+            "app_id": obj.get("app_id"),
+            "service_id": obj.get("service_id"),
+            "regional_deployment_id": obj.get("regional_deployment_id"),
+            "allocation_id": obj.get("allocation_id"),
+            "region": obj.get("region"),
+            "datacenter": obj.get("datacenter"),
+            "status": obj.get("status"),
+            "messages": obj.get("messages"),
+            "xyz_deployment_id": obj.get("xyz_deployment_id")
+        })
         return _obj
+
+

@@ -15,10 +15,7 @@
 import unittest
 import datetime
 
-from koyeb.models.kgitproxy_github_installation_status import (
-    KgitproxyGithubInstallationStatus,
-)
-
+from koyeb.models.kgitproxy_github_installation_status import KgitproxyGithubInstallationStatus
 
 class TestKgitproxyGithubInstallationStatus(unittest.TestCase):
     """KgitproxyGithubInstallationStatus unit test stubs"""
@@ -33,6 +30,5 @@ class TestKgitproxyGithubInstallationStatus(unittest.TestCase):
         """Test KgitproxyGithubInstallationStatus"""
         # inst = KgitproxyGithubInstallationStatus()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

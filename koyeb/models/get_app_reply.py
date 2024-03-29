@@ -21,22 +21,23 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from koyeb.models.app import App
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GetAppReply(BaseModel):
     """
     GetAppReply
-    """  # noqa: E501
-
+    """ # noqa: E501
     app: Optional[App] = None
     __properties: ClassVar[List[str]] = ["app"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,12 +65,13 @@ class GetAppReply(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of app
         if self.app:
-            _dict["app"] = self.app.to_dict()
+            _dict['app'] = self.app.to_dict()
         return _dict
 
     @classmethod
@@ -81,11 +83,9 @@ class GetAppReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "app": App.from_dict(obj.get("app"))
-                if obj.get("app") is not None
-                else None
-            }
-        )
+        _obj = cls.model_validate({
+            "app": App.from_dict(obj.get("app")) if obj.get("app") is not None else None
+        })
         return _obj
+
+

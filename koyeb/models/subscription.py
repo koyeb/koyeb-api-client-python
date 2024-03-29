@@ -22,18 +22,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.subscription_payment_failure import SubscriptionPaymentFailure
 from koyeb.models.subscription_status import SubscriptionStatus
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Subscription(BaseModel):
     """
     Subscription
-    """  # noqa: E501
-
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
@@ -54,30 +51,13 @@ class Subscription(BaseModel):
     amount_paid: Optional[StrictStr] = None
     amount_remaining: Optional[StrictStr] = None
     payment_failure: Optional[SubscriptionPaymentFailure] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "created_at",
-        "updated_at",
-        "version",
-        "organization_id",
-        "stripe_subscription_id",
-        "status",
-        "messages",
-        "has_pending_update",
-        "stripe_pending_invoice_id",
-        "terminate_at",
-        "canceled_at",
-        "terminated_at",
-        "current_period_start",
-        "current_period_end",
-        "currency",
-        "amount_payable",
-        "amount_paid",
-        "amount_remaining",
-        "payment_failure",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "created_at", "updated_at", "version", "organization_id", "stripe_subscription_id", "status", "messages", "has_pending_update", "stripe_pending_invoice_id", "terminate_at", "canceled_at", "terminated_at", "current_period_start", "current_period_end", "currency", "amount_payable", "amount_paid", "amount_remaining", "payment_failure"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -105,12 +85,13 @@ class Subscription(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of payment_failure
         if self.payment_failure:
-            _dict["payment_failure"] = self.payment_failure.to_dict()
+            _dict['payment_failure'] = self.payment_failure.to_dict()
         return _dict
 
     @classmethod
@@ -122,32 +103,28 @@ class Subscription(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
-                "version": obj.get("version"),
-                "organization_id": obj.get("organization_id"),
-                "stripe_subscription_id": obj.get("stripe_subscription_id"),
-                "status": obj.get("status"),
-                "messages": obj.get("messages"),
-                "has_pending_update": obj.get("has_pending_update"),
-                "stripe_pending_invoice_id": obj.get("stripe_pending_invoice_id"),
-                "terminate_at": obj.get("terminate_at"),
-                "canceled_at": obj.get("canceled_at"),
-                "terminated_at": obj.get("terminated_at"),
-                "current_period_start": obj.get("current_period_start"),
-                "current_period_end": obj.get("current_period_end"),
-                "currency": obj.get("currency"),
-                "amount_payable": obj.get("amount_payable"),
-                "amount_paid": obj.get("amount_paid"),
-                "amount_remaining": obj.get("amount_remaining"),
-                "payment_failure": SubscriptionPaymentFailure.from_dict(
-                    obj.get("payment_failure")
-                )
-                if obj.get("payment_failure") is not None
-                else None,
-            }
-        )
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "version": obj.get("version"),
+            "organization_id": obj.get("organization_id"),
+            "stripe_subscription_id": obj.get("stripe_subscription_id"),
+            "status": obj.get("status"),
+            "messages": obj.get("messages"),
+            "has_pending_update": obj.get("has_pending_update"),
+            "stripe_pending_invoice_id": obj.get("stripe_pending_invoice_id"),
+            "terminate_at": obj.get("terminate_at"),
+            "canceled_at": obj.get("canceled_at"),
+            "terminated_at": obj.get("terminated_at"),
+            "current_period_start": obj.get("current_period_start"),
+            "current_period_end": obj.get("current_period_end"),
+            "currency": obj.get("currency"),
+            "amount_payable": obj.get("amount_payable"),
+            "amount_paid": obj.get("amount_paid"),
+            "amount_remaining": obj.get("amount_remaining"),
+            "payment_failure": SubscriptionPaymentFailure.from_dict(obj.get("payment_failure")) if obj.get("payment_failure") is not None else None
+        })
         return _obj
+
+

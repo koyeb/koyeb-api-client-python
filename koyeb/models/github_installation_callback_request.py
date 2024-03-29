@@ -20,24 +20,25 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
-
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class GithubInstallationCallbackRequest(BaseModel):
     """
     GithubInstallationCallbackRequest
-    """  # noqa: E501
-
+    """ # noqa: E501
     installation_id: Optional[StrictStr] = None
     setup_action: Optional[StrictStr] = None
     state: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["installation_id", "setup_action", "state"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +66,8 @@ class GithubInstallationCallbackRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -79,11 +81,11 @@ class GithubInstallationCallbackRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "installation_id": obj.get("installation_id"),
-                "setup_action": obj.get("setup_action"),
-                "state": obj.get("state"),
-            }
-        )
+        _obj = cls.model_validate({
+            "installation_id": obj.get("installation_id"),
+            "setup_action": obj.get("setup_action"),
+            "state": obj.get("state")
+        })
         return _obj
+
+
