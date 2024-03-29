@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **neon_postgres** | [**NeonPostgresDatabase**](NeonPostgresDatabase.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of DatabaseSource from a JSON string
 database_source_instance = DatabaseSource.from_json(json)
 # print the JSON string representation of the object
-print DatabaseSource.to_json()
+print(DatabaseSource.to_json())
 
 # convert the object into a dict
 database_source_dict = database_source_instance.to_dict()

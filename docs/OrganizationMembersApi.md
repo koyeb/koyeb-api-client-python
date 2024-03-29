@@ -16,9 +16,8 @@ List organization members
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_organization_members_reply import ListOrganizationMembersReply
 from koyeb.rest import ApiException
@@ -63,6 +62,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **str**| (Optional) The number of items to return | [optional] 
@@ -84,6 +84,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -104,9 +105,8 @@ Remove an organization member
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.remove_organization_member_reply import RemoveOrganizationMemberReply
 from koyeb.rest import ApiException
@@ -148,6 +148,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -166,6 +167,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

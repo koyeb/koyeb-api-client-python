@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dockerfile** | **str** |  | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of DockerBuilder from a JSON string
 docker_builder_instance = DockerBuilder.from_json(json)
 # print the JSON string representation of the object
-print DockerBuilder.to_json()
+print(DockerBuilder.to_json())
 
 # convert the object into a dict
 docker_builder_dict = docker_builder_instance.to_dict()

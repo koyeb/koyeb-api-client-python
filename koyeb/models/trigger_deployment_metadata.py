@@ -17,16 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
 from koyeb.models.trigger_deployment_metadata_actor_type import TriggerDeploymentMetadataActorType
 from koyeb.models.trigger_deployment_metadata_trigger_type import TriggerDeploymentMetadataTriggerType
 from koyeb.models.trigger_git_deployment_metadata import TriggerGitDeploymentMetadata
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TriggerDeploymentMetadata(BaseModel):
     """
@@ -37,10 +34,11 @@ class TriggerDeploymentMetadata(BaseModel):
     git: Optional[TriggerGitDeploymentMetadata] = None
     __properties: ClassVar[List[str]] = ["type", "actor", "git"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +51,7 @@ class TriggerDeploymentMetadata(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TriggerDeploymentMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +65,12 @@ class TriggerDeploymentMetadata(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of git
@@ -79,7 +79,7 @@ class TriggerDeploymentMetadata(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TriggerDeploymentMetadata from a dict"""
         if obj is None:
             return None
@@ -90,7 +90,7 @@ class TriggerDeploymentMetadata(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "actor": obj.get("actor"),
-            "git": TriggerGitDeploymentMetadata.from_dict(obj.get("git")) if obj.get("git") is not None else None
+            "git": TriggerGitDeploymentMetadata.from_dict(obj["git"]) if obj.get("git") is not None else None
         })
         return _obj
 

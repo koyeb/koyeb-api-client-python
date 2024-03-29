@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **regional_deployments** | [**List[RegionalDeploymentListItem]**](RegionalDeploymentListItem.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListRegionalDeploymentsReply from a JSON string
 list_regional_deployments_reply_instance = ListRegionalDeploymentsReply.from_json(json)
 # print the JSON string representation of the object
-print ListRegionalDeploymentsReply.to_json()
+print(ListRegionalDeploymentsReply.to_json())
 
 # convert the object into a dict
 list_regional_deployments_reply_dict = list_regional_deployments_reply_instance.to_dict()

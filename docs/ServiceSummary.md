@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ServiceSummary from a JSON string
 service_summary_instance = ServiceSummary.from_json(json)
 # print the JSON string representation of the object
-print ServiceSummary.to_json()
+print(ServiceSummary.to_json())
 
 # convert the object into a dict
 service_summary_dict = service_summary_instance.to_dict()

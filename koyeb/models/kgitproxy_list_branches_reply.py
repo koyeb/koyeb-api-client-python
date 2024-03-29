@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt
-from pydantic import Field
 from koyeb.models.kgitproxy_branch import KgitproxyBranch
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class KgitproxyListBranchesReply(BaseModel):
     """
@@ -37,10 +33,11 @@ class KgitproxyListBranchesReply(BaseModel):
     count: Optional[StrictInt] = Field(default=None, description="The total number of items.")
     __properties: ClassVar[List[str]] = ["branches", "limit", "offset", "count"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +50,7 @@ class KgitproxyListBranchesReply(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of KgitproxyListBranchesReply from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +64,12 @@ class KgitproxyListBranchesReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in branches (list)
@@ -83,7 +82,7 @@ class KgitproxyListBranchesReply(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of KgitproxyListBranchesReply from a dict"""
         if obj is None:
             return None
@@ -92,7 +91,7 @@ class KgitproxyListBranchesReply(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "branches": [KgitproxyBranch.from_dict(_item) for _item in obj.get("branches")] if obj.get("branches") is not None else None,
+            "branches": [KgitproxyBranch.from_dict(_item) for _item in obj["branches"]] if obj.get("branches") is not None else None,
             "limit": obj.get("limit"),
             "offset": obj.get("offset"),
             "count": obj.get("count")

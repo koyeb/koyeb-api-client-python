@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of KsearchUser from a JSON string
 ksearch_user_instance = KsearchUser.from_json(json)
 # print the JSON string representation of the object
-print KsearchUser.to_json()
+print(KsearchUser.to_json())
 
 # convert the object into a dict
 ksearch_user_dict = ksearch_user_instance.to_dict()

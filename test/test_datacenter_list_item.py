@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.datacenter_list_item import DatacenterListItem
 

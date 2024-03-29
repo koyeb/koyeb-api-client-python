@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of AppUsage from a JSON string
 app_usage_instance = AppUsage.from_json(json)
 # print the JSON string representation of the object
-print AppUsage.to_json()
+print(AppUsage.to_json())
 
 # convert the object into a dict
 app_usage_dict = app_usage_instance.to_dict()

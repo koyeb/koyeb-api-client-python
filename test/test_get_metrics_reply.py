@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.get_metrics_reply import GetMetricsReply
 

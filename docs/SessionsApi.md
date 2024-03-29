@@ -18,9 +18,8 @@ Login user
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.login_reply import LoginReply
 from koyeb.models.login_request import LoginRequest
@@ -64,6 +63,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**LoginRequest**](LoginRequest.md)|  | 
@@ -83,6 +83,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -103,9 +104,8 @@ Logout user
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.rest import ApiException
 from pprint import pprint
@@ -144,6 +144,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -160,6 +161,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -182,9 +184,8 @@ Creates a new session without an organization for current user. NOTE: If you wan
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.login_reply import LoginReply
 from koyeb.rest import ApiException
@@ -224,6 +225,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -240,6 +242,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -260,9 +263,8 @@ Refresh token
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.login_reply import LoginReply
 from koyeb.rest import ApiException
@@ -302,6 +304,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -318,6 +321,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

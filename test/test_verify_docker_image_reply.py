@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.verify_docker_image_reply import VerifyDockerImageReply
 

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.git_lab_registry_configuration import GitLabRegistryConfiguration
 

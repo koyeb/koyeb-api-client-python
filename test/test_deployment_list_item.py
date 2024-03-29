@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.deployment_list_item import DeploymentListItem
 

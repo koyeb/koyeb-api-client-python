@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **credentials** | [**List[Credential]**](Credential.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListCredentialsReply from a JSON string
 list_credentials_reply_instance = ListCredentialsReply.from_json(json)
 # print the JSON string representation of the object
-print ListCredentialsReply.to_json()
+print(ListCredentialsReply.to_json())
 
 # convert the object into a dict
 list_credentials_reply_dict = list_credentials_reply_instance.to_dict()

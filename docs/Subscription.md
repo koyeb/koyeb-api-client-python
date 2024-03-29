@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -35,7 +36,7 @@ json = "{}"
 # create an instance of Subscription from a JSON string
 subscription_instance = Subscription.from_json(json)
 # print the JSON string representation of the object
-print Subscription.to_json()
+print(Subscription.to_json())
 
 # convert the object into a dict
 subscription_dict = subscription_instance.to_dict()

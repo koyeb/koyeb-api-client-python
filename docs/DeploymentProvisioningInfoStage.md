@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of DeploymentProvisioningInfoStage from a JSON string
 deployment_provisioning_info_stage_instance = DeploymentProvisioningInfoStage.from_json(json)
 # print the JSON string representation of the object
-print DeploymentProvisioningInfoStage.to_json()
+print(DeploymentProvisioningInfoStage.to_json())
 
 # convert the object into a dict
 deployment_provisioning_info_stage_dict = deployment_provisioning_info_stage_instance.to_dict()

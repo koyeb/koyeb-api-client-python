@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.docker_hub_registry_configuration import DockerHubRegistryConfiguration
 

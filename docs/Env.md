@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of Env from a JSON string
 env_instance = Env.from_json(json)
 # print the JSON string representation of the object
-print Env.to_json()
+print(Env.to_json())
 
 # convert the object into a dict
 env_dict = env_instance.to_dict()

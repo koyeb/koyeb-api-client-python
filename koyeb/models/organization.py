@@ -18,16 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.organization_deactivation_reason import OrganizationDeactivationReason
 from koyeb.models.organization_detailed_status import OrganizationDetailedStatus
 from koyeb.models.organization_status import OrganizationStatus
 from koyeb.models.plan import Plan
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Organization(BaseModel):
     """
@@ -51,7 +49,7 @@ class Organization(BaseModel):
     subscription_id: Optional[StrictStr] = None
     current_subscription_id: Optional[StrictStr] = None
     latest_subscription_id: Optional[StrictStr] = None
-    signup_qualification: Optional[Union[str, Any]] = None
+    signup_qualification: Optional[Dict[str, Any]] = None
     status: Optional[OrganizationStatus] = None
     status_message: Optional[OrganizationDetailedStatus] = None
     deactivation_reason: Optional[OrganizationDeactivationReason] = None
@@ -60,10 +58,11 @@ class Organization(BaseModel):
     reprocess_after: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["id", "address1", "address2", "city", "postal_code", "state", "country", "company", "vat_number", "billing_name", "billing_email", "name", "plan", "plan_updated_at", "has_payment_method", "subscription_id", "current_subscription_id", "latest_subscription_id", "signup_qualification", "status", "status_message", "deactivation_reason", "verified", "qualifies_for_hobby23", "reprocess_after"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -76,7 +75,7 @@ class Organization(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Organization from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -90,16 +89,18 @@ class Organization(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Organization from a dict"""
         if obj is None:
             return None

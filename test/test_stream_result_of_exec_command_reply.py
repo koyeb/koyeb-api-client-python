@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.stream_result_of_exec_command_reply import StreamResultOfExecCommandReply
 

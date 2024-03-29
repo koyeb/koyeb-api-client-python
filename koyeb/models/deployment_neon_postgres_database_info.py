@@ -18,13 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
 from koyeb.models.deployment_neon_postgres_database_info_role import DeploymentNeonPostgresDatabaseInfoRole
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class DeploymentNeonPostgresDatabaseInfo(BaseModel):
     """
@@ -46,10 +44,11 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
     roles: Optional[List[DeploymentNeonPostgresDatabaseInfoRole]] = None
     __properties: ClassVar[List[str]] = ["active_time_seconds", "compute_time_seconds", "written_data_bytes", "data_transfer_bytes", "data_storage_bytes_hour", "server_host", "server_port", "endpoint_state", "endpoint_last_active", "default_branch_id", "default_branch_name", "default_branch_state", "default_branch_logical_size", "roles"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -62,7 +61,7 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DeploymentNeonPostgresDatabaseInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -76,10 +75,12 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in roles (list)
@@ -92,7 +93,7 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DeploymentNeonPostgresDatabaseInfo from a dict"""
         if obj is None:
             return None
@@ -114,7 +115,7 @@ class DeploymentNeonPostgresDatabaseInfo(BaseModel):
             "default_branch_name": obj.get("default_branch_name"),
             "default_branch_state": obj.get("default_branch_state"),
             "default_branch_logical_size": obj.get("default_branch_logical_size"),
-            "roles": [DeploymentNeonPostgresDatabaseInfoRole.from_dict(_item) for _item in obj.get("roles")] if obj.get("roles") is not None else None
+            "roles": [DeploymentNeonPostgresDatabaseInfoRole.from_dict(_item) for _item in obj["roles"]] if obj.get("roles") is not None else None
         })
         return _obj
 

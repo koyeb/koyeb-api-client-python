@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.delete_user_reply import DeleteUserReply
 

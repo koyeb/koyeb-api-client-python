@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of CreateCredential from a JSON string
 create_credential_instance = CreateCredential.from_json(json)
 # print the JSON string representation of the object
-print CreateCredential.to_json()
+print(CreateCredential.to_json())
 
 # convert the object into a dict
 create_credential_dict = create_credential_instance.to_dict()

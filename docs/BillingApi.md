@@ -19,9 +19,8 @@ WARNING: Please don't use the following method. Koyeb doesn't guarantee backward
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.has_unpaid_invoices_reply import HasUnpaidInvoicesReply
 from koyeb.rest import ApiException
@@ -61,6 +60,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -77,6 +77,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -97,9 +98,8 @@ This endpoint does not need any parameter.
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.manage_reply import ManageReply
 from koyeb.rest import ApiException
@@ -138,6 +138,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -154,6 +155,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -176,9 +178,8 @@ WARNING: Please don't use the following method. Koyeb doesn't guarantee backward
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.next_invoice_reply import NextInvoiceReply
 from koyeb.rest import ApiException
@@ -218,6 +219,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -234,6 +236,7 @@ This endpoint does not need any parameter.
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

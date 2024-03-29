@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of LoginRequest from a JSON string
 login_request_instance = LoginRequest.from_json(json)
 # print the JSON string representation of the object
-print LoginRequest.to_json()
+print(LoginRequest.to_json())
 
 # convert the object into a dict
 login_request_dict = login_request_instance.to_dict()

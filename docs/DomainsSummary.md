@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DomainsSummary from a JSON string
 domains_summary_instance = DomainsSummary.from_json(json)
 # print the JSON string representation of the object
-print DomainsSummary.to_json()
+print(DomainsSummary.to_json())
 
 # convert the object into a dict
 domains_summary_dict = domains_summary_instance.to_dict()

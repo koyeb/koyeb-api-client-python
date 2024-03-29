@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **has_unpaid_invoices** | **bool** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of HasUnpaidInvoicesReply from a JSON string
 has_unpaid_invoices_reply_instance = HasUnpaidInvoicesReply.from_json(json)
 # print the JSON string representation of the object
-print HasUnpaidInvoicesReply.to_json()
+print(HasUnpaidInvoicesReply.to_json())
 
 # convert the object into a dict
 has_unpaid_invoices_reply_dict = has_unpaid_invoices_reply_instance.to_dict()

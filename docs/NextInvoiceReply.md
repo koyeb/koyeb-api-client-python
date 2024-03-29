@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **stripe_invoice** | **object** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of NextInvoiceReply from a JSON string
 next_invoice_reply_instance = NextInvoiceReply.from_json(json)
 # print the JSON string representation of the object
-print NextInvoiceReply.to_json()
+print(NextInvoiceReply.to_json())
 
 # convert the object into a dict
 next_invoice_reply_dict = next_invoice_reply_instance.to_dict()

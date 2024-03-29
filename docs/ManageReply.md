@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of ManageReply from a JSON string
 manage_reply_instance = ManageReply.from_json(json)
 # print the JSON string representation of the object
-print ManageReply.to_json()
+print(ManageReply.to_json())
 
 # convert the object into a dict
 manage_reply_dict = manage_reply_instance.to_dict()

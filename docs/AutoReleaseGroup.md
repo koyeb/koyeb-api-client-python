@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of AutoReleaseGroup from a JSON string
 auto_release_group_instance = AutoReleaseGroup.from_json(json)
 # print the JSON string representation of the object
-print AutoReleaseGroup.to_json()
+print(AutoReleaseGroup.to_json())
 
 # convert the object into a dict
 auto_release_group_dict = auto_release_group_instance.to_dict()

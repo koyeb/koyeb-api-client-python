@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of AppsSummary from a JSON string
 apps_summary_instance = AppsSummary.from_json(json)
 # print the JSON string representation of the object
-print AppsSummary.to_json()
+print(AppsSummary.to_json())
 
 # convert the object into a dict
 apps_summary_dict = apps_summary_instance.to_dict()

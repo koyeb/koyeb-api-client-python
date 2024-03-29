@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | [**TriggerGitDeploymentMetadataProvider**](TriggerGitDeploymentMetadataProvider.md) |  | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of TriggerGitDeploymentMetadata from a JSON string
 trigger_git_deployment_metadata_instance = TriggerGitDeploymentMetadata.from_json(json)
 # print the JSON string representation of the object
-print TriggerGitDeploymentMetadata.to_json()
+print(TriggerGitDeploymentMetadata.to_json())
 
 # convert the object into a dict
 trigger_git_deployment_metadata_dict = trigger_git_deployment_metadata_instance.to_dict()

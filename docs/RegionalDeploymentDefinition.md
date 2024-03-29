@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -29,7 +30,7 @@ json = "{}"
 # create an instance of RegionalDeploymentDefinition from a JSON string
 regional_deployment_definition_instance = RegionalDeploymentDefinition.from_json(json)
 # print the JSON string representation of the object
-print RegionalDeploymentDefinition.to_json()
+print(RegionalDeploymentDefinition.to_json())
 
 # convert the object into a dict
 regional_deployment_definition_dict = regional_deployment_definition_instance.to_dict()

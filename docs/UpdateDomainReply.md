@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | [**Domain**](Domain.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of UpdateDomainReply from a JSON string
 update_domain_reply_instance = UpdateDomainReply.from_json(json)
 # print the JSON string representation of the object
-print UpdateDomainReply.to_json()
+print(UpdateDomainReply.to_json())
 
 # convert the object into a dict
 update_domain_reply_dict = update_domain_reply_instance.to_dict()

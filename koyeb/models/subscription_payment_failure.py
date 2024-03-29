@@ -18,13 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.subscription_payment_failure_stripe_sdk import SubscriptionPaymentFailureStripeSDK
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SubscriptionPaymentFailure(BaseModel):
     """
@@ -42,10 +40,11 @@ class SubscriptionPaymentFailure(BaseModel):
     stripe_sdk: Optional[SubscriptionPaymentFailureStripeSDK] = None
     __properties: ClassVar[List[str]] = ["failed_at", "next_attempt", "attempt_count", "error_code", "error_reason", "error_type", "error_message", "payment_method_required", "redirect_url", "stripe_sdk"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +57,7 @@ class SubscriptionPaymentFailure(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SubscriptionPaymentFailure from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,10 +71,12 @@ class SubscriptionPaymentFailure(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of stripe_sdk
@@ -84,7 +85,7 @@ class SubscriptionPaymentFailure(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SubscriptionPaymentFailure from a dict"""
         if obj is None:
             return None
@@ -102,7 +103,7 @@ class SubscriptionPaymentFailure(BaseModel):
             "error_message": obj.get("error_message"),
             "payment_method_required": obj.get("payment_method_required"),
             "redirect_url": obj.get("redirect_url"),
-            "stripe_sdk": SubscriptionPaymentFailureStripeSDK.from_dict(obj.get("stripe_sdk")) if obj.get("stripe_sdk") is not None else None
+            "stripe_sdk": SubscriptionPaymentFailureStripeSDK.from_dict(obj["stripe_sdk"]) if obj.get("stripe_sdk") is not None else None
         })
         return _obj
 

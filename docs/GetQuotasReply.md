@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **quotas** | [**Quotas**](Quotas.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetQuotasReply from a JSON string
 get_quotas_reply_instance = GetQuotasReply.from_json(json)
 # print the JSON string representation of the object
-print GetQuotasReply.to_json()
+print(GetQuotasReply.to_json())
 
 # convert the object into a dict
 get_quotas_reply_dict = get_quotas_reply_instance.to_dict()

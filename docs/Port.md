@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **port** | **int** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of Port from a JSON string
 port_instance = Port.from_json(json)
 # print the JSON string representation of the object
-print Port.to_json()
+print(Port.to_json())
 
 # convert the object into a dict
 port_dict = port_instance.to_dict()

@@ -19,9 +19,8 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.create_organization_invitation_reply import CreateOrganizationInvitationReply
 from koyeb.models.create_organization_invitation_request import CreateOrganizationInvitationRequest
@@ -63,6 +62,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateOrganizationInvitationRequest**](CreateOrganizationInvitationRequest.md)|  | 
@@ -81,6 +81,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -101,9 +102,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.rest import ApiException
 from pprint import pprint
@@ -143,6 +143,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the organization invitation to delete | 
@@ -161,6 +162,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -181,9 +183,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.get_organization_invitation_reply import GetOrganizationInvitationReply
 from koyeb.rest import ApiException
@@ -224,6 +225,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the invitation to get | 
@@ -242,6 +244,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -262,9 +265,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_organization_invitations_reply import ListOrganizationInvitationsReply
 from koyeb.rest import ApiException
@@ -308,6 +310,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **str**| (Optional) The number of items to return | [optional] 
@@ -329,6 +332,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -349,9 +353,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.resend_organization_invitation_reply import ResendOrganizationInvitationReply
 from koyeb.rest import ApiException
@@ -393,6 +396,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the organization invitation to resend | 
@@ -412,6 +416,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

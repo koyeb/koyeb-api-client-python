@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.redeploy_request_info import RedeployRequestInfo
 

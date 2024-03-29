@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **signup_qualification** | **object** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of UpsertSignupQualificationRequest from a JSON string
 upsert_signup_qualification_request_instance = UpsertSignupQualificationRequest.from_json(json)
 # print the JSON string representation of the object
-print UpsertSignupQualificationRequest.to_json()
+print(UpsertSignupQualificationRequest.to_json())
 
 # convert the object into a dict
 upsert_signup_qualification_request_dict = upsert_signup_qualification_request_instance.to_dict()

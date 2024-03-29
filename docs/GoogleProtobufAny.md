@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GoogleProtobufAny from a JSON string
 google_protobuf_any_instance = GoogleProtobufAny.from_json(json)
 # print the JSON string representation of the object
-print GoogleProtobufAny.to_json()
+print(GoogleProtobufAny.to_json())
 
 # convert the object into a dict
 google_protobuf_any_dict = google_protobuf_any_instance.to_dict()

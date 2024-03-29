@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of PrivateRegistryConfiguration from a JSON string
 private_registry_configuration_instance = PrivateRegistryConfiguration.from_json(json)
 # print the JSON string representation of the object
-print PrivateRegistryConfiguration.to_json()
+print(PrivateRegistryConfiguration.to_json())
 
 # convert the object into a dict
 private_registry_configuration_dict = private_registry_configuration_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_secret_key** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of SubscriptionPaymentFailureStripeSDK from a JSON string
 subscription_payment_failure_stripe_sdk_instance = SubscriptionPaymentFailureStripeSDK.from_json(json)
 # print the JSON string representation of the object
-print SubscriptionPaymentFailureStripeSDK.to_json()
+print(SubscriptionPaymentFailureStripeSDK.to_json())
 
 # convert the object into a dict
 subscription_payment_failure_stripe_sdk_dict = subscription_payment_failure_stripe_sdk_instance.to_dict()

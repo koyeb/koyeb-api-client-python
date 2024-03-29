@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.get_o_auth_options_reply import GetOAuthOptionsReply
 

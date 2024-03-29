@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.discourse_auth_reply import DiscourseAuthReply
 

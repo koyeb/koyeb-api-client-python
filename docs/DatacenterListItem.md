@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of DatacenterListItem from a JSON string
 datacenter_list_item_instance = DatacenterListItem.from_json(json)
 # print the JSON string representation of the object
-print DatacenterListItem.to_json()
+print(DatacenterListItem.to_json())
 
 # convert the object into a dict
 datacenter_list_item_dict = datacenter_list_item_instance.to_dict()

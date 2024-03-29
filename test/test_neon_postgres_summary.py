@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.neon_postgres_summary import NeonPostgresSummary
 

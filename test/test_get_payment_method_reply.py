@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.get_payment_method_reply import GetPaymentMethodReply
 

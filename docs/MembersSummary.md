@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of MembersSummary from a JSON string
 members_summary_instance = MembersSummary.from_json(json)
 # print the JSON string representation of the object
-print MembersSummary.to_json()
+print(MembersSummary.to_json())
 
 # convert the object into a dict
 members_summary_dict = members_summary_instance.to_dict()

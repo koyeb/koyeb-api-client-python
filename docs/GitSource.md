@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **repository** | **str** | A url to a git repository (contains the provider as well) .e.g: github.com/koyeb/test. | [optional] 
@@ -25,7 +26,7 @@ json = "{}"
 # create an instance of GitSource from a JSON string
 git_source_instance = GitSource.from_json(json)
 # print the JSON string representation of the object
-print GitSource.to_json()
+print(GitSource.to_json())
 
 # convert the object into a dict
 git_source_dict = git_source_instance.to_dict()

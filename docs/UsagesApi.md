@@ -16,9 +16,8 @@ Get organization usage
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.get_organization_usage_reply import GetOrganizationUsageReply
 from koyeb.rest import ApiException
@@ -61,6 +60,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **starting_time** | **datetime**| The starting time of the period to get data from | [optional] 
@@ -80,6 +80,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -95,9 +96,8 @@ Get organization usage details
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.get_organization_usage_details_reply import GetOrganizationUsageDetailsReply
 from koyeb.rest import ApiException
@@ -144,6 +144,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **starting_time** | **datetime**| The starting time of the period to get data from | [optional] 
@@ -167,6 +168,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

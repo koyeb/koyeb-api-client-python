@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **summary** | [**OrganizationSummary**](OrganizationSummary.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetOrganizationSummaryReply from a JSON string
 get_organization_summary_reply_instance = GetOrganizationSummaryReply.from_json(json)
 # print the JSON string representation of the object
-print GetOrganizationSummaryReply.to_json()
+print(GetOrganizationSummaryReply.to_json())
 
 # convert the object into a dict
 get_organization_summary_reply_dict = get_organization_summary_reply_instance.to_dict()

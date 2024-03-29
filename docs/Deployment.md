@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -36,7 +37,7 @@ json = "{}"
 # create an instance of Deployment from a JSON string
 deployment_instance = Deployment.from_json(json)
 # print the JSON string representation of the object
-print Deployment.to_json()
+print(Deployment.to_json())
 
 # convert the object into a dict
 deployment_dict = deployment_instance.to_dict()

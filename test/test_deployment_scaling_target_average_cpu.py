@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.deployment_scaling_target_average_cpu import DeploymentScalingTargetAverageCPU
 

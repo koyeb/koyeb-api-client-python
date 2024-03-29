@@ -15,9 +15,8 @@ Tails logs
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.stream_result_of_log_entry import StreamResultOfLogEntry
 from koyeb.rest import ApiException
@@ -67,6 +66,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**|  | [optional] 
@@ -93,6 +93,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response.(streaming responses) |  -  |

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -28,7 +29,7 @@ json = "{}"
 # create an instance of Domain from a JSON string
 domain_instance = Domain.from_json(json)
 # print the JSON string representation of the object
-print Domain.to_json()
+print(Domain.to_json())
 
 # convert the object into a dict
 domain_dict = domain_instance.to_dict()

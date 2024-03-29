@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **plan** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of ReviewOrganizationCapacityRequest from a JSON string
 review_organization_capacity_request_instance = ReviewOrganizationCapacityRequest.from_json(json)
 # print the JSON string representation of the object
-print ReviewOrganizationCapacityRequest.to_json()
+print(ReviewOrganizationCapacityRequest.to_json())
 
 # convert the object into a dict
 review_organization_capacity_request_dict = review_organization_capacity_request_instance.to_dict()

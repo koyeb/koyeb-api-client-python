@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.exec_command_request_terminal_size import ExecCommandRequestTerminalSize
 

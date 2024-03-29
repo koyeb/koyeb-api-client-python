@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organization** | [**Organization**](Organization.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of ReactivateOrganizationReply from a JSON string
 reactivate_organization_reply_instance = ReactivateOrganizationReply.from_json(json)
 # print the JSON string representation of the object
-print ReactivateOrganizationReply.to_json()
+print(ReactivateOrganizationReply.to_json())
 
 # convert the object into a dict
 reactivate_organization_reply_dict = reactivate_organization_reply_instance.to_dict()

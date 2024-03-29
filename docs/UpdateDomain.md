@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of UpdateDomain from a JSON string
 update_domain_instance = UpdateDomain.from_json(json)
 # print the JSON string representation of the object
-print UpdateDomain.to_json()
+print(UpdateDomain.to_json())
 
 # convert the object into a dict
 update_domain_dict = update_domain_instance.to_dict()

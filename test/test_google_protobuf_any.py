@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.google_protobuf_any import GoogleProtobufAny
 

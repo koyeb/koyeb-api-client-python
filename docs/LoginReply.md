@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **token** | [**Token**](Token.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of LoginReply from a JSON string
 login_reply_instance = LoginReply.from_json(json)
 # print the JSON string representation of the object
-print LoginReply.to_json()
+print(LoginReply.to_json())
 
 # convert the object into a dict
 login_reply_dict = login_reply_instance.to_dict()

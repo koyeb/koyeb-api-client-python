@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.update_password_request import UpdatePasswordRequest
 

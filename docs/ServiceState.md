@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **desired_deployment** | [**DesiredDeployment**](DesiredDeployment.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ServiceState from a JSON string
 service_state_instance = ServiceState.from_json(json)
 # print the JSON string representation of the object
-print ServiceState.to_json()
+print(ServiceState.to_json())
 
 # convert the object into a dict
 service_state_dict = service_state_instance.to_dict()

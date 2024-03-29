@@ -20,9 +20,8 @@ This endpoint opens a websocket. Once open, all frames going through the websock
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.stream_result_of_exec_command_reply import StreamResultOfExecCommandReply
 from koyeb.rest import ApiException
@@ -71,6 +70,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the resource to exec on. | [optional] 
@@ -96,6 +96,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response.(streaming responses) |  -  |
@@ -116,9 +117,8 @@ Get Instance
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.get_instance_reply import GetInstanceReply
 from koyeb.rest import ApiException
@@ -160,6 +160,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the instance | 
@@ -178,6 +179,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -198,9 +200,8 @@ List Instance events
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_instance_events_reply import ListInstanceEventsReply
 from koyeb.rest import ApiException
@@ -246,6 +247,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_ids** | [**List[str]**](str.md)| (Optional) Filter on list of instance id | [optional] 
@@ -268,6 +270,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
@@ -288,9 +291,8 @@ List Instances
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.list_instances_reply import ListInstancesReply
 from koyeb.rest import ApiException
@@ -342,6 +344,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_id** | **str**| (Optional) Filter on application id | [optional] 
@@ -370,6 +373,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

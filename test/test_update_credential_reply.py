@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.update_credential_reply import UpdateCredentialReply
 

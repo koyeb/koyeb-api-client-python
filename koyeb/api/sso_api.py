@@ -11,25 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
-import io
 import warnings
-
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Dict, List, Optional, Tuple, Union, Any
-
-try:
-    from typing import Annotated
-except ImportError:
-    from typing_extensions import Annotated
+from typing import Any, Dict, List, Optional, Tuple, Union
+from typing_extensions import Annotated
 
 from typing import Any, Dict
-
 from koyeb.models.canny_auth_reply import CannyAuthReply
 from koyeb.models.discourse_auth_reply import DiscourseAuthReply
 from koyeb.models.discourse_auth_request import DiscourseAuthRequest
 
-from koyeb.api_client import ApiClient
+from koyeb.api_client import ApiClient, RequestSerialized
 from koyeb.api_response import ApiResponse
 from koyeb.rest import RESTResponseType
 
@@ -106,8 +98,6 @@ class SsoApi:
             '403': "Error",
             '404': "Error",
             '500': "Error",
-            
-            
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -179,8 +169,6 @@ class SsoApi:
             '403': "Error",
             '404': "Error",
             '500': "Error",
-            
-            
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -252,8 +240,6 @@ class SsoApi:
             '403': "Error",
             '404': "Error",
             '500': "Error",
-            
-            
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -269,19 +255,18 @@ class SsoApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -383,8 +368,6 @@ class SsoApi:
             '403': "Error",
             '404': "Error",
             '500': "Error",
-            
-            
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -456,8 +439,6 @@ class SsoApi:
             '403': "Error",
             '404': "Error",
             '500': "Error",
-            
-            
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -529,8 +510,6 @@ class SsoApi:
             '403': "Error",
             '404': "Error",
             '500': "Error",
-            
-            
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -546,19 +525,18 @@ class SsoApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

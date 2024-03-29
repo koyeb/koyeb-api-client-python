@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **secrets** | [**List[Secret]**](Secret.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListSecretsReply from a JSON string
 list_secrets_reply_instance = ListSecretsReply.from_json(json)
 # print the JSON string representation of the object
-print ListSecretsReply.to_json()
+print(ListSecretsReply.to_json())
 
 # convert the object into a dict
 list_secrets_reply_dict = list_secrets_reply_instance.to_dict()

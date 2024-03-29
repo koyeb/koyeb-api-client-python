@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_methods** | [**List[PaymentMethod]**](PaymentMethod.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ListPaymentMethodsReply from a JSON string
 list_payment_methods_reply_instance = ListPaymentMethodsReply.from_json(json)
 # print the JSON string representation of the object
-print ListPaymentMethodsReply.to_json()
+print(ListPaymentMethodsReply.to_json())
 
 # convert the object into a dict
 list_payment_methods_reply_dict = list_payment_methods_reply_instance.to_dict()

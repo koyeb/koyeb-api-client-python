@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organization_id** | **str** |  | [optional] 
@@ -28,7 +29,7 @@ json = "{}"
 # create an instance of UsageDetails from a JSON string
 usage_details_instance = UsageDetails.from_json(json)
 # print the JSON string representation of the object
-print UsageDetails.to_json()
+print(UsageDetails.to_json())
 
 # convert the object into a dict
 usage_details_dict = usage_details_instance.to_dict()

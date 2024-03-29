@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.update_user_request_user_update_body import UpdateUserRequestUserUpdateBody
 

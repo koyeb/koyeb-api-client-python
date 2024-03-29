@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pg_version** | **int** |  | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of NeonPostgresDatabase from a JSON string
 neon_postgres_database_instance = NeonPostgresDatabase.from_json(json)
 # print the JSON string representation of the object
-print NeonPostgresDatabase.to_json()
+print(NeonPostgresDatabase.to_json())
 
 # convert the object into a dict
 neon_postgres_database_dict = neon_postgres_database_instance.to_dict()

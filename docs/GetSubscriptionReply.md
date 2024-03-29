@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **subscription** | [**Subscription**](Subscription.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetSubscriptionReply from a JSON string
 get_subscription_reply_instance = GetSubscriptionReply.from_json(json)
 # print the JSON string representation of the object
-print GetSubscriptionReply.to_json()
+print(GetSubscriptionReply.to_json())
 
 # convert the object into a dict
 get_subscription_reply_dict = get_subscription_reply_instance.to_dict()

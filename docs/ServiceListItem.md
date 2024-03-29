@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -28,7 +29,7 @@ json = "{}"
 # create an instance of ServiceListItem from a JSON string
 service_list_item_instance = ServiceListItem.from_json(json)
 # print the JSON string representation of the object
-print ServiceListItem.to_json()
+print(ServiceListItem.to_json())
 
 # convert the object into a dict
 service_list_item_dict = service_list_item_instance.to_dict()

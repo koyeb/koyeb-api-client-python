@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of RegionalDeploymentListItem from a JSON string
 regional_deployment_list_item_instance = RegionalDeploymentListItem.from_json(json)
 # print the JSON string representation of the object
-print RegionalDeploymentListItem.to_json()
+print(RegionalDeploymentListItem.to_json())
 
 # convert the object into a dict
 regional_deployment_list_item_dict = regional_deployment_list_item_instance.to_dict()

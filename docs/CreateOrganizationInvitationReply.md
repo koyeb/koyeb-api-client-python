@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **invitation** | [**OrganizationInvitation**](OrganizationInvitation.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of CreateOrganizationInvitationReply from a JSON string
 create_organization_invitation_reply_instance = CreateOrganizationInvitationReply.from_json(json)
 # print the JSON string representation of the object
-print CreateOrganizationInvitationReply.to_json()
+print(CreateOrganizationInvitationReply.to_json())
 
 # convert the object into a dict
 create_organization_invitation_reply_dict = create_organization_invitation_reply_instance.to_dict()

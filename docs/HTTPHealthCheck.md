@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **port** | **int** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of HTTPHealthCheck from a JSON string
 http_health_check_instance = HTTPHealthCheck.from_json(json)
 # print the JSON string representation of the object
-print HTTPHealthCheck.to_json()
+print(HTTPHealthCheck.to_json())
 
 # convert the object into a dict
 http_health_check_dict = http_health_check_instance.to_dict()

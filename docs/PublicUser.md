@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of PublicUser from a JSON string
 public_user_instance = PublicUser.from_json(json)
 # print the JSON string representation of the object
-print PublicUser.to_json()
+print(PublicUser.to_json())
 
 # convert the object into a dict
 public_user_dict = public_user_instance.to_dict()

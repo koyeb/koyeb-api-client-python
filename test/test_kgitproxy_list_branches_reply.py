@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.kgitproxy_list_branches_reply import KgitproxyListBranchesReply
 

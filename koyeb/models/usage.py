@@ -17,14 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.period_usage import PeriodUsage
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Usage(BaseModel):
     """
@@ -34,10 +31,11 @@ class Usage(BaseModel):
     periods: Optional[Dict[str, PeriodUsage]] = None
     __properties: ClassVar[List[str]] = ["organization_id", "periods"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -50,7 +48,7 @@ class Usage(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Usage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -64,10 +62,12 @@ class Usage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in periods (dict)
@@ -80,7 +80,7 @@ class Usage(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Usage from a dict"""
         if obj is None:
             return None
@@ -92,7 +92,7 @@ class Usage(BaseModel):
             "organization_id": obj.get("organization_id"),
             "periods": dict(
                 (_k, PeriodUsage.from_dict(_v))
-                for _k, _v in obj.get("periods").items()
+                for _k, _v in obj["periods"].items()
             )
             if obj.get("periods") is not None
             else None

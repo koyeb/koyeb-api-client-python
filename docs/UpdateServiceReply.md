@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **service** | [**Service**](Service.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of UpdateServiceReply from a JSON string
 update_service_reply_instance = UpdateServiceReply.from_json(json)
 # print the JSON string representation of the object
-print UpdateServiceReply.to_json()
+print(UpdateServiceReply.to_json())
 
 # convert the object into a dict
 update_service_reply_dict = update_service_reply_instance.to_dict()

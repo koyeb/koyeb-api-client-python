@@ -18,16 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.deployment_provisioning_info import DeploymentProvisioningInfo
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
 from koyeb.models.regional_deployment_metadata import RegionalDeploymentMetadata
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RegionalDeployment(BaseModel):
     """
@@ -58,10 +56,11 @@ class RegionalDeployment(BaseModel):
     deployment_id: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "created_at", "updated_at", "allocated_at", "started_at", "succeeded_at", "terminated_at", "organization_id", "app_id", "service_id", "region", "parent_id", "child_id", "status", "messages", "definition", "datacenters", "metadata", "provisioning_info", "use_kuma_v2", "version", "deployment_group", "deployment_id"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -74,7 +73,7 @@ class RegionalDeployment(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RegionalDeployment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -88,10 +87,12 @@ class RegionalDeployment(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of definition
@@ -106,7 +107,7 @@ class RegionalDeployment(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RegionalDeployment from a dict"""
         if obj is None:
             return None
@@ -130,10 +131,10 @@ class RegionalDeployment(BaseModel):
             "child_id": obj.get("child_id"),
             "status": obj.get("status"),
             "messages": obj.get("messages"),
-            "definition": RegionalDeploymentDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "definition": RegionalDeploymentDefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
             "datacenters": obj.get("datacenters"),
-            "metadata": RegionalDeploymentMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
-            "provisioning_info": DeploymentProvisioningInfo.from_dict(obj.get("provisioning_info")) if obj.get("provisioning_info") is not None else None,
+            "metadata": RegionalDeploymentMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "provisioning_info": DeploymentProvisioningInfo.from_dict(obj["provisioning_info"]) if obj.get("provisioning_info") is not None else None,
             "use_kuma_v2": obj.get("use_kuma_v2"),
             "version": obj.get("version"),
             "deployment_group": obj.get("deployment_group"),

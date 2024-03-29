@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.kgitproxy_git_hub_repository import KgitproxyGitHubRepository
 

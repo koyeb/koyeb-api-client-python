@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of RegionalDeploymentEvent from a JSON string
 regional_deployment_event_instance = RegionalDeploymentEvent.from_json(json)
 # print the JSON string representation of the object
-print RegionalDeploymentEvent.to_json()
+print(RegionalDeploymentEvent.to_json())
 
 # convert the object into a dict
 regional_deployment_event_dict = regional_deployment_event_instance.to_dict()

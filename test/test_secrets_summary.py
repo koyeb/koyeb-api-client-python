@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.secrets_summary import SecretsSummary
 

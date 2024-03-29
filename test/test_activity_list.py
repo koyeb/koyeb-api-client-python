@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.activity_list import ActivityList
 

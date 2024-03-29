@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **apps** | **str** |  | [optional] 
@@ -25,7 +26,7 @@ json = "{}"
 # create an instance of Quotas from a JSON string
 quotas_instance = Quotas.from_json(json)
 # print the JSON string representation of the object
-print Quotas.to_json()
+print(Quotas.to_json())
 
 # convert the object into a dict
 quotas_dict = quotas_instance.to_dict()

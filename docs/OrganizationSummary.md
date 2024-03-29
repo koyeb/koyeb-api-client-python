@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organization_id** | **str** |  | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of OrganizationSummary from a JSON string
 organization_summary_instance = OrganizationSummary.from_json(json)
 # print the JSON string representation of the object
-print OrganizationSummary.to_json()
+print(OrganizationSummary.to_json())
 
 # convert the object into a dict
 organization_summary_dict = organization_summary_instance.to_dict()

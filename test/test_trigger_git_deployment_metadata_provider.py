@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.trigger_git_deployment_metadata_provider import TriggerGitDeploymentMetadataProvider
 

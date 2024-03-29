@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.canny_auth_reply import CannyAuthReply
 

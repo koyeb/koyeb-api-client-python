@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **token** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of CannyAuthReply from a JSON string
 canny_auth_reply_instance = CannyAuthReply.from_json(json)
 # print the JSON string representation of the object
-print CannyAuthReply.to_json()
+print(CannyAuthReply.to_json())
 
 # convert the object into a dict
 canny_auth_reply_dict = canny_auth_reply_instance.to_dict()

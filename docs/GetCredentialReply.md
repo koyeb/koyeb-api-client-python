@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **credential** | [**Credential**](Credential.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetCredentialReply from a JSON string
 get_credential_reply_instance = GetCredentialReply.from_json(json)
 # print the JSON string representation of the object
-print GetCredentialReply.to_json()
+print(GetCredentialReply.to_json())
 
 # convert the object into a dict
 get_credential_reply_dict = get_credential_reply_instance.to_dict()

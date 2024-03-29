@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of NeonPostgresSummary from a JSON string
 neon_postgres_summary_instance = NeonPostgresSummary.from_json(json)
 # print the JSON string representation of the object
-print NeonPostgresSummary.to_json()
+print(NeonPostgresSummary.to_json())
 
 # convert the object into a dict
 neon_postgres_summary_dict = neon_postgres_summary_instance.to_dict()

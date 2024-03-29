@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of KsearchGlobalDeployment from a JSON string
 ksearch_global_deployment_instance = KsearchGlobalDeployment.from_json(json)
 # print the JSON string representation of the object
-print KsearchGlobalDeployment.to_json()
+print(KsearchGlobalDeployment.to_json())
 
 # convert the object into a dict
 ksearch_global_deployment_dict = ksearch_global_deployment_instance.to_dict()

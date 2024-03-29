@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.private_registry_configuration import PrivateRegistryConfiguration
 

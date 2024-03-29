@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.error_with_fields import ErrorWithFields
 

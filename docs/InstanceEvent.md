@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of InstanceEvent from a JSON string
 instance_event_instance = InstanceEvent.from_json(json)
 # print the JSON string representation of the object
-print InstanceEvent.to_json()
+print(InstanceEvent.to_json())
 
 # convert the object into a dict
 instance_event_dict = instance_event_instance.to_dict()

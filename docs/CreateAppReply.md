@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app** | [**App**](App.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of CreateAppReply from a JSON string
 create_app_reply_instance = CreateAppReply.from_json(json)
 # print the JSON string representation of the object
-print CreateAppReply.to_json()
+print(CreateAppReply.to_json())
 
 # convert the object into a dict
 create_app_reply_dict = create_app_reply_instance.to_dict()

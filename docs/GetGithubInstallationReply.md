@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **installation_id** | **str** |  | [optional] 
@@ -25,7 +26,7 @@ json = "{}"
 # create an instance of GetGithubInstallationReply from a JSON string
 get_github_installation_reply_instance = GetGithubInstallationReply.from_json(json)
 # print the JSON string representation of the object
-print GetGithubInstallationReply.to_json()
+print(GetGithubInstallationReply.to_json())
 
 # convert the object into a dict
 get_github_installation_reply_dict = get_github_installation_reply_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of KsearchOrganization from a JSON string
 ksearch_organization_instance = KsearchOrganization.from_json(json)
 # print the JSON string representation of the object
-print KsearchOrganization.to_json()
+print(KsearchOrganization.to_json())
 
 # convert the object into a dict
 ksearch_organization_dict = ksearch_organization_instance.to_dict()

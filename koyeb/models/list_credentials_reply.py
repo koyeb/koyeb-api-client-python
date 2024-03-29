@@ -17,14 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt
 from koyeb.models.credential import Credential
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ListCredentialsReply(BaseModel):
     """
@@ -36,10 +33,11 @@ class ListCredentialsReply(BaseModel):
     count: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["credentials", "limit", "offset", "count"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +50,7 @@ class ListCredentialsReply(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ListCredentialsReply from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,10 +64,12 @@ class ListCredentialsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in credentials (list)
@@ -82,7 +82,7 @@ class ListCredentialsReply(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ListCredentialsReply from a dict"""
         if obj is None:
             return None
@@ -91,7 +91,7 @@ class ListCredentialsReply(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "credentials": [Credential.from_dict(_item) for _item in obj.get("credentials")] if obj.get("credentials") is not None else None,
+            "credentials": [Credential.from_dict(_item) for _item in obj["credentials"]] if obj.get("credentials") is not None else None,
             "limit": obj.get("limit"),
             "offset": obj.get("offset"),
             "count": obj.get("count")

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.public_user import PublicUser
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of DeploymentEvent from a JSON string
 deployment_event_instance = DeploymentEvent.from_json(json)
 # print the JSON string representation of the object
-print DeploymentEvent.to_json()
+print(DeploymentEvent.to_json())
 
 # convert the object into a dict
 deployment_event_dict = deployment_event_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **port** | **int** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of TCPHealthCheck from a JSON string
 tcp_health_check_instance = TCPHealthCheck.from_json(json)
 # print the JSON string representation of the object
-print TCPHealthCheck.to_json()
+print(TCPHealthCheck.to_json())
 
 # convert the object into a dict
 tcp_health_check_dict = tcp_health_check_instance.to_dict()

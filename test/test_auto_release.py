@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.auto_release import AutoRelease
 

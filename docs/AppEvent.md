@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of AppEvent from a JSON string
 app_event_instance = AppEvent.from_json(json)
 # print the JSON string representation of the object
-print AppEvent.to_json()
+print(AppEvent.to_json())
 
 # convert the object into a dict
 app_event_dict = app_event_instance.to_dict()

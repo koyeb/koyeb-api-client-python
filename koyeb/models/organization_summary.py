@@ -17,9 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.apps_summary import AppsSummary
 from koyeb.models.domains_summary import DomainsSummary
 from koyeb.models.instances_summary import InstancesSummary
@@ -27,10 +26,8 @@ from koyeb.models.members_summary import MembersSummary
 from koyeb.models.neon_postgres_summary import NeonPostgresSummary
 from koyeb.models.secrets_summary import SecretsSummary
 from koyeb.models.service_summary import ServiceSummary
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrganizationSummary(BaseModel):
     """
@@ -46,10 +43,11 @@ class OrganizationSummary(BaseModel):
     members: Optional[MembersSummary] = None
     __properties: ClassVar[List[str]] = ["organization_id", "instances", "apps", "services", "domains", "secrets", "neon_postgres", "members"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -62,7 +60,7 @@ class OrganizationSummary(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrganizationSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -76,10 +74,12 @@ class OrganizationSummary(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of instances
@@ -110,7 +110,7 @@ class OrganizationSummary(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrganizationSummary from a dict"""
         if obj is None:
             return None
@@ -120,18 +120,18 @@ class OrganizationSummary(BaseModel):
 
         _obj = cls.model_validate({
             "organization_id": obj.get("organization_id"),
-            "instances": InstancesSummary.from_dict(obj.get("instances")) if obj.get("instances") is not None else None,
-            "apps": AppsSummary.from_dict(obj.get("apps")) if obj.get("apps") is not None else None,
+            "instances": InstancesSummary.from_dict(obj["instances"]) if obj.get("instances") is not None else None,
+            "apps": AppsSummary.from_dict(obj["apps"]) if obj.get("apps") is not None else None,
             "services": dict(
                 (_k, ServiceSummary.from_dict(_v))
-                for _k, _v in obj.get("services").items()
+                for _k, _v in obj["services"].items()
             )
             if obj.get("services") is not None
             else None,
-            "domains": DomainsSummary.from_dict(obj.get("domains")) if obj.get("domains") is not None else None,
-            "secrets": SecretsSummary.from_dict(obj.get("secrets")) if obj.get("secrets") is not None else None,
-            "neon_postgres": NeonPostgresSummary.from_dict(obj.get("neon_postgres")) if obj.get("neon_postgres") is not None else None,
-            "members": MembersSummary.from_dict(obj.get("members")) if obj.get("members") is not None else None
+            "domains": DomainsSummary.from_dict(obj["domains"]) if obj.get("domains") is not None else None,
+            "secrets": SecretsSummary.from_dict(obj["secrets"]) if obj.get("secrets") is not None else None,
+            "neon_postgres": NeonPostgresSummary.from_dict(obj["neon_postgres"]) if obj.get("neon_postgres") is not None else None,
+            "members": MembersSummary.from_dict(obj["members"]) if obj.get("members") is not None else None
         })
         return _obj
 

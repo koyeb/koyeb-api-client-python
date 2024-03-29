@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -34,7 +35,7 @@ json = "{}"
 # create an instance of Service from a JSON string
 service_instance = Service.from_json(json)
 # print the JSON string representation of the object
-print Service.to_json()
+print(Service.to_json())
 
 # convert the object into a dict
 service_dict = service_instance.to_dict()

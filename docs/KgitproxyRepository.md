@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -26,7 +27,7 @@ json = "{}"
 # create an instance of KgitproxyRepository from a JSON string
 kgitproxy_repository_instance = KgitproxyRepository.from_json(json)
 # print the JSON string representation of the object
-print KgitproxyRepository.to_json()
+print(KgitproxyRepository.to_json())
 
 # convert the object into a dict
 kgitproxy_repository_dict = kgitproxy_repository_instance.to_dict()

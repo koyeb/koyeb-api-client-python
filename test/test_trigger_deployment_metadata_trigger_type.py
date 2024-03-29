@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.trigger_deployment_metadata_trigger_type import TriggerDeploymentMetadataTriggerType
 

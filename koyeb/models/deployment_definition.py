@@ -17,9 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.database_source import DatabaseSource
 from koyeb.models.deployment_definition_type import DeploymentDefinitionType
 from koyeb.models.deployment_env import DeploymentEnv
@@ -30,10 +29,8 @@ from koyeb.models.deployment_route import DeploymentRoute
 from koyeb.models.deployment_scaling import DeploymentScaling
 from koyeb.models.docker_source import DockerSource
 from koyeb.models.git_source import GitSource
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class DeploymentDefinition(BaseModel):
     """
@@ -54,10 +51,11 @@ class DeploymentDefinition(BaseModel):
     database: Optional[DatabaseSource] = None
     __properties: ClassVar[List[str]] = ["name", "type", "routes", "ports", "env", "regions", "scalings", "instance_types", "health_checks", "skip_cache", "docker", "git", "database"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -70,7 +68,7 @@ class DeploymentDefinition(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DeploymentDefinition from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -84,10 +82,12 @@ class DeploymentDefinition(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in routes (list)
@@ -144,7 +144,7 @@ class DeploymentDefinition(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DeploymentDefinition from a dict"""
         if obj is None:
             return None
@@ -155,17 +155,17 @@ class DeploymentDefinition(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "routes": [DeploymentRoute.from_dict(_item) for _item in obj.get("routes")] if obj.get("routes") is not None else None,
-            "ports": [DeploymentPort.from_dict(_item) for _item in obj.get("ports")] if obj.get("ports") is not None else None,
-            "env": [DeploymentEnv.from_dict(_item) for _item in obj.get("env")] if obj.get("env") is not None else None,
+            "routes": [DeploymentRoute.from_dict(_item) for _item in obj["routes"]] if obj.get("routes") is not None else None,
+            "ports": [DeploymentPort.from_dict(_item) for _item in obj["ports"]] if obj.get("ports") is not None else None,
+            "env": [DeploymentEnv.from_dict(_item) for _item in obj["env"]] if obj.get("env") is not None else None,
             "regions": obj.get("regions"),
-            "scalings": [DeploymentScaling.from_dict(_item) for _item in obj.get("scalings")] if obj.get("scalings") is not None else None,
-            "instance_types": [DeploymentInstanceType.from_dict(_item) for _item in obj.get("instance_types")] if obj.get("instance_types") is not None else None,
-            "health_checks": [DeploymentHealthCheck.from_dict(_item) for _item in obj.get("health_checks")] if obj.get("health_checks") is not None else None,
+            "scalings": [DeploymentScaling.from_dict(_item) for _item in obj["scalings"]] if obj.get("scalings") is not None else None,
+            "instance_types": [DeploymentInstanceType.from_dict(_item) for _item in obj["instance_types"]] if obj.get("instance_types") is not None else None,
+            "health_checks": [DeploymentHealthCheck.from_dict(_item) for _item in obj["health_checks"]] if obj.get("health_checks") is not None else None,
             "skip_cache": obj.get("skip_cache"),
-            "docker": DockerSource.from_dict(obj.get("docker")) if obj.get("docker") is not None else None,
-            "git": GitSource.from_dict(obj.get("git")) if obj.get("git") is not None else None,
-            "database": DatabaseSource.from_dict(obj.get("database")) if obj.get("database") is not None else None
+            "docker": DockerSource.from_dict(obj["docker"]) if obj.get("docker") is not None else None,
+            "git": GitSource.from_dict(obj["git"]) if obj.get("git") is not None else None,
+            "database": DatabaseSource.from_dict(obj["database"]) if obj.get("database") is not None else None
         })
         return _obj
 

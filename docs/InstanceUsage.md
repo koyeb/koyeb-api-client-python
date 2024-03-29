@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **duration_seconds** | **int** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of InstanceUsage from a JSON string
 instance_usage_instance = InstanceUsage.from_json(json)
 # print the JSON string representation of the object
-print InstanceUsage.to_json()
+print(InstanceUsage.to_json())
 
 # convert the object into a dict
 instance_usage_dict = instance_usage_instance.to_dict()

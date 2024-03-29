@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **neon_postgres** | [**DeploymentNeonPostgresDatabaseInfo**](DeploymentNeonPostgresDatabaseInfo.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of DeploymentDatabaseInfo from a JSON string
 deployment_database_info_instance = DeploymentDatabaseInfo.from_json(json)
 # print the JSON string representation of the object
-print DeploymentDatabaseInfo.to_json()
+print(DeploymentDatabaseInfo.to_json())
 
 # convert the object into a dict
 deployment_database_info_dict = deployment_database_info_instance.to_dict()

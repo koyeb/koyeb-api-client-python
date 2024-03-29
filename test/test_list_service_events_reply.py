@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.list_service_events_reply import ListServiceEventsReply
 

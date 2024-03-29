@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **starting_time** | **datetime** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of PeriodUsage from a JSON string
 period_usage_instance = PeriodUsage.from_json(json)
 # print the JSON string representation of the object
-print PeriodUsage.to_json()
+print(PeriodUsage.to_json())
 
 # convert the object into a dict
 period_usage_dict = period_usage_instance.to_dict()

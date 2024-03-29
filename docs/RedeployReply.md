@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment** | [**Deployment**](Deployment.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of RedeployReply from a JSON string
 redeploy_reply_instance = RedeployReply.from_json(json)
 # print the JSON string representation of the object
-print RedeployReply.to_json()
+print(RedeployReply.to_json())
 
 # convert the object into a dict
 redeploy_reply_dict = redeploy_reply_instance.to_dict()

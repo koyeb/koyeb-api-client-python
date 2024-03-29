@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **int** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of DeploymentScalingTargetRequestsPerSecond from a JSON string
 deployment_scaling_target_requests_per_second_instance = DeploymentScalingTargetRequestsPerSecond.from_json(json)
 # print the JSON string representation of the object
-print DeploymentScalingTargetRequestsPerSecond.to_json()
+print(DeploymentScalingTargetRequestsPerSecond.to_json())
 
 # convert the object into a dict
 deployment_scaling_target_requests_per_second_dict = deployment_scaling_target_requests_per_second_instance.to_dict()

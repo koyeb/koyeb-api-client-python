@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of ServiceEvent from a JSON string
 service_event_instance = ServiceEvent.from_json(json)
 # print the JSON string representation of the object
-print ServiceEvent.to_json()
+print(ServiceEvent.to_json())
 
 # convert the object into a dict
 service_event_dict = service_event_instance.to_dict()

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.get_subscription_reply import GetSubscriptionReply
 

@@ -17,14 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from koyeb.models.region_usage import RegionUsage
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ServiceUsage(BaseModel):
     """
@@ -35,10 +32,11 @@ class ServiceUsage(BaseModel):
     regions: Optional[Dict[str, RegionUsage]] = None
     __properties: ClassVar[List[str]] = ["service_id", "service_name", "regions"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +49,7 @@ class ServiceUsage(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ServiceUsage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -65,10 +63,12 @@ class ServiceUsage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in regions (dict)
@@ -81,7 +81,7 @@ class ServiceUsage(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ServiceUsage from a dict"""
         if obj is None:
             return None
@@ -94,7 +94,7 @@ class ServiceUsage(BaseModel):
             "service_name": obj.get("service_name"),
             "regions": dict(
                 (_k, RegionUsage.from_dict(_v))
-                for _k, _v in obj.get("regions").items()
+                for _k, _v in obj["regions"].items()
             )
             if obj.get("regions") is not None
             else None

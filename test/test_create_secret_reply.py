@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from koyeb.models.create_secret_reply import CreateSecretReply
 

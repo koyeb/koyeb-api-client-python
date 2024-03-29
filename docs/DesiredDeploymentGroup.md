@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DesiredDeploymentGroup from a JSON string
 desired_deployment_group_instance = DesiredDeploymentGroup.from_json(json)
 # print the JSON string representation of the object
-print DesiredDeploymentGroup.to_json()
+print(DesiredDeploymentGroup.to_json())
 
 # convert the object into a dict
 desired_deployment_group_dict = desired_deployment_group_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of VerifyDockerImageReply from a JSON string
 verify_docker_image_reply_instance = VerifyDockerImageReply.from_json(json)
 # print the JSON string representation of the object
-print VerifyDockerImageReply.to_json()
+print(VerifyDockerImageReply.to_json())
 
 # convert the object into a dict
 verify_docker_image_reply_dict = verify_docker_image_reply_instance.to_dict()

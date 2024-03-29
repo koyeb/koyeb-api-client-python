@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **timestamp** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of Sample from a JSON string
 sample_instance = Sample.from_json(json)
 # print the JSON string representation of the object
-print Sample.to_json()
+print(Sample.to_json())
 
 # convert the object into a dict
 sample_dict = sample_instance.to_dict()

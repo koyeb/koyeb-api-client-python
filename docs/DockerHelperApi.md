@@ -15,9 +15,8 @@ Verify if a docker image is reachable
 ### Example
 
 * Api Key Authentication (Bearer):
+
 ```python
-import time
-import os
 import koyeb
 from koyeb.models.verify_docker_image_reply import VerifyDockerImageReply
 from koyeb.rest import ApiException
@@ -60,6 +59,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image** | **str**| The full image uri to be verified | [optional] 
@@ -79,6 +79,7 @@ Name | Type | Description  | Notes
  - **Accept**: */*
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

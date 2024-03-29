@@ -18,17 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
 from koyeb.models.deployment_database_info import DeploymentDatabaseInfo
 from koyeb.models.deployment_definition import DeploymentDefinition
 from koyeb.models.deployment_metadata import DeploymentMetadata
 from koyeb.models.deployment_provisioning_info import DeploymentProvisioningInfo
 from koyeb.models.deployment_status import DeploymentStatus
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Deployment(BaseModel):
     """
@@ -57,10 +55,11 @@ class Deployment(BaseModel):
     deployment_group: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "created_at", "updated_at", "allocated_at", "started_at", "succeeded_at", "terminated_at", "organization_id", "app_id", "service_id", "parent_id", "child_id", "status", "metadata", "definition", "messages", "provisioning_info", "database_info", "skip_build", "version", "deployment_group"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -73,7 +72,7 @@ class Deployment(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Deployment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -87,10 +86,12 @@ class Deployment(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of metadata
@@ -108,7 +109,7 @@ class Deployment(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Deployment from a dict"""
         if obj is None:
             return None
@@ -130,11 +131,11 @@ class Deployment(BaseModel):
             "parent_id": obj.get("parent_id"),
             "child_id": obj.get("child_id"),
             "status": obj.get("status"),
-            "metadata": DeploymentMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
-            "definition": DeploymentDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "metadata": DeploymentMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "definition": DeploymentDefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
             "messages": obj.get("messages"),
-            "provisioning_info": DeploymentProvisioningInfo.from_dict(obj.get("provisioning_info")) if obj.get("provisioning_info") is not None else None,
-            "database_info": DeploymentDatabaseInfo.from_dict(obj.get("database_info")) if obj.get("database_info") is not None else None,
+            "provisioning_info": DeploymentProvisioningInfo.from_dict(obj["provisioning_info"]) if obj.get("provisioning_info") is not None else None,
+            "database_info": DeploymentDatabaseInfo.from_dict(obj["database_info"]) if obj.get("database_info") is not None else None,
             "skip_build": obj.get("skip_build"),
             "version": obj.get("version"),
             "deployment_group": obj.get("deployment_group")
