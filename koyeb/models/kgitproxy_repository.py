@@ -25,10 +25,12 @@ from koyeb.models.kgitproxy_repository_provider import KgitproxyRepositoryProvid
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class KgitproxyRepository(BaseModel):
     """
     KgitproxyRepository
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
@@ -40,14 +42,25 @@ class KgitproxyRepository(BaseModel):
     provider: Optional[KgitproxyRepositoryProvider] = None
     last_push_date: Optional[datetime] = None
     github: Optional[KgitproxyGitHubRepository] = None
-    __properties: ClassVar[List[str]] = ["id", "organization_id", "name", "url", "description", "is_private", "is_disabled", "default_branch", "provider", "last_push_date", "github"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "organization_id",
+        "name",
+        "url",
+        "description",
+        "is_private",
+        "is_disabled",
+        "default_branch",
+        "provider",
+        "last_push_date",
+        "github",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,8 +86,7 @@ class KgitproxyRepository(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -83,7 +95,7 @@ class KgitproxyRepository(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of github
         if self.github:
-            _dict['github'] = self.github.to_dict()
+            _dict["github"] = self.github.to_dict()
         return _dict
 
     @classmethod
@@ -95,19 +107,21 @@ class KgitproxyRepository(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "organization_id": obj.get("organization_id"),
-            "name": obj.get("name"),
-            "url": obj.get("url"),
-            "description": obj.get("description"),
-            "is_private": obj.get("is_private"),
-            "is_disabled": obj.get("is_disabled"),
-            "default_branch": obj.get("default_branch"),
-            "provider": obj.get("provider"),
-            "last_push_date": obj.get("last_push_date"),
-            "github": KgitproxyGitHubRepository.from_dict(obj["github"]) if obj.get("github") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "organization_id": obj.get("organization_id"),
+                "name": obj.get("name"),
+                "url": obj.get("url"),
+                "description": obj.get("description"),
+                "is_private": obj.get("is_private"),
+                "is_disabled": obj.get("is_disabled"),
+                "default_branch": obj.get("default_branch"),
+                "provider": obj.get("provider"),
+                "last_push_date": obj.get("last_push_date"),
+                "github": KgitproxyGitHubRepository.from_dict(obj["github"])
+                if obj.get("github") is not None
+                else None,
+            }
+        )
         return _obj
-
-

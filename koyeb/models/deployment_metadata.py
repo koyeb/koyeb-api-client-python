@@ -25,10 +25,12 @@ from koyeb.models.trigger_deployment_metadata import TriggerDeploymentMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class DeploymentMetadata(BaseModel):
     """
     DeploymentMetadata
-    """ # noqa: E501
+    """  # noqa: E501
+
     trigger: Optional[TriggerDeploymentMetadata] = None
     database: Optional[DatabaseDeploymentMetadata] = None
     git: Optional[GitDeploymentMetadata] = None
@@ -39,7 +41,6 @@ class DeploymentMetadata(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,8 +66,7 @@ class DeploymentMetadata(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -75,13 +75,13 @@ class DeploymentMetadata(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of trigger
         if self.trigger:
-            _dict['trigger'] = self.trigger.to_dict()
+            _dict["trigger"] = self.trigger.to_dict()
         # override the default output from pydantic by calling `to_dict()` of database
         if self.database:
-            _dict['database'] = self.database.to_dict()
+            _dict["database"] = self.database.to_dict()
         # override the default output from pydantic by calling `to_dict()` of git
         if self.git:
-            _dict['git'] = self.git.to_dict()
+            _dict["git"] = self.git.to_dict()
         return _dict
 
     @classmethod
@@ -93,11 +93,17 @@ class DeploymentMetadata(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "trigger": TriggerDeploymentMetadata.from_dict(obj["trigger"]) if obj.get("trigger") is not None else None,
-            "database": DatabaseDeploymentMetadata.from_dict(obj["database"]) if obj.get("database") is not None else None,
-            "git": GitDeploymentMetadata.from_dict(obj["git"]) if obj.get("git") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "trigger": TriggerDeploymentMetadata.from_dict(obj["trigger"])
+                if obj.get("trigger") is not None
+                else None,
+                "database": DatabaseDeploymentMetadata.from_dict(obj["database"])
+                if obj.get("database") is not None
+                else None,
+                "git": GitDeploymentMetadata.from_dict(obj["git"])
+                if obj.get("git") is not None
+                else None,
+            }
+        )
         return _obj
-
-

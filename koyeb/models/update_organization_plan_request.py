@@ -23,10 +23,12 @@ from koyeb.models.plan import Plan
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class UpdateOrganizationPlanRequest(BaseModel):
     """
     UpdateOrganizationPlanRequest
-    """ # noqa: E501
+    """  # noqa: E501
+
     plan: Optional[Plan] = None
     __properties: ClassVar[List[str]] = ["plan"]
 
@@ -35,7 +37,6 @@ class UpdateOrganizationPlanRequest(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class UpdateOrganizationPlanRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -80,9 +80,5 @@ class UpdateOrganizationPlanRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "plan": obj.get("plan")
-        })
+        _obj = cls.model_validate({"plan": obj.get("plan")})
         return _obj
-
-

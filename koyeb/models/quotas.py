@@ -22,10 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class Quotas(BaseModel):
     """
     Quotas
-    """ # noqa: E501
+    """  # noqa: E501
+
     apps: Optional[StrictStr] = None
     services: Optional[StrictStr] = None
     domains: Optional[StrictStr] = None
@@ -36,14 +38,24 @@ class Quotas(BaseModel):
     regions: Optional[List[StrictStr]] = None
     max_organization_members: Optional[StrictStr] = None
     max_instances_by_type: Optional[Dict[str, StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["apps", "services", "domains", "services_by_app", "service_provisioning_concurrency", "memory_mb", "instance_types", "regions", "max_organization_members", "max_instances_by_type"]
+    __properties: ClassVar[List[str]] = [
+        "apps",
+        "services",
+        "domains",
+        "services_by_app",
+        "service_provisioning_concurrency",
+        "memory_mb",
+        "instance_types",
+        "regions",
+        "max_organization_members",
+        "max_instances_by_type",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,8 +81,7 @@ class Quotas(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -88,18 +99,20 @@ class Quotas(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "apps": obj.get("apps"),
-            "services": obj.get("services"),
-            "domains": obj.get("domains"),
-            "services_by_app": obj.get("services_by_app"),
-            "service_provisioning_concurrency": obj.get("service_provisioning_concurrency"),
-            "memory_mb": obj.get("memory_mb"),
-            "instance_types": obj.get("instance_types"),
-            "regions": obj.get("regions"),
-            "max_organization_members": obj.get("max_organization_members"),
-            "max_instances_by_type": obj.get("max_instances_by_type")
-        })
+        _obj = cls.model_validate(
+            {
+                "apps": obj.get("apps"),
+                "services": obj.get("services"),
+                "domains": obj.get("domains"),
+                "services_by_app": obj.get("services_by_app"),
+                "service_provisioning_concurrency": obj.get(
+                    "service_provisioning_concurrency"
+                ),
+                "memory_mb": obj.get("memory_mb"),
+                "instance_types": obj.get("instance_types"),
+                "regions": obj.get("regions"),
+                "max_organization_members": obj.get("max_organization_members"),
+                "max_instances_by_type": obj.get("max_instances_by_type"),
+            }
+        )
         return _obj
-
-

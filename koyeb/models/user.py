@@ -24,10 +24,12 @@ from koyeb.models.user_flags import UserFlags
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class User(BaseModel):
     """
     User
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
     avatar_url: Optional[StrictStr] = None
@@ -42,14 +44,28 @@ class User(BaseModel):
     flags: Optional[List[UserFlags]] = None
     name: Optional[StrictStr] = None
     email_validated: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["id", "email", "avatar_url", "two_factor_authentication", "last_login", "last_login_ip", "updated_at", "created_at", "newsletter_subscribed", "github_id", "github_user", "flags", "name", "email_validated"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "email",
+        "avatar_url",
+        "two_factor_authentication",
+        "last_login",
+        "last_login_ip",
+        "updated_at",
+        "created_at",
+        "newsletter_subscribed",
+        "github_id",
+        "github_user",
+        "flags",
+        "name",
+        "email_validated",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,8 +91,7 @@ class User(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -94,22 +109,22 @@ class User(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "email": obj.get("email"),
-            "avatar_url": obj.get("avatar_url"),
-            "two_factor_authentication": obj.get("two_factor_authentication"),
-            "last_login": obj.get("last_login"),
-            "last_login_ip": obj.get("last_login_ip"),
-            "updated_at": obj.get("updated_at"),
-            "created_at": obj.get("created_at"),
-            "newsletter_subscribed": obj.get("newsletter_subscribed"),
-            "github_id": obj.get("github_id"),
-            "github_user": obj.get("github_user"),
-            "flags": obj.get("flags"),
-            "name": obj.get("name"),
-            "email_validated": obj.get("email_validated")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "email": obj.get("email"),
+                "avatar_url": obj.get("avatar_url"),
+                "two_factor_authentication": obj.get("two_factor_authentication"),
+                "last_login": obj.get("last_login"),
+                "last_login_ip": obj.get("last_login_ip"),
+                "updated_at": obj.get("updated_at"),
+                "created_at": obj.get("created_at"),
+                "newsletter_subscribed": obj.get("newsletter_subscribed"),
+                "github_id": obj.get("github_id"),
+                "github_user": obj.get("github_user"),
+                "flags": obj.get("flags"),
+                "name": obj.get("name"),
+                "email_validated": obj.get("email_validated"),
+            }
+        )
         return _obj
-
-

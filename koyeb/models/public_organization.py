@@ -24,10 +24,12 @@ from koyeb.models.plan import Plan
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class PublicOrganization(BaseModel):
     """
     PublicOrganization
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     plan: Optional[Plan] = None
@@ -39,7 +41,6 @@ class PublicOrganization(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,8 +66,7 @@ class PublicOrganization(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -84,12 +84,12 @@ class PublicOrganization(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "plan": obj.get("plan"),
-            "status": obj.get("status")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "name": obj.get("name"),
+                "plan": obj.get("plan"),
+                "status": obj.get("status"),
+            }
+        )
         return _obj
-
-

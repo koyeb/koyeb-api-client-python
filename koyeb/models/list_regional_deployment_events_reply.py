@@ -23,10 +23,12 @@ from koyeb.models.regional_deployment_event import RegionalDeploymentEvent
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ListRegionalDeploymentEventsReply(BaseModel):
     """
     ListRegionalDeploymentEventsReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     events: Optional[List[RegionalDeploymentEvent]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -39,7 +41,6 @@ class ListRegionalDeploymentEventsReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,8 +66,7 @@ class ListRegionalDeploymentEventsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -79,7 +79,7 @@ class ListRegionalDeploymentEventsReply(BaseModel):
             for _item in self.events:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['events'] = _items
+            _dict["events"] = _items
         return _dict
 
     @classmethod
@@ -91,13 +91,17 @@ class ListRegionalDeploymentEventsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "events": [RegionalDeploymentEvent.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
-            "limit": obj.get("limit"),
-            "offset": obj.get("offset"),
-            "count": obj.get("count"),
-            "order": obj.get("order")
-        })
+        _obj = cls.model_validate(
+            {
+                "events": [
+                    RegionalDeploymentEvent.from_dict(_item) for _item in obj["events"]
+                ]
+                if obj.get("events") is not None
+                else None,
+                "limit": obj.get("limit"),
+                "offset": obj.get("offset"),
+                "count": obj.get("count"),
+                "order": obj.get("order"),
+            }
+        )
         return _obj
-
-

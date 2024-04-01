@@ -22,10 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class KsearchService(BaseModel):
     """
     KsearchService
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
     app_id: Optional[StrictStr] = None
@@ -37,7 +39,6 @@ class KsearchService(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,8 +64,7 @@ class KsearchService(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -82,12 +82,12 @@ class KsearchService(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "organization_id": obj.get("organization_id"),
-            "app_id": obj.get("app_id"),
-            "name": obj.get("name")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "organization_id": obj.get("organization_id"),
+                "app_id": obj.get("app_id"),
+                "name": obj.get("name"),
+            }
+        )
         return _obj
-
-

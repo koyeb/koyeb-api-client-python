@@ -23,10 +23,12 @@ from koyeb.models.app_list_item import AppListItem
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ListAppsReply(BaseModel):
     """
     ListAppsReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     apps: Optional[List[AppListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -38,7 +40,6 @@ class ListAppsReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,8 +65,7 @@ class ListAppsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -78,7 +78,7 @@ class ListAppsReply(BaseModel):
             for _item in self.apps:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['apps'] = _items
+            _dict["apps"] = _items
         return _dict
 
     @classmethod
@@ -90,12 +90,14 @@ class ListAppsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "apps": [AppListItem.from_dict(_item) for _item in obj["apps"]] if obj.get("apps") is not None else None,
-            "limit": obj.get("limit"),
-            "offset": obj.get("offset"),
-            "count": obj.get("count")
-        })
+        _obj = cls.model_validate(
+            {
+                "apps": [AppListItem.from_dict(_item) for _item in obj["apps"]]
+                if obj.get("apps") is not None
+                else None,
+                "limit": obj.get("limit"),
+                "offset": obj.get("offset"),
+                "count": obj.get("count"),
+            }
+        )
         return _obj
-
-

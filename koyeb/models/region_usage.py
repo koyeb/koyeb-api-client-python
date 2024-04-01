@@ -23,10 +23,12 @@ from koyeb.models.instance_usage import InstanceUsage
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class RegionUsage(BaseModel):
     """
     RegionUsage
-    """ # noqa: E501
+    """  # noqa: E501
+
     instances: Optional[Dict[str, InstanceUsage]] = None
     __properties: ClassVar[List[str]] = ["instances"]
 
@@ -35,7 +37,6 @@ class RegionUsage(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class RegionUsage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -75,7 +75,7 @@ class RegionUsage(BaseModel):
             for _key in self.instances:
                 if self.instances[_key]:
                     _field_dict[_key] = self.instances[_key].to_dict()
-            _dict['instances'] = _field_dict
+            _dict["instances"] = _field_dict
         return _dict
 
     @classmethod
@@ -87,14 +87,14 @@ class RegionUsage(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "instances": dict(
-                (_k, InstanceUsage.from_dict(_v))
-                for _k, _v in obj["instances"].items()
-            )
-            if obj.get("instances") is not None
-            else None
-        })
+        _obj = cls.model_validate(
+            {
+                "instances": dict(
+                    (_k, InstanceUsage.from_dict(_v))
+                    for _k, _v in obj["instances"].items()
+                )
+                if obj.get("instances") is not None
+                else None
+            }
+        )
         return _obj
-
-

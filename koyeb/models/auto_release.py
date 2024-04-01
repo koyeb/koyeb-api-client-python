@@ -23,10 +23,12 @@ from koyeb.models.auto_release_group import AutoReleaseGroup
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class AutoRelease(BaseModel):
     """
     AutoRelease
-    """ # noqa: E501
+    """  # noqa: E501
+
     groups: Optional[List[AutoReleaseGroup]] = None
     __properties: ClassVar[List[str]] = ["groups"]
 
@@ -35,7 +37,6 @@ class AutoRelease(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class AutoRelease(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -75,7 +75,7 @@ class AutoRelease(BaseModel):
             for _item in self.groups:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['groups'] = _items
+            _dict["groups"] = _items
         return _dict
 
     @classmethod
@@ -87,9 +87,11 @@ class AutoRelease(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "groups": [AutoReleaseGroup.from_dict(_item) for _item in obj["groups"]] if obj.get("groups") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "groups": [AutoReleaseGroup.from_dict(_item) for _item in obj["groups"]]
+                if obj.get("groups") is not None
+                else None
+            }
+        )
         return _obj
-
-

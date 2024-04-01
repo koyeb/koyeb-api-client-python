@@ -22,10 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class GithubInstallationCallbackRequest(BaseModel):
     """
     GithubInstallationCallbackRequest
-    """ # noqa: E501
+    """  # noqa: E501
+
     installation_id: Optional[StrictStr] = None
     setup_action: Optional[StrictStr] = None
     state: Optional[StrictStr] = None
@@ -36,7 +38,6 @@ class GithubInstallationCallbackRequest(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -62,8 +63,7 @@ class GithubInstallationCallbackRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -81,11 +81,11 @@ class GithubInstallationCallbackRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "installation_id": obj.get("installation_id"),
-            "setup_action": obj.get("setup_action"),
-            "state": obj.get("state")
-        })
+        _obj = cls.model_validate(
+            {
+                "installation_id": obj.get("installation_id"),
+                "setup_action": obj.get("setup_action"),
+                "state": obj.get("state"),
+            }
+        )
         return _obj
-
-

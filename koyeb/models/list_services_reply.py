@@ -23,10 +23,12 @@ from koyeb.models.service_list_item import ServiceListItem
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ListServicesReply(BaseModel):
     """
     ListServicesReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     services: Optional[List[ServiceListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -38,7 +40,6 @@ class ListServicesReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,8 +65,7 @@ class ListServicesReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -78,7 +78,7 @@ class ListServicesReply(BaseModel):
             for _item in self.services:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['services'] = _items
+            _dict["services"] = _items
         return _dict
 
     @classmethod
@@ -90,12 +90,16 @@ class ListServicesReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "services": [ServiceListItem.from_dict(_item) for _item in obj["services"]] if obj.get("services") is not None else None,
-            "limit": obj.get("limit"),
-            "offset": obj.get("offset"),
-            "count": obj.get("count")
-        })
+        _obj = cls.model_validate(
+            {
+                "services": [
+                    ServiceListItem.from_dict(_item) for _item in obj["services"]
+                ]
+                if obj.get("services") is not None
+                else None,
+                "limit": obj.get("limit"),
+                "offset": obj.get("offset"),
+                "count": obj.get("count"),
+            }
+        )
         return _obj
-
-

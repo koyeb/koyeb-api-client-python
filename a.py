@@ -6,9 +6,7 @@ from pprint import pprint
 
 # Defining the host is optional and defaults to https://app.koyeb.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = koyeb.Configuration(
-    host = "https://app.koyeb.com"
-)
+configuration = koyeb.Configuration(host="https://app.koyeb.com")
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
@@ -16,7 +14,7 @@ configuration = koyeb.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: Bearer
-configuration.api_key['Bearer'] = os.environ["API_KEY"]
+configuration.api_key["Bearer"] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Bearer'] = 'Bearer'
@@ -26,7 +24,7 @@ configuration.api_key['Bearer'] = os.environ["API_KEY"]
 with koyeb.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = koyeb.AppsApi(api_client)
-    app = koyeb.CreateApp() # CreateApp | 
+    app = koyeb.CreateApp()  # CreateApp |
 
     try:
         # Create App

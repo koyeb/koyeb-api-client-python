@@ -26,10 +26,12 @@ from koyeb.models.service_type import ServiceType
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ServiceListItem(BaseModel):
     """
     ServiceListItem
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     type: Optional[ServiceType] = None
@@ -43,14 +45,27 @@ class ServiceListItem(BaseModel):
     state: Optional[ServiceState] = None
     active_deployment_id: Optional[StrictStr] = None
     latest_deployment_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "organization_id", "app_id", "updated_at", "created_at", "status", "messages", "version", "state", "active_deployment_id", "latest_deployment_id"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "name",
+        "type",
+        "organization_id",
+        "app_id",
+        "updated_at",
+        "created_at",
+        "status",
+        "messages",
+        "version",
+        "state",
+        "active_deployment_id",
+        "latest_deployment_id",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,8 +91,7 @@ class ServiceListItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -86,7 +100,7 @@ class ServiceListItem(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of state
         if self.state:
-            _dict['state'] = self.state.to_dict()
+            _dict["state"] = self.state.to_dict()
         return _dict
 
     @classmethod
@@ -98,21 +112,23 @@ class ServiceListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "organization_id": obj.get("organization_id"),
-            "app_id": obj.get("app_id"),
-            "updated_at": obj.get("updated_at"),
-            "created_at": obj.get("created_at"),
-            "status": obj.get("status"),
-            "messages": obj.get("messages"),
-            "version": obj.get("version"),
-            "state": ServiceState.from_dict(obj["state"]) if obj.get("state") is not None else None,
-            "active_deployment_id": obj.get("active_deployment_id"),
-            "latest_deployment_id": obj.get("latest_deployment_id")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "name": obj.get("name"),
+                "type": obj.get("type"),
+                "organization_id": obj.get("organization_id"),
+                "app_id": obj.get("app_id"),
+                "updated_at": obj.get("updated_at"),
+                "created_at": obj.get("created_at"),
+                "status": obj.get("status"),
+                "messages": obj.get("messages"),
+                "version": obj.get("version"),
+                "state": ServiceState.from_dict(obj["state"])
+                if obj.get("state") is not None
+                else None,
+                "active_deployment_id": obj.get("active_deployment_id"),
+                "latest_deployment_id": obj.get("latest_deployment_id"),
+            }
+        )
         return _obj
-
-

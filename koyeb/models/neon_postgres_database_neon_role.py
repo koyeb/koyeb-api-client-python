@@ -22,10 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class NeonPostgresDatabaseNeonRole(BaseModel):
     """
     NeonPostgresDatabaseNeonRole
-    """ # noqa: E501
+    """  # noqa: E501
+
     name: Optional[StrictStr] = None
     secret: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["name", "secret"]
@@ -35,7 +37,6 @@ class NeonPostgresDatabaseNeonRole(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class NeonPostgresDatabaseNeonRole(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -80,10 +80,7 @@ class NeonPostgresDatabaseNeonRole(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "secret": obj.get("secret")
-        })
+        _obj = cls.model_validate(
+            {"name": obj.get("name"), "secret": obj.get("secret")}
+        )
         return _obj
-
-

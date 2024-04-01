@@ -20,15 +20,19 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from koyeb.models.kgitproxy_github_installation_status import KgitproxyGithubInstallationStatus
+from koyeb.models.kgitproxy_github_installation_status import (
+    KgitproxyGithubInstallationStatus,
+)
 from koyeb.models.kgitproxy_indexing_status import KgitproxyIndexingStatus
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class GetGithubInstallationReply(BaseModel):
     """
     GetGithubInstallationReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     installation_id: Optional[StrictStr] = None
     installation_url: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
@@ -39,14 +43,24 @@ class GetGithubInstallationReply(BaseModel):
     indexing_status: Optional[KgitproxyIndexingStatus] = None
     indexed_repositories: Optional[StrictInt] = None
     total_repositories: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["installation_id", "installation_url", "name", "avatar_url", "status", "installed_at", "suspended_at", "indexing_status", "indexed_repositories", "total_repositories"]
+    __properties: ClassVar[List[str]] = [
+        "installation_id",
+        "installation_url",
+        "name",
+        "avatar_url",
+        "status",
+        "installed_at",
+        "suspended_at",
+        "indexing_status",
+        "indexed_repositories",
+        "total_repositories",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,8 +86,7 @@ class GetGithubInstallationReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -91,18 +104,18 @@ class GetGithubInstallationReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "installation_id": obj.get("installation_id"),
-            "installation_url": obj.get("installation_url"),
-            "name": obj.get("name"),
-            "avatar_url": obj.get("avatar_url"),
-            "status": obj.get("status"),
-            "installed_at": obj.get("installed_at"),
-            "suspended_at": obj.get("suspended_at"),
-            "indexing_status": obj.get("indexing_status"),
-            "indexed_repositories": obj.get("indexed_repositories"),
-            "total_repositories": obj.get("total_repositories")
-        })
+        _obj = cls.model_validate(
+            {
+                "installation_id": obj.get("installation_id"),
+                "installation_url": obj.get("installation_url"),
+                "name": obj.get("name"),
+                "avatar_url": obj.get("avatar_url"),
+                "status": obj.get("status"),
+                "installed_at": obj.get("installed_at"),
+                "suspended_at": obj.get("suspended_at"),
+                "indexing_status": obj.get("indexing_status"),
+                "indexed_repositories": obj.get("indexed_repositories"),
+                "total_repositories": obj.get("total_repositories"),
+            }
+        )
         return _obj
-
-

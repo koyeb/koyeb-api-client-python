@@ -23,10 +23,12 @@ from koyeb.models.organization_invitation import OrganizationInvitation
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class GetOrganizationInvitationReply(BaseModel):
     """
     GetOrganizationInvitationReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     invitation: Optional[OrganizationInvitation] = None
     __properties: ClassVar[List[str]] = ["invitation"]
 
@@ -35,7 +37,6 @@ class GetOrganizationInvitationReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class GetOrganizationInvitationReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -71,7 +71,7 @@ class GetOrganizationInvitationReply(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of invitation
         if self.invitation:
-            _dict['invitation'] = self.invitation.to_dict()
+            _dict["invitation"] = self.invitation.to_dict()
         return _dict
 
     @classmethod
@@ -83,9 +83,11 @@ class GetOrganizationInvitationReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "invitation": OrganizationInvitation.from_dict(obj["invitation"]) if obj.get("invitation") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "invitation": OrganizationInvitation.from_dict(obj["invitation"])
+                if obj.get("invitation") is not None
+                else None
+            }
+        )
         return _obj
-
-

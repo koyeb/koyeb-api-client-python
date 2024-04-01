@@ -20,7 +20,9 @@ from pydantic import Field, StrictStr
 from typing import Any, Dict, Optional
 from typing_extensions import Annotated
 from koyeb.models.kgitproxy_list_branches_reply import KgitproxyListBranchesReply
-from koyeb.models.kgitproxy_list_repositories_reply import KgitproxyListRepositoriesReply
+from koyeb.models.kgitproxy_list_repositories_reply import (
+    KgitproxyListRepositoriesReply,
+)
 
 from koyeb.api_client import ApiClient, RequestSerialized
 from koyeb.api_response import ApiResponse
@@ -39,21 +41,33 @@ class RepositoriesApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-
     @validate_call
     def list_branches(
         self,
-        repository_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on one repository.")] = None,
-        name: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on branch name using a fuzzy search. Repository filter is required to enable this filter.")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return.")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return.")] = None,
+        repository_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on one repository."),
+        ] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Filter on branch name using a fuzzy search. Repository filter is required to enable this filter."
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return."),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -91,7 +105,7 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_branches_serialize(
             repository_id=repository_id,
@@ -101,20 +115,19 @@ class RepositoriesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KgitproxyListBranchesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "KgitproxyListBranchesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -122,21 +135,33 @@ class RepositoriesApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def list_branches_with_http_info(
         self,
-        repository_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on one repository.")] = None,
-        name: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on branch name using a fuzzy search. Repository filter is required to enable this filter.")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return.")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return.")] = None,
+        repository_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on one repository."),
+        ] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Filter on branch name using a fuzzy search. Repository filter is required to enable this filter."
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return."),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -174,7 +199,7 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_branches_serialize(
             repository_id=repository_id,
@@ -184,20 +209,19 @@ class RepositoriesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KgitproxyListBranchesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "KgitproxyListBranchesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -205,21 +229,33 @@ class RepositoriesApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def list_branches_without_preload_content(
         self,
-        repository_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on one repository.")] = None,
-        name: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on branch name using a fuzzy search. Repository filter is required to enable this filter.")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return.")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return.")] = None,
+        repository_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on one repository."),
+        ] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Filter on branch name using a fuzzy search. Repository filter is required to enable this filter."
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return."),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -257,7 +293,7 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_branches_serialize(
             repository_id=repository_id,
@@ -267,23 +303,21 @@ class RepositoriesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KgitproxyListBranchesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "KgitproxyListBranchesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _list_branches_serialize(
         self,
@@ -296,11 +330,9 @@ class RepositoriesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -312,42 +344,30 @@ class RepositoriesApi:
         # process the path parameters
         # process the query parameters
         if repository_id is not None:
-            
-            _query_params.append(('repository_id', repository_id))
-            
+            _query_params.append(("repository_id", repository_id))
+
         if name is not None:
-            
-            _query_params.append(('name', name))
-            
+            _query_params.append(("name", name))
+
         if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
+            _query_params.append(("limit", limit))
+
         if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
+            _query_params.append(("offset", offset))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/git/branches',
+            method="GET",
+            resource_path="/v1/git/branches",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -357,26 +377,38 @@ class RepositoriesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def list_repositories(
         self,
-        name: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on repository name using a fuzzy search.")] = None,
-        name_search_op: Annotated[Optional[StrictStr], Field(description="(Optional) Define search operation for repository name. Accept either \"fuzzy\" or \"equality\", use \"fuzzy\" by default.")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return.")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return.")] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Filter on repository name using a fuzzy search."
+            ),
+        ] = None,
+        name_search_op: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='(Optional) Define search operation for repository name. Accept either "fuzzy" or "equality", use "fuzzy" by default.'
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return."),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -414,7 +446,7 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_repositories_serialize(
             name=name,
@@ -424,20 +456,19 @@ class RepositoriesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KgitproxyListRepositoriesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "KgitproxyListRepositoriesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -445,21 +476,35 @@ class RepositoriesApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def list_repositories_with_http_info(
         self,
-        name: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on repository name using a fuzzy search.")] = None,
-        name_search_op: Annotated[Optional[StrictStr], Field(description="(Optional) Define search operation for repository name. Accept either \"fuzzy\" or \"equality\", use \"fuzzy\" by default.")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return.")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return.")] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Filter on repository name using a fuzzy search."
+            ),
+        ] = None,
+        name_search_op: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='(Optional) Define search operation for repository name. Accept either "fuzzy" or "equality", use "fuzzy" by default.'
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return."),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -497,7 +542,7 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_repositories_serialize(
             name=name,
@@ -507,20 +552,19 @@ class RepositoriesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KgitproxyListRepositoriesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "KgitproxyListRepositoriesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -528,21 +572,35 @@ class RepositoriesApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def list_repositories_without_preload_content(
         self,
-        name: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on repository name using a fuzzy search.")] = None,
-        name_search_op: Annotated[Optional[StrictStr], Field(description="(Optional) Define search operation for repository name. Accept either \"fuzzy\" or \"equality\", use \"fuzzy\" by default.")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return.")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return.")] = None,
+        name: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Filter on repository name using a fuzzy search."
+            ),
+        ] = None,
+        name_search_op: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='(Optional) Define search operation for repository name. Accept either "fuzzy" or "equality", use "fuzzy" by default.'
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return."),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return."),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -580,7 +638,7 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_repositories_serialize(
             name=name,
@@ -590,23 +648,21 @@ class RepositoriesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KgitproxyListRepositoriesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "KgitproxyListRepositoriesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _list_repositories_serialize(
         self,
@@ -619,11 +675,9 @@ class RepositoriesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -635,42 +689,30 @@ class RepositoriesApi:
         # process the path parameters
         # process the query parameters
         if name is not None:
-            
-            _query_params.append(('name', name))
-            
+            _query_params.append(("name", name))
+
         if name_search_op is not None:
-            
-            _query_params.append(('name_search_op', name_search_op))
-            
+            _query_params.append(("name_search_op", name_search_op))
+
         if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
+            _query_params.append(("limit", limit))
+
         if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
+            _query_params.append(("offset", offset))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/git/repositories',
+            method="GET",
+            resource_path="/v1/git/repositories",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -680,11 +722,8 @@ class RepositoriesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def resync_organization(
@@ -694,9 +733,8 @@ class RepositoriesApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -728,34 +766,32 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._resync_organization_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "object",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     def resync_organization_with_http_info(
@@ -765,9 +801,8 @@ class RepositoriesApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -799,34 +834,32 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._resync_organization_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "object",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     def resync_organization_without_preload_content(
@@ -836,9 +869,8 @@ class RepositoriesApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -870,30 +902,28 @@ class RepositoriesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._resync_organization_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "object",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _resync_organization_serialize(
         self,
@@ -903,11 +933,9 @@ class RepositoriesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -918,29 +946,21 @@ class RepositoriesApi:
 
         # process the path parameters
         if organization_id is not None:
-            _path_params['organization_id'] = organization_id
+            _path_params["organization_id"] = organization_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v1/git/sync/organization/{organization_id}',
+            method="POST",
+            resource_path="/v1/git/sync/organization/{organization_id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -950,7 +970,5 @@ class RepositoriesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-

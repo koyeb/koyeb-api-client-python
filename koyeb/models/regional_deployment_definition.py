@@ -24,16 +24,20 @@ from koyeb.models.docker_source import DockerSource
 from koyeb.models.env import Env
 from koyeb.models.git_source import GitSource
 from koyeb.models.port import Port
-from koyeb.models.regional_deployment_definition_type import RegionalDeploymentDefinitionType
+from koyeb.models.regional_deployment_definition_type import (
+    RegionalDeploymentDefinitionType,
+)
 from koyeb.models.route import Route
 from koyeb.models.scaling import Scaling
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class RegionalDeploymentDefinition(BaseModel):
     """
     RegionalDeploymentDefinition
-    """ # noqa: E501
+    """  # noqa: E501
+
     name: Optional[StrictStr] = None
     type: Optional[RegionalDeploymentDefinitionType] = None
     routes: Optional[List[Route]] = None
@@ -48,14 +52,28 @@ class RegionalDeploymentDefinition(BaseModel):
     use_kuma_v2: Optional[StrictBool] = None
     docker: Optional[DockerSource] = None
     git: Optional[GitSource] = None
-    __properties: ClassVar[List[str]] = ["name", "type", "routes", "ports", "env", "region", "scaling", "instance_type", "deployment_group", "health_checks", "skip_cache", "use_kuma_v2", "docker", "git"]
+    __properties: ClassVar[List[str]] = [
+        "name",
+        "type",
+        "routes",
+        "ports",
+        "env",
+        "region",
+        "scaling",
+        "instance_type",
+        "deployment_group",
+        "health_checks",
+        "skip_cache",
+        "use_kuma_v2",
+        "docker",
+        "git",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,8 +99,7 @@ class RegionalDeploymentDefinition(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -95,37 +112,37 @@ class RegionalDeploymentDefinition(BaseModel):
             for _item in self.routes:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['routes'] = _items
+            _dict["routes"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ports (list)
         _items = []
         if self.ports:
             for _item in self.ports:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['ports'] = _items
+            _dict["ports"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in env (list)
         _items = []
         if self.env:
             for _item in self.env:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['env'] = _items
+            _dict["env"] = _items
         # override the default output from pydantic by calling `to_dict()` of scaling
         if self.scaling:
-            _dict['scaling'] = self.scaling.to_dict()
+            _dict["scaling"] = self.scaling.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in health_checks (list)
         _items = []
         if self.health_checks:
             for _item in self.health_checks:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['health_checks'] = _items
+            _dict["health_checks"] = _items
         # override the default output from pydantic by calling `to_dict()` of docker
         if self.docker:
-            _dict['docker'] = self.docker.to_dict()
+            _dict["docker"] = self.docker.to_dict()
         # override the default output from pydantic by calling `to_dict()` of git
         if self.git:
-            _dict['git'] = self.git.to_dict()
+            _dict["git"] = self.git.to_dict()
         return _dict
 
     @classmethod
@@ -137,22 +154,39 @@ class RegionalDeploymentDefinition(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "routes": [Route.from_dict(_item) for _item in obj["routes"]] if obj.get("routes") is not None else None,
-            "ports": [Port.from_dict(_item) for _item in obj["ports"]] if obj.get("ports") is not None else None,
-            "env": [Env.from_dict(_item) for _item in obj["env"]] if obj.get("env") is not None else None,
-            "region": obj.get("region"),
-            "scaling": Scaling.from_dict(obj["scaling"]) if obj.get("scaling") is not None else None,
-            "instance_type": obj.get("instance_type"),
-            "deployment_group": obj.get("deployment_group"),
-            "health_checks": [DeploymentHealthCheck.from_dict(_item) for _item in obj["health_checks"]] if obj.get("health_checks") is not None else None,
-            "skip_cache": obj.get("skip_cache"),
-            "use_kuma_v2": obj.get("use_kuma_v2"),
-            "docker": DockerSource.from_dict(obj["docker"]) if obj.get("docker") is not None else None,
-            "git": GitSource.from_dict(obj["git"]) if obj.get("git") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "name": obj.get("name"),
+                "type": obj.get("type"),
+                "routes": [Route.from_dict(_item) for _item in obj["routes"]]
+                if obj.get("routes") is not None
+                else None,
+                "ports": [Port.from_dict(_item) for _item in obj["ports"]]
+                if obj.get("ports") is not None
+                else None,
+                "env": [Env.from_dict(_item) for _item in obj["env"]]
+                if obj.get("env") is not None
+                else None,
+                "region": obj.get("region"),
+                "scaling": Scaling.from_dict(obj["scaling"])
+                if obj.get("scaling") is not None
+                else None,
+                "instance_type": obj.get("instance_type"),
+                "deployment_group": obj.get("deployment_group"),
+                "health_checks": [
+                    DeploymentHealthCheck.from_dict(_item)
+                    for _item in obj["health_checks"]
+                ]
+                if obj.get("health_checks") is not None
+                else None,
+                "skip_cache": obj.get("skip_cache"),
+                "use_kuma_v2": obj.get("use_kuma_v2"),
+                "docker": DockerSource.from_dict(obj["docker"])
+                if obj.get("docker") is not None
+                else None,
+                "git": GitSource.from_dict(obj["git"])
+                if obj.get("git") is not None
+                else None,
+            }
+        )
         return _obj
-
-

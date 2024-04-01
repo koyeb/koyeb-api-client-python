@@ -23,10 +23,12 @@ from koyeb.models.get_metrics_reply_metric import GetMetricsReplyMetric
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class GetMetricsReply(BaseModel):
     """
     GetMetricsReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     metrics: Optional[List[GetMetricsReplyMetric]] = None
     __properties: ClassVar[List[str]] = ["metrics"]
 
@@ -35,7 +37,6 @@ class GetMetricsReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class GetMetricsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -75,7 +75,7 @@ class GetMetricsReply(BaseModel):
             for _item in self.metrics:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['metrics'] = _items
+            _dict["metrics"] = _items
         return _dict
 
     @classmethod
@@ -87,9 +87,13 @@ class GetMetricsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "metrics": [GetMetricsReplyMetric.from_dict(_item) for _item in obj["metrics"]] if obj.get("metrics") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "metrics": [
+                    GetMetricsReplyMetric.from_dict(_item) for _item in obj["metrics"]
+                ]
+                if obj.get("metrics") is not None
+                else None
+            }
+        )
         return _obj
-
-

@@ -25,10 +25,12 @@ from koyeb.models.domain import Domain
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class AppListItem(BaseModel):
     """
     AppListItem
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
@@ -37,14 +39,22 @@ class AppListItem(BaseModel):
     domains: Optional[List[Domain]] = None
     status: Optional[AppStatus] = None
     messages: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "organization_id", "updated_at", "created_at", "domains", "status", "messages"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "name",
+        "organization_id",
+        "updated_at",
+        "created_at",
+        "domains",
+        "status",
+        "messages",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,8 +80,7 @@ class AppListItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -84,7 +93,7 @@ class AppListItem(BaseModel):
             for _item in self.domains:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['domains'] = _items
+            _dict["domains"] = _items
         return _dict
 
     @classmethod
@@ -96,16 +105,18 @@ class AppListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "organization_id": obj.get("organization_id"),
-            "updated_at": obj.get("updated_at"),
-            "created_at": obj.get("created_at"),
-            "domains": [Domain.from_dict(_item) for _item in obj["domains"]] if obj.get("domains") is not None else None,
-            "status": obj.get("status"),
-            "messages": obj.get("messages")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "name": obj.get("name"),
+                "organization_id": obj.get("organization_id"),
+                "updated_at": obj.get("updated_at"),
+                "created_at": obj.get("created_at"),
+                "domains": [Domain.from_dict(_item) for _item in obj["domains"]]
+                if obj.get("domains") is not None
+                else None,
+                "status": obj.get("status"),
+                "messages": obj.get("messages"),
+            }
+        )
         return _obj
-
-

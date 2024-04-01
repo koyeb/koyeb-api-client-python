@@ -22,10 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class DatacenterListItem(BaseModel):
     """
     DatacenterListItem
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     region_id: Optional[StrictStr] = None
     domain: Optional[StrictStr] = None
@@ -37,7 +39,6 @@ class DatacenterListItem(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,8 +64,7 @@ class DatacenterListItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -82,12 +82,12 @@ class DatacenterListItem(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "region_id": obj.get("region_id"),
-            "domain": obj.get("domain"),
-            "coordinates": obj.get("coordinates")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "region_id": obj.get("region_id"),
+                "domain": obj.get("domain"),
+                "coordinates": obj.get("coordinates"),
+            }
+        )
         return _obj
-
-

@@ -22,10 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ReviewOrganizationCapacityReply(BaseModel):
     """
     ReviewOrganizationCapacityReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     has_capacity: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["has_capacity"]
 
@@ -34,7 +36,6 @@ class ReviewOrganizationCapacityReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -60,8 +61,7 @@ class ReviewOrganizationCapacityReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -79,9 +79,5 @@ class ReviewOrganizationCapacityReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "has_capacity": obj.get("has_capacity")
-        })
+        _obj = cls.model_validate({"has_capacity": obj.get("has_capacity")})
         return _obj
-
-
