@@ -16,6 +16,7 @@ import unittest
 
 from koyeb.models.organization_detailed_status import OrganizationDetailedStatus
 
+
 class TestOrganizationDetailedStatus(unittest.TestCase):
     """OrganizationDetailedStatus unit test stubs"""
 
@@ -29,5 +30,6 @@ class TestOrganizationDetailedStatus(unittest.TestCase):
         """Test OrganizationDetailedStatus"""
         # inst = OrganizationDetailedStatus()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

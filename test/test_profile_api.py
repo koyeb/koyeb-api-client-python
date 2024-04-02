@@ -27,27 +27,19 @@ class TestProfileApi(unittest.TestCase):
         pass
 
     def test_accept_organization_invitation(self) -> None:
-        """Test case for accept_organization_invitation
-
-        """
+        """Test case for accept_organization_invitation"""
         pass
 
     def test_decline_organization_invitation(self) -> None:
-        """Test case for decline_organization_invitation
-
-        """
+        """Test case for decline_organization_invitation"""
         pass
 
     def test_get_current_organization(self) -> None:
-        """Test case for get_current_organization
-
-        """
+        """Test case for get_current_organization"""
         pass
 
     def test_get_current_user(self) -> None:
-        """Test case for get_current_user
-
-        """
+        """Test case for get_current_user"""
         pass
 
     def test_get_o_auth_options(self) -> None:
@@ -58,15 +50,11 @@ class TestProfileApi(unittest.TestCase):
         pass
 
     def test_get_user_organization_invitation(self) -> None:
-        """Test case for get_user_organization_invitation
-
-        """
+        """Test case for get_user_organization_invitation"""
         pass
 
     def test_list_user_organization_invitations(self) -> None:
-        """Test case for list_user_organization_invitations
-
-        """
+        """Test case for list_user_organization_invitations"""
         pass
 
     def test_o_auth_callback(self) -> None:
@@ -77,47 +65,33 @@ class TestProfileApi(unittest.TestCase):
         pass
 
     def test_resend_email_validation(self) -> None:
-        """Test case for resend_email_validation
-
-        """
+        """Test case for resend_email_validation"""
         pass
 
     def test_reset_password(self) -> None:
-        """Test case for reset_password
-
-        """
+        """Test case for reset_password"""
         pass
 
     def test_signup(self) -> None:
-        """Test case for signup
-
-        """
+        """Test case for signup"""
         pass
 
     def test_update_password(self) -> None:
-        """Test case for update_password
-
-        """
+        """Test case for update_password"""
         pass
 
     def test_update_user(self) -> None:
-        """Test case for update_user
-
-        """
+        """Test case for update_user"""
         pass
 
     def test_update_user2(self) -> None:
-        """Test case for update_user2
-
-        """
+        """Test case for update_user2"""
         pass
 
     def test_validate(self) -> None:
-        """Test case for validate
-
-        """
+        """Test case for validate"""
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

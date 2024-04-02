@@ -23,10 +23,12 @@ from koyeb.models.o_auth_provider import OAuthProvider
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class GetOAuthOptionsReply(BaseModel):
     """
     A list of providers which you can use for single sign-on.
-    """ # noqa: E501
+    """  # noqa: E501
+
     oauth_providers: Optional[List[OAuthProvider]] = None
     __properties: ClassVar[List[str]] = ["oauth_providers"]
 
@@ -35,7 +37,6 @@ class GetOAuthOptionsReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -61,8 +62,7 @@ class GetOAuthOptionsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -75,7 +75,7 @@ class GetOAuthOptionsReply(BaseModel):
             for _item in self.oauth_providers:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['oauth_providers'] = _items
+            _dict["oauth_providers"] = _items
         return _dict
 
     @classmethod
@@ -87,9 +87,13 @@ class GetOAuthOptionsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "oauth_providers": [OAuthProvider.from_dict(_item) for _item in obj["oauth_providers"]] if obj.get("oauth_providers") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "oauth_providers": [
+                    OAuthProvider.from_dict(_item) for _item in obj["oauth_providers"]
+                ]
+                if obj.get("oauth_providers") is not None
+                else None
+            }
+        )
         return _obj
-
-

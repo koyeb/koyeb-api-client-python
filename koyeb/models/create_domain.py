@@ -23,10 +23,12 @@ from koyeb.models.domain_type import DomainType
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class CreateDomain(BaseModel):
     """
     CreateDomain
-    """ # noqa: E501
+    """  # noqa: E501
+
     name: Optional[StrictStr] = None
     type: Optional[DomainType] = None
     app_id: Optional[StrictStr] = None
@@ -37,7 +39,6 @@ class CreateDomain(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,8 +64,7 @@ class CreateDomain(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -82,11 +82,11 @@ class CreateDomain(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "app_id": obj.get("app_id")
-        })
+        _obj = cls.model_validate(
+            {
+                "name": obj.get("name"),
+                "type": obj.get("type"),
+                "app_id": obj.get("app_id"),
+            }
+        )
         return _obj
-
-

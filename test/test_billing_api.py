@@ -34,9 +34,7 @@ class TestBillingApi(unittest.TestCase):
         pass
 
     def test_manage(self) -> None:
-        """Test case for manage
-
-        """
+        """Test case for manage"""
         pass
 
     def test_next_invoice(self) -> None:
@@ -47,5 +45,5 @@ class TestBillingApi(unittest.TestCase):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

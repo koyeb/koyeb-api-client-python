@@ -23,10 +23,12 @@ from koyeb.models.organization_invitation import OrganizationInvitation
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ListOrganizationInvitationsReply(BaseModel):
     """
     ListOrganizationInvitationsReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     invitations: Optional[List[OrganizationInvitation]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -38,7 +40,6 @@ class ListOrganizationInvitationsReply(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,8 +65,7 @@ class ListOrganizationInvitationsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -78,7 +78,7 @@ class ListOrganizationInvitationsReply(BaseModel):
             for _item in self.invitations:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['invitations'] = _items
+            _dict["invitations"] = _items
         return _dict
 
     @classmethod
@@ -90,12 +90,17 @@ class ListOrganizationInvitationsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "invitations": [OrganizationInvitation.from_dict(_item) for _item in obj["invitations"]] if obj.get("invitations") is not None else None,
-            "limit": obj.get("limit"),
-            "offset": obj.get("offset"),
-            "count": obj.get("count")
-        })
+        _obj = cls.model_validate(
+            {
+                "invitations": [
+                    OrganizationInvitation.from_dict(_item)
+                    for _item in obj["invitations"]
+                ]
+                if obj.get("invitations") is not None
+                else None,
+                "limit": obj.get("limit"),
+                "offset": obj.get("offset"),
+                "count": obj.get("count"),
+            }
+        )
         return _obj
-
-

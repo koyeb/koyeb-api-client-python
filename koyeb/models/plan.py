@@ -26,18 +26,16 @@ class Plan(str, Enum):
     """
     allowed enum values
     """
-    HOBBY = 'hobby'
-    STARTER = 'starter'
-    STARTUP = 'startup'
-    BUSINESS = 'business'
-    ENTERPRISE = 'enterprise'
-    INTERNAL = 'internal'
-    HOBBY23 = 'hobby23'
-    NO_PLAN = 'no_plan'
+    HOBBY = "hobby"
+    STARTER = "starter"
+    STARTUP = "startup"
+    BUSINESS = "business"
+    ENTERPRISE = "enterprise"
+    INTERNAL = "internal"
+    HOBBY23 = "hobby23"
+    NO_PLAN = "no_plan"
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of Plan from a JSON string"""
         return cls(json.loads(json_str))
-
-

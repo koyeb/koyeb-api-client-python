@@ -20,27 +20,36 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from koyeb.models.deployment_provisioning_info_stage_status import DeploymentProvisioningInfoStageStatus
+from koyeb.models.deployment_provisioning_info_stage_status import (
+    DeploymentProvisioningInfoStageStatus,
+)
 from typing import Optional, Set
 from typing_extensions import Self
+
 
 class DeploymentProvisioningInfoStageBuildAttempt(BaseModel):
     """
     DeploymentProvisioningInfoStageBuildAttempt
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictInt] = None
     status: Optional[DeploymentProvisioningInfoStageStatus] = None
     messages: Optional[List[StrictStr]] = None
     started_at: Optional[datetime] = None
     finished_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["id", "status", "messages", "started_at", "finished_at"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "status",
+        "messages",
+        "started_at",
+        "finished_at",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,8 +75,7 @@ class DeploymentProvisioningInfoStageBuildAttempt(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -85,13 +93,13 @@ class DeploymentProvisioningInfoStageBuildAttempt(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "status": obj.get("status"),
-            "messages": obj.get("messages"),
-            "started_at": obj.get("started_at"),
-            "finished_at": obj.get("finished_at")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "status": obj.get("status"),
+                "messages": obj.get("messages"),
+                "started_at": obj.get("started_at"),
+                "finished_at": obj.get("finished_at"),
+            }
+        )
         return _obj
-
-

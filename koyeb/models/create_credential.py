@@ -23,22 +23,28 @@ from koyeb.models.credential_type import CredentialType
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class CreateCredential(BaseModel):
     """
     CreateCredential
-    """ # noqa: E501
+    """  # noqa: E501
+
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     type: Optional[CredentialType] = None
     organization_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "type", "organization_id"]
+    __properties: ClassVar[List[str]] = [
+        "name",
+        "description",
+        "type",
+        "organization_id",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,8 +70,7 @@ class CreateCredential(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -83,12 +88,12 @@ class CreateCredential(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "type": obj.get("type"),
-            "organization_id": obj.get("organization_id")
-        })
+        _obj = cls.model_validate(
+            {
+                "name": obj.get("name"),
+                "description": obj.get("description"),
+                "type": obj.get("type"),
+                "organization_id": obj.get("organization_id"),
+            }
+        )
         return _obj
-
-

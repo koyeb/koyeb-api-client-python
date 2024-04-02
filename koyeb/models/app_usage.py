@@ -23,10 +23,12 @@ from koyeb.models.service_usage import ServiceUsage
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class AppUsage(BaseModel):
     """
     AppUsage
-    """ # noqa: E501
+    """  # noqa: E501
+
     app_id: Optional[StrictStr] = None
     app_name: Optional[StrictStr] = None
     services: Optional[List[ServiceUsage]] = None
@@ -37,7 +39,6 @@ class AppUsage(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,8 +64,7 @@ class AppUsage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -77,7 +77,7 @@ class AppUsage(BaseModel):
             for _item in self.services:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['services'] = _items
+            _dict["services"] = _items
         return _dict
 
     @classmethod
@@ -89,11 +89,13 @@ class AppUsage(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "app_id": obj.get("app_id"),
-            "app_name": obj.get("app_name"),
-            "services": [ServiceUsage.from_dict(_item) for _item in obj["services"]] if obj.get("services") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "app_id": obj.get("app_id"),
+                "app_name": obj.get("app_name"),
+                "services": [ServiceUsage.from_dict(_item) for _item in obj["services"]]
+                if obj.get("services") is not None
+                else None,
+            }
+        )
         return _obj
-
-

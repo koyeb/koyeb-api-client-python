@@ -27,11 +27,9 @@ class TestInviteApi(unittest.TestCase):
         pass
 
     def test_create_invite(self) -> None:
-        """Test case for create_invite
-
-        """
+        """Test case for create_invite"""
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -27,10 +27,12 @@ from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class RegionalDeployment(BaseModel):
     """
     RegionalDeployment
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
@@ -54,14 +56,37 @@ class RegionalDeployment(BaseModel):
     version: Optional[StrictStr] = None
     deployment_group: Optional[StrictStr] = None
     deployment_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "created_at", "updated_at", "allocated_at", "started_at", "succeeded_at", "terminated_at", "organization_id", "app_id", "service_id", "region", "parent_id", "child_id", "status", "messages", "definition", "datacenters", "metadata", "provisioning_info", "use_kuma_v2", "version", "deployment_group", "deployment_id"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "created_at",
+        "updated_at",
+        "allocated_at",
+        "started_at",
+        "succeeded_at",
+        "terminated_at",
+        "organization_id",
+        "app_id",
+        "service_id",
+        "region",
+        "parent_id",
+        "child_id",
+        "status",
+        "messages",
+        "definition",
+        "datacenters",
+        "metadata",
+        "provisioning_info",
+        "use_kuma_v2",
+        "version",
+        "deployment_group",
+        "deployment_id",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,8 +112,7 @@ class RegionalDeployment(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -97,13 +121,13 @@ class RegionalDeployment(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of definition
         if self.definition:
-            _dict['definition'] = self.definition.to_dict()
+            _dict["definition"] = self.definition.to_dict()
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
-            _dict['metadata'] = self.metadata.to_dict()
+            _dict["metadata"] = self.metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of provisioning_info
         if self.provisioning_info:
-            _dict['provisioning_info'] = self.provisioning_info.to_dict()
+            _dict["provisioning_info"] = self.provisioning_info.to_dict()
         return _dict
 
     @classmethod
@@ -115,31 +139,39 @@ class RegionalDeployment(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at"),
-            "allocated_at": obj.get("allocated_at"),
-            "started_at": obj.get("started_at"),
-            "succeeded_at": obj.get("succeeded_at"),
-            "terminated_at": obj.get("terminated_at"),
-            "organization_id": obj.get("organization_id"),
-            "app_id": obj.get("app_id"),
-            "service_id": obj.get("service_id"),
-            "region": obj.get("region"),
-            "parent_id": obj.get("parent_id"),
-            "child_id": obj.get("child_id"),
-            "status": obj.get("status"),
-            "messages": obj.get("messages"),
-            "definition": RegionalDeploymentDefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
-            "datacenters": obj.get("datacenters"),
-            "metadata": RegionalDeploymentMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
-            "provisioning_info": DeploymentProvisioningInfo.from_dict(obj["provisioning_info"]) if obj.get("provisioning_info") is not None else None,
-            "use_kuma_v2": obj.get("use_kuma_v2"),
-            "version": obj.get("version"),
-            "deployment_group": obj.get("deployment_group"),
-            "deployment_id": obj.get("deployment_id")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "created_at": obj.get("created_at"),
+                "updated_at": obj.get("updated_at"),
+                "allocated_at": obj.get("allocated_at"),
+                "started_at": obj.get("started_at"),
+                "succeeded_at": obj.get("succeeded_at"),
+                "terminated_at": obj.get("terminated_at"),
+                "organization_id": obj.get("organization_id"),
+                "app_id": obj.get("app_id"),
+                "service_id": obj.get("service_id"),
+                "region": obj.get("region"),
+                "parent_id": obj.get("parent_id"),
+                "child_id": obj.get("child_id"),
+                "status": obj.get("status"),
+                "messages": obj.get("messages"),
+                "definition": RegionalDeploymentDefinition.from_dict(obj["definition"])
+                if obj.get("definition") is not None
+                else None,
+                "datacenters": obj.get("datacenters"),
+                "metadata": RegionalDeploymentMetadata.from_dict(obj["metadata"])
+                if obj.get("metadata") is not None
+                else None,
+                "provisioning_info": DeploymentProvisioningInfo.from_dict(
+                    obj["provisioning_info"]
+                )
+                if obj.get("provisioning_info") is not None
+                else None,
+                "use_kuma_v2": obj.get("use_kuma_v2"),
+                "version": obj.get("version"),
+                "deployment_group": obj.get("deployment_group"),
+                "deployment_id": obj.get("deployment_id"),
+            }
+        )
         return _obj
-
-

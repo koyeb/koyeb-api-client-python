@@ -26,15 +26,13 @@ class OrganizationDeactivationReason(str, Enum):
     """
     allowed enum values
     """
-    INVALID = 'INVALID'
-    REQUESTED_BY_OWNER = 'REQUESTED_BY_OWNER'
-    SUBSCRIPTION_TERMINATION = 'SUBSCRIPTION_TERMINATION'
-    LOCKED_BY_ADMIN = 'LOCKED_BY_ADMIN'
-    VERIFICATION_FAILED = 'VERIFICATION_FAILED'
+    INVALID = "INVALID"
+    REQUESTED_BY_OWNER = "REQUESTED_BY_OWNER"
+    SUBSCRIPTION_TERMINATION = "SUBSCRIPTION_TERMINATION"
+    LOCKED_BY_ADMIN = "LOCKED_BY_ADMIN"
+    VERIFICATION_FAILED = "VERIFICATION_FAILED"
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of OrganizationDeactivationReason from a JSON string"""
         return cls(json.loads(json_str))
-
-

@@ -26,15 +26,13 @@ class DeploymentProvisioningInfoStageStatus(str, Enum):
     """
     allowed enum values
     """
-    UNKNOWN = 'UNKNOWN'
-    RUNNING = 'RUNNING'
-    FAILED = 'FAILED'
-    COMPLETED = 'COMPLETED'
-    ABORTED = 'ABORTED'
+    UNKNOWN = "UNKNOWN"
+    RUNNING = "RUNNING"
+    FAILED = "FAILED"
+    COMPLETED = "COMPLETED"
+    ABORTED = "ABORTED"
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of DeploymentProvisioningInfoStageStatus from a JSON string"""
         return cls(json.loads(json_str))
-
-

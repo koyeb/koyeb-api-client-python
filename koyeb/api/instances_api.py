@@ -17,13 +17,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr, field_validator
+from pydantic import (
+    Field,
+    StrictBool,
+    StrictBytes,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import List, Optional, Union
 from typing_extensions import Annotated
 from koyeb.models.get_instance_reply import GetInstanceReply
 from koyeb.models.list_instance_events_reply import ListInstanceEventsReply
 from koyeb.models.list_instances_reply import ListInstancesReply
-from koyeb.models.stream_result_of_exec_command_reply import StreamResultOfExecCommandReply
+from koyeb.models.stream_result_of_exec_command_reply import (
+    StreamResultOfExecCommandReply,
+)
 
 from koyeb.api_client import ApiClient, RequestSerialized
 from koyeb.api_response import ApiResponse
@@ -42,25 +51,43 @@ class InstancesApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-
     @validate_call
     def exec_command(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the resource to exec on.")] = None,
-        body_command: Annotated[Optional[List[StrictStr]], Field(description="Command to exec. Mandatory in the first frame sent")] = None,
+        id: Annotated[
+            Optional[StrictStr], Field(description="ID of the resource to exec on.")
+        ] = None,
+        body_command: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="Command to exec. Mandatory in the first frame sent"),
+        ] = None,
         body_tty_size_height: Optional[StrictInt] = None,
         body_tty_size_width: Optional[StrictInt] = None,
-        body_stdin_data: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="Data is base64 encoded")] = None,
-        body_stdin_close: Annotated[Optional[StrictBool], Field(description="Indicate last data frame")] = None,
-        body_disable_tty: Annotated[Optional[StrictBool], Field(description="Disable TTY. It's enough to specify it in the first frame")] = None,
-        id_type: Annotated[Optional[StrictStr], Field(description="When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id.")] = None,
+        body_stdin_data: Annotated[
+            Optional[Union[StrictBytes, StrictStr]],
+            Field(description="Data is base64 encoded"),
+        ] = None,
+        body_stdin_close: Annotated[
+            Optional[StrictBool], Field(description="Indicate last data frame")
+        ] = None,
+        body_disable_tty: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Disable TTY. It's enough to specify it in the first frame"
+            ),
+        ] = None,
+        id_type: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -107,7 +134,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._exec_command_serialize(
             id=id,
@@ -121,20 +148,19 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StreamResultOfExecCommandReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "StreamResultOfExecCommandReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -142,25 +168,43 @@ class InstancesApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def exec_command_with_http_info(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the resource to exec on.")] = None,
-        body_command: Annotated[Optional[List[StrictStr]], Field(description="Command to exec. Mandatory in the first frame sent")] = None,
+        id: Annotated[
+            Optional[StrictStr], Field(description="ID of the resource to exec on.")
+        ] = None,
+        body_command: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="Command to exec. Mandatory in the first frame sent"),
+        ] = None,
         body_tty_size_height: Optional[StrictInt] = None,
         body_tty_size_width: Optional[StrictInt] = None,
-        body_stdin_data: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="Data is base64 encoded")] = None,
-        body_stdin_close: Annotated[Optional[StrictBool], Field(description="Indicate last data frame")] = None,
-        body_disable_tty: Annotated[Optional[StrictBool], Field(description="Disable TTY. It's enough to specify it in the first frame")] = None,
-        id_type: Annotated[Optional[StrictStr], Field(description="When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id.")] = None,
+        body_stdin_data: Annotated[
+            Optional[Union[StrictBytes, StrictStr]],
+            Field(description="Data is base64 encoded"),
+        ] = None,
+        body_stdin_close: Annotated[
+            Optional[StrictBool], Field(description="Indicate last data frame")
+        ] = None,
+        body_disable_tty: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Disable TTY. It's enough to specify it in the first frame"
+            ),
+        ] = None,
+        id_type: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -207,7 +251,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._exec_command_serialize(
             id=id,
@@ -221,20 +265,19 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StreamResultOfExecCommandReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "StreamResultOfExecCommandReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -242,25 +285,43 @@ class InstancesApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def exec_command_without_preload_content(
         self,
-        id: Annotated[Optional[StrictStr], Field(description="ID of the resource to exec on.")] = None,
-        body_command: Annotated[Optional[List[StrictStr]], Field(description="Command to exec. Mandatory in the first frame sent")] = None,
+        id: Annotated[
+            Optional[StrictStr], Field(description="ID of the resource to exec on.")
+        ] = None,
+        body_command: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="Command to exec. Mandatory in the first frame sent"),
+        ] = None,
         body_tty_size_height: Optional[StrictInt] = None,
         body_tty_size_width: Optional[StrictInt] = None,
-        body_stdin_data: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="Data is base64 encoded")] = None,
-        body_stdin_close: Annotated[Optional[StrictBool], Field(description="Indicate last data frame")] = None,
-        body_disable_tty: Annotated[Optional[StrictBool], Field(description="Disable TTY. It's enough to specify it in the first frame")] = None,
-        id_type: Annotated[Optional[StrictStr], Field(description="When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id.")] = None,
+        body_stdin_data: Annotated[
+            Optional[Union[StrictBytes, StrictStr]],
+            Field(description="Data is base64 encoded"),
+        ] = None,
+        body_stdin_close: Annotated[
+            Optional[StrictBool], Field(description="Indicate last data frame")
+        ] = None,
+        body_disable_tty: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Disable TTY. It's enough to specify it in the first frame"
+            ),
+        ] = None,
+        id_type: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="When specified, it is used to determine if the kind of resource the id refers to. If missing, defaults to the instance id."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -307,7 +368,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._exec_command_serialize(
             id=id,
@@ -321,23 +382,21 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StreamResultOfExecCommandReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "StreamResultOfExecCommandReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _exec_command_serialize(
         self,
@@ -354,11 +413,10 @@ class InstancesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'body.command': 'multi',
+            "body.command": "multi",
         }
 
         _path_params: Dict[str, str] = {}
@@ -371,58 +429,42 @@ class InstancesApi:
         # process the path parameters
         # process the query parameters
         if id is not None:
-            
-            _query_params.append(('id', id))
-            
+            _query_params.append(("id", id))
+
         if body_command is not None:
-            
-            _query_params.append(('body.command', body_command))
-            
+            _query_params.append(("body.command", body_command))
+
         if body_tty_size_height is not None:
-            
-            _query_params.append(('body.tty_size.height', body_tty_size_height))
-            
+            _query_params.append(("body.tty_size.height", body_tty_size_height))
+
         if body_tty_size_width is not None:
-            
-            _query_params.append(('body.tty_size.width', body_tty_size_width))
-            
+            _query_params.append(("body.tty_size.width", body_tty_size_width))
+
         if body_stdin_data is not None:
-            
-            _query_params.append(('body.stdin.data', body_stdin_data))
-            
+            _query_params.append(("body.stdin.data", body_stdin_data))
+
         if body_stdin_close is not None:
-            
-            _query_params.append(('body.stdin.close', body_stdin_close))
-            
+            _query_params.append(("body.stdin.close", body_stdin_close))
+
         if body_disable_tty is not None:
-            
-            _query_params.append(('body.disableTty', body_disable_tty))
-            
+            _query_params.append(("body.disableTty", body_disable_tty))
+
         if id_type is not None:
-            
-            _query_params.append(('id_type', id_type))
-            
+            _query_params.append(("id_type", id_type))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/streams/instances/exec',
+            method="GET",
+            resource_path="/v1/streams/instances/exec",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -432,11 +474,8 @@ class InstancesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def get_instance(
@@ -446,9 +485,8 @@ class InstancesApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -480,34 +518,32 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._get_instance_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetInstanceReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "GetInstanceReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     def get_instance_with_http_info(
@@ -517,9 +553,8 @@ class InstancesApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -551,34 +586,32 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._get_instance_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetInstanceReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "GetInstanceReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     def get_instance_without_preload_content(
@@ -588,9 +621,8 @@ class InstancesApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -622,30 +654,28 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._get_instance_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetInstanceReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "GetInstanceReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _get_instance_serialize(
         self,
@@ -655,11 +685,9 @@ class InstancesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -670,29 +698,21 @@ class InstancesApi:
 
         # process the path parameters
         if id is not None:
-            _path_params['id'] = id
+            _path_params["id"] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/instances/{id}',
+            method="GET",
+            resource_path="/v1/instances/{id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -702,27 +722,40 @@ class InstancesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def list_instance_events(
         self,
-        instance_ids: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on list of instance id")] = None,
-        types: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on instance event types")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
+        instance_ids: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on list of instance id"),
+        ] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on instance event types"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -762,7 +795,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_instance_events_serialize(
             instance_ids=instance_ids,
@@ -773,20 +806,19 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListInstanceEventsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListInstanceEventsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -794,22 +826,37 @@ class InstancesApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def list_instance_events_with_http_info(
         self,
-        instance_ids: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on list of instance id")] = None,
-        types: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on instance event types")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
+        instance_ids: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on list of instance id"),
+        ] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on instance event types"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -849,7 +896,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_instance_events_serialize(
             instance_ids=instance_ids,
@@ -860,20 +907,19 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListInstanceEventsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListInstanceEventsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -881,22 +927,37 @@ class InstancesApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def list_instance_events_without_preload_content(
         self,
-        instance_ids: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on list of instance id")] = None,
-        types: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on instance event types")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
+        instance_ids: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on list of instance id"),
+        ] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on instance event types"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -936,7 +997,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_instance_events_serialize(
             instance_ids=instance_ids,
@@ -947,23 +1008,21 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListInstanceEventsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListInstanceEventsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _list_instance_events_serialize(
         self,
@@ -977,12 +1036,11 @@ class InstancesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'instance_ids': 'multi',
-            'types': 'multi',
+            "instance_ids": "multi",
+            "types": "multi",
         }
 
         _path_params: Dict[str, str] = {}
@@ -995,46 +1053,33 @@ class InstancesApi:
         # process the path parameters
         # process the query parameters
         if instance_ids is not None:
-            
-            _query_params.append(('instance_ids', instance_ids))
-            
+            _query_params.append(("instance_ids", instance_ids))
+
         if types is not None:
-            
-            _query_params.append(('types', types))
-            
+            _query_params.append(("types", types))
+
         if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
+            _query_params.append(("limit", limit))
+
         if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
+            _query_params.append(("offset", offset))
+
         if order is not None:
-            
-            _query_params.append(('order', order))
-            
+            _query_params.append(("order", order))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/instance_events',
+            method="GET",
+            resource_path="/v1/instance_events",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1044,33 +1089,65 @@ class InstancesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def list_instances(
         self,
-        app_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on application id")] = None,
-        service_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on service id")] = None,
-        deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on deployment id")] = None,
-        regional_deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on regional deployment id")] = None,
-        allocation_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on allocation id")] = None,
-        statuses: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on instance statuses")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
-        starting_time: Annotated[Optional[datetime], Field(description="(Optional) The starting time of the period of running instance")] = None,
-        ending_time: Annotated[Optional[datetime], Field(description="(Optional) The ending time of the period of running instance")] = None,
+        app_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on application id"),
+        ] = None,
+        service_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on service id")
+        ] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on deployment id")
+        ] = None,
+        regional_deployment_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on regional deployment id"),
+        ] = None,
+        allocation_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on allocation id")
+        ] = None,
+        statuses: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on instance statuses"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
+        starting_time: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) The starting time of the period of running instance"
+            ),
+        ] = None,
+        ending_time: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) The ending time of the period of running instance"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1122,7 +1199,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_instances_serialize(
             app_id=app_id,
@@ -1139,20 +1216,19 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListInstancesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListInstancesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -1160,28 +1236,62 @@ class InstancesApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def list_instances_with_http_info(
         self,
-        app_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on application id")] = None,
-        service_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on service id")] = None,
-        deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on deployment id")] = None,
-        regional_deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on regional deployment id")] = None,
-        allocation_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on allocation id")] = None,
-        statuses: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on instance statuses")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
-        starting_time: Annotated[Optional[datetime], Field(description="(Optional) The starting time of the period of running instance")] = None,
-        ending_time: Annotated[Optional[datetime], Field(description="(Optional) The ending time of the period of running instance")] = None,
+        app_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on application id"),
+        ] = None,
+        service_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on service id")
+        ] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on deployment id")
+        ] = None,
+        regional_deployment_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on regional deployment id"),
+        ] = None,
+        allocation_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on allocation id")
+        ] = None,
+        statuses: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on instance statuses"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
+        starting_time: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) The starting time of the period of running instance"
+            ),
+        ] = None,
+        ending_time: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) The ending time of the period of running instance"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1233,7 +1343,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_instances_serialize(
             app_id=app_id,
@@ -1250,20 +1360,19 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListInstancesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListInstancesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -1271,28 +1380,62 @@ class InstancesApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def list_instances_without_preload_content(
         self,
-        app_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on application id")] = None,
-        service_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on service id")] = None,
-        deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on deployment id")] = None,
-        regional_deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on regional deployment id")] = None,
-        allocation_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on allocation id")] = None,
-        statuses: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on instance statuses")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
-        starting_time: Annotated[Optional[datetime], Field(description="(Optional) The starting time of the period of running instance")] = None,
-        ending_time: Annotated[Optional[datetime], Field(description="(Optional) The ending time of the period of running instance")] = None,
+        app_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on application id"),
+        ] = None,
+        service_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on service id")
+        ] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on deployment id")
+        ] = None,
+        regional_deployment_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on regional deployment id"),
+        ] = None,
+        allocation_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on allocation id")
+        ] = None,
+        statuses: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on instance statuses"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
+        starting_time: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) The starting time of the period of running instance"
+            ),
+        ] = None,
+        ending_time: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) The ending time of the period of running instance"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1344,7 +1487,7 @@ class InstancesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_instances_serialize(
             app_id=app_id,
@@ -1361,23 +1504,21 @@ class InstancesApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListInstancesReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListInstancesReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _list_instances_serialize(
         self,
@@ -1397,11 +1538,10 @@ class InstancesApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'statuses': 'multi',
+            "statuses": "multi",
         }
 
         _path_params: Dict[str, str] = {}
@@ -1414,88 +1554,71 @@ class InstancesApi:
         # process the path parameters
         # process the query parameters
         if app_id is not None:
-            
-            _query_params.append(('app_id', app_id))
-            
+            _query_params.append(("app_id", app_id))
+
         if service_id is not None:
-            
-            _query_params.append(('service_id', service_id))
-            
+            _query_params.append(("service_id", service_id))
+
         if deployment_id is not None:
-            
-            _query_params.append(('deployment_id', deployment_id))
-            
+            _query_params.append(("deployment_id", deployment_id))
+
         if regional_deployment_id is not None:
-            
-            _query_params.append(('regional_deployment_id', regional_deployment_id))
-            
+            _query_params.append(("regional_deployment_id", regional_deployment_id))
+
         if allocation_id is not None:
-            
-            _query_params.append(('allocation_id', allocation_id))
-            
+            _query_params.append(("allocation_id", allocation_id))
+
         if statuses is not None:
-            
-            _query_params.append(('statuses', statuses))
-            
+            _query_params.append(("statuses", statuses))
+
         if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
+            _query_params.append(("limit", limit))
+
         if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
+            _query_params.append(("offset", offset))
+
         if order is not None:
-            
-            _query_params.append(('order', order))
-            
+            _query_params.append(("order", order))
+
         if starting_time is not None:
             if isinstance(starting_time, datetime):
                 _query_params.append(
                     (
-                        'starting_time',
+                        "starting_time",
                         starting_time.strftime(
                             self.api_client.configuration.datetime_format
-                        )
+                        ),
                     )
                 )
             else:
-                _query_params.append(('starting_time', starting_time))
-            
+                _query_params.append(("starting_time", starting_time))
+
         if ending_time is not None:
             if isinstance(ending_time, datetime):
                 _query_params.append(
                     (
-                        'ending_time',
+                        "ending_time",
                         ending_time.strftime(
                             self.api_client.configuration.datetime_format
-                        )
+                        ),
                     )
                 )
             else:
-                _query_params.append(('ending_time', ending_time))
-            
+                _query_params.append(("ending_time", ending_time))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/instances',
+            method="GET",
+            resource_path="/v1/instances",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1505,7 +1628,5 @@ class InstancesApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-

@@ -34,4 +34,3 @@ from koyeb.api.invite_api import InviteApi
 from koyeb.api.organization_api import OrganizationApi
 from koyeb.api.profile_api import ProfileApi
 from koyeb.api.sso_api import SsoApi
-

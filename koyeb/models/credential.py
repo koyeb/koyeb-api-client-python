@@ -24,10 +24,12 @@ from koyeb.models.credential_type import CredentialType
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class Credential(BaseModel):
     """
     Credential
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     type: Optional[CredentialType] = None
     name: Optional[StrictStr] = None
@@ -37,14 +39,23 @@ class Credential(BaseModel):
     organization_id: Optional[StrictStr] = None
     updated_at: Optional[datetime] = None
     created_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["id", "type", "name", "token", "description", "user_id", "organization_id", "updated_at", "created_at"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "type",
+        "name",
+        "token",
+        "description",
+        "user_id",
+        "organization_id",
+        "updated_at",
+        "created_at",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,8 +81,7 @@ class Credential(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -89,17 +99,17 @@ class Credential(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "name": obj.get("name"),
-            "token": obj.get("token"),
-            "description": obj.get("description"),
-            "user_id": obj.get("user_id"),
-            "organization_id": obj.get("organization_id"),
-            "updated_at": obj.get("updated_at"),
-            "created_at": obj.get("created_at")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "type": obj.get("type"),
+                "name": obj.get("name"),
+                "token": obj.get("token"),
+                "description": obj.get("description"),
+                "user_id": obj.get("user_id"),
+                "organization_id": obj.get("organization_id"),
+                "updated_at": obj.get("updated_at"),
+                "created_at": obj.get("created_at"),
+            }
+        )
         return _obj
-
-

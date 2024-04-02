@@ -14,7 +14,9 @@
 
 
 # import models into model package
-from koyeb.models.accept_organization_invitation_reply import AcceptOrganizationInvitationReply
+from koyeb.models.accept_organization_invitation_reply import (
+    AcceptOrganizationInvitationReply,
+)
 from koyeb.models.action import Action
 from koyeb.models.activity import Activity
 from koyeb.models.activity_list import ActivityList
@@ -26,12 +28,16 @@ from koyeb.models.app_usage import AppUsage
 from koyeb.models.apps_summary import AppsSummary
 from koyeb.models.auto_release import AutoRelease
 from koyeb.models.auto_release_group import AutoReleaseGroup
-from koyeb.models.azure_container_registry_configuration import AzureContainerRegistryConfiguration
+from koyeb.models.azure_container_registry_configuration import (
+    AzureContainerRegistryConfiguration,
+)
 from koyeb.models.buildpack_builder import BuildpackBuilder
 from koyeb.models.canny_auth_reply import CannyAuthReply
 from koyeb.models.catalog_instance import CatalogInstance
 from koyeb.models.catalog_instance_list_item import CatalogInstanceListItem
-from koyeb.models.confirm_payment_authorization_reply import ConfirmPaymentAuthorizationReply
+from koyeb.models.confirm_payment_authorization_reply import (
+    ConfirmPaymentAuthorizationReply,
+)
 from koyeb.models.create_account_request import CreateAccountRequest
 from koyeb.models.create_app import CreateApp
 from koyeb.models.create_app_reply import CreateAppReply
@@ -39,11 +45,17 @@ from koyeb.models.create_credential import CreateCredential
 from koyeb.models.create_credential_reply import CreateCredentialReply
 from koyeb.models.create_domain import CreateDomain
 from koyeb.models.create_domain_reply import CreateDomainReply
-from koyeb.models.create_organization_invitation_reply import CreateOrganizationInvitationReply
-from koyeb.models.create_organization_invitation_request import CreateOrganizationInvitationRequest
+from koyeb.models.create_organization_invitation_reply import (
+    CreateOrganizationInvitationReply,
+)
+from koyeb.models.create_organization_invitation_request import (
+    CreateOrganizationInvitationRequest,
+)
 from koyeb.models.create_organization_reply import CreateOrganizationReply
 from koyeb.models.create_organization_request import CreateOrganizationRequest
-from koyeb.models.create_payment_authorization_reply import CreatePaymentAuthorizationReply
+from koyeb.models.create_payment_authorization_reply import (
+    CreatePaymentAuthorizationReply,
+)
 from koyeb.models.create_secret import CreateSecret
 from koyeb.models.create_secret_reply import CreateSecretReply
 from koyeb.models.create_service import CreateService
@@ -55,7 +67,9 @@ from koyeb.models.database_role_password import DatabaseRolePassword
 from koyeb.models.database_source import DatabaseSource
 from koyeb.models.datacenter_list_item import DatacenterListItem
 from koyeb.models.deactivate_organization_reply import DeactivateOrganizationReply
-from koyeb.models.decline_organization_invitation_reply import DeclineOrganizationInvitationReply
+from koyeb.models.decline_organization_invitation_reply import (
+    DeclineOrganizationInvitationReply,
+)
 from koyeb.models.delete_organization_reply import DeleteOrganizationReply
 from koyeb.models.delete_user_reply import DeleteUserReply
 from koyeb.models.deployment import Deployment
@@ -68,27 +82,47 @@ from koyeb.models.deployment_health_check import DeploymentHealthCheck
 from koyeb.models.deployment_instance_type import DeploymentInstanceType
 from koyeb.models.deployment_list_item import DeploymentListItem
 from koyeb.models.deployment_metadata import DeploymentMetadata
-from koyeb.models.deployment_neon_postgres_database_info import DeploymentNeonPostgresDatabaseInfo
-from koyeb.models.deployment_neon_postgres_database_info_role import DeploymentNeonPostgresDatabaseInfoRole
+from koyeb.models.deployment_neon_postgres_database_info import (
+    DeploymentNeonPostgresDatabaseInfo,
+)
+from koyeb.models.deployment_neon_postgres_database_info_role import (
+    DeploymentNeonPostgresDatabaseInfoRole,
+)
 from koyeb.models.deployment_port import DeploymentPort
 from koyeb.models.deployment_provisioning_info import DeploymentProvisioningInfo
-from koyeb.models.deployment_provisioning_info_stage import DeploymentProvisioningInfoStage
-from koyeb.models.deployment_provisioning_info_stage_build_attempt import DeploymentProvisioningInfoStageBuildAttempt
-from koyeb.models.deployment_provisioning_info_stage_status import DeploymentProvisioningInfoStageStatus
+from koyeb.models.deployment_provisioning_info_stage import (
+    DeploymentProvisioningInfoStage,
+)
+from koyeb.models.deployment_provisioning_info_stage_build_attempt import (
+    DeploymentProvisioningInfoStageBuildAttempt,
+)
+from koyeb.models.deployment_provisioning_info_stage_status import (
+    DeploymentProvisioningInfoStageStatus,
+)
 from koyeb.models.deployment_route import DeploymentRoute
 from koyeb.models.deployment_scaling import DeploymentScaling
 from koyeb.models.deployment_scaling_target import DeploymentScalingTarget
-from koyeb.models.deployment_scaling_target_average_cpu import DeploymentScalingTargetAverageCPU
-from koyeb.models.deployment_scaling_target_average_mem import DeploymentScalingTargetAverageMem
-from koyeb.models.deployment_scaling_target_requests_per_second import DeploymentScalingTargetRequestsPerSecond
+from koyeb.models.deployment_scaling_target_average_cpu import (
+    DeploymentScalingTargetAverageCPU,
+)
+from koyeb.models.deployment_scaling_target_average_mem import (
+    DeploymentScalingTargetAverageMem,
+)
+from koyeb.models.deployment_scaling_target_requests_per_second import (
+    DeploymentScalingTargetRequestsPerSecond,
+)
 from koyeb.models.deployment_status import DeploymentStatus
 from koyeb.models.desired_deployment import DesiredDeployment
 from koyeb.models.desired_deployment_group import DesiredDeploymentGroup
-from koyeb.models.digital_ocean_registry_configuration import DigitalOceanRegistryConfiguration
+from koyeb.models.digital_ocean_registry_configuration import (
+    DigitalOceanRegistryConfiguration,
+)
 from koyeb.models.discourse_auth_reply import DiscourseAuthReply
 from koyeb.models.discourse_auth_request import DiscourseAuthRequest
 from koyeb.models.docker_builder import DockerBuilder
-from koyeb.models.docker_hub_registry_configuration import DockerHubRegistryConfiguration
+from koyeb.models.docker_hub_registry_configuration import (
+    DockerHubRegistryConfiguration,
+)
 from koyeb.models.docker_source import DockerSource
 from koyeb.models.domain import Domain
 from koyeb.models.domain_status import DomainStatus
@@ -102,8 +136,12 @@ from koyeb.models.exec_command_io import ExecCommandIO
 from koyeb.models.exec_command_reply import ExecCommandReply
 from koyeb.models.exec_command_request_body import ExecCommandRequestBody
 from koyeb.models.exec_command_request_id_type import ExecCommandRequestIdType
-from koyeb.models.exec_command_request_terminal_size import ExecCommandRequestTerminalSize
-from koyeb.models.gcp_container_registry_configuration import GCPContainerRegistryConfiguration
+from koyeb.models.exec_command_request_terminal_size import (
+    ExecCommandRequestTerminalSize,
+)
+from koyeb.models.gcp_container_registry_configuration import (
+    GCPContainerRegistryConfiguration,
+)
 from koyeb.models.get_app_reply import GetAppReply
 from koyeb.models.get_catalog_instance_reply import GetCatalogInstanceReply
 from koyeb.models.get_credential_reply import GetCredentialReply
@@ -114,10 +152,14 @@ from koyeb.models.get_instance_reply import GetInstanceReply
 from koyeb.models.get_metrics_reply import GetMetricsReply
 from koyeb.models.get_metrics_reply_metric import GetMetricsReplyMetric
 from koyeb.models.get_o_auth_options_reply import GetOAuthOptionsReply
-from koyeb.models.get_organization_invitation_reply import GetOrganizationInvitationReply
+from koyeb.models.get_organization_invitation_reply import (
+    GetOrganizationInvitationReply,
+)
 from koyeb.models.get_organization_reply import GetOrganizationReply
 from koyeb.models.get_organization_summary_reply import GetOrganizationSummaryReply
-from koyeb.models.get_organization_usage_details_reply import GetOrganizationUsageDetailsReply
+from koyeb.models.get_organization_usage_details_reply import (
+    GetOrganizationUsageDetailsReply,
+)
 from koyeb.models.get_organization_usage_reply import GetOrganizationUsageReply
 from koyeb.models.get_payment_method_reply import GetPaymentMethodReply
 from koyeb.models.get_quotas_reply import GetQuotasReply
@@ -126,12 +168,16 @@ from koyeb.models.get_regional_deployment_reply import GetRegionalDeploymentRepl
 from koyeb.models.get_secret_reply import GetSecretReply
 from koyeb.models.get_service_reply import GetServiceReply
 from koyeb.models.get_subscription_reply import GetSubscriptionReply
-from koyeb.models.get_user_organization_invitation_reply import GetUserOrganizationInvitationReply
+from koyeb.models.get_user_organization_invitation_reply import (
+    GetUserOrganizationInvitationReply,
+)
 from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
 from koyeb.models.git_hub_registry_configuration import GitHubRegistryConfiguration
 from koyeb.models.git_lab_registry_configuration import GitLabRegistryConfiguration
 from koyeb.models.git_source import GitSource
-from koyeb.models.github_installation_callback_request import GithubInstallationCallbackRequest
+from koyeb.models.github_installation_callback_request import (
+    GithubInstallationCallbackRequest,
+)
 from koyeb.models.github_installation_reply import GithubInstallationReply
 from koyeb.models.github_installation_request import GithubInstallationRequest
 from koyeb.models.google_protobuf_any import GoogleProtobufAny
@@ -149,10 +195,14 @@ from koyeb.models.instances_summary import InstancesSummary
 from koyeb.models.invite_user_request import InviteUserRequest
 from koyeb.models.kgitproxy_branch import KgitproxyBranch
 from koyeb.models.kgitproxy_git_hub_repository import KgitproxyGitHubRepository
-from koyeb.models.kgitproxy_github_installation_status import KgitproxyGithubInstallationStatus
+from koyeb.models.kgitproxy_github_installation_status import (
+    KgitproxyGithubInstallationStatus,
+)
 from koyeb.models.kgitproxy_indexing_status import KgitproxyIndexingStatus
 from koyeb.models.kgitproxy_list_branches_reply import KgitproxyListBranchesReply
-from koyeb.models.kgitproxy_list_repositories_reply import KgitproxyListRepositoriesReply
+from koyeb.models.kgitproxy_list_repositories_reply import (
+    KgitproxyListRepositoriesReply,
+)
 from koyeb.models.kgitproxy_repository import KgitproxyRepository
 from koyeb.models.kgitproxy_repository_provider import KgitproxyRepositoryProvider
 from koyeb.models.ksearch_app import KsearchApp
@@ -173,16 +223,22 @@ from koyeb.models.list_deployments_reply import ListDeploymentsReply
 from koyeb.models.list_domains_reply import ListDomainsReply
 from koyeb.models.list_instance_events_reply import ListInstanceEventsReply
 from koyeb.models.list_instances_reply import ListInstancesReply
-from koyeb.models.list_organization_invitations_reply import ListOrganizationInvitationsReply
+from koyeb.models.list_organization_invitations_reply import (
+    ListOrganizationInvitationsReply,
+)
 from koyeb.models.list_organization_members_reply import ListOrganizationMembersReply
 from koyeb.models.list_payment_methods_reply import ListPaymentMethodsReply
-from koyeb.models.list_regional_deployment_events_reply import ListRegionalDeploymentEventsReply
+from koyeb.models.list_regional_deployment_events_reply import (
+    ListRegionalDeploymentEventsReply,
+)
 from koyeb.models.list_regional_deployments_reply import ListRegionalDeploymentsReply
 from koyeb.models.list_regions_reply import ListRegionsReply
 from koyeb.models.list_secrets_reply import ListSecretsReply
 from koyeb.models.list_service_events_reply import ListServiceEventsReply
 from koyeb.models.list_services_reply import ListServicesReply
-from koyeb.models.list_user_organization_invitations_reply import ListUserOrganizationInvitationsReply
+from koyeb.models.list_user_organization_invitations_reply import (
+    ListUserOrganizationInvitationsReply,
+)
 from koyeb.models.log_entry import LogEntry
 from koyeb.models.login_reply import LoginReply
 from koyeb.models.login_request import LoginRequest
@@ -190,8 +246,12 @@ from koyeb.models.manage_reply import ManageReply
 from koyeb.models.members_summary import MembersSummary
 from koyeb.models.metric_name import MetricName
 from koyeb.models.neon_postgres_database import NeonPostgresDatabase
-from koyeb.models.neon_postgres_database_deployment_metadata import NeonPostgresDatabaseDeploymentMetadata
-from koyeb.models.neon_postgres_database_neon_database import NeonPostgresDatabaseNeonDatabase
+from koyeb.models.neon_postgres_database_deployment_metadata import (
+    NeonPostgresDatabaseDeploymentMetadata,
+)
+from koyeb.models.neon_postgres_database_neon_database import (
+    NeonPostgresDatabaseNeonDatabase,
+)
 from koyeb.models.neon_postgres_database_neon_role import NeonPostgresDatabaseNeonRole
 from koyeb.models.neon_postgres_summary import NeonPostgresSummary
 from koyeb.models.next_invoice_reply import NextInvoiceReply
@@ -227,17 +287,25 @@ from koyeb.models.region_list_item import RegionListItem
 from koyeb.models.region_usage import RegionUsage
 from koyeb.models.regional_deployment import RegionalDeployment
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
-from koyeb.models.regional_deployment_definition_type import RegionalDeploymentDefinitionType
+from koyeb.models.regional_deployment_definition_type import (
+    RegionalDeploymentDefinitionType,
+)
 from koyeb.models.regional_deployment_event import RegionalDeploymentEvent
 from koyeb.models.regional_deployment_list_item import RegionalDeploymentListItem
 from koyeb.models.regional_deployment_metadata import RegionalDeploymentMetadata
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
 from koyeb.models.remove_organization_member_reply import RemoveOrganizationMemberReply
-from koyeb.models.resend_organization_invitation_reply import ResendOrganizationInvitationReply
+from koyeb.models.resend_organization_invitation_reply import (
+    ResendOrganizationInvitationReply,
+)
 from koyeb.models.reset_password_request import ResetPasswordRequest
 from koyeb.models.reveal_secret_reply import RevealSecretReply
-from koyeb.models.review_organization_capacity_reply import ReviewOrganizationCapacityReply
-from koyeb.models.review_organization_capacity_request import ReviewOrganizationCapacityRequest
+from koyeb.models.review_organization_capacity_reply import (
+    ReviewOrganizationCapacityReply,
+)
+from koyeb.models.review_organization_capacity_request import (
+    ReviewOrganizationCapacityRequest,
+)
 from koyeb.models.route import Route
 from koyeb.models.sample import Sample
 from koyeb.models.scaling import Scaling
@@ -252,19 +320,29 @@ from koyeb.models.service_status import ServiceStatus
 from koyeb.models.service_summary import ServiceSummary
 from koyeb.models.service_type import ServiceType
 from koyeb.models.service_usage import ServiceUsage
-from koyeb.models.stream_result_of_exec_command_reply import StreamResultOfExecCommandReply
+from koyeb.models.stream_result_of_exec_command_reply import (
+    StreamResultOfExecCommandReply,
+)
 from koyeb.models.stream_result_of_log_entry import StreamResultOfLogEntry
 from koyeb.models.subscription import Subscription
 from koyeb.models.subscription_payment_failure import SubscriptionPaymentFailure
-from koyeb.models.subscription_payment_failure_stripe_sdk import SubscriptionPaymentFailureStripeSDK
+from koyeb.models.subscription_payment_failure_stripe_sdk import (
+    SubscriptionPaymentFailureStripeSDK,
+)
 from koyeb.models.subscription_status import SubscriptionStatus
 from koyeb.models.tcp_health_check import TCPHealthCheck
 from koyeb.models.token import Token
 from koyeb.models.trigger_deployment_metadata import TriggerDeploymentMetadata
-from koyeb.models.trigger_deployment_metadata_actor_type import TriggerDeploymentMetadataActorType
-from koyeb.models.trigger_deployment_metadata_trigger_type import TriggerDeploymentMetadataTriggerType
+from koyeb.models.trigger_deployment_metadata_actor_type import (
+    TriggerDeploymentMetadataActorType,
+)
+from koyeb.models.trigger_deployment_metadata_trigger_type import (
+    TriggerDeploymentMetadataTriggerType,
+)
 from koyeb.models.trigger_git_deployment_metadata import TriggerGitDeploymentMetadata
-from koyeb.models.trigger_git_deployment_metadata_provider import TriggerGitDeploymentMetadataProvider
+from koyeb.models.trigger_git_deployment_metadata_provider import (
+    TriggerGitDeploymentMetadataProvider,
+)
 from koyeb.models.update_app import UpdateApp
 from koyeb.models.update_app_reply import UpdateAppReply
 from koyeb.models.update_credential_reply import UpdateCredentialReply
@@ -277,9 +355,15 @@ from koyeb.models.update_password_request import UpdatePasswordRequest
 from koyeb.models.update_secret_reply import UpdateSecretReply
 from koyeb.models.update_service import UpdateService
 from koyeb.models.update_service_reply import UpdateServiceReply
-from koyeb.models.update_user_request_user_update_body import UpdateUserRequestUserUpdateBody
-from koyeb.models.upsert_signup_qualification_reply import UpsertSignupQualificationReply
-from koyeb.models.upsert_signup_qualification_request import UpsertSignupQualificationRequest
+from koyeb.models.update_user_request_user_update_body import (
+    UpdateUserRequestUserUpdateBody,
+)
+from koyeb.models.upsert_signup_qualification_reply import (
+    UpsertSignupQualificationReply,
+)
+from koyeb.models.upsert_signup_qualification_request import (
+    UpsertSignupQualificationRequest,
+)
 from koyeb.models.usage import Usage
 from koyeb.models.usage_details import UsageDetails
 from koyeb.models.user import User
@@ -287,4 +371,6 @@ from koyeb.models.user_flags import UserFlags
 from koyeb.models.user_reply import UserReply
 from koyeb.models.user_role_role import UserRoleRole
 from koyeb.models.verify_docker_image_reply import VerifyDockerImageReply
-from koyeb.models.verify_docker_image_reply_err_code import VerifyDockerImageReplyErrCode
+from koyeb.models.verify_docker_image_reply_err_code import (
+    VerifyDockerImageReplyErrCode,
+)

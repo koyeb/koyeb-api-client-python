@@ -23,10 +23,12 @@ from koyeb.models.deployment_scaling_target import DeploymentScalingTarget
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class Scaling(BaseModel):
     """
     Scaling
-    """ # noqa: E501
+    """  # noqa: E501
+
     min: Optional[StrictInt] = None
     max: Optional[StrictInt] = None
     targets: Optional[List[DeploymentScalingTarget]] = None
@@ -37,7 +39,6 @@ class Scaling(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -63,8 +64,7 @@ class Scaling(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -77,7 +77,7 @@ class Scaling(BaseModel):
             for _item in self.targets:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['targets'] = _items
+            _dict["targets"] = _items
         return _dict
 
     @classmethod
@@ -89,11 +89,15 @@ class Scaling(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "min": obj.get("min"),
-            "max": obj.get("max"),
-            "targets": [DeploymentScalingTarget.from_dict(_item) for _item in obj["targets"]] if obj.get("targets") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "min": obj.get("min"),
+                "max": obj.get("max"),
+                "targets": [
+                    DeploymentScalingTarget.from_dict(_item) for _item in obj["targets"]
+                ]
+                if obj.get("targets") is not None
+                else None,
+            }
+        )
         return _obj
-
-

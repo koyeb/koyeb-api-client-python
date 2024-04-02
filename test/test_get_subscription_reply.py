@@ -16,6 +16,7 @@ import unittest
 
 from koyeb.models.get_subscription_reply import GetSubscriptionReply
 
+
 class TestGetSubscriptionReply(unittest.TestCase):
     """GetSubscriptionReply unit test stubs"""
 
@@ -27,9 +28,9 @@ class TestGetSubscriptionReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetSubscriptionReply:
         """Test GetSubscriptionReply
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # uncomment below to create an instance of `GetSubscriptionReply`
         """
         model = GetSubscriptionReply()
@@ -81,5 +82,6 @@ class TestGetSubscriptionReply(unittest.TestCase):
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

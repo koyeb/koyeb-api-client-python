@@ -22,24 +22,32 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class Region(BaseModel):
     """
     Region
-    """ # noqa: E501
+    """  # noqa: E501
+
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     coordinates: Optional[List[StrictStr]] = None
     status: Optional[StrictStr] = None
     instances: Optional[List[StrictStr]] = None
     datacenters: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "coordinates", "status", "instances", "datacenters"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "name",
+        "coordinates",
+        "status",
+        "instances",
+        "datacenters",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,8 +73,7 @@ class Region(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -84,14 +91,14 @@ class Region(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "coordinates": obj.get("coordinates"),
-            "status": obj.get("status"),
-            "instances": obj.get("instances"),
-            "datacenters": obj.get("datacenters")
-        })
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "name": obj.get("name"),
+                "coordinates": obj.get("coordinates"),
+                "status": obj.get("status"),
+                "instances": obj.get("instances"),
+                "datacenters": obj.get("datacenters"),
+            }
+        )
         return _obj
-
-

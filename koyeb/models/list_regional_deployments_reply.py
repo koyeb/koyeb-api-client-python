@@ -23,22 +23,28 @@ from koyeb.models.regional_deployment_list_item import RegionalDeploymentListIte
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ListRegionalDeploymentsReply(BaseModel):
     """
     ListRegionalDeploymentsReply
-    """ # noqa: E501
+    """  # noqa: E501
+
     regional_deployments: Optional[List[RegionalDeploymentListItem]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["regional_deployments", "limit", "offset", "count"]
+    __properties: ClassVar[List[str]] = [
+        "regional_deployments",
+        "limit",
+        "offset",
+        "count",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,8 +70,7 @@ class ListRegionalDeploymentsReply(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -78,7 +83,7 @@ class ListRegionalDeploymentsReply(BaseModel):
             for _item in self.regional_deployments:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['regional_deployments'] = _items
+            _dict["regional_deployments"] = _items
         return _dict
 
     @classmethod
@@ -90,12 +95,17 @@ class ListRegionalDeploymentsReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "regional_deployments": [RegionalDeploymentListItem.from_dict(_item) for _item in obj["regional_deployments"]] if obj.get("regional_deployments") is not None else None,
-            "limit": obj.get("limit"),
-            "offset": obj.get("offset"),
-            "count": obj.get("count")
-        })
+        _obj = cls.model_validate(
+            {
+                "regional_deployments": [
+                    RegionalDeploymentListItem.from_dict(_item)
+                    for _item in obj["regional_deployments"]
+                ]
+                if obj.get("regional_deployments") is not None
+                else None,
+                "limit": obj.get("limit"),
+                "offset": obj.get("offset"),
+                "count": obj.get("count"),
+            }
+        )
         return _obj
-
-

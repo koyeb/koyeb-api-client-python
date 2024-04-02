@@ -20,29 +20,41 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from koyeb.models.deployment_provisioning_info_stage_build_attempt import DeploymentProvisioningInfoStageBuildAttempt
-from koyeb.models.deployment_provisioning_info_stage_status import DeploymentProvisioningInfoStageStatus
+from koyeb.models.deployment_provisioning_info_stage_build_attempt import (
+    DeploymentProvisioningInfoStageBuildAttempt,
+)
+from koyeb.models.deployment_provisioning_info_stage_status import (
+    DeploymentProvisioningInfoStageStatus,
+)
 from typing import Optional, Set
 from typing_extensions import Self
+
 
 class DeploymentProvisioningInfoStage(BaseModel):
     """
     DeploymentProvisioningInfoStage
-    """ # noqa: E501
+    """  # noqa: E501
+
     name: Optional[StrictStr] = None
     status: Optional[DeploymentProvisioningInfoStageStatus] = None
     messages: Optional[List[StrictStr]] = None
     started_at: Optional[datetime] = None
     finished_at: Optional[datetime] = None
     build_attempts: Optional[List[DeploymentProvisioningInfoStageBuildAttempt]] = None
-    __properties: ClassVar[List[str]] = ["name", "status", "messages", "started_at", "finished_at", "build_attempts"]
+    __properties: ClassVar[List[str]] = [
+        "name",
+        "status",
+        "messages",
+        "started_at",
+        "finished_at",
+        "build_attempts",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,8 +80,7 @@ class DeploymentProvisioningInfoStage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -82,7 +93,7 @@ class DeploymentProvisioningInfoStage(BaseModel):
             for _item in self.build_attempts:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['build_attempts'] = _items
+            _dict["build_attempts"] = _items
         return _dict
 
     @classmethod
@@ -94,14 +105,19 @@ class DeploymentProvisioningInfoStage(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "status": obj.get("status"),
-            "messages": obj.get("messages"),
-            "started_at": obj.get("started_at"),
-            "finished_at": obj.get("finished_at"),
-            "build_attempts": [DeploymentProvisioningInfoStageBuildAttempt.from_dict(_item) for _item in obj["build_attempts"]] if obj.get("build_attempts") is not None else None
-        })
+        _obj = cls.model_validate(
+            {
+                "name": obj.get("name"),
+                "status": obj.get("status"),
+                "messages": obj.get("messages"),
+                "started_at": obj.get("started_at"),
+                "finished_at": obj.get("finished_at"),
+                "build_attempts": [
+                    DeploymentProvisioningInfoStageBuildAttempt.from_dict(_item)
+                    for _item in obj["build_attempts"]
+                ]
+                if obj.get("build_attempts") is not None
+                else None,
+            }
+        )
         return _obj
-
-

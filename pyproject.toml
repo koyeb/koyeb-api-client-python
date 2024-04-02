@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "koyeb"
-version = "2023.11.3"
+version = "2024.4.0"
 description = "Koyeb Rest API"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "NoLicense"

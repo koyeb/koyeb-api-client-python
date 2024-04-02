@@ -27,35 +27,25 @@ class TestOrganizationInvitationsApi(unittest.TestCase):
         pass
 
     def test_create_organization_invitation(self) -> None:
-        """Test case for create_organization_invitation
-
-        """
+        """Test case for create_organization_invitation"""
         pass
 
     def test_delete_organization_invitation(self) -> None:
-        """Test case for delete_organization_invitation
-
-        """
+        """Test case for delete_organization_invitation"""
         pass
 
     def test_get_organization_invitation(self) -> None:
-        """Test case for get_organization_invitation
-
-        """
+        """Test case for get_organization_invitation"""
         pass
 
     def test_list_organization_invitations(self) -> None:
-        """Test case for list_organization_invitations
-
-        """
+        """Test case for list_organization_invitations"""
         pass
 
     def test_resend_organization_invitation(self) -> None:
-        """Test case for resend_organization_invitation
-
-        """
+        """Test case for resend_organization_invitation"""
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

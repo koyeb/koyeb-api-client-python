@@ -23,10 +23,12 @@ from koyeb.models.activity import Activity
 from typing import Optional, Set
 from typing_extensions import Self
 
+
 class ActivityList(BaseModel):
     """
     ActivityList
-    """ # noqa: E501
+    """  # noqa: E501
+
     activities: Optional[List[Activity]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
@@ -38,7 +40,6 @@ class ActivityList(BaseModel):
         validate_assignment=True,
         protected_namespaces=(),
     )
-
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -64,8 +65,7 @@ class ActivityList(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -78,7 +78,7 @@ class ActivityList(BaseModel):
             for _item in self.activities:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['activities'] = _items
+            _dict["activities"] = _items
         return _dict
 
     @classmethod
@@ -90,12 +90,14 @@ class ActivityList(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "activities": [Activity.from_dict(_item) for _item in obj["activities"]] if obj.get("activities") is not None else None,
-            "limit": obj.get("limit"),
-            "offset": obj.get("offset"),
-            "count": obj.get("count")
-        })
+        _obj = cls.model_validate(
+            {
+                "activities": [Activity.from_dict(_item) for _item in obj["activities"]]
+                if obj.get("activities") is not None
+                else None,
+                "limit": obj.get("limit"),
+                "offset": obj.get("offset"),
+                "count": obj.get("count"),
+            }
+        )
         return _obj
-
-

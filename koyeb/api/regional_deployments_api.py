@@ -20,7 +20,9 @@ from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from koyeb.models.get_regional_deployment_reply import GetRegionalDeploymentReply
-from koyeb.models.list_regional_deployment_events_reply import ListRegionalDeploymentEventsReply
+from koyeb.models.list_regional_deployment_events_reply import (
+    ListRegionalDeploymentEventsReply,
+)
 from koyeb.models.list_regional_deployments_reply import ListRegionalDeploymentsReply
 
 from koyeb.api_client import ApiClient, RequestSerialized
@@ -40,18 +42,18 @@ class RegionalDeploymentsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-
     @validate_call
     def get_regional_deployment(
         self,
-        id: Annotated[StrictStr, Field(description="The id of the regional deployment")],
+        id: Annotated[
+            StrictStr, Field(description="The id of the regional deployment")
+        ],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -83,27 +85,26 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._get_regional_deployment_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetRegionalDeploymentReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "GetRegionalDeploymentReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -111,18 +112,18 @@ class RegionalDeploymentsApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def get_regional_deployment_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The id of the regional deployment")],
+        id: Annotated[
+            StrictStr, Field(description="The id of the regional deployment")
+        ],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -154,27 +155,26 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._get_regional_deployment_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetRegionalDeploymentReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "GetRegionalDeploymentReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -182,18 +182,18 @@ class RegionalDeploymentsApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def get_regional_deployment_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The id of the regional deployment")],
+        id: Annotated[
+            StrictStr, Field(description="The id of the regional deployment")
+        ],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -225,30 +225,28 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._get_regional_deployment_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetRegionalDeploymentReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "GetRegionalDeploymentReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _get_regional_deployment_serialize(
         self,
@@ -258,11 +256,9 @@ class RegionalDeploymentsApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -273,29 +269,21 @@ class RegionalDeploymentsApi:
 
         # process the path parameters
         if id is not None:
-            _path_params['id'] = id
+            _path_params["id"] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/regional_deployments/{id}',
+            method="GET",
+            resource_path="/v1/regional_deployments/{id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -305,27 +293,40 @@ class RegionalDeploymentsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def list_regional_deployment_events(
         self,
-        regional_deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on regional deployment id")] = None,
-        types: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on regional deployment event types")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
+        regional_deployment_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on regional deployment id"),
+        ] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on regional deployment event types"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -365,7 +366,7 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_regional_deployment_events_serialize(
             regional_deployment_id=regional_deployment_id,
@@ -376,20 +377,19 @@ class RegionalDeploymentsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListRegionalDeploymentEventsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListRegionalDeploymentEventsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -397,22 +397,37 @@ class RegionalDeploymentsApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def list_regional_deployment_events_with_http_info(
         self,
-        regional_deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on regional deployment id")] = None,
-        types: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on regional deployment event types")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
+        regional_deployment_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on regional deployment id"),
+        ] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on regional deployment event types"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -452,7 +467,7 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_regional_deployment_events_serialize(
             regional_deployment_id=regional_deployment_id,
@@ -463,20 +478,19 @@ class RegionalDeploymentsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListRegionalDeploymentEventsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListRegionalDeploymentEventsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -484,22 +498,37 @@ class RegionalDeploymentsApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def list_regional_deployment_events_without_preload_content(
         self,
-        regional_deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on regional deployment id")] = None,
-        types: Annotated[Optional[List[StrictStr]], Field(description="(Optional) Filter on regional deployment event types")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="(Optional) Sorts the list in the ascending or the descending order")] = None,
+        regional_deployment_id: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Filter on regional deployment id"),
+        ] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on regional deployment event types"),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Sorts the list in the ascending or the descending order"
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -539,7 +568,7 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_regional_deployment_events_serialize(
             regional_deployment_id=regional_deployment_id,
@@ -550,23 +579,21 @@ class RegionalDeploymentsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListRegionalDeploymentEventsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListRegionalDeploymentEventsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _list_regional_deployment_events_serialize(
         self,
@@ -580,11 +607,10 @@ class RegionalDeploymentsApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'types': 'multi',
+            "types": "multi",
         }
 
         _path_params: Dict[str, str] = {}
@@ -597,46 +623,33 @@ class RegionalDeploymentsApi:
         # process the path parameters
         # process the query parameters
         if regional_deployment_id is not None:
-            
-            _query_params.append(('regional_deployment_id', regional_deployment_id))
-            
+            _query_params.append(("regional_deployment_id", regional_deployment_id))
+
         if types is not None:
-            
-            _query_params.append(('types', types))
-            
+            _query_params.append(("types", types))
+
         if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
+            _query_params.append(("limit", limit))
+
         if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
+            _query_params.append(("offset", offset))
+
         if order is not None:
-            
-            _query_params.append(('order', order))
-            
+            _query_params.append(("order", order))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/regional_deployment_events',
+            method="GET",
+            resource_path="/v1/regional_deployment_events",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -646,25 +659,29 @@ class RegionalDeploymentsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
-
 
     @validate_call
     def list_regional_deployments(
         self,
-        deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on deployment id")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on deployment id")
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -700,7 +717,7 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_regional_deployments_serialize(
             deployment_id=deployment_id,
@@ -709,20 +726,19 @@ class RegionalDeploymentsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListRegionalDeploymentsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListRegionalDeploymentsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -730,20 +746,26 @@ class RegionalDeploymentsApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def list_regional_deployments_with_http_info(
         self,
-        deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on deployment id")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on deployment id")
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -779,7 +801,7 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_regional_deployments_serialize(
             deployment_id=deployment_id,
@@ -788,20 +810,19 @@ class RegionalDeploymentsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListRegionalDeploymentsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListRegionalDeploymentsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -809,20 +830,26 @@ class RegionalDeploymentsApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def list_regional_deployments_without_preload_content(
         self,
-        deployment_id: Annotated[Optional[StrictStr], Field(description="(Optional) Filter on deployment id")] = None,
-        limit: Annotated[Optional[StrictStr], Field(description="(Optional) The number of items to return")] = None,
-        offset: Annotated[Optional[StrictStr], Field(description="(Optional) The offset in the list of item to return")] = None,
+        deployment_id: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on deployment id")
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The number of items to return"),
+        ] = None,
+        offset: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) The offset in the list of item to return"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -858,7 +885,7 @@ class RegionalDeploymentsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._list_regional_deployments_serialize(
             deployment_id=deployment_id,
@@ -867,23 +894,21 @@ class RegionalDeploymentsApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListRegionalDeploymentsReply",
-            '400': "ErrorWithFields",
-            '401': "Error",
-            '403': "Error",
-            '404': "Error",
-            '500': "Error",
+            "200": "ListRegionalDeploymentsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _list_regional_deployments_serialize(
         self,
@@ -895,11 +920,9 @@ class RegionalDeploymentsApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
-
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -911,38 +934,27 @@ class RegionalDeploymentsApi:
         # process the path parameters
         # process the query parameters
         if deployment_id is not None:
-            
-            _query_params.append(('deployment_id', deployment_id))
-            
+            _query_params.append(("deployment_id", deployment_id))
+
         if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
+            _query_params.append(("limit", limit))
+
         if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
+            _query_params.append(("offset", offset))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
+        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
-        _auth_settings: List[str] = [
-            'Bearer'
-        ]
+        _auth_settings: List[str] = ["Bearer"]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/regional_deployments',
+            method="GET",
+            resource_path="/v1/regional_deployments",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -952,7 +964,5 @@ class RegionalDeploymentsApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-

@@ -27,23 +27,17 @@ class TestActivityApi(unittest.TestCase):
         pass
 
     def test_get_account_activities(self) -> None:
-        """Test case for get_account_activities
-
-        """
+        """Test case for get_account_activities"""
         pass
 
     def test_list_activities(self) -> None:
-        """Test case for list_activities
-
-        """
+        """Test case for list_activities"""
         pass
 
     def test_list_notifications(self) -> None:
-        """Test case for list_notifications
-
-        """
+        """Test case for list_notifications"""
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
