@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,8 +28,13 @@ class UpdateDomain(BaseModel):
     UpdateDomain
     """  # noqa: E501
 
-    app_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["app_id"]
+    app_id: Optional[StrictStr] = Field(
+        default=None, description="To attach or detach from an app for custom domain."
+    )
+    subdomain: Optional[StrictStr] = Field(
+        default=None, description="To change subdomain for auto-assigned domain."
+    )
+    __properties: ClassVar[List[str]] = ["app_id", "subdomain"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,5 +84,7 @@ class UpdateDomain(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"app_id": obj.get("app_id")})
+        _obj = cls.model_validate(
+            {"app_id": obj.get("app_id"), "subdomain": obj.get("subdomain")}
+        )
         return _obj

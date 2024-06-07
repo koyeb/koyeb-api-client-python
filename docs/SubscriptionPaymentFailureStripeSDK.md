@@ -23,7 +23,7 @@ print(SubscriptionPaymentFailureStripeSDK.to_json())
 # convert the object into a dict
 subscription_payment_failure_stripe_sdk_dict = subscription_payment_failure_stripe_sdk_instance.to_dict()
 # create an instance of SubscriptionPaymentFailureStripeSDK from a dict
-subscription_payment_failure_stripe_sdk_form_dict = subscription_payment_failure_stripe_sdk.from_dict(subscription_payment_failure_stripe_sdk_dict)
+subscription_payment_failure_stripe_sdk_from_dict = SubscriptionPaymentFailureStripeSDK.from_dict(subscription_payment_failure_stripe_sdk_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

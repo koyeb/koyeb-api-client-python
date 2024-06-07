@@ -23,7 +23,7 @@ print(SecretsSummary.to_json())
 # convert the object into a dict
 secrets_summary_dict = secrets_summary_instance.to_dict()
 # create an instance of SecretsSummary from a dict
-secrets_summary_form_dict = secrets_summary.from_dict(secrets_summary_dict)
+secrets_summary_from_dict = SecretsSummary.from_dict(secrets_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

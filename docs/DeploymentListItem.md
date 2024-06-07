@@ -41,7 +41,7 @@ print(DeploymentListItem.to_json())
 # convert the object into a dict
 deployment_list_item_dict = deployment_list_item_instance.to_dict()
 # create an instance of DeploymentListItem from a dict
-deployment_list_item_form_dict = deployment_list_item.from_dict(deployment_list_item_dict)
+deployment_list_item_from_dict = DeploymentListItem.from_dict(deployment_list_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

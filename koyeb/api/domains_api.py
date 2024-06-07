@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from koyeb.models.create_domain import CreateDomain
@@ -101,6 +101,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -169,6 +170,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -237,6 +239,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -349,6 +352,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -417,6 +421,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -485,6 +490,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -597,6 +603,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -665,6 +672,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -733,6 +741,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -883,6 +892,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -989,6 +999,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1095,6 +1106,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1232,6 +1244,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1300,6 +1313,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1368,6 +1382,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1428,6 +1443,12 @@ class DomainsApi:
         id: StrictStr,
         domain: UpdateDomain,
         update_mask: Optional[StrictStr] = None,
+        dry_run: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="If set, run validation and check that the domain is available."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1449,6 +1470,8 @@ class DomainsApi:
         :type domain: UpdateDomain
         :param update_mask:
         :type update_mask: str
+        :param dry_run: If set, run validation and check that the domain is available.
+        :type dry_run: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1475,6 +1498,7 @@ class DomainsApi:
             id=id,
             domain=domain,
             update_mask=update_mask,
+            dry_run=dry_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1488,6 +1512,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1504,6 +1529,12 @@ class DomainsApi:
         id: StrictStr,
         domain: UpdateDomain,
         update_mask: Optional[StrictStr] = None,
+        dry_run: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="If set, run validation and check that the domain is available."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1525,6 +1556,8 @@ class DomainsApi:
         :type domain: UpdateDomain
         :param update_mask:
         :type update_mask: str
+        :param dry_run: If set, run validation and check that the domain is available.
+        :type dry_run: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1551,6 +1584,7 @@ class DomainsApi:
             id=id,
             domain=domain,
             update_mask=update_mask,
+            dry_run=dry_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1564,6 +1598,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1580,6 +1615,12 @@ class DomainsApi:
         id: StrictStr,
         domain: UpdateDomain,
         update_mask: Optional[StrictStr] = None,
+        dry_run: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="If set, run validation and check that the domain is available."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1601,6 +1642,8 @@ class DomainsApi:
         :type domain: UpdateDomain
         :param update_mask:
         :type update_mask: str
+        :param dry_run: If set, run validation and check that the domain is available.
+        :type dry_run: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1627,6 +1670,7 @@ class DomainsApi:
             id=id,
             domain=domain,
             update_mask=update_mask,
+            dry_run=dry_run,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1640,6 +1684,7 @@ class DomainsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1651,6 +1696,7 @@ class DomainsApi:
         id,
         domain,
         update_mask,
+        dry_run,
         _request_auth,
         _content_type,
         _headers,
@@ -1673,6 +1719,9 @@ class DomainsApi:
         # process the query parameters
         if update_mask is not None:
             _query_params.append(("update_mask", update_mask))
+
+        if dry_run is not None:
+            _query_params.append(("dry_run", dry_run))
 
         # process the header parameters
         # process the form parameters

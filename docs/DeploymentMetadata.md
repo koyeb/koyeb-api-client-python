@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **trigger** | [**TriggerDeploymentMetadata**](TriggerDeploymentMetadata.md) |  | [optional] 
 **database** | [**DatabaseDeploymentMetadata**](DatabaseDeploymentMetadata.md) |  | [optional] 
 **git** | [**GitDeploymentMetadata**](GitDeploymentMetadata.md) |  | [optional] 
+**archive** | [**ArchiveDeploymentMetadata**](ArchiveDeploymentMetadata.md) |  | [optional] 
 
 ## Example
 
@@ -24,7 +25,7 @@ print(DeploymentMetadata.to_json())
 # convert the object into a dict
 deployment_metadata_dict = deployment_metadata_instance.to_dict()
 # create an instance of DeploymentMetadata from a dict
-deployment_metadata_form_dict = deployment_metadata.from_dict(deployment_metadata_dict)
+deployment_metadata_from_dict = DeploymentMetadata.from_dict(deployment_metadata_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

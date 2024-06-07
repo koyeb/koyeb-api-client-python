@@ -24,7 +24,7 @@ print(Env.to_json())
 # convert the object into a dict
 env_dict = env_instance.to_dict()
 # create an instance of Env from a dict
-env_form_dict = env.from_dict(env_dict)
+env_from_dict = Env.from_dict(env_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

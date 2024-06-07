@@ -22,7 +22,7 @@ print(DeleteUserReply.to_json())
 # convert the object into a dict
 delete_user_reply_dict = delete_user_reply_instance.to_dict()
 # create an instance of DeleteUserReply from a dict
-delete_user_reply_form_dict = delete_user_reply.from_dict(delete_user_reply_dict)
+delete_user_reply_from_dict = DeleteUserReply.from_dict(delete_user_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

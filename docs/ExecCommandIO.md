@@ -23,7 +23,7 @@ print(ExecCommandIO.to_json())
 # convert the object into a dict
 exec_command_io_dict = exec_command_io_instance.to_dict()
 # create an instance of ExecCommandIO from a dict
-exec_command_io_form_dict = exec_command_io.from_dict(exec_command_io_dict)
+exec_command_io_from_dict = ExecCommandIO.from_dict(exec_command_io_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ print(GetSubscriptionReply.to_json())
 # convert the object into a dict
 get_subscription_reply_dict = get_subscription_reply_instance.to_dict()
 # create an instance of GetSubscriptionReply from a dict
-get_subscription_reply_form_dict = get_subscription_reply.from_dict(get_subscription_reply_dict)
+get_subscription_reply_from_dict = GetSubscriptionReply.from_dict(get_subscription_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ print(UpdateAppReply.to_json())
 # convert the object into a dict
 update_app_reply_dict = update_app_reply_instance.to_dict()
 # create an instance of UpdateAppReply from a dict
-update_app_reply_form_dict = update_app_reply.from_dict(update_app_reply_dict)
+update_app_reply_from_dict = UpdateAppReply.from_dict(update_app_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

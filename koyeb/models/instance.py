@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.instance_status import InstanceStatus
 from typing import Optional, Set
@@ -38,6 +38,7 @@ class Instance(BaseModel):
     service_id: Optional[StrictStr] = None
     regional_deployment_id: Optional[StrictStr] = None
     allocation_id: Optional[StrictStr] = None
+    replica_index: Optional[StrictInt] = None
     region: Optional[StrictStr] = None
     datacenter: Optional[StrictStr] = None
     hypervisor: Optional[StrictStr] = None
@@ -59,6 +60,7 @@ class Instance(BaseModel):
         "service_id",
         "regional_deployment_id",
         "allocation_id",
+        "replica_index",
         "region",
         "datacenter",
         "hypervisor",
@@ -128,6 +130,7 @@ class Instance(BaseModel):
                 "service_id": obj.get("service_id"),
                 "regional_deployment_id": obj.get("regional_deployment_id"),
                 "allocation_id": obj.get("allocation_id"),
+                "replica_index": obj.get("replica_index"),
                 "region": obj.get("region"),
                 "datacenter": obj.get("datacenter"),
                 "hypervisor": obj.get("hypervisor"),

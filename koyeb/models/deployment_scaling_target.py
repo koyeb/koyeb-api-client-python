@@ -25,8 +25,14 @@ from koyeb.models.deployment_scaling_target_average_cpu import (
 from koyeb.models.deployment_scaling_target_average_mem import (
     DeploymentScalingTargetAverageMem,
 )
+from koyeb.models.deployment_scaling_target_concurrent_requests import (
+    DeploymentScalingTargetConcurrentRequests,
+)
 from koyeb.models.deployment_scaling_target_requests_per_second import (
     DeploymentScalingTargetRequestsPerSecond,
+)
+from koyeb.models.deployment_scaling_target_requests_response_time import (
+    DeploymentScalingTargetRequestsResponseTime,
 )
 from typing import Optional, Set
 from typing_extensions import Self
@@ -40,10 +46,14 @@ class DeploymentScalingTarget(BaseModel):
     average_cpu: Optional[DeploymentScalingTargetAverageCPU] = None
     average_mem: Optional[DeploymentScalingTargetAverageMem] = None
     requests_per_second: Optional[DeploymentScalingTargetRequestsPerSecond] = None
+    concurrent_requests: Optional[DeploymentScalingTargetConcurrentRequests] = None
+    requests_response_time: Optional[DeploymentScalingTargetRequestsResponseTime] = None
     __properties: ClassVar[List[str]] = [
         "average_cpu",
         "average_mem",
         "requests_per_second",
+        "concurrent_requests",
+        "requests_response_time",
     ]
 
     model_config = ConfigDict(
@@ -92,6 +102,12 @@ class DeploymentScalingTarget(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requests_per_second
         if self.requests_per_second:
             _dict["requests_per_second"] = self.requests_per_second.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of concurrent_requests
+        if self.concurrent_requests:
+            _dict["concurrent_requests"] = self.concurrent_requests.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of requests_response_time
+        if self.requests_response_time:
+            _dict["requests_response_time"] = self.requests_response_time.to_dict()
         return _dict
 
     @classmethod
@@ -119,6 +135,16 @@ class DeploymentScalingTarget(BaseModel):
                     obj["requests_per_second"]
                 )
                 if obj.get("requests_per_second") is not None
+                else None,
+                "concurrent_requests": DeploymentScalingTargetConcurrentRequests.from_dict(
+                    obj["concurrent_requests"]
+                )
+                if obj.get("concurrent_requests") is not None
+                else None,
+                "requests_response_time": DeploymentScalingTargetRequestsResponseTime.from_dict(
+                    obj["requests_response_time"]
+                )
+                if obj.get("requests_response_time") is not None
                 else None,
             }
         )

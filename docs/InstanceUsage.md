@@ -22,7 +22,7 @@ print(InstanceUsage.to_json())
 # convert the object into a dict
 instance_usage_dict = instance_usage_instance.to_dict()
 # create an instance of InstanceUsage from a dict
-instance_usage_form_dict = instance_usage.from_dict(instance_usage_dict)
+instance_usage_from_dict = InstanceUsage.from_dict(instance_usage_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

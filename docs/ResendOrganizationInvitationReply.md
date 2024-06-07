@@ -22,7 +22,7 @@ print(ResendOrganizationInvitationReply.to_json())
 # convert the object into a dict
 resend_organization_invitation_reply_dict = resend_organization_invitation_reply_instance.to_dict()
 # create an instance of ResendOrganizationInvitationReply from a dict
-resend_organization_invitation_reply_form_dict = resend_organization_invitation_reply.from_dict(resend_organization_invitation_reply_dict)
+resend_organization_invitation_reply_from_dict = ResendOrganizationInvitationReply.from_dict(resend_organization_invitation_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

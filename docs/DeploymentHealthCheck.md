@@ -27,7 +27,7 @@ print(DeploymentHealthCheck.to_json())
 # convert the object into a dict
 deployment_health_check_dict = deployment_health_check_instance.to_dict()
 # create an instance of DeploymentHealthCheck from a dict
-deployment_health_check_form_dict = deployment_health_check.from_dict(deployment_health_check_dict)
+deployment_health_check_from_dict = DeploymentHealthCheck.from_dict(deployment_health_check_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

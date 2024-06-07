@@ -23,7 +23,7 @@ print(NeonPostgresDatabaseNeonRole.to_json())
 # convert the object into a dict
 neon_postgres_database_neon_role_dict = neon_postgres_database_neon_role_instance.to_dict()
 # create an instance of NeonPostgresDatabaseNeonRole from a dict
-neon_postgres_database_neon_role_form_dict = neon_postgres_database_neon_role.from_dict(neon_postgres_database_neon_role_dict)
+neon_postgres_database_neon_role_from_dict = NeonPostgresDatabaseNeonRole.from_dict(neon_postgres_database_neon_role_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -39,6 +39,7 @@ class RegionalDeploymentListItem(BaseModel):
     messages: Optional[List[StrictStr]] = None
     definition: Optional[RegionalDeploymentDefinition] = None
     use_kuma_v2: Optional[StrictBool] = None
+    use_kata: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",
@@ -48,6 +49,7 @@ class RegionalDeploymentListItem(BaseModel):
         "messages",
         "definition",
         "use_kuma_v2",
+        "use_kata",
     ]
 
     model_config = ConfigDict(
@@ -113,6 +115,7 @@ class RegionalDeploymentListItem(BaseModel):
                 if obj.get("definition") is not None
                 else None,
                 "use_kuma_v2": obj.get("use_kuma_v2"),
+                "use_kata": obj.get("use_kata"),
             }
         )
         return _obj

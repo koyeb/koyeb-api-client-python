@@ -22,7 +22,7 @@ print(RegionUsage.to_json())
 # convert the object into a dict
 region_usage_dict = region_usage_instance.to_dict()
 # create an instance of RegionUsage from a dict
-region_usage_form_dict = region_usage.from_dict(region_usage_dict)
+region_usage_from_dict = RegionUsage.from_dict(region_usage_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

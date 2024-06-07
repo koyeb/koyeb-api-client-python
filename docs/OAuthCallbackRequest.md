@@ -23,7 +23,7 @@ print(OAuthCallbackRequest.to_json())
 # convert the object into a dict
 o_auth_callback_request_dict = o_auth_callback_request_instance.to_dict()
 # create an instance of OAuthCallbackRequest from a dict
-o_auth_callback_request_form_dict = o_auth_callback_request.from_dict(o_auth_callback_request_dict)
+o_auth_callback_request_from_dict = OAuthCallbackRequest.from_dict(o_auth_callback_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

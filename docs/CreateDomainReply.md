@@ -22,7 +22,7 @@ print(CreateDomainReply.to_json())
 # convert the object into a dict
 create_domain_reply_dict = create_domain_reply_instance.to_dict()
 # create an instance of CreateDomainReply from a dict
-create_domain_reply_form_dict = create_domain_reply.from_dict(create_domain_reply_dict)
+create_domain_reply_from_dict = CreateDomainReply.from_dict(create_domain_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

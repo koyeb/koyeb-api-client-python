@@ -23,7 +23,7 @@ print(GitLabRegistryConfiguration.to_json())
 # convert the object into a dict
 git_lab_registry_configuration_dict = git_lab_registry_configuration_instance.to_dict()
 # create an instance of GitLabRegistryConfiguration from a dict
-git_lab_registry_configuration_form_dict = git_lab_registry_configuration.from_dict(git_lab_registry_configuration_dict)
+git_lab_registry_configuration_from_dict = GitLabRegistryConfiguration.from_dict(git_lab_registry_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

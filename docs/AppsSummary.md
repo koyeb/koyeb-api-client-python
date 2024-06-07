@@ -23,7 +23,7 @@ print(AppsSummary.to_json())
 # convert the object into a dict
 apps_summary_dict = apps_summary_instance.to_dict()
 # create an instance of AppsSummary from a dict
-apps_summary_form_dict = apps_summary.from_dict(apps_summary_dict)
+apps_summary_from_dict = AppsSummary.from_dict(apps_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

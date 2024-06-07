@@ -2,6 +2,7 @@
 
 # import apis into api package
 from koyeb.api.apps_api import AppsApi
+from koyeb.api.archives_api import ArchivesApi
 from koyeb.api.catalog_datacenters_api import CatalogDatacentersApi
 from koyeb.api.catalog_instances_api import CatalogInstancesApi
 from koyeb.api.catalog_regions_api import CatalogRegionsApi
@@ -10,6 +11,7 @@ from koyeb.api.deployments_api import DeploymentsApi
 from koyeb.api.docker_helper_api import DockerHelperApi
 from koyeb.api.domains_api import DomainsApi
 from koyeb.api.instances_api import InstancesApi
+from koyeb.api.intercom_api import IntercomApi
 from koyeb.api.logs_api import LogsApi
 from koyeb.api.metrics_api import MetricsApi
 from koyeb.api.organization_confirmations_api import OrganizationConfirmationsApi
@@ -17,6 +19,7 @@ from koyeb.api.organization_invitations_api import OrganizationInvitationsApi
 from koyeb.api.organization_members_api import OrganizationMembersApi
 from koyeb.api.organization_quotas_api import OrganizationQuotasApi
 from koyeb.api.payment_methods_api import PaymentMethodsApi
+from koyeb.api.persistent_volumes_api import PersistentVolumesApi
 from koyeb.api.quotas_api import QuotasApi
 from koyeb.api.regional_deployments_api import RegionalDeploymentsApi
 from koyeb.api.repositories_api import RepositoriesApi

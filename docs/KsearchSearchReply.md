@@ -28,7 +28,7 @@ print(KsearchSearchReply.to_json())
 # convert the object into a dict
 ksearch_search_reply_dict = ksearch_search_reply_instance.to_dict()
 # create an instance of KsearchSearchReply from a dict
-ksearch_search_reply_form_dict = ksearch_search_reply.from_dict(ksearch_search_reply_dict)
+ksearch_search_reply_from_dict = KsearchSearchReply.from_dict(ksearch_search_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ print(DesiredDeployment.to_json())
 # convert the object into a dict
 desired_deployment_dict = desired_deployment_instance.to_dict()
 # create an instance of DesiredDeployment from a dict
-desired_deployment_form_dict = desired_deployment.from_dict(desired_deployment_dict)
+desired_deployment_from_dict = DesiredDeployment.from_dict(desired_deployment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,6 +17,10 @@ Name | Type | Description | Notes
 **require_plan** | **List[str]** |  | [optional] 
 **vcpu_shares** | **float** | The number of vcpu shares reserved for the instance. | [optional] 
 **display_name** | **str** |  | [optional] 
+**aliases** | **List[str]** |  | [optional] 
+**type** | **str** |  | [optional] 
+**gpu** | [**CatalogGPUDetails**](CatalogGPUDetails.md) |  | [optional] 
+**service_types** | **List[str]** |  | [optional] 
 
 ## Example
 
@@ -33,7 +37,7 @@ print(CatalogInstance.to_json())
 # convert the object into a dict
 catalog_instance_dict = catalog_instance_instance.to_dict()
 # create an instance of CatalogInstance from a dict
-catalog_instance_form_dict = catalog_instance.from_dict(catalog_instance_dict)
+catalog_instance_from_dict = CatalogInstance.from_dict(catalog_instance_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -91,6 +91,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -172,6 +173,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -254,6 +256,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -346,6 +349,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -427,12 +431,13 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_domain**
-> UpdateDomainReply update_domain(id, domain, update_mask=update_mask)
+> UpdateDomainReply update_domain(id, domain, update_mask=update_mask, dry_run=dry_run)
 
 
 
@@ -471,9 +476,10 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
     domain = koyeb.UpdateDomain() # UpdateDomain | 
     update_mask = 'update_mask_example' # str |  (optional)
+    dry_run = True # bool | If set, run validation and check that the domain is available. (optional)
 
     try:
-        api_response = api_instance.update_domain(id, domain, update_mask=update_mask)
+        api_response = api_instance.update_domain(id, domain, update_mask=update_mask, dry_run=dry_run)
         print("The response of DomainsApi->update_domain:\n")
         pprint(api_response)
     except Exception as e:
@@ -490,6 +496,7 @@ Name | Type | Description  | Notes
  **id** | **str**|  | 
  **domain** | [**UpdateDomain**](UpdateDomain.md)|  | 
  **update_mask** | **str**|  | [optional] 
+ **dry_run** | **bool**| If set, run validation and check that the domain is available. | [optional] 
 
 ### Return type
 
@@ -514,6 +521,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

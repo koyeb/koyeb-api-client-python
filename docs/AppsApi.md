@@ -95,6 +95,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -179,6 +180,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -262,6 +264,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -353,6 +356,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -440,6 +444,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -524,6 +529,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -608,12 +614,13 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_app**
-> UpdateAppReply update_app(id, app_name=app_name, update_mask=update_mask)
+> UpdateAppReply update_app(id, app, update_mask=update_mask)
 
 Update App
 
@@ -623,6 +630,7 @@ Update App
 
 ```python
 import koyeb
+from koyeb.models.update_app import UpdateApp
 from koyeb.models.update_app_reply import UpdateAppReply
 from koyeb.rest import ApiException
 from pprint import pprint
@@ -649,12 +657,12 @@ with koyeb.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = koyeb.AppsApi(api_client)
     id = 'id_example' # str | The id of the app to update.
-    app_name = 'app_name_example' # str |  (optional)
+    app = koyeb.UpdateApp() # UpdateApp | 
     update_mask = 'update_mask_example' # str |  (optional)
 
     try:
         # Update App
-        api_response = api_instance.update_app(id, app_name=app_name, update_mask=update_mask)
+        api_response = api_instance.update_app(id, app, update_mask=update_mask)
         print("The response of AppsApi->update_app:\n")
         pprint(api_response)
     except Exception as e:
@@ -669,7 +677,7 @@ with koyeb.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the app to update. | 
- **app_name** | **str**|  | [optional] 
+ **app** | [**UpdateApp**](UpdateApp.md)|  | 
  **update_mask** | **str**|  | [optional] 
 
 ### Return type
@@ -695,6 +703,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -783,6 +792,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

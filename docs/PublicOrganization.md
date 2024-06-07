@@ -25,7 +25,7 @@ print(PublicOrganization.to_json())
 # convert the object into a dict
 public_organization_dict = public_organization_instance.to_dict()
 # create an instance of PublicOrganization from a dict
-public_organization_form_dict = public_organization.from_dict(public_organization_dict)
+public_organization_from_dict = PublicOrganization.from_dict(public_organization_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

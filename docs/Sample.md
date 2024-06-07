@@ -23,7 +23,7 @@ print(Sample.to_json())
 # convert the object into a dict
 sample_dict = sample_instance.to_dict()
 # create an instance of Sample from a dict
-sample_form_dict = sample.from_dict(sample_dict)
+sample_from_dict = Sample.from_dict(sample_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

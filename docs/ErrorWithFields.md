@@ -25,7 +25,7 @@ print(ErrorWithFields.to_json())
 # convert the object into a dict
 error_with_fields_dict = error_with_fields_instance.to_dict()
 # create an instance of ErrorWithFields from a dict
-error_with_fields_form_dict = error_with_fields.from_dict(error_with_fields_dict)
+error_with_fields_from_dict = ErrorWithFields.from_dict(error_with_fields_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

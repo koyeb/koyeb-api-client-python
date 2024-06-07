@@ -23,7 +23,7 @@ print(DockerHubRegistryConfiguration.to_json())
 # convert the object into a dict
 docker_hub_registry_configuration_dict = docker_hub_registry_configuration_instance.to_dict()
 # create an instance of DockerHubRegistryConfiguration from a dict
-docker_hub_registry_configuration_form_dict = docker_hub_registry_configuration.from_dict(docker_hub_registry_configuration_dict)
+docker_hub_registry_configuration_from_dict = DockerHubRegistryConfiguration.from_dict(docker_hub_registry_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

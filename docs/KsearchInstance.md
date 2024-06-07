@@ -26,7 +26,7 @@ print(KsearchInstance.to_json())
 # convert the object into a dict
 ksearch_instance_dict = ksearch_instance_instance.to_dict()
 # create an instance of KsearchInstance from a dict
-ksearch_instance_form_dict = ksearch_instance.from_dict(ksearch_instance_dict)
+ksearch_instance_from_dict = KsearchInstance.from_dict(ksearch_instance_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

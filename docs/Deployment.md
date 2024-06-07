@@ -42,7 +42,7 @@ print(Deployment.to_json())
 # convert the object into a dict
 deployment_dict = deployment_instance.to_dict()
 # create an instance of Deployment from a dict
-deployment_form_dict = deployment.from_dict(deployment_dict)
+deployment_from_dict = Deployment.from_dict(deployment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

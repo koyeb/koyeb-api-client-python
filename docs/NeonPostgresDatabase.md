@@ -26,7 +26,7 @@ print(NeonPostgresDatabase.to_json())
 # convert the object into a dict
 neon_postgres_database_dict = neon_postgres_database_instance.to_dict()
 # create an instance of NeonPostgresDatabase from a dict
-neon_postgres_database_form_dict = neon_postgres_database.from_dict(neon_postgres_database_dict)
+neon_postgres_database_from_dict = NeonPostgresDatabase.from_dict(neon_postgres_database_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

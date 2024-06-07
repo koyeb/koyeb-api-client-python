@@ -44,6 +44,7 @@ class TestInstance(unittest.TestCase):
                 service_id = '',
                 regional_deployment_id = '',
                 allocation_id = '',
+                replica_index = 56,
                 region = '',
                 datacenter = '',
                 hypervisor = '',

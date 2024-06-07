@@ -24,7 +24,7 @@ print(CreateDomain.to_json())
 # convert the object into a dict
 create_domain_dict = create_domain_instance.to_dict()
 # create an instance of CreateDomain from a dict
-create_domain_form_dict = create_domain.from_dict(create_domain_dict)
+create_domain_from_dict = CreateDomain.from_dict(create_domain_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

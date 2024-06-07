@@ -23,7 +23,7 @@ print(GCPContainerRegistryConfiguration.to_json())
 # convert the object into a dict
 gcp_container_registry_configuration_dict = gcp_container_registry_configuration_instance.to_dict()
 # create an instance of GCPContainerRegistryConfiguration from a dict
-gcp_container_registry_configuration_form_dict = gcp_container_registry_configuration.from_dict(gcp_container_registry_configuration_dict)
+gcp_container_registry_configuration_from_dict = GCPContainerRegistryConfiguration.from_dict(gcp_container_registry_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

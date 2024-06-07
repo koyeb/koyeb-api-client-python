@@ -25,7 +25,7 @@ print(ListRegionsReply.to_json())
 # convert the object into a dict
 list_regions_reply_dict = list_regions_reply_instance.to_dict()
 # create an instance of ListRegionsReply from a dict
-list_regions_reply_form_dict = list_regions_reply.from_dict(list_regions_reply_dict)
+list_regions_reply_from_dict = ListRegionsReply.from_dict(list_regions_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

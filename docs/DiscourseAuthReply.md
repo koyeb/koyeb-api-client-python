@@ -23,7 +23,7 @@ print(DiscourseAuthReply.to_json())
 # convert the object into a dict
 discourse_auth_reply_dict = discourse_auth_reply_instance.to_dict()
 # create an instance of DiscourseAuthReply from a dict
-discourse_auth_reply_form_dict = discourse_auth_reply.from_dict(discourse_auth_reply_dict)
+discourse_auth_reply_from_dict = DiscourseAuthReply.from_dict(discourse_auth_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

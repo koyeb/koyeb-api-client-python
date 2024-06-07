@@ -22,7 +22,7 @@ print(CannyAuthReply.to_json())
 # convert the object into a dict
 canny_auth_reply_dict = canny_auth_reply_instance.to_dict()
 # create an instance of CannyAuthReply from a dict
-canny_auth_reply_form_dict = canny_auth_reply.from_dict(canny_auth_reply_dict)
+canny_auth_reply_from_dict = CannyAuthReply.from_dict(canny_auth_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

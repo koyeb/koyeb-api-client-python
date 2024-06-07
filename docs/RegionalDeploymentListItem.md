@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **messages** | **List[str]** |  | [optional] 
 **definition** | [**RegionalDeploymentDefinition**](RegionalDeploymentDefinition.md) |  | [optional] 
 **use_kuma_v2** | **bool** |  | [optional] 
+**use_kata** | **bool** |  | [optional] 
 
 ## Example
 
@@ -29,7 +30,7 @@ print(RegionalDeploymentListItem.to_json())
 # convert the object into a dict
 regional_deployment_list_item_dict = regional_deployment_list_item_instance.to_dict()
 # create an instance of RegionalDeploymentListItem from a dict
-regional_deployment_list_item_form_dict = regional_deployment_list_item.from_dict(regional_deployment_list_item_dict)
+regional_deployment_list_item_from_dict = RegionalDeploymentListItem.from_dict(regional_deployment_list_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

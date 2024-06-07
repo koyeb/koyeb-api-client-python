@@ -26,7 +26,7 @@ print(DeploymentProvisioningInfoStageBuildAttempt.to_json())
 # convert the object into a dict
 deployment_provisioning_info_stage_build_attempt_dict = deployment_provisioning_info_stage_build_attempt_instance.to_dict()
 # create an instance of DeploymentProvisioningInfoStageBuildAttempt from a dict
-deployment_provisioning_info_stage_build_attempt_form_dict = deployment_provisioning_info_stage_build_attempt.from_dict(deployment_provisioning_info_stage_build_attempt_dict)
+deployment_provisioning_info_stage_build_attempt_from_dict = DeploymentProvisioningInfoStageBuildAttempt.from_dict(deployment_provisioning_info_stage_build_attempt_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

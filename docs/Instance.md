@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **service_id** | **str** |  | [optional] 
 **regional_deployment_id** | **str** |  | [optional] 
 **allocation_id** | **str** |  | [optional] 
+**replica_index** | **int** |  | [optional] 
 **region** | **str** |  | [optional] 
 **datacenter** | **str** |  | [optional] 
 **hypervisor** | **str** |  | [optional] 
@@ -38,7 +39,7 @@ print(Instance.to_json())
 # convert the object into a dict
 instance_dict = instance_instance.to_dict()
 # create an instance of Instance from a dict
-instance_form_dict = instance.from_dict(instance_dict)
+instance_from_dict = Instance.from_dict(instance_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

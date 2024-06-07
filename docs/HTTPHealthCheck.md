@@ -25,7 +25,7 @@ print(HTTPHealthCheck.to_json())
 # convert the object into a dict
 http_health_check_dict = http_health_check_instance.to_dict()
 # create an instance of HTTPHealthCheck from a dict
-http_health_check_form_dict = http_health_check.from_dict(http_health_check_dict)
+http_health_check_from_dict = HTTPHealthCheck.from_dict(http_health_check_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

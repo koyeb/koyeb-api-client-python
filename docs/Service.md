@@ -40,7 +40,7 @@ print(Service.to_json())
 # convert the object into a dict
 service_dict = service_instance.to_dict()
 # create an instance of Service from a dict
-service_form_dict = service.from_dict(service_dict)
+service_from_dict = Service.from_dict(service_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

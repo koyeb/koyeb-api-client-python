@@ -22,7 +22,7 @@ print(ReactivateOrganizationReply.to_json())
 # convert the object into a dict
 reactivate_organization_reply_dict = reactivate_organization_reply_instance.to_dict()
 # create an instance of ReactivateOrganizationReply from a dict
-reactivate_organization_reply_form_dict = reactivate_organization_reply.from_dict(reactivate_organization_reply_dict)
+reactivate_organization_reply_from_dict = ReactivateOrganizationReply.from_dict(reactivate_organization_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

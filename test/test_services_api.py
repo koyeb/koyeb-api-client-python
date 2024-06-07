@@ -26,6 +26,13 @@ class TestServicesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_autocomplete(self) -> None:
+        """Test case for autocomplete
+
+        Generate autocomplete definition for a service
+        """
+        pass
+
     def test_create_service(self) -> None:
         """Test case for create_service
 

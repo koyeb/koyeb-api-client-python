@@ -23,7 +23,7 @@ print(DesiredDeploymentGroup.to_json())
 # convert the object into a dict
 desired_deployment_group_dict = desired_deployment_group_instance.to_dict()
 # create an instance of DesiredDeploymentGroup from a dict
-desired_deployment_group_form_dict = desired_deployment_group.from_dict(desired_deployment_group_dict)
+desired_deployment_group_from_dict = DesiredDeploymentGroup.from_dict(desired_deployment_group_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

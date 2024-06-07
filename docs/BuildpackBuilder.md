@@ -24,7 +24,7 @@ print(BuildpackBuilder.to_json())
 # convert the object into a dict
 buildpack_builder_dict = buildpack_builder_instance.to_dict()
 # create an instance of BuildpackBuilder from a dict
-buildpack_builder_form_dict = buildpack_builder.from_dict(buildpack_builder_dict)
+buildpack_builder_from_dict = BuildpackBuilder.from_dict(buildpack_builder_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

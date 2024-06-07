@@ -22,7 +22,7 @@ print(LoginReply.to_json())
 # convert the object into a dict
 login_reply_dict = login_reply_instance.to_dict()
 # create an instance of LoginReply from a dict
-login_reply_form_dict = login_reply.from_dict(login_reply_dict)
+login_reply_from_dict = LoginReply.from_dict(login_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

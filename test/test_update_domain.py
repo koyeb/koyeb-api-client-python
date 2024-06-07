@@ -36,7 +36,8 @@ class TestUpdateDomain(unittest.TestCase):
         model = UpdateDomain()
         if include_optional:
             return UpdateDomain(
-                app_id = ''
+                app_id = '',
+                subdomain = ''
             )
         else:
             return UpdateDomain(

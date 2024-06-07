@@ -24,7 +24,7 @@ print(TriggerDeploymentMetadata.to_json())
 # convert the object into a dict
 trigger_deployment_metadata_dict = trigger_deployment_metadata_instance.to_dict()
 # create an instance of TriggerDeploymentMetadata from a dict
-trigger_deployment_metadata_form_dict = trigger_deployment_metadata.from_dict(trigger_deployment_metadata_dict)
+trigger_deployment_metadata_from_dict = TriggerDeploymentMetadata.from_dict(trigger_deployment_metadata_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

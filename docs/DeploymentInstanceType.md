@@ -23,7 +23,7 @@ print(DeploymentInstanceType.to_json())
 # convert the object into a dict
 deployment_instance_type_dict = deployment_instance_type_instance.to_dict()
 # create an instance of DeploymentInstanceType from a dict
-deployment_instance_type_form_dict = deployment_instance_type.from_dict(deployment_instance_type_dict)
+deployment_instance_type_from_dict = DeploymentInstanceType.from_dict(deployment_instance_type_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

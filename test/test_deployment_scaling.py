@@ -48,7 +48,12 @@ class TestDeploymentScaling(unittest.TestCase):
                         average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
                             value = 56, ), 
                         requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
-                            value = 56, ), )
+                            value = 56, ), 
+                        concurrent_requests = koyeb.models.deployment_scaling_target_concurrent_requests.DeploymentScalingTargetConcurrentRequests(
+                            value = 56, ), 
+                        requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
+                            value = 56, 
+                            quantile = 56, ), )
                     ]
             )
         else:

@@ -22,7 +22,7 @@ print(GetOrganizationSummaryReply.to_json())
 # convert the object into a dict
 get_organization_summary_reply_dict = get_organization_summary_reply_instance.to_dict()
 # create an instance of GetOrganizationSummaryReply from a dict
-get_organization_summary_reply_form_dict = get_organization_summary_reply.from_dict(get_organization_summary_reply_dict)
+get_organization_summary_reply_from_dict = GetOrganizationSummaryReply.from_dict(get_organization_summary_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

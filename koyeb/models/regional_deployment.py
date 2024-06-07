@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.deployment_provisioning_info import DeploymentProvisioningInfo
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
 from koyeb.models.regional_deployment_metadata import RegionalDeploymentMetadata
+from koyeb.models.regional_deployment_role import RegionalDeploymentRole
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,6 +37,7 @@ class RegionalDeployment(BaseModel):
     id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
+    scheduled_at: Optional[datetime] = None
     allocated_at: Optional[datetime] = None
     started_at: Optional[datetime] = None
     succeeded_at: Optional[datetime] = None
@@ -52,7 +54,9 @@ class RegionalDeployment(BaseModel):
     datacenters: Optional[List[StrictStr]] = None
     metadata: Optional[RegionalDeploymentMetadata] = None
     provisioning_info: Optional[DeploymentProvisioningInfo] = None
+    role: Optional[RegionalDeploymentRole] = None
     use_kuma_v2: Optional[StrictBool] = None
+    use_kata: Optional[StrictBool] = None
     version: Optional[StrictStr] = None
     deployment_group: Optional[StrictStr] = None
     deployment_id: Optional[StrictStr] = None
@@ -60,6 +64,7 @@ class RegionalDeployment(BaseModel):
         "id",
         "created_at",
         "updated_at",
+        "scheduled_at",
         "allocated_at",
         "started_at",
         "succeeded_at",
@@ -76,7 +81,9 @@ class RegionalDeployment(BaseModel):
         "datacenters",
         "metadata",
         "provisioning_info",
+        "role",
         "use_kuma_v2",
+        "use_kata",
         "version",
         "deployment_group",
         "deployment_id",
@@ -144,6 +151,7 @@ class RegionalDeployment(BaseModel):
                 "id": obj.get("id"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
+                "scheduled_at": obj.get("scheduled_at"),
                 "allocated_at": obj.get("allocated_at"),
                 "started_at": obj.get("started_at"),
                 "succeeded_at": obj.get("succeeded_at"),
@@ -168,7 +176,9 @@ class RegionalDeployment(BaseModel):
                 )
                 if obj.get("provisioning_info") is not None
                 else None,
+                "role": obj.get("role"),
                 "use_kuma_v2": obj.get("use_kuma_v2"),
+                "use_kata": obj.get("use_kata"),
                 "version": obj.get("version"),
                 "deployment_group": obj.get("deployment_group"),
                 "deployment_id": obj.get("deployment_id"),

@@ -32,8 +32,7 @@ class ActivityList(BaseModel):
     activities: Optional[List[Activity]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
-    count: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["activities", "limit", "offset", "count"]
+    __properties: ClassVar[List[str]] = ["activities", "limit", "offset"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,7 +96,6 @@ class ActivityList(BaseModel):
                 else None,
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
-                "count": obj.get("count"),
             }
         )
         return _obj

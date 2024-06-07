@@ -22,7 +22,7 @@ print(CreateOrganizationReply.to_json())
 # convert the object into a dict
 create_organization_reply_dict = create_organization_reply_instance.to_dict()
 # create an instance of CreateOrganizationReply from a dict
-create_organization_reply_form_dict = create_organization_reply.from_dict(create_organization_reply_dict)
+create_organization_reply_from_dict = CreateOrganizationReply.from_dict(create_organization_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

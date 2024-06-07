@@ -25,7 +25,7 @@ print(ExecCommandReply.to_json())
 # convert the object into a dict
 exec_command_reply_dict = exec_command_reply_instance.to_dict()
 # create an instance of ExecCommandReply from a dict
-exec_command_reply_form_dict = exec_command_reply.from_dict(exec_command_reply_dict)
+exec_command_reply_from_dict = ExecCommandReply.from_dict(exec_command_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

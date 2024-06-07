@@ -22,7 +22,7 @@ print(RedeployReply.to_json())
 # convert the object into a dict
 redeploy_reply_dict = redeploy_reply_instance.to_dict()
 # create an instance of RedeployReply from a dict
-redeploy_reply_form_dict = redeploy_reply.from_dict(redeploy_reply_dict)
+redeploy_reply_from_dict = RedeployReply.from_dict(redeploy_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

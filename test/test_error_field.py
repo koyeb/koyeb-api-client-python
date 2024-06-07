@@ -36,7 +36,7 @@ class TestErrorField(unittest.TestCase):
         model = ErrorField()
         if include_optional:
             return ErrorField(
-                field = '',
+                var_field = '',
                 description = ''
             )
         else:

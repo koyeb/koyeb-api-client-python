@@ -27,7 +27,7 @@ print(DockerSource.to_json())
 # convert the object into a dict
 docker_source_dict = docker_source_instance.to_dict()
 # create an instance of DockerSource from a dict
-docker_source_form_dict = docker_source.from_dict(docker_source_dict)
+docker_source_from_dict = DockerSource.from_dict(docker_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

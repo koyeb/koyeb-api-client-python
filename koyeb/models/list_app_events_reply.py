@@ -32,9 +32,8 @@ class ListAppEventsReply(BaseModel):
     events: Optional[List[AppEvent]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
-    count: Optional[StrictInt] = None
     order: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["events", "limit", "offset", "count", "order"]
+    __properties: ClassVar[List[str]] = ["events", "limit", "offset", "order"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,7 +97,6 @@ class ListAppEventsReply(BaseModel):
                 else None,
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
-                "count": obj.get("count"),
                 "order": obj.get("order"),
             }
         )

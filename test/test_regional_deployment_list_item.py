@@ -74,7 +74,12 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
                                 average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
                                     value = 56, ), 
                                 requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
-                                    value = 56, ), )
+                                    value = 56, ), 
+                                concurrent_requests = koyeb.models.deployment_scaling_target_concurrent_requests.DeploymentScalingTargetConcurrentRequests(
+                                    value = 56, ), 
+                                requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
+                                    value = 56, 
+                                    quantile = 56, ), )
                             ], ), 
                     instance_type = '', 
                     deployment_group = '', 
@@ -95,6 +100,12 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
                                         key = '', 
                                         value = '', )
                                     ], ), )
+                        ], 
+                    volumes = [
+                        koyeb.models.regional_deployment_volume.RegionalDeploymentVolume(
+                            id = '', 
+                            path = '', 
+                            replica_index = 56, )
                         ], 
                     skip_cache = True, 
                     use_kuma_v2 = True, 
@@ -121,8 +132,11 @@ class TestRegionalDeploymentListItem(unittest.TestCase):
                         buildpack = koyeb.models.buildpack_builder.BuildpackBuilder(
                             build_command = '', 
                             run_command = '', 
-                            privileged = True, ), ), ),
-                use_kuma_v2 = True
+                            privileged = True, ), ), 
+                    archive = koyeb.models.archive_source.ArchiveSource(
+                        id = '', ), ),
+                use_kuma_v2 = True,
+                use_kata = True
             )
         else:
             return RegionalDeploymentListItem(

@@ -34,7 +34,7 @@ print(UsageDetails.to_json())
 # convert the object into a dict
 usage_details_dict = usage_details_instance.to_dict()
 # create an instance of UsageDetails from a dict
-usage_details_form_dict = usage_details.from_dict(usage_details_dict)
+usage_details_from_dict = UsageDetails.from_dict(usage_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

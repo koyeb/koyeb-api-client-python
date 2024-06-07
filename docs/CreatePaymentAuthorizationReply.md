@@ -22,7 +22,7 @@ print(CreatePaymentAuthorizationReply.to_json())
 # convert the object into a dict
 create_payment_authorization_reply_dict = create_payment_authorization_reply_instance.to_dict()
 # create an instance of CreatePaymentAuthorizationReply from a dict
-create_payment_authorization_reply_form_dict = create_payment_authorization_reply.from_dict(create_payment_authorization_reply_dict)
+create_payment_authorization_reply_from_dict = CreatePaymentAuthorizationReply.from_dict(create_payment_authorization_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

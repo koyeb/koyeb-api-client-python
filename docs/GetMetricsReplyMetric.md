@@ -23,7 +23,7 @@ print(GetMetricsReplyMetric.to_json())
 # convert the object into a dict
 get_metrics_reply_metric_dict = get_metrics_reply_metric_instance.to_dict()
 # create an instance of GetMetricsReplyMetric from a dict
-get_metrics_reply_metric_form_dict = get_metrics_reply_metric.from_dict(get_metrics_reply_metric_dict)
+get_metrics_reply_metric_from_dict = GetMetricsReplyMetric.from_dict(get_metrics_reply_metric_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

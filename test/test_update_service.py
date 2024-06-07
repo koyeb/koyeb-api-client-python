@@ -72,7 +72,12 @@ class TestUpdateService(unittest.TestCase):
                                     average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
                                         value = 56, ), 
                                     requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
-                                        value = 56, ), )
+                                        value = 56, ), 
+                                    concurrent_requests = koyeb.models.deployment_scaling_target_concurrent_requests.DeploymentScalingTargetConcurrentRequests(
+                                        value = 56, ), 
+                                    requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
+                                        value = 56, 
+                                        quantile = 56, ), )
                                 ], )
                         ], 
                     instance_types = [
@@ -95,6 +100,12 @@ class TestUpdateService(unittest.TestCase):
                                         key = '', 
                                         value = '', )
                                     ], ), )
+                        ], 
+                    volumes = [
+                        koyeb.models.deployment_volume.DeploymentVolume(
+                            id = '', 
+                            path = '', 
+                            replica_index = 56, )
                         ], 
                     skip_cache = True, 
                     docker = koyeb.models.docker_source.DockerSource(
@@ -135,7 +146,9 @@ class TestUpdateService(unittest.TestCase):
                                 koyeb.models.neon_postgres_database/neon_database.NeonPostgresDatabase.NeonDatabase(
                                     name = '', 
                                     owner = '', )
-                                ], ), ), ),
+                                ], ), ), 
+                    archive = koyeb.models.archive_source.ArchiveSource(
+                        id = '', ), ),
                 metadata = koyeb.models.deployment_metadata.DeploymentMetadata(
                     trigger = koyeb.models.trigger_deployment_metadata.TriggerDeploymentMetadata(
                         type = 'UNKNOWN_TYPE', 
@@ -155,6 +168,8 @@ class TestUpdateService(unittest.TestCase):
                                 ''
                                 ], ), ), 
                     git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                        last_provisioned_deployment_id = '', ), 
+                    archive = koyeb.models.archive_deployment_metadata.ArchiveDeploymentMetadata(
                         last_provisioned_deployment_id = '', ), ),
                 skip_build = True,
                 save_only = True

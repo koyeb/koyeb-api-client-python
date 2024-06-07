@@ -25,7 +25,7 @@ print(KsearchGlobalDeployment.to_json())
 # convert the object into a dict
 ksearch_global_deployment_dict = ksearch_global_deployment_instance.to_dict()
 # create an instance of KsearchGlobalDeployment from a dict
-ksearch_global_deployment_form_dict = ksearch_global_deployment.from_dict(ksearch_global_deployment_dict)
+ksearch_global_deployment_from_dict = KsearchGlobalDeployment.from_dict(ksearch_global_deployment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
