@@ -22,7 +22,7 @@ print(DatabaseSource.to_json())
 # convert the object into a dict
 database_source_dict = database_source_instance.to_dict()
 # create an instance of DatabaseSource from a dict
-database_source_form_dict = database_source.from_dict(database_source_dict)
+database_source_from_dict = DatabaseSource.from_dict(database_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -31,7 +31,7 @@ print(CreateSecret.to_json())
 # convert the object into a dict
 create_secret_dict = create_secret_instance.to_dict()
 # create an instance of CreateSecret from a dict
-create_secret_form_dict = create_secret.from_dict(create_secret_dict)
+create_secret_from_dict = CreateSecret.from_dict(create_secret_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

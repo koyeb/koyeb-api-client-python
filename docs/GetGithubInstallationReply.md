@@ -31,7 +31,7 @@ print(GetGithubInstallationReply.to_json())
 # convert the object into a dict
 get_github_installation_reply_dict = get_github_installation_reply_instance.to_dict()
 # create an instance of GetGithubInstallationReply from a dict
-get_github_installation_reply_form_dict = get_github_installation_reply.from_dict(get_github_installation_reply_dict)
+get_github_installation_reply_from_dict = GetGithubInstallationReply.from_dict(get_github_installation_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

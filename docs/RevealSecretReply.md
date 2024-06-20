@@ -22,7 +22,7 @@ print(RevealSecretReply.to_json())
 # convert the object into a dict
 reveal_secret_reply_dict = reveal_secret_reply_instance.to_dict()
 # create an instance of RevealSecretReply from a dict
-reveal_secret_reply_form_dict = reveal_secret_reply.from_dict(reveal_secret_reply_dict)
+reveal_secret_reply_from_dict = RevealSecretReply.from_dict(reveal_secret_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

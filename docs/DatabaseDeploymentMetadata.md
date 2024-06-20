@@ -22,7 +22,7 @@ print(DatabaseDeploymentMetadata.to_json())
 # convert the object into a dict
 database_deployment_metadata_dict = database_deployment_metadata_instance.to_dict()
 # create an instance of DatabaseDeploymentMetadata from a dict
-database_deployment_metadata_form_dict = database_deployment_metadata.from_dict(database_deployment_metadata_dict)
+database_deployment_metadata_from_dict = DatabaseDeploymentMetadata.from_dict(database_deployment_metadata_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

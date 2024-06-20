@@ -23,7 +23,7 @@ print(ServiceSummary.to_json())
 # convert the object into a dict
 service_summary_dict = service_summary_instance.to_dict()
 # create an instance of ServiceSummary from a dict
-service_summary_form_dict = service_summary.from_dict(service_summary_dict)
+service_summary_from_dict = ServiceSummary.from_dict(service_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

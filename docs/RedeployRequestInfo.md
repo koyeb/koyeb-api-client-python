@@ -25,7 +25,7 @@ print(RedeployRequestInfo.to_json())
 # convert the object into a dict
 redeploy_request_info_dict = redeploy_request_info_instance.to_dict()
 # create an instance of RedeployRequestInfo from a dict
-redeploy_request_info_form_dict = redeploy_request_info.from_dict(redeploy_request_info_dict)
+redeploy_request_info_from_dict = RedeployRequestInfo.from_dict(redeploy_request_info_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

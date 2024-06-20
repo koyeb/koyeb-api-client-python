@@ -22,7 +22,7 @@ print(GoogleProtobufAny.to_json())
 # convert the object into a dict
 google_protobuf_any_dict = google_protobuf_any_instance.to_dict()
 # create an instance of GoogleProtobufAny from a dict
-google_protobuf_any_form_dict = google_protobuf_any.from_dict(google_protobuf_any_dict)
+google_protobuf_any_from_dict = GoogleProtobufAny.from_dict(google_protobuf_any_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

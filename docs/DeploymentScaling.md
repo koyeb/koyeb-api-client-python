@@ -25,7 +25,7 @@ print(DeploymentScaling.to_json())
 # convert the object into a dict
 deployment_scaling_dict = deployment_scaling_instance.to_dict()
 # create an instance of DeploymentScaling from a dict
-deployment_scaling_form_dict = deployment_scaling.from_dict(deployment_scaling_dict)
+deployment_scaling_from_dict = DeploymentScaling.from_dict(deployment_scaling_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

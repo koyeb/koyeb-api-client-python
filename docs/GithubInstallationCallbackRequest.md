@@ -24,7 +24,7 @@ print(GithubInstallationCallbackRequest.to_json())
 # convert the object into a dict
 github_installation_callback_request_dict = github_installation_callback_request_instance.to_dict()
 # create an instance of GithubInstallationCallbackRequest from a dict
-github_installation_callback_request_form_dict = github_installation_callback_request.from_dict(github_installation_callback_request_dict)
+github_installation_callback_request_from_dict = GithubInstallationCallbackRequest.from_dict(github_installation_callback_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

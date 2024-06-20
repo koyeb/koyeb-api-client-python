@@ -22,7 +22,7 @@ print(HasUnpaidInvoicesReply.to_json())
 # convert the object into a dict
 has_unpaid_invoices_reply_dict = has_unpaid_invoices_reply_instance.to_dict()
 # create an instance of HasUnpaidInvoicesReply from a dict
-has_unpaid_invoices_reply_form_dict = has_unpaid_invoices_reply.from_dict(has_unpaid_invoices_reply_dict)
+has_unpaid_invoices_reply_from_dict = HasUnpaidInvoicesReply.from_dict(has_unpaid_invoices_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

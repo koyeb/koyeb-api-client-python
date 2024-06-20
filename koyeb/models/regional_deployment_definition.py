@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.archive_source import ArchiveSource
 from koyeb.models.deployment_health_check import DeploymentHealthCheck
 from koyeb.models.docker_source import DockerSource
 from koyeb.models.env import Env
@@ -27,6 +28,7 @@ from koyeb.models.port import Port
 from koyeb.models.regional_deployment_definition_type import (
     RegionalDeploymentDefinitionType,
 )
+from koyeb.models.regional_deployment_volume import RegionalDeploymentVolume
 from koyeb.models.route import Route
 from koyeb.models.scaling import Scaling
 from typing import Optional, Set
@@ -48,10 +50,12 @@ class RegionalDeploymentDefinition(BaseModel):
     instance_type: Optional[StrictStr] = None
     deployment_group: Optional[StrictStr] = None
     health_checks: Optional[List[DeploymentHealthCheck]] = None
+    volumes: Optional[List[RegionalDeploymentVolume]] = None
     skip_cache: Optional[StrictBool] = None
     use_kuma_v2: Optional[StrictBool] = None
     docker: Optional[DockerSource] = None
     git: Optional[GitSource] = None
+    archive: Optional[ArchiveSource] = None
     __properties: ClassVar[List[str]] = [
         "name",
         "type",
@@ -63,10 +67,12 @@ class RegionalDeploymentDefinition(BaseModel):
         "instance_type",
         "deployment_group",
         "health_checks",
+        "volumes",
         "skip_cache",
         "use_kuma_v2",
         "docker",
         "git",
+        "archive",
     ]
 
     model_config = ConfigDict(
@@ -137,12 +143,22 @@ class RegionalDeploymentDefinition(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict["health_checks"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in volumes (list)
+        _items = []
+        if self.volumes:
+            for _item in self.volumes:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["volumes"] = _items
         # override the default output from pydantic by calling `to_dict()` of docker
         if self.docker:
             _dict["docker"] = self.docker.to_dict()
         # override the default output from pydantic by calling `to_dict()` of git
         if self.git:
             _dict["git"] = self.git.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of archive
+        if self.archive:
+            _dict["archive"] = self.archive.to_dict()
         return _dict
 
     @classmethod
@@ -179,6 +195,12 @@ class RegionalDeploymentDefinition(BaseModel):
                 ]
                 if obj.get("health_checks") is not None
                 else None,
+                "volumes": [
+                    RegionalDeploymentVolume.from_dict(_item)
+                    for _item in obj["volumes"]
+                ]
+                if obj.get("volumes") is not None
+                else None,
                 "skip_cache": obj.get("skip_cache"),
                 "use_kuma_v2": obj.get("use_kuma_v2"),
                 "docker": DockerSource.from_dict(obj["docker"])
@@ -186,6 +208,9 @@ class RegionalDeploymentDefinition(BaseModel):
                 else None,
                 "git": GitSource.from_dict(obj["git"])
                 if obj.get("git") is not None
+                else None,
+                "archive": ArchiveSource.from_dict(obj["archive"])
+                if obj.get("archive") is not None
                 else None,
             }
         )

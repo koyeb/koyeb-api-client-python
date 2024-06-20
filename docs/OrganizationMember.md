@@ -29,7 +29,7 @@ print(OrganizationMember.to_json())
 # convert the object into a dict
 organization_member_dict = organization_member_instance.to_dict()
 # create an instance of OrganizationMember from a dict
-organization_member_form_dict = organization_member.from_dict(organization_member_dict)
+organization_member_from_dict = OrganizationMember.from_dict(organization_member_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,7 +51,19 @@ class TestCatalogInstance(unittest.TestCase):
                     ''
                     ],
                 vcpu_shares = 1.337,
-                display_name = ''
+                display_name = '',
+                aliases = [
+                    ''
+                    ],
+                type = '',
+                gpu = koyeb.models.catalog_gpu_details.CatalogGPUDetails(
+                    count = 56, 
+                    brand = '', 
+                    memory = '', 
+                    name = '', ),
+                service_types = [
+                    ''
+                    ]
             )
         else:
             return CatalogInstance(

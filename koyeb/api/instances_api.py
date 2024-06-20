@@ -158,6 +158,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -275,6 +276,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -392,6 +394,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -535,6 +538,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -603,6 +607,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -671,6 +676,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -816,6 +822,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -917,6 +924,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1018,6 +1026,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1112,6 +1121,9 @@ class InstancesApi:
         allocation_id: Annotated[
             Optional[StrictStr], Field(description="(Optional) Filter on allocation id")
         ] = None,
+        replica_index: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on replica index")
+        ] = None,
         statuses: Annotated[
             Optional[List[StrictStr]],
             Field(description="(Optional) Filter on instance statuses"),
@@ -1167,6 +1179,8 @@ class InstancesApi:
         :type regional_deployment_id: str
         :param allocation_id: (Optional) Filter on allocation id
         :type allocation_id: str
+        :param replica_index: (Optional) Filter on replica index
+        :type replica_index: str
         :param statuses: (Optional) Filter on instance statuses
         :type statuses: List[str]
         :param limit: (Optional) The number of items to return
@@ -1207,6 +1221,7 @@ class InstancesApi:
             deployment_id=deployment_id,
             regional_deployment_id=regional_deployment_id,
             allocation_id=allocation_id,
+            replica_index=replica_index,
             statuses=statuses,
             limit=limit,
             offset=offset,
@@ -1226,6 +1241,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1255,6 +1271,9 @@ class InstancesApi:
         ] = None,
         allocation_id: Annotated[
             Optional[StrictStr], Field(description="(Optional) Filter on allocation id")
+        ] = None,
+        replica_index: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on replica index")
         ] = None,
         statuses: Annotated[
             Optional[List[StrictStr]],
@@ -1311,6 +1330,8 @@ class InstancesApi:
         :type regional_deployment_id: str
         :param allocation_id: (Optional) Filter on allocation id
         :type allocation_id: str
+        :param replica_index: (Optional) Filter on replica index
+        :type replica_index: str
         :param statuses: (Optional) Filter on instance statuses
         :type statuses: List[str]
         :param limit: (Optional) The number of items to return
@@ -1351,6 +1372,7 @@ class InstancesApi:
             deployment_id=deployment_id,
             regional_deployment_id=regional_deployment_id,
             allocation_id=allocation_id,
+            replica_index=replica_index,
             statuses=statuses,
             limit=limit,
             offset=offset,
@@ -1370,6 +1392,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1399,6 +1422,9 @@ class InstancesApi:
         ] = None,
         allocation_id: Annotated[
             Optional[StrictStr], Field(description="(Optional) Filter on allocation id")
+        ] = None,
+        replica_index: Annotated[
+            Optional[StrictStr], Field(description="(Optional) Filter on replica index")
         ] = None,
         statuses: Annotated[
             Optional[List[StrictStr]],
@@ -1455,6 +1481,8 @@ class InstancesApi:
         :type regional_deployment_id: str
         :param allocation_id: (Optional) Filter on allocation id
         :type allocation_id: str
+        :param replica_index: (Optional) Filter on replica index
+        :type replica_index: str
         :param statuses: (Optional) Filter on instance statuses
         :type statuses: List[str]
         :param limit: (Optional) The number of items to return
@@ -1495,6 +1523,7 @@ class InstancesApi:
             deployment_id=deployment_id,
             regional_deployment_id=regional_deployment_id,
             allocation_id=allocation_id,
+            replica_index=replica_index,
             statuses=statuses,
             limit=limit,
             offset=offset,
@@ -1514,6 +1543,7 @@ class InstancesApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1527,6 +1557,7 @@ class InstancesApi:
         deployment_id,
         regional_deployment_id,
         allocation_id,
+        replica_index,
         statuses,
         limit,
         offset,
@@ -1567,6 +1598,9 @@ class InstancesApi:
 
         if allocation_id is not None:
             _query_params.append(("allocation_id", allocation_id))
+
+        if replica_index is not None:
+            _query_params.append(("replica_index", replica_index))
 
         if statuses is not None:
             _query_params.append(("statuses", statuses))

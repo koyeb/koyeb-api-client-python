@@ -22,7 +22,7 @@ print(CreateApp.to_json())
 # convert the object into a dict
 create_app_dict = create_app_instance.to_dict()
 # create an instance of CreateApp from a dict
-create_app_form_dict = create_app.from_dict(create_app_dict)
+create_app_from_dict = CreateApp.from_dict(create_app_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,7 +24,7 @@ print(AppUsage.to_json())
 # convert the object into a dict
 app_usage_dict = app_usage_instance.to_dict()
 # create an instance of AppUsage from a dict
-app_usage_form_dict = app_usage.from_dict(app_usage_dict)
+app_usage_from_dict = AppUsage.from_dict(app_usage_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

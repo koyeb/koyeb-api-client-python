@@ -54,6 +54,8 @@ class TestDeploymentMetadata(unittest.TestCase):
                             ''
                             ], ), ),
                 git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
+                    last_provisioned_deployment_id = '', ),
+                archive = koyeb.models.archive_deployment_metadata.ArchiveDeploymentMetadata(
                     last_provisioned_deployment_id = '', )
             )
         else:

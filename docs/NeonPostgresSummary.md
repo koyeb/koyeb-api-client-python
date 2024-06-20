@@ -23,7 +23,7 @@ print(NeonPostgresSummary.to_json())
 # convert the object into a dict
 neon_postgres_summary_dict = neon_postgres_summary_instance.to_dict()
 # create an instance of NeonPostgresSummary from a dict
-neon_postgres_summary_form_dict = neon_postgres_summary.from_dict(neon_postgres_summary_dict)
+neon_postgres_summary_from_dict = NeonPostgresSummary.from_dict(neon_postgres_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

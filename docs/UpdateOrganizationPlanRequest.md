@@ -22,7 +22,7 @@ print(UpdateOrganizationPlanRequest.to_json())
 # convert the object into a dict
 update_organization_plan_request_dict = update_organization_plan_request_instance.to_dict()
 # create an instance of UpdateOrganizationPlanRequest from a dict
-update_organization_plan_request_form_dict = update_organization_plan_request.from_dict(update_organization_plan_request_dict)
+update_organization_plan_request_from_dict = UpdateOrganizationPlanRequest.from_dict(update_organization_plan_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

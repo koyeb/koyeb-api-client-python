@@ -74,7 +74,12 @@ class TestDeploymentDefinition(unittest.TestCase):
                                 average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
                                     value = 56, ), 
                                 requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
-                                    value = 56, ), )
+                                    value = 56, ), 
+                                concurrent_requests = koyeb.models.deployment_scaling_target_concurrent_requests.DeploymentScalingTargetConcurrentRequests(
+                                    value = 56, ), 
+                                requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
+                                    value = 56, 
+                                    quantile = 56, ), )
                             ], )
                     ],
                 instance_types = [
@@ -101,6 +106,15 @@ class TestDeploymentDefinition(unittest.TestCase):
                                     key = '', 
                                     value = '', )
                                 ], ), )
+                    ],
+                volumes = [
+                    koyeb.models.deployment_volume.DeploymentVolume(
+                        id = '', 
+                        path = '', 
+                        replica_index = 56, 
+                        scopes = [
+                            ''
+                            ], )
                     ],
                 skip_cache = True,
                 docker = koyeb.models.docker_source.DockerSource(
@@ -152,7 +166,24 @@ class TestDeploymentDefinition(unittest.TestCase):
                             koyeb.models.neon_postgres_database/neon_database.NeonPostgresDatabase.NeonDatabase(
                                 name = '', 
                                 owner = '', )
-                            ], ), )
+                            ], ), ),
+                archive = koyeb.models.archive_source.ArchiveSource(
+                    id = '', 
+                    buildpack = koyeb.models.buildpack_builder.BuildpackBuilder(
+                        build_command = '', 
+                        run_command = '', 
+                        privileged = True, ), 
+                    docker = koyeb.models.docker_builder.DockerBuilder(
+                        dockerfile = '', 
+                        entrypoint = [
+                            ''
+                            ], 
+                        command = '', 
+                        args = [
+                            ''
+                            ], 
+                        target = '', 
+                        privileged = True, ), )
             )
         else:
             return DeploymentDefinition(

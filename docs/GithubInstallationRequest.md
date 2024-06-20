@@ -22,7 +22,7 @@ print(GithubInstallationRequest.to_json())
 # convert the object into a dict
 github_installation_request_dict = github_installation_request_instance.to_dict()
 # create an instance of GithubInstallationRequest from a dict
-github_installation_request_form_dict = github_installation_request.from_dict(github_installation_request_dict)
+github_installation_request_from_dict = GithubInstallationRequest.from_dict(github_installation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

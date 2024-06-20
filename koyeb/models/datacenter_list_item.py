@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,18 @@ class DatacenterListItem(BaseModel):
     region_id: Optional[StrictStr] = None
     domain: Optional[StrictStr] = None
     coordinates: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["id", "region_id", "domain", "coordinates"]
+    use_kata: Optional[StrictBool] = None
+    use_gpu: Optional[StrictBool] = None
+    use_kuma: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "region_id",
+        "domain",
+        "coordinates",
+        "use_kata",
+        "use_gpu",
+        "use_kuma",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,6 +99,9 @@ class DatacenterListItem(BaseModel):
                 "region_id": obj.get("region_id"),
                 "domain": obj.get("domain"),
                 "coordinates": obj.get("coordinates"),
+                "use_kata": obj.get("use_kata"),
+                "use_gpu": obj.get("use_gpu"),
+                "use_kuma": obj.get("use_kuma"),
             }
         )
         return _obj

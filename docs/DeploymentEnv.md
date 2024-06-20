@@ -25,7 +25,7 @@ print(DeploymentEnv.to_json())
 # convert the object into a dict
 deployment_env_dict = deployment_env_instance.to_dict()
 # create an instance of DeploymentEnv from a dict
-deployment_env_form_dict = deployment_env.from_dict(deployment_env_dict)
+deployment_env_from_dict = DeploymentEnv.from_dict(deployment_env_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

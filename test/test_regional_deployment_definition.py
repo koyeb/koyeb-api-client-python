@@ -65,7 +65,12 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
                             average_mem = koyeb.models.deployment_scaling_target_average_mem.DeploymentScalingTargetAverageMem(
                                 value = 56, ), 
                             requests_per_second = koyeb.models.deployment_scaling_target_requests_per_second.DeploymentScalingTargetRequestsPerSecond(
-                                value = 56, ), )
+                                value = 56, ), 
+                            concurrent_requests = koyeb.models.deployment_scaling_target_concurrent_requests.DeploymentScalingTargetConcurrentRequests(
+                                value = 56, ), 
+                            requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
+                                value = 56, 
+                                quantile = 56, ), )
                         ], ),
                 instance_type = '',
                 deployment_group = '',
@@ -86,6 +91,12 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
                                     key = '', 
                                     value = '', )
                                 ], ), )
+                    ],
+                volumes = [
+                    koyeb.models.regional_deployment_volume.RegionalDeploymentVolume(
+                        id = '', 
+                        path = '', 
+                        replica_index = 56, )
                     ],
                 skip_cache = True,
                 use_kuma_v2 = True,
@@ -109,6 +120,23 @@ class TestRegionalDeploymentDefinition(unittest.TestCase):
                     run_command = '', 
                     no_deploy_on_push = True, 
                     workdir = '', 
+                    buildpack = koyeb.models.buildpack_builder.BuildpackBuilder(
+                        build_command = '', 
+                        run_command = '', 
+                        privileged = True, ), 
+                    docker = koyeb.models.docker_builder.DockerBuilder(
+                        dockerfile = '', 
+                        entrypoint = [
+                            ''
+                            ], 
+                        command = '', 
+                        args = [
+                            ''
+                            ], 
+                        target = '', 
+                        privileged = True, ), ),
+                archive = koyeb.models.archive_source.ArchiveSource(
+                    id = '', 
                     buildpack = koyeb.models.buildpack_builder.BuildpackBuilder(
                         build_command = '', 
                         run_command = '', 

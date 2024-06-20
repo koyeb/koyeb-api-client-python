@@ -25,7 +25,7 @@ print(KsearchService.to_json())
 # convert the object into a dict
 ksearch_service_dict = ksearch_service_instance.to_dict()
 # create an instance of KsearchService from a dict
-ksearch_service_form_dict = ksearch_service.from_dict(ksearch_service_dict)
+ksearch_service_from_dict = KsearchService.from_dict(ksearch_service_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(DeploymentRoute.to_json())
 # convert the object into a dict
 deployment_route_dict = deployment_route_instance.to_dict()
 # create an instance of DeploymentRoute from a dict
-deployment_route_form_dict = deployment_route.from_dict(deployment_route_dict)
+deployment_route_from_dict = DeploymentRoute.from_dict(deployment_route_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

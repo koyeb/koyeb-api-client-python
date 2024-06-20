@@ -22,7 +22,7 @@ print(DeploymentDatabaseInfo.to_json())
 # convert the object into a dict
 deployment_database_info_dict = deployment_database_info_instance.to_dict()
 # create an instance of DeploymentDatabaseInfo from a dict
-deployment_database_info_form_dict = deployment_database_info.from_dict(deployment_database_info_dict)
+deployment_database_info_from_dict = DeploymentDatabaseInfo.from_dict(deployment_database_info_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

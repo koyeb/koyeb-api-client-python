@@ -3,7 +3,7 @@ TEST_OPTS=-v -test.timeout 300s
 GIT_USER_ID?=koyeb
 GIT_REPO_ID?=koyeb-api-client-python
 OPENAPI_GENERATOR_VERSION?=latest
-PACKAGE_VERSION?=2024.4.0
+PACKAGE_VERSION?=2024.6.0
 
 
 .PHONY: gen

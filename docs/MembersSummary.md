@@ -23,7 +23,7 @@ print(MembersSummary.to_json())
 # convert the object into a dict
 members_summary_dict = members_summary_instance.to_dict()
 # create an instance of MembersSummary from a dict
-members_summary_form_dict = members_summary.from_dict(members_summary_dict)
+members_summary_from_dict = MembersSummary.from_dict(members_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

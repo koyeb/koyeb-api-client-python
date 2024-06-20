@@ -22,7 +22,7 @@ print(ManageReply.to_json())
 # convert the object into a dict
 manage_reply_dict = manage_reply_instance.to_dict()
 # create an instance of ManageReply from a dict
-manage_reply_form_dict = manage_reply.from_dict(manage_reply_dict)
+manage_reply_from_dict = ManageReply.from_dict(manage_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ print(GetRegionReply.to_json())
 # convert the object into a dict
 get_region_reply_dict = get_region_reply_instance.to_dict()
 # create an instance of GetRegionReply from a dict
-get_region_reply_form_dict = get_region_reply.from_dict(get_region_reply_dict)
+get_region_reply_from_dict = GetRegionReply.from_dict(get_region_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

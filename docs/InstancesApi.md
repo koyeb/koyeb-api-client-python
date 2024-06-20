@@ -105,6 +105,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -188,6 +189,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -279,12 +281,13 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_instances**
-> ListInstancesReply list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, statuses=statuses, limit=limit, offset=offset, order=order, starting_time=starting_time, ending_time=ending_time)
+> ListInstancesReply list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, replica_index=replica_index, statuses=statuses, limit=limit, offset=offset, order=order, starting_time=starting_time, ending_time=ending_time)
 
 List Instances
 
@@ -324,6 +327,7 @@ with koyeb.ApiClient(configuration) as api_client:
     deployment_id = 'deployment_id_example' # str | (Optional) Filter on deployment id (optional)
     regional_deployment_id = 'regional_deployment_id_example' # str | (Optional) Filter on regional deployment id (optional)
     allocation_id = 'allocation_id_example' # str | (Optional) Filter on allocation id (optional)
+    replica_index = 'replica_index_example' # str | (Optional) Filter on replica index (optional)
     statuses = ['statuses_example'] # List[str] | (Optional) Filter on instance statuses (optional)
     limit = 'limit_example' # str | (Optional) The number of items to return (optional)
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return (optional)
@@ -333,7 +337,7 @@ with koyeb.ApiClient(configuration) as api_client:
 
     try:
         # List Instances
-        api_response = api_instance.list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, statuses=statuses, limit=limit, offset=offset, order=order, starting_time=starting_time, ending_time=ending_time)
+        api_response = api_instance.list_instances(app_id=app_id, service_id=service_id, deployment_id=deployment_id, regional_deployment_id=regional_deployment_id, allocation_id=allocation_id, replica_index=replica_index, statuses=statuses, limit=limit, offset=offset, order=order, starting_time=starting_time, ending_time=ending_time)
         print("The response of InstancesApi->list_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -352,6 +356,7 @@ Name | Type | Description  | Notes
  **deployment_id** | **str**| (Optional) Filter on deployment id | [optional] 
  **regional_deployment_id** | **str**| (Optional) Filter on regional deployment id | [optional] 
  **allocation_id** | **str**| (Optional) Filter on allocation id | [optional] 
+ **replica_index** | **str**| (Optional) Filter on replica index | [optional] 
  **statuses** | [**List[str]**](str.md)| (Optional) Filter on instance statuses | [optional] 
  **limit** | **str**| (Optional) The number of items to return | [optional] 
  **offset** | **str**| (Optional) The offset in the list of item to return | [optional] 
@@ -382,6 +387,7 @@ Name | Type | Description  | Notes
 **403** | Returned when the user does not have permission to access the resource. |  -  |
 **404** | Returned when the resource does not exist. |  -  |
 **500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
 **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

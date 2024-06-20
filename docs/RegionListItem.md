@@ -27,7 +27,7 @@ print(RegionListItem.to_json())
 # convert the object into a dict
 region_list_item_dict = region_list_item_instance.to_dict()
 # create an instance of RegionListItem from a dict
-region_list_item_form_dict = region_list_item.from_dict(region_list_item_dict)
+region_list_item_from_dict = RegionListItem.from_dict(region_list_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

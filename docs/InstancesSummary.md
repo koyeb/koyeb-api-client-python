@@ -23,7 +23,7 @@ print(InstancesSummary.to_json())
 # convert the object into a dict
 instances_summary_dict = instances_summary_instance.to_dict()
 # create an instance of InstancesSummary from a dict
-instances_summary_form_dict = instances_summary.from_dict(instances_summary_dict)
+instances_summary_from_dict = InstancesSummary.from_dict(instances_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

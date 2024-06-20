@@ -22,7 +22,7 @@ print(UpdateCredentialReply.to_json())
 # convert the object into a dict
 update_credential_reply_dict = update_credential_reply_instance.to_dict()
 # create an instance of UpdateCredentialReply from a dict
-update_credential_reply_form_dict = update_credential_reply.from_dict(update_credential_reply_dict)
+update_credential_reply_from_dict = UpdateCredentialReply.from_dict(update_credential_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

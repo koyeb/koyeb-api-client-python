@@ -29,7 +29,7 @@ print(TriggerGitDeploymentMetadata.to_json())
 # convert the object into a dict
 trigger_git_deployment_metadata_dict = trigger_git_deployment_metadata_instance.to_dict()
 # create an instance of TriggerGitDeploymentMetadata from a dict
-trigger_git_deployment_metadata_form_dict = trigger_git_deployment_metadata.from_dict(trigger_git_deployment_metadata_dict)
+trigger_git_deployment_metadata_from_dict = TriggerGitDeploymentMetadata.from_dict(trigger_git_deployment_metadata_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

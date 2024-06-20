@@ -23,7 +23,7 @@ print(ExecCommandRequestTerminalSize.to_json())
 # convert the object into a dict
 exec_command_request_terminal_size_dict = exec_command_request_terminal_size_instance.to_dict()
 # create an instance of ExecCommandRequestTerminalSize from a dict
-exec_command_request_terminal_size_form_dict = exec_command_request_terminal_size.from_dict(exec_command_request_terminal_size_dict)
+exec_command_request_terminal_size_from_dict = ExecCommandRequestTerminalSize.from_dict(exec_command_request_terminal_size_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,7 +28,7 @@ print(AppEvent.to_json())
 # convert the object into a dict
 app_event_dict = app_event_instance.to_dict()
 # create an instance of AppEvent from a dict
-app_event_form_dict = app_event.from_dict(app_event_dict)
+app_event_from_dict = AppEvent.from_dict(app_event_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

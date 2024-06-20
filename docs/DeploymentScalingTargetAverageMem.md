@@ -22,7 +22,7 @@ print(DeploymentScalingTargetAverageMem.to_json())
 # convert the object into a dict
 deployment_scaling_target_average_mem_dict = deployment_scaling_target_average_mem_instance.to_dict()
 # create an instance of DeploymentScalingTargetAverageMem from a dict
-deployment_scaling_target_average_mem_form_dict = deployment_scaling_target_average_mem.from_dict(deployment_scaling_target_average_mem_dict)
+deployment_scaling_target_average_mem_from_dict = DeploymentScalingTargetAverageMem.from_dict(deployment_scaling_target_average_mem_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ print(DeploymentScalingTargetRequestsPerSecond.to_json())
 # convert the object into a dict
 deployment_scaling_target_requests_per_second_dict = deployment_scaling_target_requests_per_second_instance.to_dict()
 # create an instance of DeploymentScalingTargetRequestsPerSecond from a dict
-deployment_scaling_target_requests_per_second_form_dict = deployment_scaling_target_requests_per_second.from_dict(deployment_scaling_target_requests_per_second_dict)
+deployment_scaling_target_requests_per_second_from_dict = DeploymentScalingTargetRequestsPerSecond.from_dict(deployment_scaling_target_requests_per_second_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -29,7 +29,7 @@ print(OrganizationSummary.to_json())
 # convert the object into a dict
 organization_summary_dict = organization_summary_instance.to_dict()
 # create an instance of OrganizationSummary from a dict
-organization_summary_form_dict = organization_summary.from_dict(organization_summary_dict)
+organization_summary_from_dict = OrganizationSummary.from_dict(organization_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

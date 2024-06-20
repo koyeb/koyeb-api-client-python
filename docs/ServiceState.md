@@ -23,7 +23,7 @@ print(ServiceState.to_json())
 # convert the object into a dict
 service_state_dict = service_state_instance.to_dict()
 # create an instance of ServiceState from a dict
-service_state_form_dict = service_state.from_dict(service_state_dict)
+service_state_from_dict = ServiceState.from_dict(service_state_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

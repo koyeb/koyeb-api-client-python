@@ -25,7 +25,7 @@ print(ListSecretsReply.to_json())
 # convert the object into a dict
 list_secrets_reply_dict = list_secrets_reply_instance.to_dict()
 # create an instance of ListSecretsReply from a dict
-list_secrets_reply_form_dict = list_secrets_reply.from_dict(list_secrets_reply_dict)
+list_secrets_reply_from_dict = ListSecretsReply.from_dict(list_secrets_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

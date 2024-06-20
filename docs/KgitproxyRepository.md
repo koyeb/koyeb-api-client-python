@@ -32,7 +32,7 @@ print(KgitproxyRepository.to_json())
 # convert the object into a dict
 kgitproxy_repository_dict = kgitproxy_repository_instance.to_dict()
 # create an instance of KgitproxyRepository from a dict
-kgitproxy_repository_form_dict = kgitproxy_repository.from_dict(kgitproxy_repository_dict)
+kgitproxy_repository_from_dict = KgitproxyRepository.from_dict(kgitproxy_repository_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

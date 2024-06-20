@@ -32,7 +32,7 @@ print(OrganizationInvitation.to_json())
 # convert the object into a dict
 organization_invitation_dict = organization_invitation_instance.to_dict()
 # create an instance of OrganizationInvitation from a dict
-organization_invitation_form_dict = organization_invitation.from_dict(organization_invitation_dict)
+organization_invitation_from_dict = OrganizationInvitation.from_dict(organization_invitation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(DomainsSummary.to_json())
 # convert the object into a dict
 domains_summary_dict = domains_summary_instance.to_dict()
 # create an instance of DomainsSummary from a dict
-domains_summary_form_dict = domains_summary.from_dict(domains_summary_dict)
+domains_summary_from_dict = DomainsSummary.from_dict(domains_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

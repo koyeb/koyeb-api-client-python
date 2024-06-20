@@ -95,6 +95,7 @@ class SummaryApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -163,6 +164,7 @@ class SummaryApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -231,6 +233,7 @@ class SummaryApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout

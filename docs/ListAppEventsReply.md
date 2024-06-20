@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **events** | [**List[AppEvent]**](AppEvent.md) |  | [optional] 
 **limit** | **int** |  | [optional] 
 **offset** | **int** |  | [optional] 
-**count** | **int** |  | [optional] 
 **order** | **str** |  | [optional] 
 
 ## Example
@@ -26,7 +25,7 @@ print(ListAppEventsReply.to_json())
 # convert the object into a dict
 list_app_events_reply_dict = list_app_events_reply_instance.to_dict()
 # create an instance of ListAppEventsReply from a dict
-list_app_events_reply_form_dict = list_app_events_reply.from_dict(list_app_events_reply_dict)
+list_app_events_reply_from_dict = ListAppEventsReply.from_dict(list_app_events_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

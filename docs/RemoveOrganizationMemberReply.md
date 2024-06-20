@@ -22,7 +22,7 @@ print(RemoveOrganizationMemberReply.to_json())
 # convert the object into a dict
 remove_organization_member_reply_dict = remove_organization_member_reply_instance.to_dict()
 # create an instance of RemoveOrganizationMemberReply from a dict
-remove_organization_member_reply_form_dict = remove_organization_member_reply.from_dict(remove_organization_member_reply_dict)
+remove_organization_member_reply_from_dict = RemoveOrganizationMemberReply.from_dict(remove_organization_member_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

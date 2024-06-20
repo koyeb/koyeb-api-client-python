@@ -30,7 +30,7 @@ print(Credential.to_json())
 # convert the object into a dict
 credential_dict = credential_instance.to_dict()
 # create an instance of Credential from a dict
-credential_form_dict = credential.from_dict(credential_dict)
+credential_from_dict = Credential.from_dict(credential_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -25,7 +25,7 @@ print(KgitproxyListBranchesReply.to_json())
 # convert the object into a dict
 kgitproxy_list_branches_reply_dict = kgitproxy_list_branches_reply_instance.to_dict()
 # create an instance of KgitproxyListBranchesReply from a dict
-kgitproxy_list_branches_reply_form_dict = kgitproxy_list_branches_reply.from_dict(kgitproxy_list_branches_reply_dict)
+kgitproxy_list_branches_reply_from_dict = KgitproxyListBranchesReply.from_dict(kgitproxy_list_branches_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

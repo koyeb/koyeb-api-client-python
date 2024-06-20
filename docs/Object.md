@@ -26,7 +26,7 @@ print(Object.to_json())
 # convert the object into a dict
 object_dict = object_instance.to_dict()
 # create an instance of Object from a dict
-object_form_dict = object.from_dict(object_dict)
+object_from_dict = Object.from_dict(object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

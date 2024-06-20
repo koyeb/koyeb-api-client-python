@@ -14,13 +14,20 @@ docs/AppStatus.md
 docs/AppUsage.md
 docs/AppsApi.md
 docs/AppsSummary.md
+docs/Archive.md
+docs/ArchiveDeploymentMetadata.md
+docs/ArchiveSource.md
+docs/ArchivesApi.md
 docs/AutoRelease.md
 docs/AutoReleaseGroup.md
+docs/AutocompleteReply.md
+docs/AutocompleteRequest.md
 docs/AzureContainerRegistryConfiguration.md
 docs/BillingApi.md
 docs/BuildpackBuilder.md
 docs/CannyAuthReply.md
 docs/CatalogDatacentersApi.md
+docs/CatalogGPUDetails.md
 docs/CatalogInstance.md
 docs/CatalogInstanceListItem.md
 docs/CatalogInstancesApi.md
@@ -29,6 +36,8 @@ docs/ConfirmPaymentAuthorizationReply.md
 docs/CreateAccountRequest.md
 docs/CreateApp.md
 docs/CreateAppReply.md
+docs/CreateArchive.md
+docs/CreateArchiveReply.md
 docs/CreateCredential.md
 docs/CreateCredentialReply.md
 docs/CreateDomain.md
@@ -38,6 +47,8 @@ docs/CreateOrganizationInvitationRequest.md
 docs/CreateOrganizationReply.md
 docs/CreateOrganizationRequest.md
 docs/CreatePaymentAuthorizationReply.md
+docs/CreatePersistentVolumeReply.md
+docs/CreatePersistentVolumeRequest.md
 docs/CreateSecret.md
 docs/CreateSecretReply.md
 docs/CreateService.md
@@ -52,6 +63,7 @@ docs/DatacenterListItem.md
 docs/DeactivateOrganizationReply.md
 docs/DeclineOrganizationInvitationReply.md
 docs/DeleteOrganizationReply.md
+docs/DeletePersistentVolumeReply.md
 docs/DeleteUserReply.md
 docs/Deployment.md
 docs/DeploymentDatabaseInfo.md
@@ -75,8 +87,11 @@ docs/DeploymentScaling.md
 docs/DeploymentScalingTarget.md
 docs/DeploymentScalingTargetAverageCPU.md
 docs/DeploymentScalingTargetAverageMem.md
+docs/DeploymentScalingTargetConcurrentRequests.md
 docs/DeploymentScalingTargetRequestsPerSecond.md
+docs/DeploymentScalingTargetRequestsResponseTime.md
 docs/DeploymentStatus.md
+docs/DeploymentVolume.md
 docs/DeploymentsApi.md
 docs/DesiredDeployment.md
 docs/DesiredDeploymentGroup.md
@@ -109,6 +124,7 @@ docs/GetDeploymentReply.md
 docs/GetDomainReply.md
 docs/GetGithubInstallationReply.md
 docs/GetInstanceReply.md
+docs/GetIntercomProfileReply.md
 docs/GetMetricsReply.md
 docs/GetMetricsReplyMetric.md
 docs/GetOAuthOptionsReply.md
@@ -118,6 +134,7 @@ docs/GetOrganizationSummaryReply.md
 docs/GetOrganizationUsageDetailsReply.md
 docs/GetOrganizationUsageReply.md
 docs/GetPaymentMethodReply.md
+docs/GetPersistentVolumeReply.md
 docs/GetQuotasReply.md
 docs/GetRegionReply.md
 docs/GetRegionalDeploymentReply.md
@@ -145,6 +162,7 @@ docs/InstanceStatus.md
 docs/InstanceUsage.md
 docs/InstancesApi.md
 docs/InstancesSummary.md
+docs/IntercomApi.md
 docs/InviteApi.md
 docs/InviteUserRequest.md
 docs/KgitproxyBranch.md
@@ -176,6 +194,7 @@ docs/ListInstancesReply.md
 docs/ListOrganizationInvitationsReply.md
 docs/ListOrganizationMembersReply.md
 docs/ListPaymentMethodsReply.md
+docs/ListPersistentVolumesReply.md
 docs/ListRegionalDeploymentEventsReply.md
 docs/ListRegionalDeploymentsReply.md
 docs/ListRegionsReply.md
@@ -221,6 +240,10 @@ docs/PaymentMethod.md
 docs/PaymentMethodStatus.md
 docs/PaymentMethodsApi.md
 docs/PeriodUsage.md
+docs/PersistentVolume.md
+docs/PersistentVolumeBackingStore.md
+docs/PersistentVolumeStatus.md
+docs/PersistentVolumesApi.md
 docs/Plan.md
 docs/Port.md
 docs/PrivateRegistryConfiguration.md
@@ -241,7 +264,9 @@ docs/RegionalDeploymentDefinitionType.md
 docs/RegionalDeploymentEvent.md
 docs/RegionalDeploymentListItem.md
 docs/RegionalDeploymentMetadata.md
+docs/RegionalDeploymentRole.md
 docs/RegionalDeploymentStatus.md
+docs/RegionalDeploymentVolume.md
 docs/RegionalDeploymentsApi.md
 docs/RemoveOrganizationMemberReply.md
 docs/RepositoriesApi.md
@@ -293,6 +318,8 @@ docs/UpdateOrganizationPlanReply.md
 docs/UpdateOrganizationPlanRequest.md
 docs/UpdateOrganizationReply.md
 docs/UpdatePasswordRequest.md
+docs/UpdatePersistentVolumeReply.md
+docs/UpdatePersistentVolumeRequest.md
 docs/UpdateSecretReply.md
 docs/UpdateService.md
 docs/UpdateServiceReply.md
@@ -314,6 +341,7 @@ koyeb/__init__.py
 koyeb/api/__init__.py
 koyeb/api/activity_api.py
 koyeb/api/apps_api.py
+koyeb/api/archives_api.py
 koyeb/api/billing_api.py
 koyeb/api/catalog_datacenters_api.py
 koyeb/api/catalog_instances_api.py
@@ -323,6 +351,7 @@ koyeb/api/deployments_api.py
 koyeb/api/docker_helper_api.py
 koyeb/api/domains_api.py
 koyeb/api/instances_api.py
+koyeb/api/intercom_api.py
 koyeb/api/invite_api.py
 koyeb/api/logs_api.py
 koyeb/api/metrics_api.py
@@ -332,6 +361,7 @@ koyeb/api/organization_invitations_api.py
 koyeb/api/organization_members_api.py
 koyeb/api/organization_quotas_api.py
 koyeb/api/payment_methods_api.py
+koyeb/api/persistent_volumes_api.py
 koyeb/api/profile_api.py
 koyeb/api/quotas_api.py
 koyeb/api/regional_deployments_api.py
@@ -360,17 +390,25 @@ koyeb/models/app_list_item.py
 koyeb/models/app_status.py
 koyeb/models/app_usage.py
 koyeb/models/apps_summary.py
+koyeb/models/archive.py
+koyeb/models/archive_deployment_metadata.py
+koyeb/models/archive_source.py
 koyeb/models/auto_release.py
 koyeb/models/auto_release_group.py
+koyeb/models/autocomplete_reply.py
+koyeb/models/autocomplete_request.py
 koyeb/models/azure_container_registry_configuration.py
 koyeb/models/buildpack_builder.py
 koyeb/models/canny_auth_reply.py
+koyeb/models/catalog_gpu_details.py
 koyeb/models/catalog_instance.py
 koyeb/models/catalog_instance_list_item.py
 koyeb/models/confirm_payment_authorization_reply.py
 koyeb/models/create_account_request.py
 koyeb/models/create_app.py
 koyeb/models/create_app_reply.py
+koyeb/models/create_archive.py
+koyeb/models/create_archive_reply.py
 koyeb/models/create_credential.py
 koyeb/models/create_credential_reply.py
 koyeb/models/create_domain.py
@@ -380,6 +418,8 @@ koyeb/models/create_organization_invitation_request.py
 koyeb/models/create_organization_reply.py
 koyeb/models/create_organization_request.py
 koyeb/models/create_payment_authorization_reply.py
+koyeb/models/create_persistent_volume_reply.py
+koyeb/models/create_persistent_volume_request.py
 koyeb/models/create_secret.py
 koyeb/models/create_secret_reply.py
 koyeb/models/create_service.py
@@ -393,6 +433,7 @@ koyeb/models/datacenter_list_item.py
 koyeb/models/deactivate_organization_reply.py
 koyeb/models/decline_organization_invitation_reply.py
 koyeb/models/delete_organization_reply.py
+koyeb/models/delete_persistent_volume_reply.py
 koyeb/models/delete_user_reply.py
 koyeb/models/deployment.py
 koyeb/models/deployment_database_info.py
@@ -416,8 +457,11 @@ koyeb/models/deployment_scaling.py
 koyeb/models/deployment_scaling_target.py
 koyeb/models/deployment_scaling_target_average_cpu.py
 koyeb/models/deployment_scaling_target_average_mem.py
+koyeb/models/deployment_scaling_target_concurrent_requests.py
 koyeb/models/deployment_scaling_target_requests_per_second.py
+koyeb/models/deployment_scaling_target_requests_response_time.py
 koyeb/models/deployment_status.py
+koyeb/models/deployment_volume.py
 koyeb/models/desired_deployment.py
 koyeb/models/desired_deployment_group.py
 koyeb/models/digital_ocean_registry_configuration.py
@@ -447,6 +491,7 @@ koyeb/models/get_deployment_reply.py
 koyeb/models/get_domain_reply.py
 koyeb/models/get_github_installation_reply.py
 koyeb/models/get_instance_reply.py
+koyeb/models/get_intercom_profile_reply.py
 koyeb/models/get_metrics_reply.py
 koyeb/models/get_metrics_reply_metric.py
 koyeb/models/get_o_auth_options_reply.py
@@ -456,6 +501,7 @@ koyeb/models/get_organization_summary_reply.py
 koyeb/models/get_organization_usage_details_reply.py
 koyeb/models/get_organization_usage_reply.py
 koyeb/models/get_payment_method_reply.py
+koyeb/models/get_persistent_volume_reply.py
 koyeb/models/get_quotas_reply.py
 koyeb/models/get_region_reply.py
 koyeb/models/get_regional_deployment_reply.py
@@ -512,6 +558,7 @@ koyeb/models/list_instances_reply.py
 koyeb/models/list_organization_invitations_reply.py
 koyeb/models/list_organization_members_reply.py
 koyeb/models/list_payment_methods_reply.py
+koyeb/models/list_persistent_volumes_reply.py
 koyeb/models/list_regional_deployment_events_reply.py
 koyeb/models/list_regional_deployments_reply.py
 koyeb/models/list_regions_reply.py
@@ -549,6 +596,9 @@ koyeb/models/organization_summary.py
 koyeb/models/payment_method.py
 koyeb/models/payment_method_status.py
 koyeb/models/period_usage.py
+koyeb/models/persistent_volume.py
+koyeb/models/persistent_volume_backing_store.py
+koyeb/models/persistent_volume_status.py
 koyeb/models/plan.py
 koyeb/models/port.py
 koyeb/models/private_registry_configuration.py
@@ -567,7 +617,9 @@ koyeb/models/regional_deployment_definition_type.py
 koyeb/models/regional_deployment_event.py
 koyeb/models/regional_deployment_list_item.py
 koyeb/models/regional_deployment_metadata.py
+koyeb/models/regional_deployment_role.py
 koyeb/models/regional_deployment_status.py
+koyeb/models/regional_deployment_volume.py
 koyeb/models/remove_organization_member_reply.py
 koyeb/models/resend_organization_invitation_reply.py
 koyeb/models/reset_password_request.py
@@ -610,6 +662,8 @@ koyeb/models/update_organization_plan_reply.py
 koyeb/models/update_organization_plan_request.py
 koyeb/models/update_organization_reply.py
 koyeb/models/update_password_request.py
+koyeb/models/update_persistent_volume_reply.py
+koyeb/models/update_persistent_volume_request.py
 koyeb/models/update_secret_reply.py
 koyeb/models/update_service.py
 koyeb/models/update_service_reply.py
@@ -644,13 +698,20 @@ test/test_app_status.py
 test/test_app_usage.py
 test/test_apps_api.py
 test/test_apps_summary.py
+test/test_archive.py
+test/test_archive_deployment_metadata.py
+test/test_archive_source.py
+test/test_archives_api.py
 test/test_auto_release.py
 test/test_auto_release_group.py
+test/test_autocomplete_reply.py
+test/test_autocomplete_request.py
 test/test_azure_container_registry_configuration.py
 test/test_billing_api.py
 test/test_buildpack_builder.py
 test/test_canny_auth_reply.py
 test/test_catalog_datacenters_api.py
+test/test_catalog_gpu_details.py
 test/test_catalog_instance.py
 test/test_catalog_instance_list_item.py
 test/test_catalog_instances_api.py
@@ -659,6 +720,8 @@ test/test_confirm_payment_authorization_reply.py
 test/test_create_account_request.py
 test/test_create_app.py
 test/test_create_app_reply.py
+test/test_create_archive.py
+test/test_create_archive_reply.py
 test/test_create_credential.py
 test/test_create_credential_reply.py
 test/test_create_domain.py
@@ -668,6 +731,8 @@ test/test_create_organization_invitation_request.py
 test/test_create_organization_reply.py
 test/test_create_organization_request.py
 test/test_create_payment_authorization_reply.py
+test/test_create_persistent_volume_reply.py
+test/test_create_persistent_volume_request.py
 test/test_create_secret.py
 test/test_create_secret_reply.py
 test/test_create_service.py
@@ -682,6 +747,7 @@ test/test_datacenter_list_item.py
 test/test_deactivate_organization_reply.py
 test/test_decline_organization_invitation_reply.py
 test/test_delete_organization_reply.py
+test/test_delete_persistent_volume_reply.py
 test/test_delete_user_reply.py
 test/test_deployment.py
 test/test_deployment_database_info.py
@@ -705,8 +771,11 @@ test/test_deployment_scaling.py
 test/test_deployment_scaling_target.py
 test/test_deployment_scaling_target_average_cpu.py
 test/test_deployment_scaling_target_average_mem.py
+test/test_deployment_scaling_target_concurrent_requests.py
 test/test_deployment_scaling_target_requests_per_second.py
+test/test_deployment_scaling_target_requests_response_time.py
 test/test_deployment_status.py
+test/test_deployment_volume.py
 test/test_deployments_api.py
 test/test_desired_deployment.py
 test/test_desired_deployment_group.py
@@ -739,6 +808,7 @@ test/test_get_deployment_reply.py
 test/test_get_domain_reply.py
 test/test_get_github_installation_reply.py
 test/test_get_instance_reply.py
+test/test_get_intercom_profile_reply.py
 test/test_get_metrics_reply.py
 test/test_get_metrics_reply_metric.py
 test/test_get_o_auth_options_reply.py
@@ -748,6 +818,7 @@ test/test_get_organization_summary_reply.py
 test/test_get_organization_usage_details_reply.py
 test/test_get_organization_usage_reply.py
 test/test_get_payment_method_reply.py
+test/test_get_persistent_volume_reply.py
 test/test_get_quotas_reply.py
 test/test_get_region_reply.py
 test/test_get_regional_deployment_reply.py
@@ -775,6 +846,7 @@ test/test_instance_status.py
 test/test_instance_usage.py
 test/test_instances_api.py
 test/test_instances_summary.py
+test/test_intercom_api.py
 test/test_invite_api.py
 test/test_invite_user_request.py
 test/test_kgitproxy_branch.py
@@ -806,6 +878,7 @@ test/test_list_instances_reply.py
 test/test_list_organization_invitations_reply.py
 test/test_list_organization_members_reply.py
 test/test_list_payment_methods_reply.py
+test/test_list_persistent_volumes_reply.py
 test/test_list_regional_deployment_events_reply.py
 test/test_list_regional_deployments_reply.py
 test/test_list_regions_reply.py
@@ -851,6 +924,10 @@ test/test_payment_method.py
 test/test_payment_method_status.py
 test/test_payment_methods_api.py
 test/test_period_usage.py
+test/test_persistent_volume.py
+test/test_persistent_volume_backing_store.py
+test/test_persistent_volume_status.py
+test/test_persistent_volumes_api.py
 test/test_plan.py
 test/test_port.py
 test/test_private_registry_configuration.py
@@ -871,7 +948,9 @@ test/test_regional_deployment_definition_type.py
 test/test_regional_deployment_event.py
 test/test_regional_deployment_list_item.py
 test/test_regional_deployment_metadata.py
+test/test_regional_deployment_role.py
 test/test_regional_deployment_status.py
+test/test_regional_deployment_volume.py
 test/test_regional_deployments_api.py
 test/test_remove_organization_member_reply.py
 test/test_repositories_api.py
@@ -923,6 +1002,8 @@ test/test_update_organization_plan_reply.py
 test/test_update_organization_plan_request.py
 test/test_update_organization_reply.py
 test/test_update_password_request.py
+test/test_update_persistent_volume_reply.py
+test/test_update_persistent_volume_request.py
 test/test_update_secret_reply.py
 test/test_update_service.py
 test/test_update_service_reply.py

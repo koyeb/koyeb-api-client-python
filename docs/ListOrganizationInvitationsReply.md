@@ -25,7 +25,7 @@ print(ListOrganizationInvitationsReply.to_json())
 # convert the object into a dict
 list_organization_invitations_reply_dict = list_organization_invitations_reply_instance.to_dict()
 # create an instance of ListOrganizationInvitationsReply from a dict
-list_organization_invitations_reply_form_dict = list_organization_invitations_reply.from_dict(list_organization_invitations_reply_dict)
+list_organization_invitations_reply_from_dict = ListOrganizationInvitationsReply.from_dict(list_organization_invitations_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -31,7 +31,7 @@ print(GitSource.to_json())
 # convert the object into a dict
 git_source_dict = git_source_instance.to_dict()
 # create an instance of GitSource from a dict
-git_source_form_dict = git_source.from_dict(git_source_dict)
+git_source_from_dict = GitSource.from_dict(git_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

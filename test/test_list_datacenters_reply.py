@@ -43,7 +43,10 @@ class TestListDatacentersReply(unittest.TestCase):
                         domain = '', 
                         coordinates = [
                             ''
-                            ], )
+                            ], 
+                        use_kata = True, 
+                        use_gpu = True, 
+                        use_kuma = True, )
                     ]
             )
         else:

@@ -48,7 +48,6 @@ class TestListDeploymentEventsReply(unittest.TestCase):
                     ],
                 limit = 56,
                 offset = 56,
-                count = 56,
                 order = ''
             )
         else:

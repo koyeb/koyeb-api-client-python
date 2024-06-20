@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from koyeb.models.catalog_gpu_details import CatalogGPUDetails
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -45,6 +46,10 @@ class CatalogInstanceListItem(BaseModel):
         default=None, description="The number of vcpu shares reserved for the instance."
     )
     display_name: Optional[StrictStr] = None
+    aliases: Optional[List[StrictStr]] = None
+    type: Optional[StrictStr] = None
+    gpu: Optional[CatalogGPUDetails] = None
+    service_types: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "description",
@@ -58,6 +63,10 @@ class CatalogInstanceListItem(BaseModel):
         "require_plan",
         "vcpu_shares",
         "display_name",
+        "aliases",
+        "type",
+        "gpu",
+        "service_types",
     ]
 
     model_config = ConfigDict(
@@ -97,6 +106,9 @@ class CatalogInstanceListItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of gpu
+        if self.gpu:
+            _dict["gpu"] = self.gpu.to_dict()
         return _dict
 
     @classmethod
@@ -122,6 +134,12 @@ class CatalogInstanceListItem(BaseModel):
                 "require_plan": obj.get("require_plan"),
                 "vcpu_shares": obj.get("vcpu_shares"),
                 "display_name": obj.get("display_name"),
+                "aliases": obj.get("aliases"),
+                "type": obj.get("type"),
+                "gpu": CatalogGPUDetails.from_dict(obj["gpu"])
+                if obj.get("gpu") is not None
+                else None,
+                "service_types": obj.get("service_types"),
             }
         )
         return _obj

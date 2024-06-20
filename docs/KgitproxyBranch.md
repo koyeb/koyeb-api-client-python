@@ -28,7 +28,7 @@ print(KgitproxyBranch.to_json())
 # convert the object into a dict
 kgitproxy_branch_dict = kgitproxy_branch_instance.to_dict()
 # create an instance of KgitproxyBranch from a dict
-kgitproxy_branch_form_dict = kgitproxy_branch.from_dict(kgitproxy_branch_dict)
+kgitproxy_branch_from_dict = KgitproxyBranch.from_dict(kgitproxy_branch_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

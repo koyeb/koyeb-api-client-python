@@ -22,7 +22,7 @@ print(DeploymentScalingTargetAverageCPU.to_json())
 # convert the object into a dict
 deployment_scaling_target_average_cpu_dict = deployment_scaling_target_average_cpu_instance.to_dict()
 # create an instance of DeploymentScalingTargetAverageCPU from a dict
-deployment_scaling_target_average_cpu_form_dict = deployment_scaling_target_average_cpu.from_dict(deployment_scaling_target_average_cpu_dict)
+deployment_scaling_target_average_cpu_from_dict = DeploymentScalingTargetAverageCPU.from_dict(deployment_scaling_target_average_cpu_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

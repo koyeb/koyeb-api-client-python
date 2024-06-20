@@ -22,7 +22,7 @@ print(GetInstanceReply.to_json())
 # convert the object into a dict
 get_instance_reply_dict = get_instance_reply_instance.to_dict()
 # create an instance of GetInstanceReply from a dict
-get_instance_reply_form_dict = get_instance_reply.from_dict(get_instance_reply_dict)
+get_instance_reply_from_dict = GetInstanceReply.from_dict(get_instance_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

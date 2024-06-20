@@ -28,7 +28,7 @@ print(RegionalDeploymentEvent.to_json())
 # convert the object into a dict
 regional_deployment_event_dict = regional_deployment_event_instance.to_dict()
 # create an instance of RegionalDeploymentEvent from a dict
-regional_deployment_event_form_dict = regional_deployment_event.from_dict(regional_deployment_event_dict)
+regional_deployment_event_from_dict = RegionalDeploymentEvent.from_dict(regional_deployment_event_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

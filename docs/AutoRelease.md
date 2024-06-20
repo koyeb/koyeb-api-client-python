@@ -22,7 +22,7 @@ print(AutoRelease.to_json())
 # convert the object into a dict
 auto_release_dict = auto_release_instance.to_dict()
 # create an instance of AutoRelease from a dict
-auto_release_form_dict = auto_release.from_dict(auto_release_dict)
+auto_release_from_dict = AutoRelease.from_dict(auto_release_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

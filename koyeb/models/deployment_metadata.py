@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.archive_deployment_metadata import ArchiveDeploymentMetadata
 from koyeb.models.database_deployment_metadata import DatabaseDeploymentMetadata
 from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
 from koyeb.models.trigger_deployment_metadata import TriggerDeploymentMetadata
@@ -34,7 +35,8 @@ class DeploymentMetadata(BaseModel):
     trigger: Optional[TriggerDeploymentMetadata] = None
     database: Optional[DatabaseDeploymentMetadata] = None
     git: Optional[GitDeploymentMetadata] = None
-    __properties: ClassVar[List[str]] = ["trigger", "database", "git"]
+    archive: Optional[ArchiveDeploymentMetadata] = None
+    __properties: ClassVar[List[str]] = ["trigger", "database", "git", "archive"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +84,9 @@ class DeploymentMetadata(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of git
         if self.git:
             _dict["git"] = self.git.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of archive
+        if self.archive:
+            _dict["archive"] = self.archive.to_dict()
         return _dict
 
     @classmethod
@@ -103,6 +108,9 @@ class DeploymentMetadata(BaseModel):
                 else None,
                 "git": GitDeploymentMetadata.from_dict(obj["git"])
                 if obj.get("git") is not None
+                else None,
+                "archive": ArchiveDeploymentMetadata.from_dict(obj["archive"])
+                if obj.get("archive") is not None
                 else None,
             }
         )

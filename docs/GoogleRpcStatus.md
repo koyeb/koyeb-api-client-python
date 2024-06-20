@@ -24,7 +24,7 @@ print(GoogleRpcStatus.to_json())
 # convert the object into a dict
 google_rpc_status_dict = google_rpc_status_instance.to_dict()
 # create an instance of GoogleRpcStatus from a dict
-google_rpc_status_form_dict = google_rpc_status.from_dict(google_rpc_status_dict)
+google_rpc_status_from_dict = GoogleRpcStatus.from_dict(google_rpc_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(HTTPHeader.to_json())
 # convert the object into a dict
 http_header_dict = http_header_instance.to_dict()
 # create an instance of HTTPHeader from a dict
-http_header_form_dict = http_header.from_dict(http_header_dict)
+http_header_from_dict = HTTPHeader.from_dict(http_header_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -102,6 +102,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -170,6 +171,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -238,6 +240,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -351,6 +354,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -420,6 +424,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -489,6 +494,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -601,6 +607,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -669,6 +676,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -737,6 +745,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -881,6 +890,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -981,6 +991,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1081,6 +1092,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1228,6 +1240,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1312,6 +1325,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1396,6 +1410,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1518,6 +1533,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1587,6 +1603,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1656,6 +1673,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1769,6 +1787,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1838,6 +1857,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1907,6 +1927,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1965,7 +1986,7 @@ class AppsApi:
     def update_app(
         self,
         id: Annotated[StrictStr, Field(description="The id of the app to update.")],
-        app_name: Optional[StrictStr] = None,
+        app: UpdateApp,
         update_mask: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -1984,8 +2005,8 @@ class AppsApi:
 
         :param id: The id of the app to update. (required)
         :type id: str
-        :param app_name:
-        :type app_name: str
+        :param app: (required)
+        :type app: UpdateApp
         :param update_mask:
         :type update_mask: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2012,7 +2033,7 @@ class AppsApi:
 
         _param = self._update_app_serialize(
             id=id,
-            app_name=app_name,
+            app=app,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2027,6 +2048,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -2041,7 +2063,7 @@ class AppsApi:
     def update_app_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The id of the app to update.")],
-        app_name: Optional[StrictStr] = None,
+        app: UpdateApp,
         update_mask: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -2060,8 +2082,8 @@ class AppsApi:
 
         :param id: The id of the app to update. (required)
         :type id: str
-        :param app_name:
-        :type app_name: str
+        :param app: (required)
+        :type app: UpdateApp
         :param update_mask:
         :type update_mask: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2088,7 +2110,7 @@ class AppsApi:
 
         _param = self._update_app_serialize(
             id=id,
-            app_name=app_name,
+            app=app,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2103,6 +2125,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -2117,7 +2140,7 @@ class AppsApi:
     def update_app_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The id of the app to update.")],
-        app_name: Optional[StrictStr] = None,
+        app: UpdateApp,
         update_mask: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -2136,8 +2159,8 @@ class AppsApi:
 
         :param id: The id of the app to update. (required)
         :type id: str
-        :param app_name:
-        :type app_name: str
+        :param app: (required)
+        :type app: UpdateApp
         :param update_mask:
         :type update_mask: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2164,7 +2187,7 @@ class AppsApi:
 
         _param = self._update_app_serialize(
             id=id,
-            app_name=app_name,
+            app=app,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2179,6 +2202,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -2188,7 +2212,7 @@ class AppsApi:
     def _update_app_serialize(
         self,
         id,
-        app_name,
+        app,
         update_mask,
         _request_auth,
         _content_type,
@@ -2210,15 +2234,14 @@ class AppsApi:
         if id is not None:
             _path_params["id"] = id
         # process the query parameters
-        if app_name is not None:
-            _query_params.append(("app.name", app_name))
-
         if update_mask is not None:
             _query_params.append(("update_mask", update_mask))
 
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if app is not None:
+            _body_params = app
 
         # set the HTTP header `Accept`
         _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
@@ -2307,6 +2330,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -2383,6 +2407,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -2459,6 +2484,7 @@ class AppsApi:
             "403": "Error",
             "404": "Error",
             "500": "Error",
+            "503": "Error",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout

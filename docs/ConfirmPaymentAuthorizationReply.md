@@ -22,7 +22,7 @@ print(ConfirmPaymentAuthorizationReply.to_json())
 # convert the object into a dict
 confirm_payment_authorization_reply_dict = confirm_payment_authorization_reply_instance.to_dict()
 # create an instance of ConfirmPaymentAuthorizationReply from a dict
-confirm_payment_authorization_reply_form_dict = confirm_payment_authorization_reply.from_dict(confirm_payment_authorization_reply_dict)
+confirm_payment_authorization_reply_from_dict = ConfirmPaymentAuthorizationReply.from_dict(confirm_payment_authorization_reply_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

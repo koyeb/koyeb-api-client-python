@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.archive_source import ArchiveSource
 from koyeb.models.database_source import DatabaseSource
 from koyeb.models.deployment_definition_type import DeploymentDefinitionType
 from koyeb.models.deployment_env import DeploymentEnv
@@ -27,6 +28,7 @@ from koyeb.models.deployment_instance_type import DeploymentInstanceType
 from koyeb.models.deployment_port import DeploymentPort
 from koyeb.models.deployment_route import DeploymentRoute
 from koyeb.models.deployment_scaling import DeploymentScaling
+from koyeb.models.deployment_volume import DeploymentVolume
 from koyeb.models.docker_source import DockerSource
 from koyeb.models.git_source import GitSource
 from typing import Optional, Set
@@ -47,10 +49,12 @@ class DeploymentDefinition(BaseModel):
     scalings: Optional[List[DeploymentScaling]] = None
     instance_types: Optional[List[DeploymentInstanceType]] = None
     health_checks: Optional[List[DeploymentHealthCheck]] = None
+    volumes: Optional[List[DeploymentVolume]] = None
     skip_cache: Optional[StrictBool] = None
     docker: Optional[DockerSource] = None
     git: Optional[GitSource] = None
     database: Optional[DatabaseSource] = None
+    archive: Optional[ArchiveSource] = None
     __properties: ClassVar[List[str]] = [
         "name",
         "type",
@@ -61,10 +65,12 @@ class DeploymentDefinition(BaseModel):
         "scalings",
         "instance_types",
         "health_checks",
+        "volumes",
         "skip_cache",
         "docker",
         "git",
         "database",
+        "archive",
     ]
 
     model_config = ConfigDict(
@@ -146,6 +152,13 @@ class DeploymentDefinition(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict["health_checks"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in volumes (list)
+        _items = []
+        if self.volumes:
+            for _item in self.volumes:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["volumes"] = _items
         # override the default output from pydantic by calling `to_dict()` of docker
         if self.docker:
             _dict["docker"] = self.docker.to_dict()
@@ -155,6 +168,9 @@ class DeploymentDefinition(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of database
         if self.database:
             _dict["database"] = self.database.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of archive
+        if self.archive:
+            _dict["archive"] = self.archive.to_dict()
         return _dict
 
     @classmethod
@@ -197,6 +213,11 @@ class DeploymentDefinition(BaseModel):
                 ]
                 if obj.get("health_checks") is not None
                 else None,
+                "volumes": [
+                    DeploymentVolume.from_dict(_item) for _item in obj["volumes"]
+                ]
+                if obj.get("volumes") is not None
+                else None,
                 "skip_cache": obj.get("skip_cache"),
                 "docker": DockerSource.from_dict(obj["docker"])
                 if obj.get("docker") is not None
@@ -206,6 +227,9 @@ class DeploymentDefinition(BaseModel):
                 else None,
                 "database": DatabaseSource.from_dict(obj["database"])
                 if obj.get("database") is not None
+                else None,
+                "archive": ArchiveSource.from_dict(obj["archive"])
+                if obj.get("archive") is not None
                 else None,
             }
         )
