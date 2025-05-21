@@ -45,7 +45,7 @@ class CreateSecret(BaseModel):
     """  # noqa: E501
 
     name: Optional[StrictStr] = None
-    type: Optional[SecretType] = None
+    type: Optional[SecretType] = SecretType.SIMPLE
     value: Optional[StrictStr] = None
     docker_hub_registry: Optional[DockerHubRegistryConfiguration] = None
     private_registry: Optional[PrivateRegistryConfiguration] = None
@@ -139,7 +139,9 @@ class CreateSecret(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
-                "type": obj.get("type"),
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else SecretType.SIMPLE,
                 "value": obj.get("value"),
                 "docker_hub_registry": DockerHubRegistryConfiguration.from_dict(
                     obj["docker_hub_registry"]

@@ -11,8 +11,6 @@ Method | HTTP request | Description
 # **canny_auth**
 > CannyAuthReply canny_auth(body)
 
-
-
 ### Example
 
 * Api Key Authentication (Bearer):
@@ -93,8 +91,6 @@ Name | Type | Description  | Notes
 
 # **discourse_auth**
 > DiscourseAuthReply discourse_auth(body)
-
-
 
 ### Example
 

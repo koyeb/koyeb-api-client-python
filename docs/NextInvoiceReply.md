@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **stripe_invoice** | **object** |  | [optional] 
+**lines** | [**List[NextInvoiceReplyLine]**](NextInvoiceReplyLine.md) |  | [optional] 
+**discounts** | [**List[NextInvoiceReplyDiscount]**](NextInvoiceReplyDiscount.md) |  | [optional] 
 
 ## Example
 

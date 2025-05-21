@@ -26,6 +26,13 @@ class TestLogsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_query_logs(self) -> None:
+        """Test case for query_logs
+
+        Query logs
+        """
+        pass
+
     def test_tail_logs(self) -> None:
         """Test case for tail_logs
 

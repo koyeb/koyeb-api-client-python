@@ -35,8 +35,12 @@ class TriggerDeploymentMetadata(BaseModel):
     TriggerDeploymentMetadata
     """  # noqa: E501
 
-    type: Optional[TriggerDeploymentMetadataTriggerType] = None
-    actor: Optional[TriggerDeploymentMetadataActorType] = None
+    type: Optional[
+        TriggerDeploymentMetadataTriggerType
+    ] = TriggerDeploymentMetadataTriggerType.UNKNOWN_TYPE
+    actor: Optional[
+        TriggerDeploymentMetadataActorType
+    ] = TriggerDeploymentMetadataActorType.UNKNOWN_ACTOR
     git: Optional[TriggerGitDeploymentMetadata] = None
     __properties: ClassVar[List[str]] = ["type", "actor", "git"]
 
@@ -93,8 +97,12 @@ class TriggerDeploymentMetadata(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "type": obj.get("type"),
-                "actor": obj.get("actor"),
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else TriggerDeploymentMetadataTriggerType.UNKNOWN_TYPE,
+                "actor": obj.get("actor")
+                if obj.get("actor") is not None
+                else TriggerDeploymentMetadataActorType.UNKNOWN_ACTOR,
                 "git": TriggerGitDeploymentMetadata.from_dict(obj["git"])
                 if obj.get("git") is not None
                 else None,

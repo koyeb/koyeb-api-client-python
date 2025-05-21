@@ -33,6 +33,7 @@ class PersistentVolume(BaseModel):
 
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
+    snapshot_id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     deleted_at: Optional[datetime] = None
@@ -40,13 +41,18 @@ class PersistentVolume(BaseModel):
     service_id: Optional[StrictStr] = None
     region: Optional[StrictStr] = None
     read_only: Optional[StrictBool] = None
-    max_size_mb: Optional[StrictInt] = None
-    cur_size_mb: Optional[StrictInt] = None
-    status: Optional[PersistentVolumeStatus] = None
-    backing_store: Optional[PersistentVolumeBackingStore] = None
+    max_size: Optional[StrictInt] = None
+    cur_size: Optional[StrictInt] = None
+    status: Optional[
+        PersistentVolumeStatus
+    ] = PersistentVolumeStatus.PERSISTENT_VOLUME_STATUS_INVALID
+    backing_store: Optional[
+        PersistentVolumeBackingStore
+    ] = PersistentVolumeBackingStore.PERSISTENT_VOLUME_BACKING_STORE_INVALID
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
+        "snapshot_id",
         "created_at",
         "updated_at",
         "deleted_at",
@@ -54,8 +60,8 @@ class PersistentVolume(BaseModel):
         "service_id",
         "region",
         "read_only",
-        "max_size_mb",
-        "cur_size_mb",
+        "max_size",
+        "cur_size",
         "status",
         "backing_store",
     ]
@@ -112,6 +118,7 @@ class PersistentVolume(BaseModel):
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
+                "snapshot_id": obj.get("snapshot_id"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
                 "deleted_at": obj.get("deleted_at"),
@@ -119,10 +126,14 @@ class PersistentVolume(BaseModel):
                 "service_id": obj.get("service_id"),
                 "region": obj.get("region"),
                 "read_only": obj.get("read_only"),
-                "max_size_mb": obj.get("max_size_mb"),
-                "cur_size_mb": obj.get("cur_size_mb"),
-                "status": obj.get("status"),
-                "backing_store": obj.get("backing_store"),
+                "max_size": obj.get("max_size"),
+                "cur_size": obj.get("cur_size"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else PersistentVolumeStatus.PERSISTENT_VOLUME_STATUS_INVALID,
+                "backing_store": obj.get("backing_store")
+                if obj.get("backing_store") is not None
+                else PersistentVolumeBackingStore.PERSISTENT_VOLUME_BACKING_STORE_INVALID,
             }
         )
         return _obj

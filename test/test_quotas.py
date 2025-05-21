@@ -28,7 +28,7 @@ class TestQuotas(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Quotas:
         """Test Quotas
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `Quotas`
@@ -51,7 +51,21 @@ class TestQuotas(unittest.TestCase):
                 max_organization_members = '',
                 max_instances_by_type = {
                     'key' : ''
-                    }
+                    },
+                persistent_volumes_by_region = {
+                    'key' : koyeb.models.persistent_volume_quotas.PersistentVolumeQuotas(
+                        max_total_size = 56, 
+                        max_volume_size = 56, 
+                        max_per_instance_size = 56, )
+                    },
+                custom_domains = '',
+                domains_load_balancer = koyeb.models.domain_load_balancer_quotas.DomainLoadBalancerQuotas(
+                    max_koyeb = 56, ),
+                metrics_retention = 56,
+                logs_retention = 56,
+                access_reserved_subdomains = [
+                    ''
+                    ]
             )
         else:
             return Quotas(

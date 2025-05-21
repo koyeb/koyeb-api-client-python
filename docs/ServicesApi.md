@@ -4,7 +4,7 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**autocomplete**](ServicesApi.md#autocomplete) | **POST** /v1/services-autocomplete | Generate autocomplete definition for a service
+[**autocomplete**](ServicesApi.md#autocomplete) | **POST** /v1/services-autocomplete | Autocomplete definition
 [**create_service**](ServicesApi.md#create_service) | **POST** /v1/services | Create Service
 [**delete_service**](ServicesApi.md#delete_service) | **DELETE** /v1/services/{id} | Delete Service
 [**get_service**](ServicesApi.md#get_service) | **GET** /v1/services/{id} | Get Service
@@ -19,6 +19,8 @@ Method | HTTP request | Description
 
 # **autocomplete**
 > AutocompleteReply autocomplete(body)
+
+Autocomplete definition
 
 Generate autocomplete definition for a service
 
@@ -57,7 +59,7 @@ with koyeb.ApiClient(configuration) as api_client:
     body = koyeb.AutocompleteRequest() # AutocompleteRequest | 
 
     try:
-        # Generate autocomplete definition for a service
+        # Autocomplete definition
         api_response = api_instance.autocomplete(body)
         print("The response of ServicesApi->autocomplete:\n")
         pprint(api_response)
@@ -547,7 +549,12 @@ Name | Type | Description  | Notes
 
 Pause Service
 
-Service pause action is allowed for the following status:  - starting  - healthy  - degraded  - unhealthy  - resuming
+Service pause action is allowed for the following status:
+ - starting
+ - healthy
+ - degraded
+ - unhealthy
+ - resuming
 
 ### Example
 
@@ -719,7 +726,8 @@ Name | Type | Description  | Notes
 
 Resume Service
 
-Service resume action is allowed for the following status:  - paused
+Service resume action is allowed for the following status:
+ - paused
 
 ### Example
 

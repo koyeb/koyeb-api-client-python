@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**type** | [**SecretType**](SecretType.md) |  | [optional] 
+**type** | [**SecretType**](SecretType.md) |  | [optional] [default to SecretType.SIMPLE]
 **value** | **str** |  | [optional] 
 **docker_hub_registry** | [**DockerHubRegistryConfiguration**](DockerHubRegistryConfiguration.md) |  | [optional] 
 **private_registry** | [**PrivateRegistryConfiguration**](PrivateRegistryConfiguration.md) |  | [optional] 

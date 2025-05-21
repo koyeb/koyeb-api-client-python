@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **str** |  | [optional] 
 **code** | **str** |  | [optional] 
+**setup_action** | **str** | setup_action is populated in the context of a GitHub app installation request. For logins and signups, it is not set. | [optional] 
+**installation_id** | **str** | installation_id is populated in the context of a GitHub app installation request. For logins and signups, it is not set. | [optional] 
 
 ## Example
 

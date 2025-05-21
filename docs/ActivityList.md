@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **activities** | [**List[Activity]**](Activity.md) |  | [optional] 
 **limit** | **int** |  | [optional] 
 **offset** | **int** |  | [optional] 
+**has_next** | **bool** |  | [optional] 
 
 ## Example
 

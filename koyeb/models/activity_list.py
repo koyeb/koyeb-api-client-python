@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.activity import Activity
 from typing import Optional, Set
@@ -32,7 +32,8 @@ class ActivityList(BaseModel):
     activities: Optional[List[Activity]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["activities", "limit", "offset"]
+    has_next: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["activities", "limit", "offset", "has_next"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,9 +75,9 @@ class ActivityList(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in activities (list)
         _items = []
         if self.activities:
-            for _item in self.activities:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_activities in self.activities:
+                if _item_activities:
+                    _items.append(_item_activities.to_dict())
             _dict["activities"] = _items
         return _dict
 
@@ -96,6 +97,7 @@ class ActivityList(BaseModel):
                 else None,
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
+                "has_next": obj.get("has_next"),
             }
         )
         return _obj

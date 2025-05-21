@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **limit** | **int** |  | [optional] 
 **offset** | **int** |  | [optional] 
 **order** | **str** |  | [optional] 
+**has_next** | **bool** |  | [optional] 
 
 ## Example
 

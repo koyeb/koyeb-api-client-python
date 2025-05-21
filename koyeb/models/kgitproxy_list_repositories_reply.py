@@ -83,9 +83,9 @@ class KgitproxyListRepositoriesReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in repositories (list)
         _items = []
         if self.repositories:
-            for _item in self.repositories:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_repositories in self.repositories:
+                if _item_repositories:
+                    _items.append(_item_repositories.to_dict())
             _dict["repositories"] = _items
         return _dict
 

@@ -5,11 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**volume_type** | [**PersistentVolumeBackingStore**](PersistentVolumeBackingStore.md) |  | [optional] 
+**volume_type** | [**PersistentVolumeBackingStore**](PersistentVolumeBackingStore.md) |  | [optional] [default to PersistentVolumeBackingStore.PERSISTENT_VOLUME_BACKING_STORE_INVALID]
 **name** | **str** |  | [optional] 
 **region** | **str** |  | [optional] 
 **read_only** | **bool** |  | [optional] 
 **max_size** | **int** |  | [optional] 
+**snapshot_id** | **str** |  | [optional] 
 
 ## Example
 

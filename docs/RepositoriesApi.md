@@ -4,15 +4,15 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_branches**](RepositoriesApi.md#list_branches) | **GET** /v1/git/branches | 
-[**list_repositories**](RepositoriesApi.md#list_repositories) | **GET** /v1/git/repositories | 
-[**resync_organization**](RepositoriesApi.md#resync_organization) | **POST** /v1/git/sync/organization/{organization_id} | 
+[**list_branches**](RepositoriesApi.md#list_branches) | **GET** /v1/git/branches | List Branches
+[**list_repositories**](RepositoriesApi.md#list_repositories) | **GET** /v1/git/repositories | List Repositories
+[**resync_organization**](RepositoriesApi.md#resync_organization) | **POST** /v1/git/sync/organization/{organization_id} | Resync Organization
 
 
 # **list_branches**
 > KgitproxyListBranchesReply list_branches(repository_id=repository_id, name=name, limit=limit, offset=offset)
 
-
+List Branches
 
 ### Example
 
@@ -51,6 +51,7 @@ with koyeb.ApiClient(configuration) as api_client:
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return. (optional)
 
     try:
+        # List Branches
         api_response = api_instance.list_branches(repository_id=repository_id, name=name, limit=limit, offset=offset)
         print("The response of RepositoriesApi->list_branches:\n")
         pprint(api_response)
@@ -101,7 +102,7 @@ Name | Type | Description  | Notes
 # **list_repositories**
 > KgitproxyListRepositoriesReply list_repositories(name=name, name_search_op=name_search_op, limit=limit, offset=offset)
 
-
+List Repositories
 
 ### Example
 
@@ -140,6 +141,7 @@ with koyeb.ApiClient(configuration) as api_client:
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return. (optional)
 
     try:
+        # List Repositories
         api_response = api_instance.list_repositories(name=name, name_search_op=name_search_op, limit=limit, offset=offset)
         print("The response of RepositoriesApi->list_repositories:\n")
         pprint(api_response)
@@ -190,7 +192,7 @@ Name | Type | Description  | Notes
 # **resync_organization**
 > object resync_organization(organization_id)
 
-
+Resync Organization
 
 ### Example
 
@@ -225,6 +227,7 @@ with koyeb.ApiClient(configuration) as api_client:
     organization_id = 'organization_id_example' # str | 
 
     try:
+        # Resync Organization
         api_response = api_instance.resync_organization(organization_id)
         print("The response of RepositoriesApi->resync_organization:\n")
         pprint(api_response)

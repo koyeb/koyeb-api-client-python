@@ -9,6 +9,10 @@
 
 * `PERSISTENT_VOLUME_STATUS_DETACHED` (value: `'PERSISTENT_VOLUME_STATUS_DETACHED'`)
 
+* `PERSISTENT_VOLUME_STATUS_DELETING` (value: `'PERSISTENT_VOLUME_STATUS_DELETING'`)
+
+* `PERSISTENT_VOLUME_STATUS_DELETED` (value: `'PERSISTENT_VOLUME_STATUS_DELETED'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

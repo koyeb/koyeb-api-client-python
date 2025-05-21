@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,6 +34,11 @@ class Region(BaseModel):
     status: Optional[StrictStr] = None
     instances: Optional[List[StrictStr]] = None
     datacenters: Optional[List[StrictStr]] = None
+    volumes_enabled: Optional[StrictBool] = None
+    scope: Optional[StrictStr] = Field(
+        default=None,
+        description="The scope of the region, continent, metropolitan area, etc.",
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
@@ -41,6 +46,8 @@ class Region(BaseModel):
         "status",
         "instances",
         "datacenters",
+        "volumes_enabled",
+        "scope",
     ]
 
     model_config = ConfigDict(
@@ -99,6 +106,8 @@ class Region(BaseModel):
                 "status": obj.get("status"),
                 "instances": obj.get("instances"),
                 "datacenters": obj.get("datacenters"),
+                "volumes_enabled": obj.get("volumes_enabled"),
+                "scope": obj.get("scope"),
             }
         )
         return _obj

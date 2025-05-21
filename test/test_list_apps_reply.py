@@ -28,7 +28,7 @@ class TestListAppsReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListAppsReply:
         """Test ListAppsReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `ListAppsReply`
@@ -59,7 +59,10 @@ class TestListAppsReply(unittest.TestCase):
                                 messages = [
                                     ''
                                     ], 
-                                version = '', )
+                                version = '', 
+                                cloudflare = koyeb.models.domain/load_balancer_cloudflare.Domain.LoadBalancerCloudflare(), 
+                                koyeb = koyeb.models.domain/load_balancer_koyeb.Domain.LoadBalancerKoyeb(
+                                    request_timeout_seconds = 56, ), )
                             ], 
                         status = 'STARTING', 
                         messages = [
@@ -68,7 +71,8 @@ class TestListAppsReply(unittest.TestCase):
                     ],
                 limit = 56,
                 offset = 56,
-                count = 56
+                count = 56,
+                has_next = True
             )
         else:
             return ListAppsReply(

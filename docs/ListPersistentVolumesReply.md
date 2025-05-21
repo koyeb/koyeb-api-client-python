@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **volumes** | [**List[PersistentVolume]**](PersistentVolume.md) |  | [optional] 
 **limit** | **int** |  | [optional] 
 **offset** | **int** |  | [optional] 
+**has_next** | **bool** |  | [optional] 
 
 ## Example
 

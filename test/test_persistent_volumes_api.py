@@ -47,6 +47,13 @@ class TestPersistentVolumesApi(unittest.TestCase):
         """
         pass
 
+    def test_list_persistent_volume_events(self) -> None:
+        """Test case for list_persistent_volume_events
+
+        List Persistent Volume events
+        """
+        pass
+
     def test_list_persistent_volumes(self) -> None:
         """Test case for list_persistent_volumes
 

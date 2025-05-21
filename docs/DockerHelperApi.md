@@ -4,11 +4,13 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**verify_docker_image**](DockerHelperApi.md#verify_docker_image) | **GET** /v1/docker-helper/verify | Verify if a docker image is reachable
+[**verify_docker_image**](DockerHelperApi.md#verify_docker_image) | **GET** /v1/docker-helper/verify | Verify Docker Image
 
 
 # **verify_docker_image**
 > VerifyDockerImageReply verify_docker_image(image=image, secret_id=secret_id)
+
+Verify Docker Image
 
 Verify if a docker image is reachable
 
@@ -47,7 +49,7 @@ with koyeb.ApiClient(configuration) as api_client:
     secret_id = 'secret_id_example' # str | (Optional) the id of the secret to use to authenticate to the registry (optional)
 
     try:
-        # Verify if a docker image is reachable
+        # Verify Docker Image
         api_response = api_instance.verify_docker_image(image=image, secret_id=secret_id)
         print("The response of DockerHelperApi->verify_docker_image:\n")
         pprint(api_response)

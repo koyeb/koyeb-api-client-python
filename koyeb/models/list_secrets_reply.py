@@ -75,9 +75,9 @@ class ListSecretsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in secrets (list)
         _items = []
         if self.secrets:
-            for _item in self.secrets:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_secrets in self.secrets:
+                if _item_secrets:
+                    _items.append(_item_secrets.to_dict())
             _dict["secrets"] = _items
         return _dict
 

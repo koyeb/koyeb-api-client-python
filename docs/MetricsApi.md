@@ -4,13 +4,13 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_metrics**](MetricsApi.md#get_metrics) | **GET** /v1/streams/metrics | 
+[**get_metrics**](MetricsApi.md#get_metrics) | **GET** /v1/streams/metrics | Get Metrics
 
 
 # **get_metrics**
 > GetMetricsReply get_metrics(service_id=service_id, instance_id=instance_id, name=name, start=start, end=end, step=step)
 
-
+Get Metrics
 
 ### Example
 
@@ -45,12 +45,13 @@ with koyeb.ApiClient(configuration) as api_client:
     api_instance = koyeb.MetricsApi(api_client)
     service_id = 'service_id_example' # str | ID of the service to query instances metrics for. Ignored if instance_id is set. (optional)
     instance_id = 'instance_id_example' # str | ID of the instance to query metrics for. (optional)
-    name = 'UNKNOWN' # str | Metric to query. (optional) (default to 'UNKNOWN')
+    name = UNKNOWN # str | Metric to query. (optional) (default to UNKNOWN)
     start = '2013-10-20T19:20:30+01:00' # datetime | (Optional) Defaults to an hour prior to end. (optional)
     end = '2013-10-20T19:20:30+01:00' # datetime | (Optional) Defaults to now. (optional)
     step = 'step_example' # str | (Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m. (optional)
 
     try:
+        # Get Metrics
         api_response = api_instance.get_metrics(service_id=service_id, instance_id=instance_id, name=name, start=start, end=end, step=step)
         print("The response of MetricsApi->get_metrics:\n")
         pprint(api_response)
@@ -67,7 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **str**| ID of the service to query instances metrics for. Ignored if instance_id is set. | [optional] 
  **instance_id** | **str**| ID of the instance to query metrics for. | [optional] 
- **name** | **str**| Metric to query. | [optional] [default to &#39;UNKNOWN&#39;]
+ **name** | **str**| Metric to query. | [optional] [default to UNKNOWN]
  **start** | **datetime**| (Optional) Defaults to an hour prior to end. | [optional] 
  **end** | **datetime**| (Optional) Defaults to now. | [optional] 
  **step** | **str**| (Optional) Must be a valid duration in hours (h) or minutes (m). Defaulst to 5m. | [optional] 

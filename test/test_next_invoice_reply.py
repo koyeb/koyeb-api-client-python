@@ -28,7 +28,7 @@ class TestNextInvoiceReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> NextInvoiceReply:
         """Test NextInvoiceReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `NextInvoiceReply`
@@ -36,7 +36,24 @@ class TestNextInvoiceReply(unittest.TestCase):
         model = NextInvoiceReply()
         if include_optional:
             return NextInvoiceReply(
-                stripe_invoice = None
+                stripe_invoice = None,
+                lines = [
+                    koyeb.models.next_invoice_reply/line.NextInvoiceReply.Line(
+                        amount_excluding_tax = 56, 
+                        period = koyeb.models.next_invoice_reply/line/period.NextInvoiceReply.Line.Period(
+                            start = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                            end = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
+                        plan_nickname = '', 
+                        price = koyeb.models.next_invoice_reply/line/price.NextInvoiceReply.Line.Price(
+                            unit_amount_decimal = 1.337, ), 
+                        quantity = 56, )
+                    ],
+                discounts = [
+                    koyeb.models.next_invoice_reply/discount.NextInvoiceReply.Discount(
+                        type = 'PERCENT_OFF', 
+                        name = '', 
+                        amount = '', )
+                    ]
             )
         else:
             return NextInvoiceReply(

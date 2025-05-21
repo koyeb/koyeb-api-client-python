@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**TriggerDeploymentMetadataTriggerType**](TriggerDeploymentMetadataTriggerType.md) |  | [optional] 
-**actor** | [**TriggerDeploymentMetadataActorType**](TriggerDeploymentMetadataActorType.md) |  | [optional] 
+**type** | [**TriggerDeploymentMetadataTriggerType**](TriggerDeploymentMetadataTriggerType.md) |  | [optional] [default to TriggerDeploymentMetadataTriggerType.UNKNOWN_TYPE]
+**actor** | [**TriggerDeploymentMetadataActorType**](TriggerDeploymentMetadataActorType.md) |  | [optional] [default to TriggerDeploymentMetadataActorType.UNKNOWN_ACTOR]
 **git** | [**TriggerGitDeploymentMetadata**](TriggerGitDeploymentMetadata.md) |  | [optional] 
 
 ## Example

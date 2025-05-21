@@ -181,7 +181,8 @@ This endpoint does not need any parameter.
 
 New session
 
-Creates a new session without an organization for current user. NOTE: If you want a session linked to another organization, please use \"Switch organization\".
+Creates a new session without an organization for current user.
+NOTE: If you want a session linked to another organization, please use "Switch organization".
 
 ### Example
 

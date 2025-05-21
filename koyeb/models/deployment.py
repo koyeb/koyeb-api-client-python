@@ -24,6 +24,7 @@ from koyeb.models.deployment_database_info import DeploymentDatabaseInfo
 from koyeb.models.deployment_definition import DeploymentDefinition
 from koyeb.models.deployment_metadata import DeploymentMetadata
 from koyeb.models.deployment_provisioning_info import DeploymentProvisioningInfo
+from koyeb.models.deployment_role import DeploymentRole
 from koyeb.models.deployment_status import DeploymentStatus
 from typing import Optional, Set
 from typing_extensions import Self
@@ -46,13 +47,14 @@ class Deployment(BaseModel):
     service_id: Optional[StrictStr] = None
     parent_id: Optional[StrictStr] = None
     child_id: Optional[StrictStr] = None
-    status: Optional[DeploymentStatus] = None
+    status: Optional[DeploymentStatus] = DeploymentStatus.PENDING
     metadata: Optional[DeploymentMetadata] = None
     definition: Optional[DeploymentDefinition] = None
     messages: Optional[List[StrictStr]] = None
     provisioning_info: Optional[DeploymentProvisioningInfo] = None
     database_info: Optional[DeploymentDatabaseInfo] = None
     skip_build: Optional[StrictBool] = None
+    role: Optional[DeploymentRole] = DeploymentRole.INVALID
     version: Optional[StrictStr] = None
     deployment_group: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
@@ -75,6 +77,7 @@ class Deployment(BaseModel):
         "provisioning_info",
         "database_info",
         "skip_build",
+        "role",
         "version",
         "deployment_group",
     ]
@@ -153,7 +156,9 @@ class Deployment(BaseModel):
                 "service_id": obj.get("service_id"),
                 "parent_id": obj.get("parent_id"),
                 "child_id": obj.get("child_id"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else DeploymentStatus.PENDING,
                 "metadata": DeploymentMetadata.from_dict(obj["metadata"])
                 if obj.get("metadata") is not None
                 else None,
@@ -170,6 +175,9 @@ class Deployment(BaseModel):
                 if obj.get("database_info") is not None
                 else None,
                 "skip_build": obj.get("skip_build"),
+                "role": obj.get("role")
+                if obj.get("role") is not None
+                else DeploymentRole.INVALID,
                 "version": obj.get("version"),
                 "deployment_group": obj.get("deployment_group"),
             }

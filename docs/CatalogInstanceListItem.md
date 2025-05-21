@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **vcpu** | **int** | The number of cpus. Deprecated. Use vcpu_shares instead. | [optional] 
 **memory** | **str** |  | [optional] 
 **disk** | **str** |  | [optional] 
+**price_per_second** | **str** |  | [optional] 
 **price_hourly** | **str** |  | [optional] 
 **price_monthly** | **str** |  | [optional] 
 **regions** | **List[str]** |  | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | [optional] 
 **gpu** | [**CatalogGPUDetails**](CatalogGPUDetails.md) |  | [optional] 
 **service_types** | **List[str]** |  | [optional] 
+**volumes_enabled** | **bool** |  | [optional] 
 
 ## Example
 

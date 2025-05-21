@@ -34,12 +34,12 @@ class ServiceListItem(BaseModel):
 
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
-    type: Optional[ServiceType] = None
+    type: Optional[ServiceType] = ServiceType.INVALID_TYPE
     organization_id: Optional[StrictStr] = None
     app_id: Optional[StrictStr] = None
     updated_at: Optional[datetime] = None
     created_at: Optional[datetime] = None
-    status: Optional[ServiceStatus] = None
+    status: Optional[ServiceStatus] = ServiceStatus.STARTING
     messages: Optional[List[StrictStr]] = None
     version: Optional[StrictStr] = None
     state: Optional[ServiceState] = None
@@ -116,12 +116,16 @@ class ServiceListItem(BaseModel):
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
-                "type": obj.get("type"),
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else ServiceType.INVALID_TYPE,
                 "organization_id": obj.get("organization_id"),
                 "app_id": obj.get("app_id"),
                 "updated_at": obj.get("updated_at"),
                 "created_at": obj.get("created_at"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else ServiceStatus.STARTING,
                 "messages": obj.get("messages"),
                 "version": obj.get("version"),
                 "state": ServiceState.from_dict(obj["state"])

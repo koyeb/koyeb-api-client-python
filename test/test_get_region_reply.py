@@ -28,7 +28,7 @@ class TestGetRegionReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetRegionReply:
         """Test GetRegionReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `GetRegionReply`
@@ -48,7 +48,9 @@ class TestGetRegionReply(unittest.TestCase):
                         ], 
                     datacenters = [
                         ''
-                        ], )
+                        ], 
+                    volumes_enabled = True, 
+                    scope = '', )
             )
         else:
             return GetRegionReply(

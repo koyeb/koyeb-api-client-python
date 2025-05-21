@@ -16,8 +16,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
-from typing import Optional
+from pydantic import Field, StrictStr
+from typing import List, Optional
+from typing_extensions import Annotated
 from koyeb.models.activity_list import ActivityList
 from koyeb.models.notification_list import NotificationList
 
@@ -270,7 +271,9 @@ class ActivityApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -286,7 +289,8 @@ class ActivityApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -311,6 +315,10 @@ class ActivityApi:
         self,
         limit: Optional[StrictStr] = None,
         offset: Optional[StrictStr] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on object type"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -323,13 +331,15 @@ class ActivityApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ActivityList:
-        """list_activities
+        """List Activities
 
 
         :param limit:
         :type limit: str
         :param offset:
         :type offset: str
+        :param types: (Optional) Filter on object type
+        :type types: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -355,6 +365,7 @@ class ActivityApi:
         _param = self._list_activities_serialize(
             limit=limit,
             offset=offset,
+            types=types,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -384,6 +395,10 @@ class ActivityApi:
         self,
         limit: Optional[StrictStr] = None,
         offset: Optional[StrictStr] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on object type"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -396,13 +411,15 @@ class ActivityApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ActivityList]:
-        """list_activities
+        """List Activities
 
 
         :param limit:
         :type limit: str
         :param offset:
         :type offset: str
+        :param types: (Optional) Filter on object type
+        :type types: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -428,6 +445,7 @@ class ActivityApi:
         _param = self._list_activities_serialize(
             limit=limit,
             offset=offset,
+            types=types,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -457,6 +475,10 @@ class ActivityApi:
         self,
         limit: Optional[StrictStr] = None,
         offset: Optional[StrictStr] = None,
+        types: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter on object type"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -469,13 +491,15 @@ class ActivityApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_activities
+        """List Activities
 
 
         :param limit:
         :type limit: str
         :param offset:
         :type offset: str
+        :param types: (Optional) Filter on object type
+        :type types: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -501,6 +525,7 @@ class ActivityApi:
         _param = self._list_activities_serialize(
             limit=limit,
             offset=offset,
+            types=types,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -525,6 +550,7 @@ class ActivityApi:
         self,
         limit,
         offset,
+        types,
         _request_auth,
         _content_type,
         _headers,
@@ -532,13 +558,17 @@ class ActivityApi:
     ) -> RequestSerialized:
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            "types": "multi",
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -549,12 +579,16 @@ class ActivityApi:
         if offset is not None:
             _query_params.append(("offset", offset))
 
+        if types is not None:
+            _query_params.append(("types", types))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -595,7 +629,7 @@ class ActivityApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NotificationList:
-        """list_notifications
+        """List Notifications
 
 
         :param limit:
@@ -684,7 +718,7 @@ class ActivityApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NotificationList]:
-        """list_notifications
+        """List Notifications
 
 
         :param limit:
@@ -773,7 +807,7 @@ class ActivityApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_notifications
+        """List Notifications
 
 
         :param limit:
@@ -858,7 +892,9 @@ class ActivityApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -886,7 +922,8 @@ class ActivityApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]

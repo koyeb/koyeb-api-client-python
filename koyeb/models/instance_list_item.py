@@ -38,10 +38,11 @@ class InstanceListItem(BaseModel):
     service_id: Optional[StrictStr] = None
     regional_deployment_id: Optional[StrictStr] = None
     allocation_id: Optional[StrictStr] = None
+    type: Optional[StrictStr] = None
     replica_index: Optional[StrictInt] = None
     region: Optional[StrictStr] = None
     datacenter: Optional[StrictStr] = None
-    status: Optional[InstanceStatus] = None
+    status: Optional[InstanceStatus] = InstanceStatus.ALLOCATING
     messages: Optional[List[StrictStr]] = None
     xyz_deployment_id: Optional[StrictStr] = Field(
         default=None,
@@ -56,6 +57,7 @@ class InstanceListItem(BaseModel):
         "service_id",
         "regional_deployment_id",
         "allocation_id",
+        "type",
         "replica_index",
         "region",
         "datacenter",
@@ -122,10 +124,13 @@ class InstanceListItem(BaseModel):
                 "service_id": obj.get("service_id"),
                 "regional_deployment_id": obj.get("regional_deployment_id"),
                 "allocation_id": obj.get("allocation_id"),
+                "type": obj.get("type"),
                 "replica_index": obj.get("replica_index"),
                 "region": obj.get("region"),
                 "datacenter": obj.get("datacenter"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else InstanceStatus.ALLOCATING,
                 "messages": obj.get("messages"),
                 "xyz_deployment_id": obj.get("xyz_deployment_id"),
             }

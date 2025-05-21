@@ -4,18 +4,18 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_domain**](DomainsApi.md#create_domain) | **POST** /v1/domains | 
-[**delete_domain**](DomainsApi.md#delete_domain) | **DELETE** /v1/domains/{id} | 
-[**get_domain**](DomainsApi.md#get_domain) | **GET** /v1/domains/{id} | 
-[**list_domains**](DomainsApi.md#list_domains) | **GET** /v1/domains | 
-[**refresh_domain_status**](DomainsApi.md#refresh_domain_status) | **POST** /v1/domains/{id}/refresh | 
-[**update_domain**](DomainsApi.md#update_domain) | **PATCH** /v1/domains/{id} | 
+[**create_domain**](DomainsApi.md#create_domain) | **POST** /v1/domains | Create Domain
+[**delete_domain**](DomainsApi.md#delete_domain) | **DELETE** /v1/domains/{id} | Delete Domain
+[**get_domain**](DomainsApi.md#get_domain) | **GET** /v1/domains/{id} | Get Domain
+[**list_domains**](DomainsApi.md#list_domains) | **GET** /v1/domains | List Domains
+[**refresh_domain_status**](DomainsApi.md#refresh_domain_status) | **POST** /v1/domains/{id}/refresh | Refresh Domain Status
+[**update_domain**](DomainsApi.md#update_domain) | **PATCH** /v1/domains/{id} | Update Domain
 
 
 # **create_domain**
 > CreateDomainReply create_domain(domain)
 
-
+Create Domain
 
 ### Example
 
@@ -52,6 +52,7 @@ with koyeb.ApiClient(configuration) as api_client:
     domain = koyeb.CreateDomain() # CreateDomain | 
 
     try:
+        # Create Domain
         api_response = api_instance.create_domain(domain)
         print("The response of DomainsApi->create_domain:\n")
         pprint(api_response)
@@ -99,7 +100,7 @@ Name | Type | Description  | Notes
 # **delete_domain**
 > object delete_domain(id)
 
-
+Delete Domain
 
 ### Example
 
@@ -134,6 +135,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
 
     try:
+        # Delete Domain
         api_response = api_instance.delete_domain(id)
         print("The response of DomainsApi->delete_domain:\n")
         pprint(api_response)
@@ -181,7 +183,7 @@ Name | Type | Description  | Notes
 # **get_domain**
 > GetDomainReply get_domain(id)
 
-
+Get Domain
 
 ### Example
 
@@ -217,6 +219,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
 
     try:
+        # Get Domain
         api_response = api_instance.get_domain(id)
         print("The response of DomainsApi->get_domain:\n")
         pprint(api_response)
@@ -264,7 +267,7 @@ Name | Type | Description  | Notes
 # **list_domains**
 > ListDomainsReply list_domains(limit=limit, offset=offset, types=types, statuses=statuses, app_ids=app_ids, name=name)
 
-
+List Domains
 
 ### Example
 
@@ -305,6 +308,7 @@ with koyeb.ApiClient(configuration) as api_client:
     name = 'name_example' # str | (Optional) A filter for name (optional)
 
     try:
+        # List Domains
         api_response = api_instance.list_domains(limit=limit, offset=offset, types=types, statuses=statuses, app_ids=app_ids, name=name)
         print("The response of DomainsApi->list_domains:\n")
         pprint(api_response)
@@ -357,7 +361,7 @@ Name | Type | Description  | Notes
 # **refresh_domain_status**
 > object refresh_domain_status(id)
 
-
+Refresh Domain Status
 
 ### Example
 
@@ -392,6 +396,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
 
     try:
+        # Refresh Domain Status
         api_response = api_instance.refresh_domain_status(id)
         print("The response of DomainsApi->refresh_domain_status:\n")
         pprint(api_response)
@@ -439,7 +444,7 @@ Name | Type | Description  | Notes
 # **update_domain**
 > UpdateDomainReply update_domain(id, domain, update_mask=update_mask, dry_run=dry_run)
 
-
+Update Domain
 
 ### Example
 
@@ -479,6 +484,7 @@ with koyeb.ApiClient(configuration) as api_client:
     dry_run = True # bool | If set, run validation and check that the domain is available. (optional)
 
     try:
+        # Update Domain
         api_response = api_instance.update_domain(id, domain, update_mask=update_mask, dry_run=dry_run)
         print("The response of DomainsApi->update_domain:\n")
         pprint(api_response)

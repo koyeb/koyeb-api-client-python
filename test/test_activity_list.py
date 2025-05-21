@@ -28,7 +28,7 @@ class TestActivityList(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ActivityList:
         """Test ActivityList
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `ActivityList`
@@ -56,7 +56,8 @@ class TestActivityList(unittest.TestCase):
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
                 limit = 56,
-                offset = 56
+                offset = 56,
+                has_next = True
             )
         else:
             return ActivityList(

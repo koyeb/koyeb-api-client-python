@@ -72,9 +72,11 @@ class RegionUsage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each value in instances (dict)
         _field_dict = {}
         if self.instances:
-            for _key in self.instances:
-                if self.instances[_key]:
-                    _field_dict[_key] = self.instances[_key].to_dict()
+            for _key_instances in self.instances:
+                if self.instances[_key_instances]:
+                    _field_dict[_key_instances] = self.instances[
+                        _key_instances
+                    ].to_dict()
             _dict["instances"] = _field_dict
         return _dict
 

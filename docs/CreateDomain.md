@@ -6,8 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**type** | [**DomainType**](DomainType.md) |  | [optional] 
+**type** | [**DomainType**](DomainType.md) |  | [optional] [default to DomainType.AUTOASSIGNED]
 **app_id** | **str** |  | [optional] 
+**cloudflare** | **object** |  | [optional] 
+**koyeb** | [**DomainLoadBalancerKoyeb**](DomainLoadBalancerKoyeb.md) |  | [optional] 
 
 ## Example
 

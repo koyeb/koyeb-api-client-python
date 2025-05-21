@@ -10,8 +10,6 @@ Method | HTTP request | Description
 # **create_invite**
 > object create_invite(body)
 
-
-
 ### Example
 
 * Api Key Authentication (Bearer):

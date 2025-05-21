@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
@@ -35,11 +35,9 @@ class RegionalDeploymentListItem(BaseModel):
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     region: Optional[StrictStr] = None
-    status: Optional[RegionalDeploymentStatus] = None
+    status: Optional[RegionalDeploymentStatus] = RegionalDeploymentStatus.PENDING
     messages: Optional[List[StrictStr]] = None
     definition: Optional[RegionalDeploymentDefinition] = None
-    use_kuma_v2: Optional[StrictBool] = None
-    use_kata: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",
@@ -48,8 +46,6 @@ class RegionalDeploymentListItem(BaseModel):
         "status",
         "messages",
         "definition",
-        "use_kuma_v2",
-        "use_kata",
     ]
 
     model_config = ConfigDict(
@@ -109,13 +105,13 @@ class RegionalDeploymentListItem(BaseModel):
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
                 "region": obj.get("region"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else RegionalDeploymentStatus.PENDING,
                 "messages": obj.get("messages"),
                 "definition": RegionalDeploymentDefinition.from_dict(obj["definition"])
                 if obj.get("definition") is not None
                 else None,
-                "use_kuma_v2": obj.get("use_kuma_v2"),
-                "use_kata": obj.get("use_kata"),
             }
         )
         return _obj

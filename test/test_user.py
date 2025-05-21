@@ -28,7 +28,7 @@ class TestUser(unittest.TestCase):
 
     def make_instance(self, include_optional) -> User:
         """Test User
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `User`
@@ -51,7 +51,8 @@ class TestUser(unittest.TestCase):
                     'ADMIN'
                     ],
                 name = '',
-                email_validated = True
+                email_validated = True,
+                trialed = True
             )
         else:
             return User(

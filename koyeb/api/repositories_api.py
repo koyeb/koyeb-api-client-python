@@ -74,7 +74,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> KgitproxyListBranchesReply:
-        """list_branches
+        """List Branches
 
 
         :param repository_id: (Optional) Filter on one repository.
@@ -169,7 +169,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[KgitproxyListBranchesReply]:
-        """list_branches
+        """List Branches
 
 
         :param repository_id: (Optional) Filter on one repository.
@@ -264,7 +264,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_branches
+        """List Branches
 
 
         :param repository_id: (Optional) Filter on one repository.
@@ -341,7 +341,9 @@ class RepositoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -363,7 +365,8 @@ class RepositoriesApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -418,7 +421,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> KgitproxyListRepositoriesReply:
-        """list_repositories
+        """List Repositories
 
 
         :param name: (Optional) Filter on repository name using a fuzzy search.
@@ -515,7 +518,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[KgitproxyListRepositoriesReply]:
-        """list_repositories
+        """List Repositories
 
 
         :param name: (Optional) Filter on repository name using a fuzzy search.
@@ -612,7 +615,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_repositories
+        """List Repositories
 
 
         :param name: (Optional) Filter on repository name using a fuzzy search.
@@ -689,7 +692,9 @@ class RepositoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -711,7 +716,8 @@ class RepositoriesApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -747,7 +753,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """resync_organization
+        """Resync Organization
 
 
         :param organization_id: (required)
@@ -816,7 +822,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """resync_organization
+        """Resync Organization
 
 
         :param organization_id: (required)
@@ -885,7 +891,7 @@ class RepositoriesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """resync_organization
+        """Resync Organization
 
 
         :param organization_id: (required)
@@ -950,7 +956,9 @@ class RepositoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -962,7 +970,8 @@ class RepositoriesApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]

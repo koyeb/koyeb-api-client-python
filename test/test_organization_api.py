@@ -26,94 +26,122 @@ class TestOrganizationApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_budget(self) -> None:
+        """Test case for create_budget
+
+        Create Budget
+        """
+        pass
+
     def test_create_organization(self) -> None:
         """Test case for create_organization
 
-        Create organization
+        Create Organization
         """
         pass
 
     def test_deactivate_organization(self) -> None:
         """Test case for deactivate_organization
 
-        Deactivate an organization
+        Deactivate an Organization
+        """
+        pass
+
+    def test_delete_budget(self) -> None:
+        """Test case for delete_budget
+
+        Delete Budget
         """
         pass
 
     def test_delete_organization(self) -> None:
         """Test case for delete_organization
 
-        Delete an organization
+        Delete an Organization
+        """
+        pass
+
+    def test_get_budget(self) -> None:
+        """Test case for get_budget
+
+        Get Budget
         """
         pass
 
     def test_get_github_installation(self) -> None:
         """Test case for get_github_installation
 
-        Fetch github installation configuration
+        Fetch Github Installation configuration
         """
         pass
 
     def test_get_organization(self) -> None:
         """Test case for get_organization
 
-        Get organization
+        Get Organization
         """
         pass
 
     def test_github_installation(self) -> None:
         """Test case for github_installation
 
-        Start github installation
-        """
-        pass
-
-    def test_github_installation_callback(self) -> None:
-        """Test case for github_installation_callback
-
-        Github callback for app installation
+        Start Github Installation
         """
         pass
 
     def test_reactivate_organization(self) -> None:
         """Test case for reactivate_organization
 
-        Reactivate an organization
+        Reactivate an Organization
         """
         pass
 
     def test_switch_organization(self) -> None:
         """Test case for switch_organization
 
-        Switch organization context
+        Switch Organization context
+        """
+        pass
+
+    def test_unscope_organization_token(self) -> None:
+        """Test case for unscope_organization_token
+
+        Unscope Organization Token
+        """
+        pass
+
+    def test_update_budget(self) -> None:
+        """Test case for update_budget
+
+        Update Budget
         """
         pass
 
     def test_update_organization(self) -> None:
         """Test case for update_organization
 
-        Update organization
+        Update Organization
         """
         pass
 
     def test_update_organization2(self) -> None:
         """Test case for update_organization2
 
-        Update organization
+        Update Organization
         """
         pass
 
     def test_update_organization_plan(self) -> None:
         """Test case for update_organization_plan
 
-        Update organization plan
+        Update Organization plan
         """
         pass
 
     def test_upsert_signup_qualification(self) -> None:
         """Test case for upsert_signup_qualification
 
-        Upsert organization's signup qualification
+        Upsert Organization's signup qualification
         """
         pass
 

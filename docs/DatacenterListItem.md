@@ -9,9 +9,8 @@ Name | Type | Description | Notes
 **region_id** | **str** |  | [optional] 
 **domain** | **str** |  | [optional] 
 **coordinates** | **List[str]** |  | [optional] 
-**use_kata** | **bool** |  | [optional] 
 **use_gpu** | **bool** |  | [optional] 
-**use_kuma** | **bool** |  | [optional] 
+**regions** | **List[str]** |  | [optional] 
 
 ## Example
 

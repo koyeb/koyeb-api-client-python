@@ -32,7 +32,7 @@ class TestDeploymentProvisioningInfoStageBuildAttempt(unittest.TestCase):
         self, include_optional
     ) -> DeploymentProvisioningInfoStageBuildAttempt:
         """Test DeploymentProvisioningInfoStageBuildAttempt
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `DeploymentProvisioningInfoStageBuildAttempt`
@@ -46,7 +46,21 @@ class TestDeploymentProvisioningInfoStageBuildAttempt(unittest.TestCase):
                     ''
                     ],
                 started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                steps = [
+                    koyeb.models.deployment_provisioning_info/stage/build_attempt/build_step.DeploymentProvisioningInfo.Stage.BuildAttempt.BuildStep(
+                        name = '', 
+                        status = 'UNKNOWN', 
+                        messages = [
+                            ''
+                            ], 
+                        started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ],
+                image_pushed = True,
+                internal_failure = True,
+                retryable_failure = True,
+                wait_completion = True
             )
         else:
             return DeploymentProvisioningInfoStageBuildAttempt(

@@ -20,7 +20,9 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.archive_source import ArchiveSource
+from koyeb.models.config_file import ConfigFile
 from koyeb.models.deployment_health_check import DeploymentHealthCheck
+from koyeb.models.deployment_strategy import DeploymentStrategy
 from koyeb.models.docker_source import DockerSource
 from koyeb.models.env import Env
 from koyeb.models.git_source import GitSource
@@ -41,7 +43,10 @@ class RegionalDeploymentDefinition(BaseModel):
     """  # noqa: E501
 
     name: Optional[StrictStr] = None
-    type: Optional[RegionalDeploymentDefinitionType] = None
+    type: Optional[
+        RegionalDeploymentDefinitionType
+    ] = RegionalDeploymentDefinitionType.INVALID
+    strategy: Optional[DeploymentStrategy] = None
     routes: Optional[List[Route]] = None
     ports: Optional[List[Port]] = None
     env: Optional[List[Env]] = None
@@ -51,14 +56,15 @@ class RegionalDeploymentDefinition(BaseModel):
     deployment_group: Optional[StrictStr] = None
     health_checks: Optional[List[DeploymentHealthCheck]] = None
     volumes: Optional[List[RegionalDeploymentVolume]] = None
+    config_files: Optional[List[ConfigFile]] = None
     skip_cache: Optional[StrictBool] = None
-    use_kuma_v2: Optional[StrictBool] = None
     docker: Optional[DockerSource] = None
     git: Optional[GitSource] = None
     archive: Optional[ArchiveSource] = None
     __properties: ClassVar[List[str]] = [
         "name",
         "type",
+        "strategy",
         "routes",
         "ports",
         "env",
@@ -68,8 +74,8 @@ class RegionalDeploymentDefinition(BaseModel):
         "deployment_group",
         "health_checks",
         "volumes",
+        "config_files",
         "skip_cache",
-        "use_kuma_v2",
         "docker",
         "git",
         "archive",
@@ -112,26 +118,29 @@ class RegionalDeploymentDefinition(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of strategy
+        if self.strategy:
+            _dict["strategy"] = self.strategy.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in routes (list)
         _items = []
         if self.routes:
-            for _item in self.routes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_routes in self.routes:
+                if _item_routes:
+                    _items.append(_item_routes.to_dict())
             _dict["routes"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ports (list)
         _items = []
         if self.ports:
-            for _item in self.ports:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_ports in self.ports:
+                if _item_ports:
+                    _items.append(_item_ports.to_dict())
             _dict["ports"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in env (list)
         _items = []
         if self.env:
-            for _item in self.env:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_env in self.env:
+                if _item_env:
+                    _items.append(_item_env.to_dict())
             _dict["env"] = _items
         # override the default output from pydantic by calling `to_dict()` of scaling
         if self.scaling:
@@ -139,17 +148,24 @@ class RegionalDeploymentDefinition(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in health_checks (list)
         _items = []
         if self.health_checks:
-            for _item in self.health_checks:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_health_checks in self.health_checks:
+                if _item_health_checks:
+                    _items.append(_item_health_checks.to_dict())
             _dict["health_checks"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in volumes (list)
         _items = []
         if self.volumes:
-            for _item in self.volumes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_volumes in self.volumes:
+                if _item_volumes:
+                    _items.append(_item_volumes.to_dict())
             _dict["volumes"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in config_files (list)
+        _items = []
+        if self.config_files:
+            for _item_config_files in self.config_files:
+                if _item_config_files:
+                    _items.append(_item_config_files.to_dict())
+            _dict["config_files"] = _items
         # override the default output from pydantic by calling `to_dict()` of docker
         if self.docker:
             _dict["docker"] = self.docker.to_dict()
@@ -173,7 +189,12 @@ class RegionalDeploymentDefinition(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
-                "type": obj.get("type"),
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else RegionalDeploymentDefinitionType.INVALID,
+                "strategy": DeploymentStrategy.from_dict(obj["strategy"])
+                if obj.get("strategy") is not None
+                else None,
                 "routes": [Route.from_dict(_item) for _item in obj["routes"]]
                 if obj.get("routes") is not None
                 else None,
@@ -201,8 +222,12 @@ class RegionalDeploymentDefinition(BaseModel):
                 ]
                 if obj.get("volumes") is not None
                 else None,
+                "config_files": [
+                    ConfigFile.from_dict(_item) for _item in obj["config_files"]
+                ]
+                if obj.get("config_files") is not None
+                else None,
                 "skip_cache": obj.get("skip_cache"),
-                "use_kuma_v2": obj.get("use_kuma_v2"),
                 "docker": DockerSource.from_dict(obj["docker"])
                 if obj.get("docker") is not None
                 else None,

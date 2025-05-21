@@ -38,11 +38,12 @@ class Instance(BaseModel):
     service_id: Optional[StrictStr] = None
     regional_deployment_id: Optional[StrictStr] = None
     allocation_id: Optional[StrictStr] = None
+    type: Optional[StrictStr] = None
     replica_index: Optional[StrictInt] = None
     region: Optional[StrictStr] = None
     datacenter: Optional[StrictStr] = None
     hypervisor: Optional[StrictStr] = None
-    status: Optional[InstanceStatus] = None
+    status: Optional[InstanceStatus] = InstanceStatus.ALLOCATING
     messages: Optional[List[StrictStr]] = None
     started_at: Optional[datetime] = None
     succeeded_at: Optional[datetime] = None
@@ -60,6 +61,7 @@ class Instance(BaseModel):
         "service_id",
         "regional_deployment_id",
         "allocation_id",
+        "type",
         "replica_index",
         "region",
         "datacenter",
@@ -130,11 +132,14 @@ class Instance(BaseModel):
                 "service_id": obj.get("service_id"),
                 "regional_deployment_id": obj.get("regional_deployment_id"),
                 "allocation_id": obj.get("allocation_id"),
+                "type": obj.get("type"),
                 "replica_index": obj.get("replica_index"),
                 "region": obj.get("region"),
                 "datacenter": obj.get("datacenter"),
                 "hypervisor": obj.get("hypervisor"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else InstanceStatus.ALLOCATING,
                 "messages": obj.get("messages"),
                 "started_at": obj.get("started_at"),
                 "succeeded_at": obj.get("succeeded_at"),

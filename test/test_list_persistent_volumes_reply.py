@@ -28,7 +28,7 @@ class TestListPersistentVolumesReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListPersistentVolumesReply:
         """Test ListPersistentVolumesReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `ListPersistentVolumesReply`
@@ -40,6 +40,7 @@ class TestListPersistentVolumesReply(unittest.TestCase):
                     koyeb.models.the_object_that_represent_a_volume_to_handle_persistency_for_deployments.The object that represent a volume to handle persistency for deployments(
                         id = '', 
                         name = '', 
+                        snapshot_id = '', 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         deleted_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -47,13 +48,14 @@ class TestListPersistentVolumesReply(unittest.TestCase):
                         service_id = '', 
                         region = '', 
                         read_only = True, 
-                        max_size_mb = 56, 
-                        cur_size_mb = 56, 
+                        max_size = 56, 
+                        cur_size = 56, 
                         status = 'PERSISTENT_VOLUME_STATUS_INVALID', 
                         backing_store = 'PERSISTENT_VOLUME_BACKING_STORE_INVALID', )
                     ],
                 limit = 56,
-                offset = 56
+                offset = 56,
+                has_next = True
             )
         else:
             return ListPersistentVolumesReply(

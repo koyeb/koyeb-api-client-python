@@ -4,15 +4,17 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_regional_deployment**](RegionalDeploymentsApi.md#get_regional_deployment) | **GET** /v1/regional_deployments/{id} | Experimental: Get regional deployment Use at your own risk
+[**get_regional_deployment**](RegionalDeploymentsApi.md#get_regional_deployment) | **GET** /v1/regional_deployments/{id} | Get Regional Deployment
 [**list_regional_deployment_events**](RegionalDeploymentsApi.md#list_regional_deployment_events) | **GET** /v1/regional_deployment_events | List Regional Deployment events
-[**list_regional_deployments**](RegionalDeploymentsApi.md#list_regional_deployments) | **GET** /v1/regional_deployments | Experimental: List regional deployments Use at your own risk
+[**list_regional_deployments**](RegionalDeploymentsApi.md#list_regional_deployments) | **GET** /v1/regional_deployments | List Regional Deployments
 
 
 # **get_regional_deployment**
 > GetRegionalDeploymentReply get_regional_deployment(id)
 
-Experimental: Get regional deployment Use at your own risk
+Get Regional Deployment
+
+Experimental: use at your own risk
 
 ### Example
 
@@ -48,7 +50,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | The id of the regional deployment
 
     try:
-        # Experimental: Get regional deployment Use at your own risk
+        # Get Regional Deployment
         api_response = api_instance.get_regional_deployment(id)
         print("The response of RegionalDeploymentsApi->get_regional_deployment:\n")
         pprint(api_response)
@@ -188,7 +190,9 @@ Name | Type | Description  | Notes
 # **list_regional_deployments**
 > ListRegionalDeploymentsReply list_regional_deployments(deployment_id=deployment_id, limit=limit, offset=offset)
 
-Experimental: List regional deployments Use at your own risk
+List Regional Deployments
+
+Experimental: use at your own risk
 
 ### Example
 
@@ -226,7 +230,7 @@ with koyeb.ApiClient(configuration) as api_client:
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return (optional)
 
     try:
-        # Experimental: List regional deployments Use at your own risk
+        # List Regional Deployments
         api_response = api_instance.list_regional_deployments(deployment_id=deployment_id, limit=limit, offset=offset)
         print("The response of RegionalDeploymentsApi->list_regional_deployments:\n")
         pprint(api_response)

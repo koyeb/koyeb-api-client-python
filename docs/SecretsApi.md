@@ -4,19 +4,19 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_secret**](SecretsApi.md#create_secret) | **POST** /v1/secrets | 
-[**delete_secret**](SecretsApi.md#delete_secret) | **DELETE** /v1/secrets/{id} | 
-[**get_secret**](SecretsApi.md#get_secret) | **GET** /v1/secrets/{id} | 
-[**list_secrets**](SecretsApi.md#list_secrets) | **GET** /v1/secrets | 
-[**reveal_secret**](SecretsApi.md#reveal_secret) | **POST** /v1/secrets/{id}/reveal | 
-[**update_secret**](SecretsApi.md#update_secret) | **PUT** /v1/secrets/{id} | 
-[**update_secret2**](SecretsApi.md#update_secret2) | **PATCH** /v1/secrets/{id} | 
+[**create_secret**](SecretsApi.md#create_secret) | **POST** /v1/secrets | Create Secret
+[**delete_secret**](SecretsApi.md#delete_secret) | **DELETE** /v1/secrets/{id} | Delete Secret
+[**get_secret**](SecretsApi.md#get_secret) | **GET** /v1/secrets/{id} | Get Secret
+[**list_secrets**](SecretsApi.md#list_secrets) | **GET** /v1/secrets | List Secrets
+[**reveal_secret**](SecretsApi.md#reveal_secret) | **POST** /v1/secrets/{id}/reveal | Reveal Secret
+[**update_secret**](SecretsApi.md#update_secret) | **PUT** /v1/secrets/{id} | Update Secret
+[**update_secret2**](SecretsApi.md#update_secret2) | **PATCH** /v1/secrets/{id} | Update Secret
 
 
 # **create_secret**
 > CreateSecretReply create_secret(secret)
 
-
+Create Secret
 
 ### Example
 
@@ -53,6 +53,7 @@ with koyeb.ApiClient(configuration) as api_client:
     secret = koyeb.CreateSecret() # CreateSecret | 
 
     try:
+        # Create Secret
         api_response = api_instance.create_secret(secret)
         print("The response of SecretsApi->create_secret:\n")
         pprint(api_response)
@@ -100,7 +101,7 @@ Name | Type | Description  | Notes
 # **delete_secret**
 > object delete_secret(id)
 
-
+Delete Secret
 
 ### Example
 
@@ -135,6 +136,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
 
     try:
+        # Delete Secret
         api_response = api_instance.delete_secret(id)
         print("The response of SecretsApi->delete_secret:\n")
         pprint(api_response)
@@ -182,7 +184,7 @@ Name | Type | Description  | Notes
 # **get_secret**
 > GetSecretReply get_secret(id)
 
-
+Get Secret
 
 ### Example
 
@@ -218,6 +220,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
 
     try:
+        # Get Secret
         api_response = api_instance.get_secret(id)
         print("The response of SecretsApi->get_secret:\n")
         pprint(api_response)
@@ -265,7 +268,7 @@ Name | Type | Description  | Notes
 # **list_secrets**
 > ListSecretsReply list_secrets(name=name, limit=limit, offset=offset, types=types)
 
-
+List Secrets
 
 ### Example
 
@@ -304,6 +307,7 @@ with koyeb.ApiClient(configuration) as api_client:
     types = ['types_example'] # List[str] | Filter by secret types (optional)
 
     try:
+        # List Secrets
         api_response = api_instance.list_secrets(name=name, limit=limit, offset=offset, types=types)
         print("The response of SecretsApi->list_secrets:\n")
         pprint(api_response)
@@ -354,7 +358,7 @@ Name | Type | Description  | Notes
 # **reveal_secret**
 > RevealSecretReply reveal_secret(id, body)
 
-
+Reveal Secret
 
 ### Example
 
@@ -391,6 +395,7 @@ with koyeb.ApiClient(configuration) as api_client:
     body = None # object | 
 
     try:
+        # Reveal Secret
         api_response = api_instance.reveal_secret(id, body)
         print("The response of SecretsApi->reveal_secret:\n")
         pprint(api_response)
@@ -439,7 +444,7 @@ Name | Type | Description  | Notes
 # **update_secret**
 > UpdateSecretReply update_secret(id, secret, update_mask=update_mask)
 
-
+Update Secret
 
 ### Example
 
@@ -478,6 +483,7 @@ with koyeb.ApiClient(configuration) as api_client:
     update_mask = 'update_mask_example' # str |  (optional)
 
     try:
+        # Update Secret
         api_response = api_instance.update_secret(id, secret, update_mask=update_mask)
         print("The response of SecretsApi->update_secret:\n")
         pprint(api_response)
@@ -527,7 +533,7 @@ Name | Type | Description  | Notes
 # **update_secret2**
 > UpdateSecretReply update_secret2(id, secret, update_mask=update_mask)
 
-
+Update Secret
 
 ### Example
 
@@ -566,6 +572,7 @@ with koyeb.ApiClient(configuration) as api_client:
     update_mask = 'update_mask_example' # str |  (optional)
 
     try:
+        # Update Secret
         api_response = api_instance.update_secret2(id, secret, update_mask=update_mask)
         print("The response of SecretsApi->update_secret2:\n")
         pprint(api_response)

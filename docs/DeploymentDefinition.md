@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**type** | [**DeploymentDefinitionType**](DeploymentDefinitionType.md) |  | [optional] 
+**type** | [**DeploymentDefinitionType**](DeploymentDefinitionType.md) |  | [optional] [default to DeploymentDefinitionType.INVALID]
+**strategy** | [**DeploymentStrategy**](DeploymentStrategy.md) |  | [optional] 
 **routes** | [**List[DeploymentRoute]**](DeploymentRoute.md) |  | [optional] 
 **ports** | [**List[DeploymentPort]**](DeploymentPort.md) |  | [optional] 
 **env** | [**List[DeploymentEnv]**](DeploymentEnv.md) |  | [optional] 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **instance_types** | [**List[DeploymentInstanceType]**](DeploymentInstanceType.md) |  | [optional] 
 **health_checks** | [**List[DeploymentHealthCheck]**](DeploymentHealthCheck.md) |  | [optional] 
 **volumes** | [**List[DeploymentVolume]**](DeploymentVolume.md) |  | [optional] 
+**config_files** | [**List[ConfigFile]**](ConfigFile.md) |  | [optional] 
 **skip_cache** | **bool** |  | [optional] 
 **docker** | [**DockerSource**](DockerSource.md) |  | [optional] 
 **git** | [**GitSource**](GitSource.md) |  | [optional] 

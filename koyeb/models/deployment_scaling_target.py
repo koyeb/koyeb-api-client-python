@@ -34,6 +34,9 @@ from koyeb.models.deployment_scaling_target_requests_per_second import (
 from koyeb.models.deployment_scaling_target_requests_response_time import (
     DeploymentScalingTargetRequestsResponseTime,
 )
+from koyeb.models.deployment_scaling_target_sleep_idle_delay import (
+    DeploymentScalingTargetSleepIdleDelay,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -48,12 +51,14 @@ class DeploymentScalingTarget(BaseModel):
     requests_per_second: Optional[DeploymentScalingTargetRequestsPerSecond] = None
     concurrent_requests: Optional[DeploymentScalingTargetConcurrentRequests] = None
     requests_response_time: Optional[DeploymentScalingTargetRequestsResponseTime] = None
+    sleep_idle_delay: Optional[DeploymentScalingTargetSleepIdleDelay] = None
     __properties: ClassVar[List[str]] = [
         "average_cpu",
         "average_mem",
         "requests_per_second",
         "concurrent_requests",
         "requests_response_time",
+        "sleep_idle_delay",
     ]
 
     model_config = ConfigDict(
@@ -108,6 +113,9 @@ class DeploymentScalingTarget(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requests_response_time
         if self.requests_response_time:
             _dict["requests_response_time"] = self.requests_response_time.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of sleep_idle_delay
+        if self.sleep_idle_delay:
+            _dict["sleep_idle_delay"] = self.sleep_idle_delay.to_dict()
         return _dict
 
     @classmethod
@@ -145,6 +153,11 @@ class DeploymentScalingTarget(BaseModel):
                     obj["requests_response_time"]
                 )
                 if obj.get("requests_response_time") is not None
+                else None,
+                "sleep_idle_delay": DeploymentScalingTargetSleepIdleDelay.from_dict(
+                    obj["sleep_idle_delay"]
+                )
+                if obj.get("sleep_idle_delay") is not None
                 else None,
             }
         )

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.regional_deployment_list_item import RegionalDeploymentListItem
 from typing import Optional, Set
@@ -33,11 +33,13 @@ class ListRegionalDeploymentsReply(BaseModel):
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
+    has_next: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "regional_deployments",
         "limit",
         "offset",
         "count",
+        "has_next",
     ]
 
     model_config = ConfigDict(
@@ -80,9 +82,9 @@ class ListRegionalDeploymentsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in regional_deployments (list)
         _items = []
         if self.regional_deployments:
-            for _item in self.regional_deployments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_regional_deployments in self.regional_deployments:
+                if _item_regional_deployments:
+                    _items.append(_item_regional_deployments.to_dict())
             _dict["regional_deployments"] = _items
         return _dict
 
@@ -106,6 +108,7 @@ class ListRegionalDeploymentsReply(BaseModel):
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
                 "count": obj.get("count"),
+                "has_next": obj.get("has_next"),
             }
         )
         return _obj

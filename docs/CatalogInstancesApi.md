@@ -5,7 +5,7 @@ All URIs are relative to *https://app.koyeb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_catalog_instance**](CatalogInstancesApi.md#get_catalog_instance) | **GET** /v1/catalog/instances/{id} | Get Instance
-[**list_catalog_instances**](CatalogInstancesApi.md#list_catalog_instances) | **GET** /v1/catalog/instances | List Instance
+[**list_catalog_instances**](CatalogInstancesApi.md#list_catalog_instances) | **GET** /v1/catalog/instances | List Instances
 
 
 # **get_catalog_instance**
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 # **list_catalog_instances**
 > ListCatalogInstancesReply list_catalog_instances(limit=limit, offset=offset, id=id)
 
-List Instance
+List Instances
 
 ### Example
 
@@ -127,7 +127,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | (Optional) A filter for instances (optional)
 
     try:
-        # List Instance
+        # List Instances
         api_response = api_instance.list_catalog_instances(limit=limit, offset=offset, id=id)
         print("The response of CatalogInstancesApi->list_catalog_instances:\n")
         pprint(api_response)

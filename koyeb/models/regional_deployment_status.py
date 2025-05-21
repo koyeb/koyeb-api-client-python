@@ -40,6 +40,7 @@ class RegionalDeploymentStatus(str, Enum):
     STOPPED = "STOPPED"
     ERRORING = "ERRORING"
     ERROR = "ERROR"
+    SLEEPING = "SLEEPING"
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **flags** | [**List[UserFlags]**](UserFlags.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 **email_validated** | **bool** |  | [optional] 
+**trialed** | **bool** |  | [optional] 
 
 ## Example
 

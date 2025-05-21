@@ -31,11 +31,17 @@ class TestActivityApi(unittest.TestCase):
         pass
 
     def test_list_activities(self) -> None:
-        """Test case for list_activities"""
+        """Test case for list_activities
+
+        List Activities
+        """
         pass
 
     def test_list_notifications(self) -> None:
-        """Test case for list_notifications"""
+        """Test case for list_notifications
+
+        List Notifications
+        """
         pass
 
 

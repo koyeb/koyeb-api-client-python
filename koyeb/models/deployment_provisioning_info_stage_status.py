@@ -27,6 +27,7 @@ class DeploymentProvisioningInfoStageStatus(str, Enum):
     allowed enum values
     """
     UNKNOWN = "UNKNOWN"
+    PENDING = "PENDING"
     RUNNING = "RUNNING"
     FAILED = "FAILED"
     COMPLETED = "COMPLETED"

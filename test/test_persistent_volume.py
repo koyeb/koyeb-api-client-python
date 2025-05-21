@@ -28,7 +28,7 @@ class TestPersistentVolume(unittest.TestCase):
 
     def make_instance(self, include_optional) -> PersistentVolume:
         """Test PersistentVolume
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `PersistentVolume`
@@ -38,6 +38,7 @@ class TestPersistentVolume(unittest.TestCase):
             return PersistentVolume(
                 id = '',
                 name = '',
+                snapshot_id = '',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 deleted_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
@@ -45,8 +46,8 @@ class TestPersistentVolume(unittest.TestCase):
                 service_id = '',
                 region = '',
                 read_only = True,
-                max_size_mb = 56,
-                cur_size_mb = 56,
+                max_size = 56,
+                cur_size = 56,
                 status = 'PERSISTENT_VOLUME_STATUS_INVALID',
                 backing_store = 'PERSISTENT_VOLUME_BACKING_STORE_INVALID'
             )

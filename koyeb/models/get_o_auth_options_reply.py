@@ -72,9 +72,9 @@ class GetOAuthOptionsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in oauth_providers (list)
         _items = []
         if self.oauth_providers:
-            for _item in self.oauth_providers:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_oauth_providers in self.oauth_providers:
+                if _item_oauth_providers:
+                    _items.append(_item_oauth_providers.to_dict())
             _dict["oauth_providers"] = _items
         return _dict
 

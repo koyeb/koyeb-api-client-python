@@ -9,11 +9,9 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **region** | **str** |  | [optional] 
-**status** | [**RegionalDeploymentStatus**](RegionalDeploymentStatus.md) |  | [optional] 
+**status** | [**RegionalDeploymentStatus**](RegionalDeploymentStatus.md) |  | [optional] [default to RegionalDeploymentStatus.PENDING]
 **messages** | **List[str]** |  | [optional] 
 **definition** | [**RegionalDeploymentDefinition**](RegionalDeploymentDefinition.md) |  | [optional] 
-**use_kuma_v2** | **bool** |  | [optional] 
-**use_kata** | **bool** |  | [optional] 
 
 ## Example
 

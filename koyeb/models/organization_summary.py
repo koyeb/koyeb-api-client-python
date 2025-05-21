@@ -100,9 +100,9 @@ class OrganizationSummary(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each value in services (dict)
         _field_dict = {}
         if self.services:
-            for _key in self.services:
-                if self.services[_key]:
-                    _field_dict[_key] = self.services[_key].to_dict()
+            for _key_services in self.services:
+                if self.services[_key_services]:
+                    _field_dict[_key_services] = self.services[_key_services].to_dict()
             _dict["services"] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of domains
         if self.domains:

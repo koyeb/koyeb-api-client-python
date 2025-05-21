@@ -36,7 +36,7 @@ class TestCatalogInstancesApi(unittest.TestCase):
     def test_list_catalog_instances(self) -> None:
         """Test case for list_catalog_instances
 
-        List Instance
+        List Instances
         """
         pass
 

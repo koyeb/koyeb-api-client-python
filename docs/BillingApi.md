@@ -14,7 +14,9 @@ Method | HTTP request | Description
 
 Experimental: Has unpaid invoices
 
-WARNING: Please don't use the following method. Koyeb doesn't guarantee backwards compatible breaking change and reserve the right to completely drop it without notice. USE AT YOUR OWN RISK.
+WARNING: Please don't use the following method.
+Koyeb doesn't guarantee backwards compatible breaking change and reserve the right to completely drop it without notice.
+USE AT YOUR OWN RISK.
 
 ### Example
 
@@ -93,8 +95,6 @@ This endpoint does not need any parameter.
 
 # **manage**
 > ManageReply manage()
-
-
 
 ### Example
 
@@ -175,7 +175,9 @@ This endpoint does not need any parameter.
 
 Experimental: Fetch next invoice
 
-WARNING: Please don't use the following method. Koyeb doesn't guarantee backwards compatible breaking change and reserve the right to completely drop it without notice. USE AT YOUR OWN RISK.
+WARNING: Please don't use the following method.
+Koyeb doesn't guarantee backwards compatible breaking change and reserve the right to completely drop it without notice.
+USE AT YOUR OWN RISK.
 
 ### Example
 

@@ -45,19 +45,26 @@ class Organization(BaseModel):
     billing_name: Optional[StrictStr] = None
     billing_email: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
-    plan: Optional[Plan] = None
+    plan: Optional[Plan] = Plan.HOBBY
     plan_updated_at: Optional[datetime] = None
     has_payment_method: Optional[StrictBool] = None
     subscription_id: Optional[StrictStr] = None
     current_subscription_id: Optional[StrictStr] = None
     latest_subscription_id: Optional[StrictStr] = None
     signup_qualification: Optional[Dict[str, Any]] = None
-    status: Optional[OrganizationStatus] = None
-    status_message: Optional[OrganizationDetailedStatus] = None
-    deactivation_reason: Optional[OrganizationDeactivationReason] = None
+    status: Optional[OrganizationStatus] = OrganizationStatus.WARNING
+    status_message: Optional[
+        OrganizationDetailedStatus
+    ] = OrganizationDetailedStatus.NEW
+    deactivation_reason: Optional[
+        OrganizationDeactivationReason
+    ] = OrganizationDeactivationReason.INVALID
     verified: Optional[StrictBool] = None
     qualifies_for_hobby23: Optional[StrictBool] = None
     reprocess_after: Optional[datetime] = None
+    trialing: Optional[StrictBool] = None
+    trial_starts_at: Optional[datetime] = None
+    trial_ends_at: Optional[datetime] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "address1",
@@ -84,6 +91,9 @@ class Organization(BaseModel):
         "verified",
         "qualifies_for_hobby23",
         "reprocess_after",
+        "trialing",
+        "trial_starts_at",
+        "trial_ends_at",
     ]
 
     model_config = ConfigDict(
@@ -148,19 +158,28 @@ class Organization(BaseModel):
                 "billing_name": obj.get("billing_name"),
                 "billing_email": obj.get("billing_email"),
                 "name": obj.get("name"),
-                "plan": obj.get("plan"),
+                "plan": obj.get("plan") if obj.get("plan") is not None else Plan.HOBBY,
                 "plan_updated_at": obj.get("plan_updated_at"),
                 "has_payment_method": obj.get("has_payment_method"),
                 "subscription_id": obj.get("subscription_id"),
                 "current_subscription_id": obj.get("current_subscription_id"),
                 "latest_subscription_id": obj.get("latest_subscription_id"),
                 "signup_qualification": obj.get("signup_qualification"),
-                "status": obj.get("status"),
-                "status_message": obj.get("status_message"),
-                "deactivation_reason": obj.get("deactivation_reason"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else OrganizationStatus.WARNING,
+                "status_message": obj.get("status_message")
+                if obj.get("status_message") is not None
+                else OrganizationDetailedStatus.NEW,
+                "deactivation_reason": obj.get("deactivation_reason")
+                if obj.get("deactivation_reason") is not None
+                else OrganizationDeactivationReason.INVALID,
                 "verified": obj.get("verified"),
                 "qualifies_for_hobby23": obj.get("qualifies_for_hobby23"),
                 "reprocess_after": obj.get("reprocess_after"),
+                "trialing": obj.get("trialing"),
+                "trial_starts_at": obj.get("trial_starts_at"),
+                "trial_ends_at": obj.get("trial_ends_at"),
             }
         )
         return _obj
