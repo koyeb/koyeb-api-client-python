@@ -36,7 +36,9 @@ class DeploymentProvisioningInfoStage(BaseModel):
     """  # noqa: E501
 
     name: Optional[StrictStr] = None
-    status: Optional[DeploymentProvisioningInfoStageStatus] = None
+    status: Optional[
+        DeploymentProvisioningInfoStageStatus
+    ] = DeploymentProvisioningInfoStageStatus.UNKNOWN
     messages: Optional[List[StrictStr]] = None
     started_at: Optional[datetime] = None
     finished_at: Optional[datetime] = None
@@ -90,9 +92,9 @@ class DeploymentProvisioningInfoStage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in build_attempts (list)
         _items = []
         if self.build_attempts:
-            for _item in self.build_attempts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_build_attempts in self.build_attempts:
+                if _item_build_attempts:
+                    _items.append(_item_build_attempts.to_dict())
             _dict["build_attempts"] = _items
         return _dict
 
@@ -108,7 +110,9 @@ class DeploymentProvisioningInfoStage(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else DeploymentProvisioningInfoStageStatus.UNKNOWN,
                 "messages": obj.get("messages"),
                 "started_at": obj.get("started_at"),
                 "finished_at": obj.get("finished_at"),

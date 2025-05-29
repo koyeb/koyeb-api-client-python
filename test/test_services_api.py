@@ -29,7 +29,7 @@ class TestServicesApi(unittest.TestCase):
     def test_autocomplete(self) -> None:
         """Test case for autocomplete
 
-        Generate autocomplete definition for a service
+        Autocomplete definition
         """
         pass
 

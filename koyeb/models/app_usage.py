@@ -74,9 +74,9 @@ class AppUsage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in services (list)
         _items = []
         if self.services:
-            for _item in self.services:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_services in self.services:
+                if _item_services:
+                    _items.append(_item_services.to_dict())
             _dict["services"] = _items
         return _dict
 

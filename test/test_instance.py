@@ -28,7 +28,7 @@ class TestInstance(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Instance:
         """Test Instance
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `Instance`
@@ -44,6 +44,7 @@ class TestInstance(unittest.TestCase):
                 service_id = '',
                 regional_deployment_id = '',
                 allocation_id = '',
+                type = '',
                 replica_index = 56,
                 region = '',
                 datacenter = '',

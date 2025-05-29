@@ -31,6 +31,7 @@ class OrganizationDeactivationReason(str, Enum):
     SUBSCRIPTION_TERMINATION = "SUBSCRIPTION_TERMINATION"
     LOCKED_BY_ADMIN = "LOCKED_BY_ADMIN"
     VERIFICATION_FAILED = "VERIFICATION_FAILED"
+    TRIAL_DID_NOT_CONVERT = "TRIAL_DID_NOT_CONVERT"
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

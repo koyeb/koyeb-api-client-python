@@ -27,19 +27,31 @@ class TestProfileApi(unittest.TestCase):
         pass
 
     def test_accept_organization_invitation(self) -> None:
-        """Test case for accept_organization_invitation"""
+        """Test case for accept_organization_invitation
+
+        Accept Organization Invitation
+        """
         pass
 
     def test_decline_organization_invitation(self) -> None:
-        """Test case for decline_organization_invitation"""
+        """Test case for decline_organization_invitation
+
+        Decline Organization Invitation
+        """
         pass
 
     def test_get_current_organization(self) -> None:
-        """Test case for get_current_organization"""
+        """Test case for get_current_organization
+
+        Get Current Organization
+        """
         pass
 
     def test_get_current_user(self) -> None:
-        """Test case for get_current_user"""
+        """Test case for get_current_user
+
+        Get Current User
+        """
         pass
 
     def test_get_o_auth_options(self) -> None:
@@ -50,11 +62,24 @@ class TestProfileApi(unittest.TestCase):
         pass
 
     def test_get_user_organization_invitation(self) -> None:
-        """Test case for get_user_organization_invitation"""
+        """Test case for get_user_organization_invitation
+
+        Get User Organization Invitation
+        """
         pass
 
     def test_list_user_organization_invitations(self) -> None:
-        """Test case for list_user_organization_invitations"""
+        """Test case for list_user_organization_invitations
+
+        List User Organization Invitations
+        """
+        pass
+
+    def test_list_user_organizations(self) -> None:
+        """Test case for list_user_organizations
+
+        List User Organizations
+        """
         pass
 
     def test_o_auth_callback(self) -> None:
@@ -65,31 +90,52 @@ class TestProfileApi(unittest.TestCase):
         pass
 
     def test_resend_email_validation(self) -> None:
-        """Test case for resend_email_validation"""
+        """Test case for resend_email_validation
+
+        Resend Email Verification
+        """
         pass
 
     def test_reset_password(self) -> None:
-        """Test case for reset_password"""
+        """Test case for reset_password
+
+        Reset Password
+        """
         pass
 
     def test_signup(self) -> None:
-        """Test case for signup"""
+        """Test case for signup
+
+        Signup
+        """
         pass
 
     def test_update_password(self) -> None:
-        """Test case for update_password"""
+        """Test case for update_password
+
+        Update Password
+        """
         pass
 
     def test_update_user(self) -> None:
-        """Test case for update_user"""
+        """Test case for update_user
+
+        Update User
+        """
         pass
 
     def test_update_user2(self) -> None:
-        """Test case for update_user2"""
+        """Test case for update_user2
+
+        Update User
+        """
         pass
 
     def test_validate(self) -> None:
-        """Test case for validate"""
+        """Test case for validate
+
+        Validate
+        """
         pass
 
 

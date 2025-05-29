@@ -20,6 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.domain_load_balancer_koyeb import DomainLoadBalancerKoyeb
 from koyeb.models.domain_status import DomainStatus
 from koyeb.models.domain_type import DomainType
 from typing import Optional, Set
@@ -36,14 +37,16 @@ class Domain(BaseModel):
     name: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    status: Optional[DomainStatus] = None
-    type: Optional[DomainType] = None
+    status: Optional[DomainStatus] = DomainStatus.PENDING
+    type: Optional[DomainType] = DomainType.AUTOASSIGNED
     app_id: Optional[StrictStr] = None
     deployment_group: Optional[StrictStr] = None
     verified_at: Optional[datetime] = None
     intended_cname: Optional[StrictStr] = None
     messages: Optional[List[StrictStr]] = None
     version: Optional[StrictStr] = None
+    cloudflare: Optional[Dict[str, Any]] = None
+    koyeb: Optional[DomainLoadBalancerKoyeb] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "organization_id",
@@ -58,6 +61,8 @@ class Domain(BaseModel):
         "intended_cname",
         "messages",
         "version",
+        "cloudflare",
+        "koyeb",
     ]
 
     model_config = ConfigDict(
@@ -97,6 +102,9 @@ class Domain(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of koyeb
+        if self.koyeb:
+            _dict["koyeb"] = self.koyeb.to_dict()
         return _dict
 
     @classmethod
@@ -115,14 +123,22 @@ class Domain(BaseModel):
                 "name": obj.get("name"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
-                "status": obj.get("status"),
-                "type": obj.get("type"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else DomainStatus.PENDING,
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else DomainType.AUTOASSIGNED,
                 "app_id": obj.get("app_id"),
                 "deployment_group": obj.get("deployment_group"),
                 "verified_at": obj.get("verified_at"),
                 "intended_cname": obj.get("intended_cname"),
                 "messages": obj.get("messages"),
                 "version": obj.get("version"),
+                "cloudflare": obj.get("cloudflare"),
+                "koyeb": DomainLoadBalancerKoyeb.from_dict(obj["koyeb"])
+                if obj.get("koyeb") is not None
+                else None,
             }
         )
         return _obj

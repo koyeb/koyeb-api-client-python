@@ -4,11 +4,13 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_archive**](ArchivesApi.md#create_archive) | **POST** /v1/archives | Create a signed URL to upload an archive.
+[**create_archive**](ArchivesApi.md#create_archive) | **POST** /v1/archives | Create Archive
 
 
 # **create_archive**
 > CreateArchiveReply create_archive(archive)
+
+Create Archive
 
 Create a signed URL to upload an archive.
 
@@ -47,7 +49,7 @@ with koyeb.ApiClient(configuration) as api_client:
     archive = koyeb.CreateArchive() # CreateArchive | 
 
     try:
-        # Create a signed URL to upload an archive.
+        # Create Archive
         api_response = api_instance.create_archive(archive)
         print("The response of ArchivesApi->create_archive:\n")
         pprint(api_response)

@@ -30,7 +30,7 @@ class TestListRegionalDeploymentEventsReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListRegionalDeploymentEventsReply:
         """Test ListRegionalDeploymentEventsReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `ListRegionalDeploymentEventsReply`
@@ -50,7 +50,8 @@ class TestListRegionalDeploymentEventsReply(unittest.TestCase):
                     ],
                 limit = 56,
                 offset = 56,
-                order = ''
+                order = '',
+                has_next = True
             )
         else:
             return ListRegionalDeploymentEventsReply(

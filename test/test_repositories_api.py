@@ -27,15 +27,24 @@ class TestRepositoriesApi(unittest.TestCase):
         pass
 
     def test_list_branches(self) -> None:
-        """Test case for list_branches"""
+        """Test case for list_branches
+
+        List Branches
+        """
         pass
 
     def test_list_repositories(self) -> None:
-        """Test case for list_repositories"""
+        """Test case for list_repositories
+
+        List Repositories
+        """
         pass
 
     def test_resync_organization(self) -> None:
-        """Test case for resync_organization"""
+        """Test case for resync_organization
+
+        Resync Organization
+        """
         pass
 
 

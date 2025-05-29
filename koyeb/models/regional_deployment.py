@@ -18,11 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.deployment_provisioning_info import DeploymentProvisioningInfo
 from koyeb.models.regional_deployment_definition import RegionalDeploymentDefinition
-from koyeb.models.regional_deployment_metadata import RegionalDeploymentMetadata
 from koyeb.models.regional_deployment_role import RegionalDeploymentRole
 from koyeb.models.regional_deployment_status import RegionalDeploymentStatus
 from typing import Optional, Set
@@ -48,15 +47,13 @@ class RegionalDeployment(BaseModel):
     region: Optional[StrictStr] = None
     parent_id: Optional[StrictStr] = None
     child_id: Optional[StrictStr] = None
-    status: Optional[RegionalDeploymentStatus] = None
+    status: Optional[RegionalDeploymentStatus] = RegionalDeploymentStatus.PENDING
     messages: Optional[List[StrictStr]] = None
     definition: Optional[RegionalDeploymentDefinition] = None
     datacenters: Optional[List[StrictStr]] = None
-    metadata: Optional[RegionalDeploymentMetadata] = None
+    metadata: Optional[Dict[str, Any]] = None
     provisioning_info: Optional[DeploymentProvisioningInfo] = None
-    role: Optional[RegionalDeploymentRole] = None
-    use_kuma_v2: Optional[StrictBool] = None
-    use_kata: Optional[StrictBool] = None
+    role: Optional[RegionalDeploymentRole] = RegionalDeploymentRole.INVALID
     version: Optional[StrictStr] = None
     deployment_group: Optional[StrictStr] = None
     deployment_id: Optional[StrictStr] = None
@@ -82,8 +79,6 @@ class RegionalDeployment(BaseModel):
         "metadata",
         "provisioning_info",
         "role",
-        "use_kuma_v2",
-        "use_kata",
         "version",
         "deployment_group",
         "deployment_id",
@@ -129,9 +124,6 @@ class RegionalDeployment(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of definition
         if self.definition:
             _dict["definition"] = self.definition.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of metadata
-        if self.metadata:
-            _dict["metadata"] = self.metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of provisioning_info
         if self.provisioning_info:
             _dict["provisioning_info"] = self.provisioning_info.to_dict()
@@ -162,23 +154,23 @@ class RegionalDeployment(BaseModel):
                 "region": obj.get("region"),
                 "parent_id": obj.get("parent_id"),
                 "child_id": obj.get("child_id"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else RegionalDeploymentStatus.PENDING,
                 "messages": obj.get("messages"),
                 "definition": RegionalDeploymentDefinition.from_dict(obj["definition"])
                 if obj.get("definition") is not None
                 else None,
                 "datacenters": obj.get("datacenters"),
-                "metadata": RegionalDeploymentMetadata.from_dict(obj["metadata"])
-                if obj.get("metadata") is not None
-                else None,
+                "metadata": obj.get("metadata"),
                 "provisioning_info": DeploymentProvisioningInfo.from_dict(
                     obj["provisioning_info"]
                 )
                 if obj.get("provisioning_info") is not None
                 else None,
-                "role": obj.get("role"),
-                "use_kuma_v2": obj.get("use_kuma_v2"),
-                "use_kata": obj.get("use_kata"),
+                "role": obj.get("role")
+                if obj.get("role") is not None
+                else RegionalDeploymentRole.INVALID,
                 "version": obj.get("version"),
                 "deployment_group": obj.get("deployment_group"),
                 "deployment_id": obj.get("deployment_id"),

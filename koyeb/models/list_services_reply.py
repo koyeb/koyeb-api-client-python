@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.service_list_item import ServiceListItem
 from typing import Optional, Set
@@ -33,7 +33,14 @@ class ListServicesReply(BaseModel):
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["services", "limit", "offset", "count"]
+    has_next: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = [
+        "services",
+        "limit",
+        "offset",
+        "count",
+        "has_next",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,9 +82,9 @@ class ListServicesReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in services (list)
         _items = []
         if self.services:
-            for _item in self.services:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_services in self.services:
+                if _item_services:
+                    _items.append(_item_services.to_dict())
             _dict["services"] = _items
         return _dict
 
@@ -100,6 +107,7 @@ class ListServicesReply(BaseModel):
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
                 "count": obj.get("count"),
+                "has_next": obj.get("has_next"),
             }
         )
         return _obj

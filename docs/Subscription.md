@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **version** | **str** |  | [optional] 
 **organization_id** | **str** |  | [optional] 
 **stripe_subscription_id** | **str** |  | [optional] 
-**status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  | [optional] 
+**status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  | [optional] [default to SubscriptionStatus.INVALID]
 **messages** | **List[str]** |  | [optional] 
 **has_pending_update** | **bool** |  | [optional] 
 **stripe_pending_invoice_id** | **str** |  | [optional] 
@@ -25,6 +25,10 @@ Name | Type | Description | Notes
 **amount_paid** | **str** |  | [optional] 
 **amount_remaining** | **str** |  | [optional] 
 **payment_failure** | [**SubscriptionPaymentFailure**](SubscriptionPaymentFailure.md) |  | [optional] 
+**trialing** | **bool** |  | [optional] 
+**trial_ends_at** | **datetime** |  | [optional] 
+**trial_max_spend** | **str** |  | [optional] 
+**current_spend** | **str** |  | [optional] 
 
 ## Example
 

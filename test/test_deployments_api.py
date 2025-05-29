@@ -40,6 +40,13 @@ class TestDeploymentsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_deployment_scaling(self) -> None:
+        """Test case for get_deployment_scaling
+
+        Get Deployment Scaling
+        """
+        pass
+
     def test_list_deployment_events(self) -> None:
         """Test case for list_deployment_events
 

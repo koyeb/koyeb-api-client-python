@@ -5,14 +5,12 @@ All URIs are relative to *https://app.koyeb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_account_activities**](ActivityApi.md#get_account_activities) | **GET** /v1/account/activities | 
-[**list_activities**](ActivityApi.md#list_activities) | **GET** /v1/activities | 
-[**list_notifications**](ActivityApi.md#list_notifications) | **GET** /v1/notifications | 
+[**list_activities**](ActivityApi.md#list_activities) | **GET** /v1/activities | List Activities
+[**list_notifications**](ActivityApi.md#list_notifications) | **GET** /v1/notifications | List Notifications
 
 
 # **get_account_activities**
 > ActivityList get_account_activities(limit=limit, offset=offset)
-
-
 
 ### Example
 
@@ -95,9 +93,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_activities**
-> ActivityList list_activities(limit=limit, offset=offset)
+> ActivityList list_activities(limit=limit, offset=offset, types=types)
 
-
+List Activities
 
 ### Example
 
@@ -132,9 +130,11 @@ with koyeb.ApiClient(configuration) as api_client:
     api_instance = koyeb.ActivityApi(api_client)
     limit = 'limit_example' # str |  (optional)
     offset = 'offset_example' # str |  (optional)
+    types = ['types_example'] # List[str] | (Optional) Filter on object type (optional)
 
     try:
-        api_response = api_instance.list_activities(limit=limit, offset=offset)
+        # List Activities
+        api_response = api_instance.list_activities(limit=limit, offset=offset, types=types)
         print("The response of ActivityApi->list_activities:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,6 +150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **str**|  | [optional] 
  **offset** | **str**|  | [optional] 
+ **types** | [**List[str]**](str.md)| (Optional) Filter on object type | [optional] 
 
 ### Return type
 
@@ -182,7 +183,7 @@ Name | Type | Description  | Notes
 # **list_notifications**
 > NotificationList list_notifications(limit=limit, offset=offset, mark_read=mark_read, mark_seen=mark_seen, unread=unread, unseen=unseen)
 
-
+List Notifications
 
 ### Example
 
@@ -223,6 +224,7 @@ with koyeb.ApiClient(configuration) as api_client:
     unseen = 'unseen_example' # str |  (optional)
 
     try:
+        # List Notifications
         api_response = api_instance.list_notifications(limit=limit, offset=offset, mark_read=mark_read, mark_seen=mark_seen, unread=unread, unseen=unseen)
         print("The response of ActivityApi->list_notifications:\n")
         pprint(api_response)

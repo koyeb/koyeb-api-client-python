@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **instances** | **List[str]** |  | [optional] 
 **datacenters** | **List[str]** |  | [optional] 
+**volumes_enabled** | **bool** |  | [optional] 
+**scope** | **str** | The scope of the region, continent, metropolitan area, etc. | [optional] 
 
 ## Example
 

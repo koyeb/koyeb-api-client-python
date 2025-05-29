@@ -41,7 +41,7 @@ class App(BaseModel):
     paused_at: Optional[datetime] = None
     resumed_at: Optional[datetime] = None
     terminated_at: Optional[datetime] = None
-    status: Optional[AppStatus] = None
+    status: Optional[AppStatus] = AppStatus.STARTING
     messages: Optional[List[StrictStr]] = None
     version: Optional[StrictStr] = None
     domains: Optional[List[Domain]] = None
@@ -102,9 +102,9 @@ class App(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in domains (list)
         _items = []
         if self.domains:
-            for _item in self.domains:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_domains in self.domains:
+                if _item_domains:
+                    _items.append(_item_domains.to_dict())
             _dict["domains"] = _items
         return _dict
 
@@ -129,7 +129,9 @@ class App(BaseModel):
                 "paused_at": obj.get("paused_at"),
                 "resumed_at": obj.get("resumed_at"),
                 "terminated_at": obj.get("terminated_at"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else AppStatus.STARTING,
                 "messages": obj.get("messages"),
                 "version": obj.get("version"),
                 "domains": [Domain.from_dict(_item) for _item in obj["domains"]]

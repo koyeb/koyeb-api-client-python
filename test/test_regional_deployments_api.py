@@ -29,7 +29,7 @@ class TestRegionalDeploymentsApi(unittest.TestCase):
     def test_get_regional_deployment(self) -> None:
         """Test case for get_regional_deployment
 
-        Experimental: Get regional deployment Use at your own risk
+        Get Regional Deployment
         """
         pass
 
@@ -43,7 +43,7 @@ class TestRegionalDeploymentsApi(unittest.TestCase):
     def test_list_regional_deployments(self) -> None:
         """Test case for list_regional_deployments
 
-        Experimental: List regional deployments Use at your own risk
+        List Regional Deployments
         """
         pass
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **requests_per_second** | [**DeploymentScalingTargetRequestsPerSecond**](DeploymentScalingTargetRequestsPerSecond.md) |  | [optional] 
 **concurrent_requests** | [**DeploymentScalingTargetConcurrentRequests**](DeploymentScalingTargetConcurrentRequests.md) |  | [optional] 
 **requests_response_time** | [**DeploymentScalingTargetRequestsResponseTime**](DeploymentScalingTargetRequestsResponseTime.md) |  | [optional] 
+**sleep_idle_delay** | [**DeploymentScalingTargetSleepIdleDelay**](DeploymentScalingTargetSleepIdleDelay.md) |  | [optional] 
 
 ## Example
 

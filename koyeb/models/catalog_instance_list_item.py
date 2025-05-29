@@ -17,7 +17,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictFloat,
+    StrictInt,
+    StrictStr,
+)
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from koyeb.models.catalog_gpu_details import CatalogGPUDetails
 from typing import Optional, Set
@@ -37,6 +45,7 @@ class CatalogInstanceListItem(BaseModel):
     )
     memory: Optional[StrictStr] = None
     disk: Optional[StrictStr] = None
+    price_per_second: Optional[StrictStr] = None
     price_hourly: Optional[StrictStr] = None
     price_monthly: Optional[StrictStr] = None
     regions: Optional[List[StrictStr]] = None
@@ -50,12 +59,14 @@ class CatalogInstanceListItem(BaseModel):
     type: Optional[StrictStr] = None
     gpu: Optional[CatalogGPUDetails] = None
     service_types: Optional[List[StrictStr]] = None
+    volumes_enabled: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "description",
         "vcpu",
         "memory",
         "disk",
+        "price_per_second",
         "price_hourly",
         "price_monthly",
         "regions",
@@ -67,6 +78,7 @@ class CatalogInstanceListItem(BaseModel):
         "type",
         "gpu",
         "service_types",
+        "volumes_enabled",
     ]
 
     model_config = ConfigDict(
@@ -127,6 +139,7 @@ class CatalogInstanceListItem(BaseModel):
                 "vcpu": obj.get("vcpu"),
                 "memory": obj.get("memory"),
                 "disk": obj.get("disk"),
+                "price_per_second": obj.get("price_per_second"),
                 "price_hourly": obj.get("price_hourly"),
                 "price_monthly": obj.get("price_monthly"),
                 "regions": obj.get("regions"),
@@ -140,6 +153,7 @@ class CatalogInstanceListItem(BaseModel):
                 if obj.get("gpu") is not None
                 else None,
                 "service_types": obj.get("service_types"),
+                "volumes_enabled": obj.get("volumes_enabled"),
             }
         )
         return _obj

@@ -82,9 +82,9 @@ class GetOrganizationUsageDetailsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in usage_details (list)
         _items = []
         if self.usage_details:
-            for _item in self.usage_details:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_usage_details in self.usage_details:
+                if _item_usage_details:
+                    _items.append(_item_usage_details.to_dict())
             _dict["usage_details"] = _items
         return _dict
 

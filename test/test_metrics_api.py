@@ -27,7 +27,10 @@ class TestMetricsApi(unittest.TestCase):
         pass
 
     def test_get_metrics(self) -> None:
-        """Test case for get_metrics"""
+        """Test case for get_metrics
+
+        Get Metrics
+        """
         pass
 
 

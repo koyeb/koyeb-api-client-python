@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**type** | [**RegionalDeploymentDefinitionType**](RegionalDeploymentDefinitionType.md) |  | [optional] 
+**type** | [**RegionalDeploymentDefinitionType**](RegionalDeploymentDefinitionType.md) |  | [optional] [default to RegionalDeploymentDefinitionType.INVALID]
+**strategy** | [**DeploymentStrategy**](DeploymentStrategy.md) |  | [optional] 
 **routes** | [**List[Route]**](Route.md) |  | [optional] 
 **ports** | [**List[Port]**](Port.md) |  | [optional] 
 **env** | [**List[Env]**](Env.md) |  | [optional] 
@@ -16,8 +17,8 @@ Name | Type | Description | Notes
 **deployment_group** | **str** |  | [optional] 
 **health_checks** | [**List[DeploymentHealthCheck]**](DeploymentHealthCheck.md) |  | [optional] 
 **volumes** | [**List[RegionalDeploymentVolume]**](RegionalDeploymentVolume.md) |  | [optional] 
+**config_files** | [**List[ConfigFile]**](ConfigFile.md) |  | [optional] 
 **skip_cache** | **bool** |  | [optional] 
-**use_kuma_v2** | **bool** |  | [optional] 
 **docker** | [**DockerSource**](DockerSource.md) |  | [optional] 
 **git** | [**GitSource**](GitSource.md) |  | [optional] 
 **archive** | [**ArchiveSource**](ArchiveSource.md) |  | [optional] 

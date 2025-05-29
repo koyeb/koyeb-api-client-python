@@ -28,7 +28,7 @@ class TestCreatePersistentVolumeRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreatePersistentVolumeRequest:
         """Test CreatePersistentVolumeRequest
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `CreatePersistentVolumeRequest`
@@ -40,7 +40,8 @@ class TestCreatePersistentVolumeRequest(unittest.TestCase):
                 name = '',
                 region = '',
                 read_only = True,
-                max_size = 56
+                max_size = 56,
+                snapshot_id = ''
             )
         else:
             return CreatePersistentVolumeRequest(

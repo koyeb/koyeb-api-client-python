@@ -454,7 +454,12 @@ Name | Type | Description  | Notes
 
 Pause App
 
-App pause action is allowed for the following status:  - starting  - healthy  - degraded  - unhealthy  - resuming
+App pause action is allowed for the following status:
+ - starting
+ - healthy
+ - degraded
+ - unhealthy
+ - resuming
 
 ### Example
 
@@ -539,7 +544,8 @@ Name | Type | Description  | Notes
 
 Resume App
 
-App resume action is allowed for the following status:  - paused
+App resume action is allowed for the following status:
+ - paused
 
 ### Example
 

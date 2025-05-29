@@ -6,10 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
-**status** | [**DeploymentProvisioningInfoStageStatus**](DeploymentProvisioningInfoStageStatus.md) |  | [optional] 
+**status** | [**DeploymentProvisioningInfoStageStatus**](DeploymentProvisioningInfoStageStatus.md) |  | [optional] [default to DeploymentProvisioningInfoStageStatus.UNKNOWN]
 **messages** | **List[str]** |  | [optional] 
 **started_at** | **datetime** |  | [optional] 
 **finished_at** | **datetime** |  | [optional] 
+**steps** | [**List[DeploymentProvisioningInfoStageBuildAttemptBuildStep]**](DeploymentProvisioningInfoStageBuildAttemptBuildStep.md) |  | [optional] 
+**image_pushed** | **bool** |  | [optional] 
+**internal_failure** | **bool** |  | [optional] 
+**retryable_failure** | **bool** |  | [optional] 
+**wait_completion** | **bool** | This flag is used to finalize the build, and continue the deployment in case of success, or cancel and potentially retry the build in case of failure. | [optional] 
 
 ## Example
 

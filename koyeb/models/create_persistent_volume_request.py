@@ -29,17 +29,21 @@ class CreatePersistentVolumeRequest(BaseModel):
     CreatePersistentVolumeRequest
     """  # noqa: E501
 
-    volume_type: Optional[PersistentVolumeBackingStore] = None
+    volume_type: Optional[
+        PersistentVolumeBackingStore
+    ] = PersistentVolumeBackingStore.PERSISTENT_VOLUME_BACKING_STORE_INVALID
     name: Optional[StrictStr] = None
     region: Optional[StrictStr] = None
     read_only: Optional[StrictBool] = None
     max_size: Optional[StrictInt] = None
+    snapshot_id: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "volume_type",
         "name",
         "region",
         "read_only",
         "max_size",
+        "snapshot_id",
     ]
 
     model_config = ConfigDict(
@@ -92,11 +96,14 @@ class CreatePersistentVolumeRequest(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "volume_type": obj.get("volume_type"),
+                "volume_type": obj.get("volume_type")
+                if obj.get("volume_type") is not None
+                else PersistentVolumeBackingStore.PERSISTENT_VOLUME_BACKING_STORE_INVALID,
                 "name": obj.get("name"),
                 "region": obj.get("region"),
                 "read_only": obj.get("read_only"),
                 "max_size": obj.get("max_size"),
+                "snapshot_id": obj.get("snapshot_id"),
             }
         )
         return _obj

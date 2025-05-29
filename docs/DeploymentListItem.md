@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **service_id** | **str** |  | [optional] 
 **parent_id** | **str** |  | [optional] 
 **child_id** | **str** |  | [optional] 
-**status** | [**DeploymentStatus**](DeploymentStatus.md) |  | [optional] 
+**status** | [**DeploymentStatus**](DeploymentStatus.md) |  | [optional] [default to DeploymentStatus.PENDING]
 **metadata** | [**DeploymentMetadata**](DeploymentMetadata.md) |  | [optional] 
 **definition** | [**DeploymentDefinition**](DeploymentDefinition.md) |  | [optional] 
 **messages** | **List[str]** |  | [optional] 

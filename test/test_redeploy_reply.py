@@ -28,7 +28,7 @@ class TestRedeployReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> RedeployReply:
         """Test RedeployReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `RedeployReply`
@@ -74,6 +74,7 @@ class TestRedeployReply(unittest.TestCase):
                             last_provisioned_deployment_id = '', ), ), 
                     definition = koyeb.models.deployment_definition.DeploymentDefinition(
                         name = '', 
+                        strategy = koyeb.models.deployment_strategy.DeploymentStrategy(), 
                         routes = [
                             koyeb.models.deployment_route.DeploymentRoute(
                                 port = 56, 
@@ -112,7 +113,9 @@ class TestRedeployReply(unittest.TestCase):
                                             value = 56, ), 
                                         requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
                                             value = 56, 
-                                            quantile = 56, ), )
+                                            quantile = 56, ), 
+                                        sleep_idle_delay = koyeb.models.deployment_scaling_target_sleep_idle_delay.DeploymentScalingTargetSleepIdleDelay(
+                                            value = 56, ), )
                                     ], )
                             ], 
                         instance_types = [
@@ -142,6 +145,12 @@ class TestRedeployReply(unittest.TestCase):
                                 path = '', 
                                 replica_index = 56, )
                             ], 
+                        config_files = [
+                            koyeb.models.config_file.ConfigFile(
+                                path = '', 
+                                permissions = '', 
+                                content = '', )
+                            ], 
                         skip_cache = True, 
                         docker = koyeb.models.docker_source.DockerSource(
                             image = '', 
@@ -169,11 +178,22 @@ class TestRedeployReply(unittest.TestCase):
                                     koyeb.models.deployment_provisioning_info/stage/build_attempt.DeploymentProvisioningInfo.Stage.BuildAttempt(
                                         id = 56, 
                                         started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                        finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                                        finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                                        steps = [
+                                            koyeb.models.deployment_provisioning_info/stage/build_attempt/build_step.DeploymentProvisioningInfo.Stage.BuildAttempt.BuildStep(
+                                                name = '', 
+                                                started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                                                finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                                            ], 
+                                        image_pushed = True, 
+                                        internal_failure = True, 
+                                        retryable_failure = True, 
+                                        wait_completion = True, )
                                     ], )
                             ], ), 
                     database_info = koyeb.models.deployment_database_info.DeploymentDatabaseInfo(), 
                     skip_build = True, 
+                    role = 'INVALID', 
                     version = '', 
                     deployment_group = '', )
             )

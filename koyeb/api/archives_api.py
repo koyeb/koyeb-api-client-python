@@ -52,8 +52,9 @@ class ArchivesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CreateArchiveReply:
-        """Create a signed URL to upload an archive.
+        """Create Archive
 
+        Create a signed URL to upload an archive.
 
         :param archive: (required)
         :type archive: CreateArchive
@@ -121,8 +122,9 @@ class ArchivesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CreateArchiveReply]:
-        """Create a signed URL to upload an archive.
+        """Create Archive
 
+        Create a signed URL to upload an archive.
 
         :param archive: (required)
         :type archive: CreateArchive
@@ -190,8 +192,9 @@ class ArchivesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a signed URL to upload an archive.
+        """Create Archive
 
+        Create a signed URL to upload an archive.
 
         :param archive: (required)
         :type archive: CreateArchive
@@ -255,7 +258,9 @@ class ArchivesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -267,7 +272,8 @@ class ArchivesApi:
             _body_params = archive
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]

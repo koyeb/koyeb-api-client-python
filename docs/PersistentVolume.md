@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**snapshot_id** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **deleted_at** | **datetime** |  | [optional] 
@@ -14,10 +15,10 @@ Name | Type | Description | Notes
 **service_id** | **str** |  | [optional] 
 **region** | **str** |  | [optional] 
 **read_only** | **bool** |  | [optional] 
-**max_size_mb** | **int** |  | [optional] 
-**cur_size_mb** | **int** |  | [optional] 
-**status** | [**PersistentVolumeStatus**](PersistentVolumeStatus.md) |  | [optional] 
-**backing_store** | [**PersistentVolumeBackingStore**](PersistentVolumeBackingStore.md) |  | [optional] 
+**max_size** | **int** |  | [optional] 
+**cur_size** | **int** |  | [optional] 
+**status** | [**PersistentVolumeStatus**](PersistentVolumeStatus.md) |  | [optional] [default to PersistentVolumeStatus.PERSISTENT_VOLUME_STATUS_INVALID]
+**backing_store** | [**PersistentVolumeBackingStore**](PersistentVolumeBackingStore.md) |  | [optional] [default to PersistentVolumeBackingStore.PERSISTENT_VOLUME_BACKING_STORE_INVALID]
 
 ## Example
 

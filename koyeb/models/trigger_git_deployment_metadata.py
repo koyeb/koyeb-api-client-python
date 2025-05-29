@@ -31,7 +31,9 @@ class TriggerGitDeploymentMetadata(BaseModel):
     TriggerGitDeploymentMetadata
     """  # noqa: E501
 
-    provider: Optional[TriggerGitDeploymentMetadataProvider] = None
+    provider: Optional[
+        TriggerGitDeploymentMetadataProvider
+    ] = TriggerGitDeploymentMetadataProvider.UNKNOWN
     repository: Optional[StrictStr] = None
     branch: Optional[StrictStr] = None
     sha: Optional[StrictStr] = None
@@ -100,7 +102,9 @@ class TriggerGitDeploymentMetadata(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "provider": obj.get("provider"),
+                "provider": obj.get("provider")
+                if obj.get("provider") is not None
+                else TriggerGitDeploymentMetadataProvider.UNKNOWN,
                 "repository": obj.get("repository"),
                 "branch": obj.get("branch"),
                 "sha": obj.get("sha"),

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.app_list_item import AppListItem
 from typing import Optional, Set
@@ -33,7 +33,8 @@ class ListAppsReply(BaseModel):
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["apps", "limit", "offset", "count"]
+    has_next: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["apps", "limit", "offset", "count", "has_next"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,9 +76,9 @@ class ListAppsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in apps (list)
         _items = []
         if self.apps:
-            for _item in self.apps:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_apps in self.apps:
+                if _item_apps:
+                    _items.append(_item_apps.to_dict())
             _dict["apps"] = _items
         return _dict
 
@@ -98,6 +99,7 @@ class ListAppsReply(BaseModel):
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
                 "count": obj.get("count"),
+                "has_next": obj.get("has_next"),
             }
         )
         return _obj

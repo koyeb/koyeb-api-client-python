@@ -27,31 +27,52 @@ class TestSecretsApi(unittest.TestCase):
         pass
 
     def test_create_secret(self) -> None:
-        """Test case for create_secret"""
+        """Test case for create_secret
+
+        Create Secret
+        """
         pass
 
     def test_delete_secret(self) -> None:
-        """Test case for delete_secret"""
+        """Test case for delete_secret
+
+        Delete Secret
+        """
         pass
 
     def test_get_secret(self) -> None:
-        """Test case for get_secret"""
+        """Test case for get_secret
+
+        Get Secret
+        """
         pass
 
     def test_list_secrets(self) -> None:
-        """Test case for list_secrets"""
+        """Test case for list_secrets
+
+        List Secrets
+        """
         pass
 
     def test_reveal_secret(self) -> None:
-        """Test case for reveal_secret"""
+        """Test case for reveal_secret
+
+        Reveal Secret
+        """
         pass
 
     def test_update_secret(self) -> None:
-        """Test case for update_secret"""
+        """Test case for update_secret
+
+        Update Secret
+        """
         pass
 
     def test_update_secret2(self) -> None:
-        """Test case for update_secret2"""
+        """Test case for update_secret2
+
+        Update Secret
+        """
         pass
 
 

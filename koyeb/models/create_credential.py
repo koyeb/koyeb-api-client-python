@@ -31,7 +31,7 @@ class CreateCredential(BaseModel):
 
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    type: Optional[CredentialType] = None
+    type: Optional[CredentialType] = CredentialType.INVALID
     organization_id: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "name",
@@ -92,7 +92,9 @@ class CreateCredential(BaseModel):
             {
                 "name": obj.get("name"),
                 "description": obj.get("description"),
-                "type": obj.get("type"),
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else CredentialType.INVALID,
                 "organization_id": obj.get("organization_id"),
             }
         )

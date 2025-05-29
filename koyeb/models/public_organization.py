@@ -32,8 +32,8 @@ class PublicOrganization(BaseModel):
 
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
-    plan: Optional[Plan] = None
-    status: Optional[OrganizationStatus] = None
+    plan: Optional[Plan] = Plan.HOBBY
+    status: Optional[OrganizationStatus] = OrganizationStatus.WARNING
     __properties: ClassVar[List[str]] = ["id", "name", "plan", "status"]
 
     model_config = ConfigDict(
@@ -88,8 +88,10 @@ class PublicOrganization(BaseModel):
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
-                "plan": obj.get("plan"),
-                "status": obj.get("status"),
+                "plan": obj.get("plan") if obj.get("plan") is not None else Plan.HOBBY,
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else OrganizationStatus.WARNING,
             }
         )
         return _obj

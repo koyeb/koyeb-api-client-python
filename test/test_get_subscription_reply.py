@@ -28,7 +28,7 @@ class TestGetSubscriptionReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetSubscriptionReply:
         """Test GetSubscriptionReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `GetSubscriptionReply`
@@ -70,7 +70,11 @@ class TestGetSubscriptionReply(unittest.TestCase):
                         redirect_url = '', 
                         stripe_sdk = koyeb.models.subscription/payment_failure/stripe_sdk.Subscription.PaymentFailure.StripeSDK(
                             client_secret_key = '', 
-                            raw_json = '', ), ), )
+                            raw_json = '', ), ), 
+                    trialing = True, 
+                    trial_ends_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                    trial_max_spend = '', 
+                    current_spend = '', )
             )
         else:
             return GetSubscriptionReply(

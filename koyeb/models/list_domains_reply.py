@@ -75,9 +75,9 @@ class ListDomainsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in domains (list)
         _items = []
         if self.domains:
-            for _item in self.domains:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_domains in self.domains:
+                if _item_domains:
+                    _items.append(_item_domains.to_dict())
             _dict["domains"] = _items
         return _dict
 

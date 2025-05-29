@@ -4,17 +4,17 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_organization_invitation**](OrganizationInvitationsApi.md#create_organization_invitation) | **POST** /v1/organization_invitations | 
-[**delete_organization_invitation**](OrganizationInvitationsApi.md#delete_organization_invitation) | **DELETE** /v1/organization_invitations/{id} | 
-[**get_organization_invitation**](OrganizationInvitationsApi.md#get_organization_invitation) | **GET** /v1/organization_invitations/{id} | 
-[**list_organization_invitations**](OrganizationInvitationsApi.md#list_organization_invitations) | **GET** /v1/organization_invitations | 
-[**resend_organization_invitation**](OrganizationInvitationsApi.md#resend_organization_invitation) | **POST** /v1/organization_invitations/{id}/resend | 
+[**create_organization_invitation**](OrganizationInvitationsApi.md#create_organization_invitation) | **POST** /v1/organization_invitations | Create Organization Invitation
+[**delete_organization_invitation**](OrganizationInvitationsApi.md#delete_organization_invitation) | **DELETE** /v1/organization_invitations/{id} | Delete Organization Invitation
+[**get_organization_invitation**](OrganizationInvitationsApi.md#get_organization_invitation) | **GET** /v1/organization_invitations/{id} | Get Organization Invitation
+[**list_organization_invitations**](OrganizationInvitationsApi.md#list_organization_invitations) | **GET** /v1/organization_invitations | List Organization Invitations
+[**resend_organization_invitation**](OrganizationInvitationsApi.md#resend_organization_invitation) | **POST** /v1/organization_invitations/{id}/resend | Resend Organization Invitation
 
 
 # **create_organization_invitation**
 > CreateOrganizationInvitationReply create_organization_invitation(body)
 
-
+Create Organization Invitation
 
 ### Example
 
@@ -51,6 +51,7 @@ with koyeb.ApiClient(configuration) as api_client:
     body = koyeb.CreateOrganizationInvitationRequest() # CreateOrganizationInvitationRequest | 
 
     try:
+        # Create Organization Invitation
         api_response = api_instance.create_organization_invitation(body)
         print("The response of OrganizationInvitationsApi->create_organization_invitation:\n")
         pprint(api_response)
@@ -98,7 +99,7 @@ Name | Type | Description  | Notes
 # **delete_organization_invitation**
 > object delete_organization_invitation(id)
 
-
+Delete Organization Invitation
 
 ### Example
 
@@ -133,6 +134,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | The id of the organization invitation to delete
 
     try:
+        # Delete Organization Invitation
         api_response = api_instance.delete_organization_invitation(id)
         print("The response of OrganizationInvitationsApi->delete_organization_invitation:\n")
         pprint(api_response)
@@ -180,7 +182,7 @@ Name | Type | Description  | Notes
 # **get_organization_invitation**
 > GetOrganizationInvitationReply get_organization_invitation(id)
 
-
+Get Organization Invitation
 
 ### Example
 
@@ -216,6 +218,7 @@ with koyeb.ApiClient(configuration) as api_client:
     id = 'id_example' # str | The id of the invitation to get
 
     try:
+        # Get Organization Invitation
         api_response = api_instance.get_organization_invitation(id)
         print("The response of OrganizationInvitationsApi->get_organization_invitation:\n")
         pprint(api_response)
@@ -263,7 +266,7 @@ Name | Type | Description  | Notes
 # **list_organization_invitations**
 > ListOrganizationInvitationsReply list_organization_invitations(limit=limit, offset=offset, statuses=statuses, user_id=user_id)
 
-
+List Organization Invitations
 
 ### Example
 
@@ -302,6 +305,7 @@ with koyeb.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | (Optional) Filter on invitee ID. Will match both invitations sent to that user_id and invitations sent to the email of that user_id. The only valid value is the requester's user_id (optional)
 
     try:
+        # List Organization Invitations
         api_response = api_instance.list_organization_invitations(limit=limit, offset=offset, statuses=statuses, user_id=user_id)
         print("The response of OrganizationInvitationsApi->list_organization_invitations:\n")
         pprint(api_response)
@@ -352,7 +356,7 @@ Name | Type | Description  | Notes
 # **resend_organization_invitation**
 > ResendOrganizationInvitationReply resend_organization_invitation(id, body)
 
-
+Resend Organization Invitation
 
 ### Example
 
@@ -389,6 +393,7 @@ with koyeb.ApiClient(configuration) as api_client:
     body = None # object | 
 
     try:
+        # Resend Organization Invitation
         api_response = api_instance.resend_organization_invitation(id, body)
         print("The response of OrganizationInvitationsApi->resend_organization_invitation:\n")
         pprint(api_response)

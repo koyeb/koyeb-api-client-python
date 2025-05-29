@@ -68,7 +68,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CreateOrganizationInvitationReply:
-        """create_organization_invitation
+        """Create Organization Invitation
 
 
         :param body: (required)
@@ -137,7 +137,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CreateOrganizationInvitationReply]:
-        """create_organization_invitation
+        """Create Organization Invitation
 
 
         :param body: (required)
@@ -206,7 +206,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_organization_invitation
+        """Create Organization Invitation
 
 
         :param body: (required)
@@ -271,7 +271,9 @@ class OrganizationInvitationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -283,7 +285,8 @@ class OrganizationInvitationsApi:
             _body_params = body
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -322,7 +325,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """delete_organization_invitation
+        """Delete Organization Invitation
 
 
         :param id: The id of the organization invitation to delete (required)
@@ -394,7 +397,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """delete_organization_invitation
+        """Delete Organization Invitation
 
 
         :param id: The id of the organization invitation to delete (required)
@@ -466,7 +469,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_organization_invitation
+        """Delete Organization Invitation
 
 
         :param id: The id of the organization invitation to delete (required)
@@ -531,7 +534,9 @@ class OrganizationInvitationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -543,7 +548,8 @@ class OrganizationInvitationsApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -579,7 +585,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GetOrganizationInvitationReply:
-        """get_organization_invitation
+        """Get Organization Invitation
 
 
         :param id: The id of the invitation to get (required)
@@ -648,7 +654,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GetOrganizationInvitationReply]:
-        """get_organization_invitation
+        """Get Organization Invitation
 
 
         :param id: The id of the invitation to get (required)
@@ -717,7 +723,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_organization_invitation
+        """Get Organization Invitation
 
 
         :param id: The id of the invitation to get (required)
@@ -782,7 +788,9 @@ class OrganizationInvitationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -794,7 +802,8 @@ class OrganizationInvitationsApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -847,7 +856,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListOrganizationInvitationsReply:
-        """list_organization_invitations
+        """List Organization Invitations
 
 
         :param limit: (Optional) The number of items to return
@@ -942,7 +951,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListOrganizationInvitationsReply]:
-        """list_organization_invitations
+        """List Organization Invitations
 
 
         :param limit: (Optional) The number of items to return
@@ -1037,7 +1046,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_organization_invitations
+        """List Organization Invitations
 
 
         :param limit: (Optional) The number of items to return
@@ -1116,7 +1125,9 @@ class OrganizationInvitationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1138,7 +1149,8 @@ class OrganizationInvitationsApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]
@@ -1178,7 +1190,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ResendOrganizationInvitationReply:
-        """resend_organization_invitation
+        """Resend Organization Invitation
 
 
         :param id: The id of the organization invitation to resend (required)
@@ -1254,7 +1266,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ResendOrganizationInvitationReply]:
-        """resend_organization_invitation
+        """Resend Organization Invitation
 
 
         :param id: The id of the organization invitation to resend (required)
@@ -1330,7 +1342,7 @@ class OrganizationInvitationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """resend_organization_invitation
+        """Resend Organization Invitation
 
 
         :param id: The id of the organization invitation to resend (required)
@@ -1399,7 +1411,9 @@ class OrganizationInvitationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1413,7 +1427,8 @@ class OrganizationInvitationsApi:
             _body_params = body
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]

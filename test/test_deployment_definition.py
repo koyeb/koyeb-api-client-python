@@ -28,7 +28,7 @@ class TestDeploymentDefinition(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DeploymentDefinition:
         """Test DeploymentDefinition
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `DeploymentDefinition`
@@ -38,6 +38,8 @@ class TestDeploymentDefinition(unittest.TestCase):
             return DeploymentDefinition(
                 name = '',
                 type = 'INVALID',
+                strategy = koyeb.models.deployment_strategy.DeploymentStrategy(
+                    type = 'DEPLOYMENT_STRATEGY_TYPE_INVALID', ),
                 routes = [
                     koyeb.models.deployment_route.DeploymentRoute(
                         port = 56, 
@@ -79,7 +81,9 @@ class TestDeploymentDefinition(unittest.TestCase):
                                     value = 56, ), 
                                 requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
                                     value = 56, 
-                                    quantile = 56, ), )
+                                    quantile = 56, ), 
+                                sleep_idle_delay = koyeb.models.deployment_scaling_target_sleep_idle_delay.DeploymentScalingTargetSleepIdleDelay(
+                                    value = 56, ), )
                             ], )
                     ],
                 instance_types = [
@@ -115,6 +119,12 @@ class TestDeploymentDefinition(unittest.TestCase):
                         scopes = [
                             ''
                             ], )
+                    ],
+                config_files = [
+                    koyeb.models.config_file.ConfigFile(
+                        path = '', 
+                        permissions = '', 
+                        content = '', )
                     ],
                 skip_cache = True,
                 docker = koyeb.models.docker_source.DockerSource(

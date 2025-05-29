@@ -16,8 +16,11 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
+from datetime import datetime
+from pydantic import Field, StrictStr
 from typing import Optional
+from typing_extensions import Annotated
+from koyeb.models.query_logs_reply import QueryLogsReply
 from koyeb.models.stream_result_of_log_entry import StreamResultOfLogEntry
 
 from koyeb.api_client import ApiClient, RequestSerialized
@@ -38,6 +41,544 @@ class LogsApi:
         self.api_client = api_client
 
     @validate_call
+    def query_logs(
+        self,
+        type: Optional[StrictStr] = None,
+        app_id: Optional[StrictStr] = None,
+        service_id: Optional[StrictStr] = None,
+        deployment_id: Optional[StrictStr] = None,
+        instance_id: Optional[StrictStr] = None,
+        stream: Optional[StrictStr] = None,
+        regional_deployment_id: Optional[StrictStr] = None,
+        start: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) Must always be before `end`. Defaults to 15 minutes ago."
+            ),
+        ] = None,
+        end: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) Must always be after `start`. Defaults to now."
+            ),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) `asc` or `desc`. Defaults to `desc`."),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Defaults to 100. Maximum of 1000."),
+        ] = None,
+        regex: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Apply a regex to filter logs. Can't be used with `text`."
+            ),
+        ] = None,
+        text: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Looks for this string in logs. Can't be used with `regex`."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> QueryLogsReply:
+        """Query logs
+
+
+        :param type:
+        :type type: str
+        :param app_id:
+        :type app_id: str
+        :param service_id:
+        :type service_id: str
+        :param deployment_id:
+        :type deployment_id: str
+        :param instance_id:
+        :type instance_id: str
+        :param stream:
+        :type stream: str
+        :param regional_deployment_id:
+        :type regional_deployment_id: str
+        :param start: (Optional) Must always be before `end`. Defaults to 15 minutes ago.
+        :type start: datetime
+        :param end: (Optional) Must always be after `start`. Defaults to now.
+        :type end: datetime
+        :param order: (Optional) `asc` or `desc`. Defaults to `desc`.
+        :type order: str
+        :param limit: (Optional) Defaults to 100. Maximum of 1000.
+        :type limit: str
+        :param regex: (Optional) Apply a regex to filter logs. Can't be used with `text`.
+        :type regex: str
+        :param text: (Optional) Looks for this string in logs. Can't be used with `regex`.
+        :type text: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._query_logs_serialize(
+            type=type,
+            app_id=app_id,
+            service_id=service_id,
+            deployment_id=deployment_id,
+            instance_id=instance_id,
+            stream=stream,
+            regional_deployment_id=regional_deployment_id,
+            start=start,
+            end=end,
+            order=order,
+            limit=limit,
+            regex=regex,
+            text=text,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "QueryLogsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
+            "503": "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def query_logs_with_http_info(
+        self,
+        type: Optional[StrictStr] = None,
+        app_id: Optional[StrictStr] = None,
+        service_id: Optional[StrictStr] = None,
+        deployment_id: Optional[StrictStr] = None,
+        instance_id: Optional[StrictStr] = None,
+        stream: Optional[StrictStr] = None,
+        regional_deployment_id: Optional[StrictStr] = None,
+        start: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) Must always be before `end`. Defaults to 15 minutes ago."
+            ),
+        ] = None,
+        end: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) Must always be after `start`. Defaults to now."
+            ),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) `asc` or `desc`. Defaults to `desc`."),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Defaults to 100. Maximum of 1000."),
+        ] = None,
+        regex: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Apply a regex to filter logs. Can't be used with `text`."
+            ),
+        ] = None,
+        text: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Looks for this string in logs. Can't be used with `regex`."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[QueryLogsReply]:
+        """Query logs
+
+
+        :param type:
+        :type type: str
+        :param app_id:
+        :type app_id: str
+        :param service_id:
+        :type service_id: str
+        :param deployment_id:
+        :type deployment_id: str
+        :param instance_id:
+        :type instance_id: str
+        :param stream:
+        :type stream: str
+        :param regional_deployment_id:
+        :type regional_deployment_id: str
+        :param start: (Optional) Must always be before `end`. Defaults to 15 minutes ago.
+        :type start: datetime
+        :param end: (Optional) Must always be after `start`. Defaults to now.
+        :type end: datetime
+        :param order: (Optional) `asc` or `desc`. Defaults to `desc`.
+        :type order: str
+        :param limit: (Optional) Defaults to 100. Maximum of 1000.
+        :type limit: str
+        :param regex: (Optional) Apply a regex to filter logs. Can't be used with `text`.
+        :type regex: str
+        :param text: (Optional) Looks for this string in logs. Can't be used with `regex`.
+        :type text: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._query_logs_serialize(
+            type=type,
+            app_id=app_id,
+            service_id=service_id,
+            deployment_id=deployment_id,
+            instance_id=instance_id,
+            stream=stream,
+            regional_deployment_id=regional_deployment_id,
+            start=start,
+            end=end,
+            order=order,
+            limit=limit,
+            regex=regex,
+            text=text,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "QueryLogsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
+            "503": "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def query_logs_without_preload_content(
+        self,
+        type: Optional[StrictStr] = None,
+        app_id: Optional[StrictStr] = None,
+        service_id: Optional[StrictStr] = None,
+        deployment_id: Optional[StrictStr] = None,
+        instance_id: Optional[StrictStr] = None,
+        stream: Optional[StrictStr] = None,
+        regional_deployment_id: Optional[StrictStr] = None,
+        start: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) Must always be before `end`. Defaults to 15 minutes ago."
+            ),
+        ] = None,
+        end: Annotated[
+            Optional[datetime],
+            Field(
+                description="(Optional) Must always be after `start`. Defaults to now."
+            ),
+        ] = None,
+        order: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) `asc` or `desc`. Defaults to `desc`."),
+        ] = None,
+        limit: Annotated[
+            Optional[StrictStr],
+            Field(description="(Optional) Defaults to 100. Maximum of 1000."),
+        ] = None,
+        regex: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Apply a regex to filter logs. Can't be used with `text`."
+            ),
+        ] = None,
+        text: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Looks for this string in logs. Can't be used with `regex`."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Query logs
+
+
+        :param type:
+        :type type: str
+        :param app_id:
+        :type app_id: str
+        :param service_id:
+        :type service_id: str
+        :param deployment_id:
+        :type deployment_id: str
+        :param instance_id:
+        :type instance_id: str
+        :param stream:
+        :type stream: str
+        :param regional_deployment_id:
+        :type regional_deployment_id: str
+        :param start: (Optional) Must always be before `end`. Defaults to 15 minutes ago.
+        :type start: datetime
+        :param end: (Optional) Must always be after `start`. Defaults to now.
+        :type end: datetime
+        :param order: (Optional) `asc` or `desc`. Defaults to `desc`.
+        :type order: str
+        :param limit: (Optional) Defaults to 100. Maximum of 1000.
+        :type limit: str
+        :param regex: (Optional) Apply a regex to filter logs. Can't be used with `text`.
+        :type regex: str
+        :param text: (Optional) Looks for this string in logs. Can't be used with `regex`.
+        :type text: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._query_logs_serialize(
+            type=type,
+            app_id=app_id,
+            service_id=service_id,
+            deployment_id=deployment_id,
+            instance_id=instance_id,
+            stream=stream,
+            regional_deployment_id=regional_deployment_id,
+            start=start,
+            end=end,
+            order=order,
+            limit=limit,
+            regex=regex,
+            text=text,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "QueryLogsReply",
+            "400": "ErrorWithFields",
+            "401": "Error",
+            "403": "Error",
+            "404": "Error",
+            "500": "Error",
+            "503": "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _query_logs_serialize(
+        self,
+        type,
+        app_id,
+        service_id,
+        deployment_id,
+        instance_id,
+        stream,
+        regional_deployment_id,
+        start,
+        end,
+        order,
+        limit,
+        regex,
+        text,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if type is not None:
+            _query_params.append(("type", type))
+
+        if app_id is not None:
+            _query_params.append(("app_id", app_id))
+
+        if service_id is not None:
+            _query_params.append(("service_id", service_id))
+
+        if deployment_id is not None:
+            _query_params.append(("deployment_id", deployment_id))
+
+        if instance_id is not None:
+            _query_params.append(("instance_id", instance_id))
+
+        if stream is not None:
+            _query_params.append(("stream", stream))
+
+        if regional_deployment_id is not None:
+            _query_params.append(("regional_deployment_id", regional_deployment_id))
+
+        if start is not None:
+            if isinstance(start, datetime):
+                _query_params.append(
+                    (
+                        "start",
+                        start.strftime(self.api_client.configuration.datetime_format),
+                    )
+                )
+            else:
+                _query_params.append(("start", start))
+
+        if end is not None:
+            if isinstance(end, datetime):
+                _query_params.append(
+                    ("end", end.strftime(self.api_client.configuration.datetime_format))
+                )
+            else:
+                _query_params.append(("end", end))
+
+        if order is not None:
+            _query_params.append(("order", order))
+
+        if limit is not None:
+            _query_params.append(("limit", limit))
+
+        if regex is not None:
+            _query_params.append(("regex", regex))
+
+        if text is not None:
+            _query_params.append(("text", text))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+
+        # authentication setting
+        _auth_settings: List[str] = ["Bearer"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/v1/streams/logs/query",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def tail_logs(
         self,
         type: Optional[StrictStr] = None,
@@ -47,8 +588,20 @@ class LogsApi:
         regional_deployment_id: Optional[StrictStr] = None,
         instance_id: Optional[StrictStr] = None,
         stream: Optional[StrictStr] = None,
-        start: Optional[StrictStr] = None,
+        start: Optional[datetime] = None,
         limit: Optional[StrictStr] = None,
+        regex: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Apply a regex to filter logs. Can't be used with `text`."
+            ),
+        ] = None,
+        text: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Looks for this string in logs. Can't be used with `regex`."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -79,9 +632,13 @@ class LogsApi:
         :param stream:
         :type stream: str
         :param start:
-        :type start: str
+        :type start: datetime
         :param limit:
         :type limit: str
+        :param regex: (Optional) Apply a regex to filter logs. Can't be used with `text`.
+        :type regex: str
+        :param text: (Optional) Looks for this string in logs. Can't be used with `regex`.
+        :type text: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -114,6 +671,8 @@ class LogsApi:
             stream=stream,
             start=start,
             limit=limit,
+            regex=regex,
+            text=text,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -148,8 +707,20 @@ class LogsApi:
         regional_deployment_id: Optional[StrictStr] = None,
         instance_id: Optional[StrictStr] = None,
         stream: Optional[StrictStr] = None,
-        start: Optional[StrictStr] = None,
+        start: Optional[datetime] = None,
         limit: Optional[StrictStr] = None,
+        regex: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Apply a regex to filter logs. Can't be used with `text`."
+            ),
+        ] = None,
+        text: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Looks for this string in logs. Can't be used with `regex`."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -180,9 +751,13 @@ class LogsApi:
         :param stream:
         :type stream: str
         :param start:
-        :type start: str
+        :type start: datetime
         :param limit:
         :type limit: str
+        :param regex: (Optional) Apply a regex to filter logs. Can't be used with `text`.
+        :type regex: str
+        :param text: (Optional) Looks for this string in logs. Can't be used with `regex`.
+        :type text: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -215,6 +790,8 @@ class LogsApi:
             stream=stream,
             start=start,
             limit=limit,
+            regex=regex,
+            text=text,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -249,8 +826,20 @@ class LogsApi:
         regional_deployment_id: Optional[StrictStr] = None,
         instance_id: Optional[StrictStr] = None,
         stream: Optional[StrictStr] = None,
-        start: Optional[StrictStr] = None,
+        start: Optional[datetime] = None,
         limit: Optional[StrictStr] = None,
+        regex: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Apply a regex to filter logs. Can't be used with `text`."
+            ),
+        ] = None,
+        text: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="(Optional) Looks for this string in logs. Can't be used with `regex`."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -281,9 +870,13 @@ class LogsApi:
         :param stream:
         :type stream: str
         :param start:
-        :type start: str
+        :type start: datetime
         :param limit:
         :type limit: str
+        :param regex: (Optional) Apply a regex to filter logs. Can't be used with `text`.
+        :type regex: str
+        :param text: (Optional) Looks for this string in logs. Can't be used with `regex`.
+        :type text: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -316,6 +909,8 @@ class LogsApi:
             stream=stream,
             start=start,
             limit=limit,
+            regex=regex,
+            text=text,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -347,6 +942,8 @@ class LogsApi:
         stream,
         start,
         limit,
+        regex,
+        text,
         _request_auth,
         _content_type,
         _headers,
@@ -360,7 +957,9 @@ class LogsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -387,17 +986,32 @@ class LogsApi:
             _query_params.append(("stream", stream))
 
         if start is not None:
-            _query_params.append(("start", start))
+            if isinstance(start, datetime):
+                _query_params.append(
+                    (
+                        "start",
+                        start.strftime(self.api_client.configuration.datetime_format),
+                    )
+                )
+            else:
+                _query_params.append(("start", start))
 
         if limit is not None:
             _query_params.append(("limit", limit))
+
+        if regex is not None:
+            _query_params.append(("regex", regex))
+
+        if text is not None:
+            _query_params.append(("text", text))
 
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(["*/*"])
 
         # authentication setting
         _auth_settings: List[str] = ["Bearer"]

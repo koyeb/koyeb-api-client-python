@@ -35,7 +35,9 @@ class KgitproxyBranch(BaseModel):
     name: Optional[StrictStr] = None
     is_default: Optional[StrictBool] = None
     is_protected: Optional[StrictBool] = None
-    provider: Optional[KgitproxyRepositoryProvider] = None
+    provider: Optional[
+        KgitproxyRepositoryProvider
+    ] = KgitproxyRepositoryProvider.INVALID_PROVIDER
     __properties: ClassVar[List[str]] = [
         "id",
         "organization_id",
@@ -102,7 +104,9 @@ class KgitproxyBranch(BaseModel):
                 "name": obj.get("name"),
                 "is_default": obj.get("is_default"),
                 "is_protected": obj.get("is_protected"),
-                "provider": obj.get("provider"),
+                "provider": obj.get("provider")
+                if obj.get("provider") is not None
+                else KgitproxyRepositoryProvider.INVALID_PROVIDER,
             }
         )
         return _obj

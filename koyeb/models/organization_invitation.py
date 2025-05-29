@@ -35,8 +35,10 @@ class OrganizationInvitation(BaseModel):
 
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
-    role: Optional[UserRoleRole] = None
-    status: Optional[OrganizationInvitationStatus] = None
+    role: Optional[UserRoleRole] = UserRoleRole.INVALID
+    status: Optional[
+        OrganizationInvitationStatus
+    ] = OrganizationInvitationStatus.INVALID
     expires_at: Optional[datetime] = None
     organization_id: Optional[StrictStr] = None
     organization: Optional[PublicOrganization] = None
@@ -119,8 +121,12 @@ class OrganizationInvitation(BaseModel):
             {
                 "id": obj.get("id"),
                 "email": obj.get("email"),
-                "role": obj.get("role"),
-                "status": obj.get("status"),
+                "role": obj.get("role")
+                if obj.get("role") is not None
+                else UserRoleRole.INVALID,
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else OrganizationInvitationStatus.INVALID,
                 "expires_at": obj.get("expires_at"),
                 "organization_id": obj.get("organization_id"),
                 "organization": PublicOrganization.from_dict(obj["organization"])

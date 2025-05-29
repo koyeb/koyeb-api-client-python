@@ -37,7 +37,7 @@ class Subscription(BaseModel):
     version: Optional[StrictStr] = None
     organization_id: Optional[StrictStr] = None
     stripe_subscription_id: Optional[StrictStr] = None
-    status: Optional[SubscriptionStatus] = None
+    status: Optional[SubscriptionStatus] = SubscriptionStatus.INVALID
     messages: Optional[List[StrictStr]] = None
     has_pending_update: Optional[StrictBool] = None
     stripe_pending_invoice_id: Optional[StrictStr] = None
@@ -51,6 +51,10 @@ class Subscription(BaseModel):
     amount_paid: Optional[StrictStr] = None
     amount_remaining: Optional[StrictStr] = None
     payment_failure: Optional[SubscriptionPaymentFailure] = None
+    trialing: Optional[StrictBool] = None
+    trial_ends_at: Optional[datetime] = None
+    trial_max_spend: Optional[StrictStr] = None
+    current_spend: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "created_at",
@@ -72,6 +76,10 @@ class Subscription(BaseModel):
         "amount_paid",
         "amount_remaining",
         "payment_failure",
+        "trialing",
+        "trial_ends_at",
+        "trial_max_spend",
+        "current_spend",
     ]
 
     model_config = ConfigDict(
@@ -133,7 +141,9 @@ class Subscription(BaseModel):
                 "version": obj.get("version"),
                 "organization_id": obj.get("organization_id"),
                 "stripe_subscription_id": obj.get("stripe_subscription_id"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else SubscriptionStatus.INVALID,
                 "messages": obj.get("messages"),
                 "has_pending_update": obj.get("has_pending_update"),
                 "stripe_pending_invoice_id": obj.get("stripe_pending_invoice_id"),
@@ -151,6 +161,10 @@ class Subscription(BaseModel):
                 )
                 if obj.get("payment_failure") is not None
                 else None,
+                "trialing": obj.get("trialing"),
+                "trial_ends_at": obj.get("trial_ends_at"),
+                "trial_max_spend": obj.get("trial_max_spend"),
+                "current_spend": obj.get("current_spend"),
             }
         )
         return _obj

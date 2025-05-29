@@ -23,15 +23,13 @@ from typing import Optional, Set
 from typing_extensions import Self
 
 
-class GithubInstallationCallbackRequest(BaseModel):
+class RedeemCouponRequest(BaseModel):
     """
-    GithubInstallationCallbackRequest
+    RedeemCouponRequest
     """  # noqa: E501
 
-    installation_id: Optional[StrictStr] = None
-    setup_action: Optional[StrictStr] = None
-    state: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["installation_id", "setup_action", "state"]
+    code: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["code"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +48,7 @@ class GithubInstallationCallbackRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GithubInstallationCallbackRequest from a JSON string"""
+        """Create an instance of RedeemCouponRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,18 +72,12 @@ class GithubInstallationCallbackRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GithubInstallationCallbackRequest from a dict"""
+        """Create an instance of RedeemCouponRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "installation_id": obj.get("installation_id"),
-                "setup_action": obj.get("setup_action"),
-                "state": obj.get("state"),
-            }
-        )
+        _obj = cls.model_validate({"code": obj.get("code")})
         return _obj

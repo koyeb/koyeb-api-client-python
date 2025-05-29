@@ -10,14 +10,16 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
-**status** | [**DomainStatus**](DomainStatus.md) |  | [optional] 
-**type** | [**DomainType**](DomainType.md) |  | [optional] 
+**status** | [**DomainStatus**](DomainStatus.md) |  | [optional] [default to DomainStatus.PENDING]
+**type** | [**DomainType**](DomainType.md) |  | [optional] [default to DomainType.AUTOASSIGNED]
 **app_id** | **str** |  | [optional] 
 **deployment_group** | **str** |  | [optional] 
 **verified_at** | **datetime** |  | [optional] 
 **intended_cname** | **str** |  | [optional] 
 **messages** | **List[str]** |  | [optional] 
 **version** | **str** |  | [optional] 
+**cloudflare** | **object** |  | [optional] 
+**koyeb** | [**DomainLoadBalancerKoyeb**](DomainLoadBalancerKoyeb.md) |  | [optional] 
 
 ## Example
 

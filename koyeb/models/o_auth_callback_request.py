@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,20 @@ class OAuthCallbackRequest(BaseModel):
 
     state: Optional[StrictStr] = None
     code: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["state", "code"]
+    setup_action: Optional[StrictStr] = Field(
+        default=None,
+        description="setup_action is populated in the context of a GitHub app installation request. For logins and signups, it is not set.",
+    )
+    installation_id: Optional[StrictStr] = Field(
+        default=None,
+        description="installation_id is populated in the context of a GitHub app installation request. For logins and signups, it is not set.",
+    )
+    __properties: ClassVar[List[str]] = [
+        "state",
+        "code",
+        "setup_action",
+        "installation_id",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,5 +93,12 @@ class OAuthCallbackRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"state": obj.get("state"), "code": obj.get("code")})
+        _obj = cls.model_validate(
+            {
+                "state": obj.get("state"),
+                "code": obj.get("code"),
+                "setup_action": obj.get("setup_action"),
+                "installation_id": obj.get("installation_id"),
+            }
+        )
         return _obj

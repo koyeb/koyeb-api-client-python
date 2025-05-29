@@ -28,7 +28,7 @@ class TestCatalogInstanceListItem(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CatalogInstanceListItem:
         """Test CatalogInstanceListItem
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `CatalogInstanceListItem`
@@ -41,6 +41,7 @@ class TestCatalogInstanceListItem(unittest.TestCase):
                 vcpu = 56,
                 memory = '',
                 disk = '',
+                price_per_second = '',
                 price_hourly = '',
                 price_monthly = '',
                 regions = [
@@ -63,7 +64,8 @@ class TestCatalogInstanceListItem(unittest.TestCase):
                     name = '', ),
                 service_types = [
                     ''
-                    ]
+                    ],
+                volumes_enabled = True
             )
         else:
             return CatalogInstanceListItem(

@@ -28,7 +28,7 @@ class TestListDatacentersReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListDatacentersReply:
         """Test ListDatacentersReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `ListDatacentersReply`
@@ -44,9 +44,10 @@ class TestListDatacentersReply(unittest.TestCase):
                         coordinates = [
                             ''
                             ], 
-                        use_kata = True, 
                         use_gpu = True, 
-                        use_kuma = True, )
+                        regions = [
+                            ''
+                            ], )
                     ]
             )
         else:

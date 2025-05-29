@@ -19,6 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.next_invoice_reply_discount import NextInvoiceReplyDiscount
+from koyeb.models.next_invoice_reply_line import NextInvoiceReplyLine
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +31,9 @@ class NextInvoiceReply(BaseModel):
     """  # noqa: E501
 
     stripe_invoice: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["stripe_invoice"]
+    lines: Optional[List[NextInvoiceReplyLine]] = None
+    discounts: Optional[List[NextInvoiceReplyDiscount]] = None
+    __properties: ClassVar[List[str]] = ["stripe_invoice", "lines", "discounts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +72,20 @@ class NextInvoiceReply(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in lines (list)
+        _items = []
+        if self.lines:
+            for _item_lines in self.lines:
+                if _item_lines:
+                    _items.append(_item_lines.to_dict())
+            _dict["lines"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in discounts (list)
+        _items = []
+        if self.discounts:
+            for _item_discounts in self.discounts:
+                if _item_discounts:
+                    _items.append(_item_discounts.to_dict())
+            _dict["discounts"] = _items
         return _dict
 
     @classmethod
@@ -79,5 +97,20 @@ class NextInvoiceReply(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"stripe_invoice": obj.get("stripe_invoice")})
+        _obj = cls.model_validate(
+            {
+                "stripe_invoice": obj.get("stripe_invoice"),
+                "lines": [
+                    NextInvoiceReplyLine.from_dict(_item) for _item in obj["lines"]
+                ]
+                if obj.get("lines") is not None
+                else None,
+                "discounts": [
+                    NextInvoiceReplyDiscount.from_dict(_item)
+                    for _item in obj["discounts"]
+                ]
+                if obj.get("discounts") is not None
+                else None,
+            }
+        )
         return _obj

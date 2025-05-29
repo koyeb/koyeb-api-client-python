@@ -37,7 +37,7 @@ class PaymentMethod(BaseModel):
     organization_id: Optional[StrictStr] = None
     type: Optional[StrictStr] = None
     provider: Optional[StrictStr] = None
-    status: Optional[PaymentMethodStatus] = None
+    status: Optional[PaymentMethodStatus] = PaymentMethodStatus.INVALID
     messages: Optional[List[StrictStr]] = None
     stripe_payment_method_id: Optional[StrictStr] = None
     authorization_verified_at: Optional[datetime] = None
@@ -132,7 +132,9 @@ class PaymentMethod(BaseModel):
                 "organization_id": obj.get("organization_id"),
                 "type": obj.get("type"),
                 "provider": obj.get("provider"),
-                "status": obj.get("status"),
+                "status": obj.get("status")
+                if obj.get("status") is not None
+                else PaymentMethodStatus.INVALID,
                 "messages": obj.get("messages"),
                 "stripe_payment_method_id": obj.get("stripe_payment_method_id"),
                 "authorization_verified_at": obj.get("authorization_verified_at"),

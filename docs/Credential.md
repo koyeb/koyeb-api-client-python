@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**type** | [**CredentialType**](CredentialType.md) |  | [optional] 
+**type** | [**CredentialType**](CredentialType.md) |  | [optional] [default to CredentialType.INVALID]
 **name** | **str** |  | [optional] 
 **token** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 

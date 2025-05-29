@@ -72,9 +72,9 @@ class ListDatacentersReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in datacenters (list)
         _items = []
         if self.datacenters:
-            for _item in self.datacenters:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_datacenters in self.datacenters:
+                if _item_datacenters:
+                    _items.append(_item_datacenters.to_dict())
             _dict["datacenters"] = _items
         return _dict
 

@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.domain_load_balancer_koyeb import DomainLoadBalancerKoyeb
 from koyeb.models.domain_type import DomainType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,9 +31,17 @@ class CreateDomain(BaseModel):
     """  # noqa: E501
 
     name: Optional[StrictStr] = None
-    type: Optional[DomainType] = None
+    type: Optional[DomainType] = DomainType.AUTOASSIGNED
     app_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name", "type", "app_id"]
+    cloudflare: Optional[Dict[str, Any]] = None
+    koyeb: Optional[DomainLoadBalancerKoyeb] = None
+    __properties: ClassVar[List[str]] = [
+        "name",
+        "type",
+        "app_id",
+        "cloudflare",
+        "koyeb",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,6 +80,9 @@ class CreateDomain(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of koyeb
+        if self.koyeb:
+            _dict["koyeb"] = self.koyeb.to_dict()
         return _dict
 
     @classmethod
@@ -85,8 +97,14 @@ class CreateDomain(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
-                "type": obj.get("type"),
+                "type": obj.get("type")
+                if obj.get("type") is not None
+                else DomainType.AUTOASSIGNED,
                 "app_id": obj.get("app_id"),
+                "cloudflare": obj.get("cloudflare"),
+                "koyeb": DomainLoadBalancerKoyeb.from_dict(obj["koyeb"])
+                if obj.get("koyeb") is not None
+                else None,
             }
         )
         return _obj

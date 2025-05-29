@@ -44,6 +44,7 @@ class User(BaseModel):
     flags: Optional[List[UserFlags]] = None
     name: Optional[StrictStr] = None
     email_validated: Optional[StrictBool] = None
+    trialed: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "email",
@@ -59,6 +60,7 @@ class User(BaseModel):
         "flags",
         "name",
         "email_validated",
+        "trialed",
     ]
 
     model_config = ConfigDict(
@@ -125,6 +127,7 @@ class User(BaseModel):
                 "flags": obj.get("flags"),
                 "name": obj.get("name"),
                 "email_validated": obj.get("email_validated"),
+                "trialed": obj.get("trialed"),
             }
         )
         return _obj

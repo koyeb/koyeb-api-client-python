@@ -92,51 +92,51 @@ class KsearchSearchReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in organizations (list)
         _items = []
         if self.organizations:
-            for _item in self.organizations:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_organizations in self.organizations:
+                if _item_organizations:
+                    _items.append(_item_organizations.to_dict())
             _dict["organizations"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in users (list)
         _items = []
         if self.users:
-            for _item in self.users:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_users in self.users:
+                if _item_users:
+                    _items.append(_item_users.to_dict())
             _dict["users"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in apps (list)
         _items = []
         if self.apps:
-            for _item in self.apps:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_apps in self.apps:
+                if _item_apps:
+                    _items.append(_item_apps.to_dict())
             _dict["apps"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in services (list)
         _items = []
         if self.services:
-            for _item in self.services:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_services in self.services:
+                if _item_services:
+                    _items.append(_item_services.to_dict())
             _dict["services"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in global_deployments (list)
         _items = []
         if self.global_deployments:
-            for _item in self.global_deployments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_global_deployments in self.global_deployments:
+                if _item_global_deployments:
+                    _items.append(_item_global_deployments.to_dict())
             _dict["global_deployments"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in regional_deployments (list)
         _items = []
         if self.regional_deployments:
-            for _item in self.regional_deployments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_regional_deployments in self.regional_deployments:
+                if _item_regional_deployments:
+                    _items.append(_item_regional_deployments.to_dict())
             _dict["regional_deployments"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in instances (list)
         _items = []
         if self.instances:
-            for _item in self.instances:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_instances in self.instances:
+                if _item_instances:
+                    _items.append(_item_instances.to_dict())
             _dict["instances"] = _items
         return _dict
 

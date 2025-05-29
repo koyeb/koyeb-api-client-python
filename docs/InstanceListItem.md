@@ -13,10 +13,11 @@ Name | Type | Description | Notes
 **service_id** | **str** |  | [optional] 
 **regional_deployment_id** | **str** |  | [optional] 
 **allocation_id** | **str** |  | [optional] 
+**type** | **str** |  | [optional] 
 **replica_index** | **int** |  | [optional] 
 **region** | **str** |  | [optional] 
 **datacenter** | **str** |  | [optional] 
-**status** | [**InstanceStatus**](InstanceStatus.md) |  | [optional] 
+**status** | [**InstanceStatus**](InstanceStatus.md) |  | [optional] [default to InstanceStatus.ALLOCATING]
 **messages** | **List[str]** |  | [optional] 
 **xyz_deployment_id** | **str** | WARNING: Please don&#39;t use the following attribute. Koyeb doesn&#39;t guarantee backwards compatible breaking change and reserve the right to completely drop it without notice. USE AT YOUR OWN RISK. | [optional] 
 

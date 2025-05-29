@@ -32,17 +32,15 @@ class DatacenterListItem(BaseModel):
     region_id: Optional[StrictStr] = None
     domain: Optional[StrictStr] = None
     coordinates: Optional[List[StrictStr]] = None
-    use_kata: Optional[StrictBool] = None
     use_gpu: Optional[StrictBool] = None
-    use_kuma: Optional[StrictBool] = None
+    regions: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "region_id",
         "domain",
         "coordinates",
-        "use_kata",
         "use_gpu",
-        "use_kuma",
+        "regions",
     ]
 
     model_config = ConfigDict(
@@ -99,9 +97,8 @@ class DatacenterListItem(BaseModel):
                 "region_id": obj.get("region_id"),
                 "domain": obj.get("domain"),
                 "coordinates": obj.get("coordinates"),
-                "use_kata": obj.get("use_kata"),
                 "use_gpu": obj.get("use_gpu"),
-                "use_kuma": obj.get("use_kuma"),
+                "regions": obj.get("regions"),
             }
         )
         return _obj

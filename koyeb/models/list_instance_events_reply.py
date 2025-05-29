@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.instance_event import InstanceEvent
 from typing import Optional, Set
@@ -33,7 +33,14 @@ class ListInstanceEventsReply(BaseModel):
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     order: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["events", "limit", "offset", "order"]
+    has_next: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = [
+        "events",
+        "limit",
+        "offset",
+        "order",
+        "has_next",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,9 +82,9 @@ class ListInstanceEventsReply(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in events (list)
         _items = []
         if self.events:
-            for _item in self.events:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_events in self.events:
+                if _item_events:
+                    _items.append(_item_events.to_dict())
             _dict["events"] = _items
         return _dict
 
@@ -98,6 +105,7 @@ class ListInstanceEventsReply(BaseModel):
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),
                 "order": obj.get("order"),
+                "has_next": obj.get("has_next"),
             }
         )
         return _obj

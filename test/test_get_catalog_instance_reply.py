@@ -28,7 +28,7 @@ class TestGetCatalogInstanceReply(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetCatalogInstanceReply:
         """Test GetCatalogInstanceReply
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `GetCatalogInstanceReply`
@@ -42,6 +42,7 @@ class TestGetCatalogInstanceReply(unittest.TestCase):
                     vcpu = 56, 
                     memory = '', 
                     disk = '', 
+                    price_per_second = '', 
                     price_hourly = '', 
                     price_monthly = '', 
                     regions = [
@@ -64,7 +65,8 @@ class TestGetCatalogInstanceReply(unittest.TestCase):
                         name = '', ), 
                     service_types = [
                         ''
-                        ], )
+                        ], 
+                    volumes_enabled = True, )
             )
         else:
             return GetCatalogInstanceReply(

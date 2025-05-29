@@ -17,8 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.domain_load_balancer_quotas import DomainLoadBalancerQuotas
+from koyeb.models.persistent_volume_quotas import PersistentVolumeQuotas
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,6 +40,12 @@ class Quotas(BaseModel):
     regions: Optional[List[StrictStr]] = None
     max_organization_members: Optional[StrictStr] = None
     max_instances_by_type: Optional[Dict[str, StrictStr]] = None
+    persistent_volumes_by_region: Optional[Dict[str, PersistentVolumeQuotas]] = None
+    custom_domains: Optional[StrictStr] = None
+    domains_load_balancer: Optional[DomainLoadBalancerQuotas] = None
+    metrics_retention: Optional[StrictInt] = None
+    logs_retention: Optional[StrictInt] = None
+    access_reserved_subdomains: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = [
         "apps",
         "services",
@@ -49,6 +57,12 @@ class Quotas(BaseModel):
         "regions",
         "max_organization_members",
         "max_instances_by_type",
+        "persistent_volumes_by_region",
+        "custom_domains",
+        "domains_load_balancer",
+        "metrics_retention",
+        "logs_retention",
+        "access_reserved_subdomains",
     ]
 
     model_config = ConfigDict(
@@ -88,6 +102,20 @@ class Quotas(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each value in persistent_volumes_by_region (dict)
+        _field_dict = {}
+        if self.persistent_volumes_by_region:
+            for _key_persistent_volumes_by_region in self.persistent_volumes_by_region:
+                if self.persistent_volumes_by_region[_key_persistent_volumes_by_region]:
+                    _field_dict[
+                        _key_persistent_volumes_by_region
+                    ] = self.persistent_volumes_by_region[
+                        _key_persistent_volumes_by_region
+                    ].to_dict()
+            _dict["persistent_volumes_by_region"] = _field_dict
+        # override the default output from pydantic by calling `to_dict()` of domains_load_balancer
+        if self.domains_load_balancer:
+            _dict["domains_load_balancer"] = self.domains_load_balancer.to_dict()
         return _dict
 
     @classmethod
@@ -113,6 +141,21 @@ class Quotas(BaseModel):
                 "regions": obj.get("regions"),
                 "max_organization_members": obj.get("max_organization_members"),
                 "max_instances_by_type": obj.get("max_instances_by_type"),
+                "persistent_volumes_by_region": dict(
+                    (_k, PersistentVolumeQuotas.from_dict(_v))
+                    for _k, _v in obj["persistent_volumes_by_region"].items()
+                )
+                if obj.get("persistent_volumes_by_region") is not None
+                else None,
+                "custom_domains": obj.get("custom_domains"),
+                "domains_load_balancer": DomainLoadBalancerQuotas.from_dict(
+                    obj["domains_load_balancer"]
+                )
+                if obj.get("domains_load_balancer") is not None
+                else None,
+                "metrics_retention": obj.get("metrics_retention"),
+                "logs_retention": obj.get("logs_retention"),
+                "access_reserved_subdomains": obj.get("access_reserved_subdomains"),
             }
         )
         return _obj

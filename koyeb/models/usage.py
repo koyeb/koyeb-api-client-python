@@ -73,9 +73,9 @@ class Usage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each value in periods (dict)
         _field_dict = {}
         if self.periods:
-            for _key in self.periods:
-                if self.periods[_key]:
-                    _field_dict[_key] = self.periods[_key].to_dict()
+            for _key_periods in self.periods:
+                if self.periods[_key_periods]:
+                    _field_dict[_key_periods] = self.periods[_key_periods].to_dict()
             _dict["periods"] = _field_dict
         return _dict
 

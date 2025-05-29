@@ -29,7 +29,7 @@ class TestDockerHelperApi(unittest.TestCase):
     def test_verify_docker_image(self) -> None:
         """Test case for verify_docker_image
 
-        Verify if a docker image is reachable
+        Verify Docker Image
         """
         pass
 

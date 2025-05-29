@@ -10,8 +10,6 @@ Method | HTTP request | Description
 # **get_quotas**
 > GetQuotasReply get_quotas(organization_id)
 
-
-
 ### Example
 
 * Api Key Authentication (Bearer):

@@ -14,11 +14,11 @@
 
 import unittest
 
-from koyeb.models.regional_deployment_metadata import RegionalDeploymentMetadata
+from koyeb.models.deployment_strategy import DeploymentStrategy
 
 
-class TestRegionalDeploymentMetadata(unittest.TestCase):
-    """RegionalDeploymentMetadata unit test stubs"""
+class TestDeploymentStrategy(unittest.TestCase):
+    """DeploymentStrategy unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,25 @@ class TestRegionalDeploymentMetadata(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RegionalDeploymentMetadata:
-        """Test RegionalDeploymentMetadata
-        include_option is a boolean, when False only required
+    def make_instance(self, include_optional) -> DeploymentStrategy:
+        """Test DeploymentStrategy
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
-        # uncomment below to create an instance of `RegionalDeploymentMetadata`
+        # uncomment below to create an instance of `DeploymentStrategy`
         """
-        model = RegionalDeploymentMetadata()
+        model = DeploymentStrategy()
         if include_optional:
-            return RegionalDeploymentMetadata(
-                runtime_job_id = ''
+            return DeploymentStrategy(
+                type = 'DEPLOYMENT_STRATEGY_TYPE_INVALID'
             )
         else:
-            return RegionalDeploymentMetadata(
+            return DeploymentStrategy(
         )
         """
 
-    def testRegionalDeploymentMetadata(self):
-        """Test RegionalDeploymentMetadata"""
+    def testDeploymentStrategy(self):
+        """Test DeploymentStrategy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

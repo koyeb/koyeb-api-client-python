@@ -28,7 +28,7 @@ class TestDeploymentScalingTarget(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DeploymentScalingTarget:
         """Test DeploymentScalingTarget
-        include_option is a boolean, when False only required
+        include_optional is a boolean, when False only required
         params are included, when True both required and
         optional params are included"""
         # uncomment below to create an instance of `DeploymentScalingTarget`
@@ -46,7 +46,9 @@ class TestDeploymentScalingTarget(unittest.TestCase):
                     value = 56, ),
                 requests_response_time = koyeb.models.deployment_scaling_target_requests_response_time.DeploymentScalingTargetRequestsResponseTime(
                     value = 56, 
-                    quantile = 56, )
+                    quantile = 56, ),
+                sleep_idle_delay = koyeb.models.deployment_scaling_target_sleep_idle_delay.DeploymentScalingTargetSleepIdleDelay(
+                    value = 56, )
             )
         else:
             return DeploymentScalingTarget(
