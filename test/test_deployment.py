@@ -68,9 +68,20 @@ class TestDeployment(unittest.TestCase):
                                 ''
                                 ], ), ), 
                     git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
-                        last_provisioned_deployment_id = '', ), 
+                        last_provisioned_deployment_id = '', 
+                        git_env = koyeb.models.git_env_deployment_metadata.GitEnvDeploymentMetadata(
+                            sha = '', 
+                            commit_author = '', 
+                            commit_message = '', ), ), 
                     archive = koyeb.models.archive_deployment_metadata.ArchiveDeploymentMetadata(
-                        last_provisioned_deployment_id = '', ), ),
+                        last_provisioned_deployment_id = '', ), 
+                    proxy_ports = [
+                        koyeb.models.deployment_proxy_port_metadata.DeploymentProxyPortMetadata(
+                            host = '', 
+                            public_port = 56, 
+                            port = 56, 
+                            protocol = 'tcp', )
+                        ], ),
                 definition = koyeb.models.deployment_definition.DeploymentDefinition(
                     name = '', 
                     type = 'INVALID', 
@@ -84,6 +95,11 @@ class TestDeployment(unittest.TestCase):
                         koyeb.models.deployment_port.DeploymentPort(
                             port = 56, 
                             protocol = '', )
+                        ], 
+                    proxy_ports = [
+                        koyeb.models.deployment_proxy_port.DeploymentProxyPort(
+                            port = 56, 
+                            protocol = 'tcp', )
                         ], 
                     env = [
                         koyeb.models.deployment_env.DeploymentEnv(
@@ -115,7 +131,9 @@ class TestDeployment(unittest.TestCase):
                                         value = 56, 
                                         quantile = 56, ), 
                                     sleep_idle_delay = koyeb.models.deployment_scaling_target_sleep_idle_delay.DeploymentScalingTargetSleepIdleDelay(
-                                        value = 56, ), )
+                                        value = 56, 
+                                        deep_sleep_value = 56, 
+                                        light_sleep_value = 56, ), )
                                 ], )
                         ], 
                     instance_types = [

@@ -85,6 +85,8 @@ from koyeb.models.credential_type import CredentialType
 from koyeb.models.database_deployment_metadata import DatabaseDeploymentMetadata
 from koyeb.models.database_role_password import DatabaseRolePassword
 from koyeb.models.database_source import DatabaseSource
+from koyeb.models.database_usage import DatabaseUsage
+from koyeb.models.database_usage_details import DatabaseUsageDetails
 from koyeb.models.datacenter_list_item import DatacenterListItem
 from koyeb.models.deactivate_organization_reply import DeactivateOrganizationReply
 from koyeb.models.deactivate_organization_request import DeactivateOrganizationRequest
@@ -127,6 +129,8 @@ from koyeb.models.deployment_provisioning_info_stage_build_attempt_build_step im
 from koyeb.models.deployment_provisioning_info_stage_status import (
     DeploymentProvisioningInfoStageStatus,
 )
+from koyeb.models.deployment_proxy_port import DeploymentProxyPort
+from koyeb.models.deployment_proxy_port_metadata import DeploymentProxyPortMetadata
 from koyeb.models.deployment_role import DeploymentRole
 from koyeb.models.deployment_route import DeploymentRoute
 from koyeb.models.deployment_scaling import DeploymentScaling
@@ -194,6 +198,7 @@ from koyeb.models.get_deployment_scaling_reply import GetDeploymentScalingReply
 from koyeb.models.get_deployment_scaling_reply_item import GetDeploymentScalingReplyItem
 from koyeb.models.get_domain_reply import GetDomainReply
 from koyeb.models.get_github_installation_reply import GetGithubInstallationReply
+from koyeb.models.get_idenfy_token_reply import GetIdenfyTokenReply
 from koyeb.models.get_instance_reply import GetInstanceReply
 from koyeb.models.get_intercom_profile_reply import GetIntercomProfileReply
 from koyeb.models.get_metrics_reply import GetMetricsReply
@@ -221,6 +226,7 @@ from koyeb.models.get_user_organization_invitation_reply import (
     GetUserOrganizationInvitationReply,
 )
 from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
+from koyeb.models.git_env_deployment_metadata import GitEnvDeploymentMetadata
 from koyeb.models.git_hub_registry_configuration import GitHubRegistryConfiguration
 from koyeb.models.git_lab_registry_configuration import GitLabRegistryConfiguration
 from koyeb.models.git_source import GitSource
@@ -340,6 +346,7 @@ from koyeb.models.persistent_volume_status import PersistentVolumeStatus
 from koyeb.models.plan import Plan
 from koyeb.models.port import Port
 from koyeb.models.private_registry_configuration import PrivateRegistryConfiguration
+from koyeb.models.proxy_port_protocol import ProxyPortProtocol
 from koyeb.models.public_organization import PublicOrganization
 from koyeb.models.public_user import PublicUser
 from koyeb.models.query_logs_reply import QueryLogsReply
@@ -377,6 +384,7 @@ from koyeb.models.review_organization_capacity_request import (
 )
 from koyeb.models.route import Route
 from koyeb.models.sample import Sample
+from koyeb.models.scale_to_zero_quotas import ScaleToZeroQuotas
 from koyeb.models.scaling import Scaling
 from koyeb.models.secret import Secret
 from koyeb.models.secret_type import SecretType

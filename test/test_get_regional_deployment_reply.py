@@ -93,7 +93,9 @@ class TestGetRegionalDeploymentReply(unittest.TestCase):
                                         value = 56, 
                                         quantile = 56, ), 
                                     sleep_idle_delay = koyeb.models.deployment_scaling_target_sleep_idle_delay.DeploymentScalingTargetSleepIdleDelay(
-                                        value = 56, ), )
+                                        value = 56, 
+                                        deep_sleep_value = 56, 
+                                        light_sleep_value = 56, ), )
                                 ], ), 
                         instance_type = '', 
                         deployment_group = '', 

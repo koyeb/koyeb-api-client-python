@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **strategy** | [**DeploymentStrategy**](DeploymentStrategy.md) |  | [optional] 
 **routes** | [**List[DeploymentRoute]**](DeploymentRoute.md) |  | [optional] 
 **ports** | [**List[DeploymentPort]**](DeploymentPort.md) |  | [optional] 
+**proxy_ports** | [**List[DeploymentProxyPort]**](DeploymentProxyPort.md) |  | [optional] 
 **env** | [**List[DeploymentEnv]**](DeploymentEnv.md) |  | [optional] 
 **regions** | **List[str]** |  | [optional] 
 **scalings** | [**List[DeploymentScaling]**](DeploymentScaling.md) |  | [optional] 

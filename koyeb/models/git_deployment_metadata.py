@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.git_env_deployment_metadata import GitEnvDeploymentMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +30,8 @@ class GitDeploymentMetadata(BaseModel):
     """  # noqa: E501
 
     last_provisioned_deployment_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["last_provisioned_deployment_id"]
+    git_env: Optional[GitEnvDeploymentMetadata] = None
+    __properties: ClassVar[List[str]] = ["last_provisioned_deployment_id", "git_env"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +70,9 @@ class GitDeploymentMetadata(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of git_env
+        if self.git_env:
+            _dict["git_env"] = self.git_env.to_dict()
         return _dict
 
     @classmethod
@@ -83,7 +88,10 @@ class GitDeploymentMetadata(BaseModel):
             {
                 "last_provisioned_deployment_id": obj.get(
                     "last_provisioned_deployment_id"
-                )
+                ),
+                "git_env": GitEnvDeploymentMetadata.from_dict(obj["git_env"])
+                if obj.get("git_env") is not None
+                else None,
             }
         )
         return _obj

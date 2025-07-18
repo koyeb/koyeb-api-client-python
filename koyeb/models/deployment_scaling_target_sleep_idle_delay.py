@@ -30,9 +30,21 @@ class DeploymentScalingTargetSleepIdleDelay(BaseModel):
 
     value: Optional[StrictInt] = Field(
         default=None,
-        description="Delay in seconds after which a service which received 0 request is scaled to 0. This is not configurable and must be set to 300 (5 minutes). Get in touch to tune it.",
+        description="DEPRECATED: use deep_sleep_value instead. Delay in seconds after which a service which received 0 request is put to deep sleep.",
     )
-    __properties: ClassVar[List[str]] = ["value"]
+    deep_sleep_value: Optional[StrictInt] = Field(
+        default=None,
+        description="Delay in seconds after which a service which received 0 request is put to deep sleep.",
+    )
+    light_sleep_value: Optional[StrictInt] = Field(
+        default=None,
+        description="Delay in seconds after which a service which received 0 request is put to light sleep.",
+    )
+    __properties: ClassVar[List[str]] = [
+        "value",
+        "deep_sleep_value",
+        "light_sleep_value",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,5 +94,11 @@ class DeploymentScalingTargetSleepIdleDelay(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"value": obj.get("value")})
+        _obj = cls.model_validate(
+            {
+                "value": obj.get("value"),
+                "deep_sleep_value": obj.get("deep_sleep_value"),
+                "light_sleep_value": obj.get("light_sleep_value"),
+            }
+        )
         return _obj

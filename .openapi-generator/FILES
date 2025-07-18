@@ -72,6 +72,8 @@ docs/CredentialsApi.md
 docs/DatabaseDeploymentMetadata.md
 docs/DatabaseRolePassword.md
 docs/DatabaseSource.md
+docs/DatabaseUsage.md
+docs/DatabaseUsageDetails.md
 docs/DatacenterListItem.md
 docs/DeactivateOrganizationReply.md
 docs/DeactivateOrganizationRequest.md
@@ -100,6 +102,8 @@ docs/DeploymentProvisioningInfoStage.md
 docs/DeploymentProvisioningInfoStageBuildAttempt.md
 docs/DeploymentProvisioningInfoStageBuildAttemptBuildStep.md
 docs/DeploymentProvisioningInfoStageStatus.md
+docs/DeploymentProxyPort.md
+docs/DeploymentProxyPortMetadata.md
 docs/DeploymentRole.md
 docs/DeploymentRoute.md
 docs/DeploymentScaling.md
@@ -150,6 +154,7 @@ docs/GetDeploymentScalingReply.md
 docs/GetDeploymentScalingReplyItem.md
 docs/GetDomainReply.md
 docs/GetGithubInstallationReply.md
+docs/GetIdenfyTokenReply.md
 docs/GetInstanceReply.md
 docs/GetIntercomProfileReply.md
 docs/GetMetricsReply.md
@@ -171,6 +176,7 @@ docs/GetSnapshotReply.md
 docs/GetSubscriptionReply.md
 docs/GetUserOrganizationInvitationReply.md
 docs/GitDeploymentMetadata.md
+docs/GitEnvDeploymentMetadata.md
 docs/GitHubRegistryConfiguration.md
 docs/GitLabRegistryConfiguration.md
 docs/GitSource.md
@@ -288,6 +294,7 @@ docs/Port.md
 docs/PrivateRegistryConfiguration.md
 docs/ProfileApi.md
 docs/ProvisioningApi.md
+docs/ProxyPortProtocol.md
 docs/PublicOrganization.md
 docs/PublicUser.md
 docs/QueryLogsReply.md
@@ -320,6 +327,7 @@ docs/ReviewOrganizationCapacityReply.md
 docs/ReviewOrganizationCapacityRequest.md
 docs/Route.md
 docs/Sample.md
+docs/ScaleToZeroQuotas.md
 docs/Scaling.md
 docs/SearchApi.md
 docs/Secret.md
@@ -495,6 +503,8 @@ koyeb/models/credential_type.py
 koyeb/models/database_deployment_metadata.py
 koyeb/models/database_role_password.py
 koyeb/models/database_source.py
+koyeb/models/database_usage.py
+koyeb/models/database_usage_details.py
 koyeb/models/datacenter_list_item.py
 koyeb/models/deactivate_organization_reply.py
 koyeb/models/deactivate_organization_request.py
@@ -523,6 +533,8 @@ koyeb/models/deployment_provisioning_info_stage.py
 koyeb/models/deployment_provisioning_info_stage_build_attempt.py
 koyeb/models/deployment_provisioning_info_stage_build_attempt_build_step.py
 koyeb/models/deployment_provisioning_info_stage_status.py
+koyeb/models/deployment_proxy_port.py
+koyeb/models/deployment_proxy_port_metadata.py
 koyeb/models/deployment_role.py
 koyeb/models/deployment_route.py
 koyeb/models/deployment_scaling.py
@@ -570,6 +582,7 @@ koyeb/models/get_deployment_scaling_reply.py
 koyeb/models/get_deployment_scaling_reply_item.py
 koyeb/models/get_domain_reply.py
 koyeb/models/get_github_installation_reply.py
+koyeb/models/get_idenfy_token_reply.py
 koyeb/models/get_instance_reply.py
 koyeb/models/get_intercom_profile_reply.py
 koyeb/models/get_metrics_reply.py
@@ -591,6 +604,7 @@ koyeb/models/get_snapshot_reply.py
 koyeb/models/get_subscription_reply.py
 koyeb/models/get_user_organization_invitation_reply.py
 koyeb/models/git_deployment_metadata.py
+koyeb/models/git_env_deployment_metadata.py
 koyeb/models/git_hub_registry_configuration.py
 koyeb/models/git_lab_registry_configuration.py
 koyeb/models/git_source.py
@@ -694,6 +708,7 @@ koyeb/models/persistent_volume_status.py
 koyeb/models/plan.py
 koyeb/models/port.py
 koyeb/models/private_registry_configuration.py
+koyeb/models/proxy_port_protocol.py
 koyeb/models/public_organization.py
 koyeb/models/public_user.py
 koyeb/models/query_logs_reply.py
@@ -723,6 +738,7 @@ koyeb/models/review_organization_capacity_reply.py
 koyeb/models/review_organization_capacity_request.py
 koyeb/models/route.py
 koyeb/models/sample.py
+koyeb/models/scale_to_zero_quotas.py
 koyeb/models/scaling.py
 koyeb/models/secret.py
 koyeb/models/secret_type.py
@@ -858,6 +874,8 @@ test/test_credentials_api.py
 test/test_database_deployment_metadata.py
 test/test_database_role_password.py
 test/test_database_source.py
+test/test_database_usage.py
+test/test_database_usage_details.py
 test/test_datacenter_list_item.py
 test/test_deactivate_organization_reply.py
 test/test_deactivate_organization_request.py
@@ -886,6 +904,8 @@ test/test_deployment_provisioning_info_stage.py
 test/test_deployment_provisioning_info_stage_build_attempt.py
 test/test_deployment_provisioning_info_stage_build_attempt_build_step.py
 test/test_deployment_provisioning_info_stage_status.py
+test/test_deployment_proxy_port.py
+test/test_deployment_proxy_port_metadata.py
 test/test_deployment_role.py
 test/test_deployment_route.py
 test/test_deployment_scaling.py
@@ -936,6 +956,7 @@ test/test_get_deployment_scaling_reply.py
 test/test_get_deployment_scaling_reply_item.py
 test/test_get_domain_reply.py
 test/test_get_github_installation_reply.py
+test/test_get_idenfy_token_reply.py
 test/test_get_instance_reply.py
 test/test_get_intercom_profile_reply.py
 test/test_get_metrics_reply.py
@@ -957,6 +978,7 @@ test/test_get_snapshot_reply.py
 test/test_get_subscription_reply.py
 test/test_get_user_organization_invitation_reply.py
 test/test_git_deployment_metadata.py
+test/test_git_env_deployment_metadata.py
 test/test_git_hub_registry_configuration.py
 test/test_git_lab_registry_configuration.py
 test/test_git_source.py
@@ -1074,6 +1096,7 @@ test/test_port.py
 test/test_private_registry_configuration.py
 test/test_profile_api.py
 test/test_provisioning_api.py
+test/test_proxy_port_protocol.py
 test/test_public_organization.py
 test/test_public_user.py
 test/test_query_logs_reply.py
@@ -1106,6 +1129,7 @@ test/test_review_organization_capacity_reply.py
 test/test_review_organization_capacity_request.py
 test/test_route.py
 test/test_sample.py
+test/test_scale_to_zero_quotas.py
 test/test_scaling.py
 test/test_search_api.py
 test/test_secret.py

@@ -54,9 +54,20 @@ class TestDeploymentMetadata(unittest.TestCase):
                             ''
                             ], ), ),
                 git = koyeb.models.git_deployment_metadata.GitDeploymentMetadata(
-                    last_provisioned_deployment_id = '', ),
+                    last_provisioned_deployment_id = '', 
+                    git_env = koyeb.models.git_env_deployment_metadata.GitEnvDeploymentMetadata(
+                        sha = '', 
+                        commit_author = '', 
+                        commit_message = '', ), ),
                 archive = koyeb.models.archive_deployment_metadata.ArchiveDeploymentMetadata(
-                    last_provisioned_deployment_id = '', )
+                    last_provisioned_deployment_id = '', ),
+                proxy_ports = [
+                    koyeb.models.deployment_proxy_port_metadata.DeploymentProxyPortMetadata(
+                        host = '', 
+                        public_port = 56, 
+                        port = 56, 
+                        protocol = 'tcp', )
+                    ]
             )
         else:
             return DeploymentMetadata(

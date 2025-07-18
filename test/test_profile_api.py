@@ -54,6 +54,13 @@ class TestProfileApi(unittest.TestCase):
         """
         pass
 
+    def test_get_idenfy_token(self) -> None:
+        """Test case for get_idenfy_token
+
+        Begin a session with iDenfy, emit an authToken
+        """
+        pass
+
     def test_get_o_auth_options(self) -> None:
         """Test case for get_o_auth_options
 

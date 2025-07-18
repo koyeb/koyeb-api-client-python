@@ -27,6 +27,7 @@ from koyeb.models.deployment_env import DeploymentEnv
 from koyeb.models.deployment_health_check import DeploymentHealthCheck
 from koyeb.models.deployment_instance_type import DeploymentInstanceType
 from koyeb.models.deployment_port import DeploymentPort
+from koyeb.models.deployment_proxy_port import DeploymentProxyPort
 from koyeb.models.deployment_route import DeploymentRoute
 from koyeb.models.deployment_scaling import DeploymentScaling
 from koyeb.models.deployment_strategy import DeploymentStrategy
@@ -47,6 +48,7 @@ class DeploymentDefinition(BaseModel):
     strategy: Optional[DeploymentStrategy] = None
     routes: Optional[List[DeploymentRoute]] = None
     ports: Optional[List[DeploymentPort]] = None
+    proxy_ports: Optional[List[DeploymentProxyPort]] = None
     env: Optional[List[DeploymentEnv]] = None
     regions: Optional[List[StrictStr]] = None
     scalings: Optional[List[DeploymentScaling]] = None
@@ -65,6 +67,7 @@ class DeploymentDefinition(BaseModel):
         "strategy",
         "routes",
         "ports",
+        "proxy_ports",
         "env",
         "regions",
         "scalings",
@@ -133,6 +136,13 @@ class DeploymentDefinition(BaseModel):
                 if _item_ports:
                     _items.append(_item_ports.to_dict())
             _dict["ports"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in proxy_ports (list)
+        _items = []
+        if self.proxy_ports:
+            for _item_proxy_ports in self.proxy_ports:
+                if _item_proxy_ports:
+                    _items.append(_item_proxy_ports.to_dict())
+            _dict["proxy_ports"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in env (list)
         _items = []
         if self.env:
@@ -212,6 +222,11 @@ class DeploymentDefinition(BaseModel):
                 else None,
                 "ports": [DeploymentPort.from_dict(_item) for _item in obj["ports"]]
                 if obj.get("ports") is not None
+                else None,
+                "proxy_ports": [
+                    DeploymentProxyPort.from_dict(_item) for _item in obj["proxy_ports"]
+                ]
+                if obj.get("proxy_ports") is not None
                 else None,
                 "env": [DeploymentEnv.from_dict(_item) for _item in obj["env"]]
                 if obj.get("env") is not None

@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.database_usage import DatabaseUsage
 from koyeb.models.service_usage import ServiceUsage
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +33,8 @@ class AppUsage(BaseModel):
     app_id: Optional[StrictStr] = None
     app_name: Optional[StrictStr] = None
     services: Optional[List[ServiceUsage]] = None
-    __properties: ClassVar[List[str]] = ["app_id", "app_name", "services"]
+    databases: Optional[List[DatabaseUsage]] = None
+    __properties: ClassVar[List[str]] = ["app_id", "app_name", "services", "databases"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,13 @@ class AppUsage(BaseModel):
                 if _item_services:
                     _items.append(_item_services.to_dict())
             _dict["services"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in databases (list)
+        _items = []
+        if self.databases:
+            for _item_databases in self.databases:
+                if _item_databases:
+                    _items.append(_item_databases.to_dict())
+            _dict["databases"] = _items
         return _dict
 
     @classmethod
@@ -95,6 +104,11 @@ class AppUsage(BaseModel):
                 "app_name": obj.get("app_name"),
                 "services": [ServiceUsage.from_dict(_item) for _item in obj["services"]]
                 if obj.get("services") is not None
+                else None,
+                "databases": [
+                    DatabaseUsage.from_dict(_item) for _item in obj["databases"]
+                ]
+                if obj.get("databases") is not None
                 else None,
             }
         )

@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.domain_load_balancer_quotas import DomainLoadBalancerQuotas
 from koyeb.models.persistent_volume_quotas import PersistentVolumeQuotas
+from koyeb.models.scale_to_zero_quotas import ScaleToZeroQuotas
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -46,6 +47,8 @@ class Quotas(BaseModel):
     metrics_retention: Optional[StrictInt] = None
     logs_retention: Optional[StrictInt] = None
     access_reserved_subdomains: Optional[List[StrictStr]] = None
+    proxy_ports: Optional[StrictInt] = None
+    scale_to_zero: Optional[ScaleToZeroQuotas] = None
     __properties: ClassVar[List[str]] = [
         "apps",
         "services",
@@ -63,6 +66,8 @@ class Quotas(BaseModel):
         "metrics_retention",
         "logs_retention",
         "access_reserved_subdomains",
+        "proxy_ports",
+        "scale_to_zero",
     ]
 
     model_config = ConfigDict(
@@ -116,6 +121,9 @@ class Quotas(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of domains_load_balancer
         if self.domains_load_balancer:
             _dict["domains_load_balancer"] = self.domains_load_balancer.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of scale_to_zero
+        if self.scale_to_zero:
+            _dict["scale_to_zero"] = self.scale_to_zero.to_dict()
         return _dict
 
     @classmethod
@@ -156,6 +164,10 @@ class Quotas(BaseModel):
                 "metrics_retention": obj.get("metrics_retention"),
                 "logs_retention": obj.get("logs_retention"),
                 "access_reserved_subdomains": obj.get("access_reserved_subdomains"),
+                "proxy_ports": obj.get("proxy_ports"),
+                "scale_to_zero": ScaleToZeroQuotas.from_dict(obj["scale_to_zero"])
+                if obj.get("scale_to_zero") is not None
+                else None,
             }
         )
         return _obj

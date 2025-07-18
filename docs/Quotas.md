@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **metrics_retention** | **int** |  | [optional] 
 **logs_retention** | **int** |  | [optional] 
 **access_reserved_subdomains** | **List[str]** |  | [optional] 
+**proxy_ports** | **int** |  | [optional] 
+**scale_to_zero** | [**ScaleToZeroQuotas**](ScaleToZeroQuotas.md) |  | [optional] 
 
 ## Example
 

@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2025.5.0"
+__version__ = "2025.7.0"
 
 # Define package exports
 __all__ = [
@@ -127,6 +127,8 @@ __all__ = [
     "DatabaseDeploymentMetadata",
     "DatabaseRolePassword",
     "DatabaseSource",
+    "DatabaseUsage",
+    "DatabaseUsageDetails",
     "DatacenterListItem",
     "DeactivateOrganizationReply",
     "DeactivateOrganizationRequest",
@@ -155,6 +157,8 @@ __all__ = [
     "DeploymentProvisioningInfoStageBuildAttempt",
     "DeploymentProvisioningInfoStageBuildAttemptBuildStep",
     "DeploymentProvisioningInfoStageStatus",
+    "DeploymentProxyPort",
+    "DeploymentProxyPortMetadata",
     "DeploymentRole",
     "DeploymentRoute",
     "DeploymentScaling",
@@ -202,6 +206,7 @@ __all__ = [
     "GetDeploymentScalingReplyItem",
     "GetDomainReply",
     "GetGithubInstallationReply",
+    "GetIdenfyTokenReply",
     "GetInstanceReply",
     "GetIntercomProfileReply",
     "GetMetricsReply",
@@ -223,6 +228,7 @@ __all__ = [
     "GetSubscriptionReply",
     "GetUserOrganizationInvitationReply",
     "GitDeploymentMetadata",
+    "GitEnvDeploymentMetadata",
     "GitHubRegistryConfiguration",
     "GitLabRegistryConfiguration",
     "GitSource",
@@ -326,6 +332,7 @@ __all__ = [
     "Plan",
     "Port",
     "PrivateRegistryConfiguration",
+    "ProxyPortProtocol",
     "PublicOrganization",
     "PublicUser",
     "QueryLogsReply",
@@ -355,6 +362,7 @@ __all__ = [
     "ReviewOrganizationCapacityRequest",
     "Route",
     "Sample",
+    "ScaleToZeroQuotas",
     "Scaling",
     "Secret",
     "SecretType",
@@ -582,6 +590,10 @@ from koyeb.models.database_role_password import (
     DatabaseRolePassword as DatabaseRolePassword,
 )
 from koyeb.models.database_source import DatabaseSource as DatabaseSource
+from koyeb.models.database_usage import DatabaseUsage as DatabaseUsage
+from koyeb.models.database_usage_details import (
+    DatabaseUsageDetails as DatabaseUsageDetails,
+)
 from koyeb.models.datacenter_list_item import DatacenterListItem as DatacenterListItem
 from koyeb.models.deactivate_organization_reply import (
     DeactivateOrganizationReply as DeactivateOrganizationReply,
@@ -649,6 +661,12 @@ from koyeb.models.deployment_provisioning_info_stage_build_attempt_build_step im
 )
 from koyeb.models.deployment_provisioning_info_stage_status import (
     DeploymentProvisioningInfoStageStatus as DeploymentProvisioningInfoStageStatus,
+)
+from koyeb.models.deployment_proxy_port import (
+    DeploymentProxyPort as DeploymentProxyPort,
+)
+from koyeb.models.deployment_proxy_port_metadata import (
+    DeploymentProxyPortMetadata as DeploymentProxyPortMetadata,
 )
 from koyeb.models.deployment_role import DeploymentRole as DeploymentRole
 from koyeb.models.deployment_route import DeploymentRoute as DeploymentRoute
@@ -741,6 +759,9 @@ from koyeb.models.get_domain_reply import GetDomainReply as GetDomainReply
 from koyeb.models.get_github_installation_reply import (
     GetGithubInstallationReply as GetGithubInstallationReply,
 )
+from koyeb.models.get_idenfy_token_reply import (
+    GetIdenfyTokenReply as GetIdenfyTokenReply,
+)
 from koyeb.models.get_instance_reply import GetInstanceReply as GetInstanceReply
 from koyeb.models.get_intercom_profile_reply import (
     GetIntercomProfileReply as GetIntercomProfileReply,
@@ -789,6 +810,9 @@ from koyeb.models.get_user_organization_invitation_reply import (
 )
 from koyeb.models.git_deployment_metadata import (
     GitDeploymentMetadata as GitDeploymentMetadata,
+)
+from koyeb.models.git_env_deployment_metadata import (
+    GitEnvDeploymentMetadata as GitEnvDeploymentMetadata,
 )
 from koyeb.models.git_hub_registry_configuration import (
     GitHubRegistryConfiguration as GitHubRegistryConfiguration,
@@ -999,6 +1023,7 @@ from koyeb.models.port import Port as Port
 from koyeb.models.private_registry_configuration import (
     PrivateRegistryConfiguration as PrivateRegistryConfiguration,
 )
+from koyeb.models.proxy_port_protocol import ProxyPortProtocol as ProxyPortProtocol
 from koyeb.models.public_organization import PublicOrganization as PublicOrganization
 from koyeb.models.public_user import PublicUser as PublicUser
 from koyeb.models.query_logs_reply import QueryLogsReply as QueryLogsReply
@@ -1060,6 +1085,7 @@ from koyeb.models.review_organization_capacity_request import (
 )
 from koyeb.models.route import Route as Route
 from koyeb.models.sample import Sample as Sample
+from koyeb.models.scale_to_zero_quotas import ScaleToZeroQuotas as ScaleToZeroQuotas
 from koyeb.models.scaling import Scaling as Scaling
 from koyeb.models.secret import Secret as Secret
 from koyeb.models.secret_type import SecretType as SecretType
