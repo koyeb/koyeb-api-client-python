@@ -53,6 +53,13 @@ class TestPeriodUsage(unittest.TestCase):
                                                 duration_seconds = 56, )
                                             }, )
                                     }, )
+                            ], 
+                        databases = [
+                            koyeb.models.database_usage.DatabaseUsage(
+                                service_id = '', 
+                                service_name = '', 
+                                compute_time_seconds = 56, 
+                                data_storage_megabytes_hours = 56, )
                             ], )
                     ]
             )

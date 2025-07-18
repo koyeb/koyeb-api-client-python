@@ -54,6 +54,18 @@ class TestGetOrganizationUsageDetailsReply(unittest.TestCase):
                         started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         terminated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
+                database_details = [
+                    koyeb.models.database_usage_details.DatabaseUsageDetails(
+                        organization_id = '', 
+                        app_id = '', 
+                        app_name = '', 
+                        service_id = '', 
+                        service_name = '', 
+                        compute_time_seconds = 56, 
+                        data_storage_megabytes_hour = 56, 
+                        started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        terminated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ],
                 limit = 56,
                 offset = 56,
                 count = 56,

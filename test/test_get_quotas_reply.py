@@ -66,7 +66,15 @@ class TestGetQuotasReply(unittest.TestCase):
                     logs_retention = 56, 
                     access_reserved_subdomains = [
                         ''
-                        ], )
+                        ], 
+                    proxy_ports = 56, 
+                    scale_to_zero = koyeb.models.scale_to_zero_quotas.ScaleToZeroQuotas(
+                        is_deep_sleep_enabled = True, 
+                        deep_sleep_idle_delay_min = 56, 
+                        deep_sleep_idle_delay_max = 56, 
+                        is_light_sleep_enabled = True, 
+                        light_sleep_idle_delay_min = 56, 
+                        light_sleep_idle_delay_max = 56, ), )
             )
         else:
             return GetQuotasReply(

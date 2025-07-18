@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from koyeb.models.archive_deployment_metadata import ArchiveDeploymentMetadata
 from koyeb.models.database_deployment_metadata import DatabaseDeploymentMetadata
+from koyeb.models.deployment_proxy_port_metadata import DeploymentProxyPortMetadata
 from koyeb.models.git_deployment_metadata import GitDeploymentMetadata
 from koyeb.models.trigger_deployment_metadata import TriggerDeploymentMetadata
 from typing import Optional, Set
@@ -36,7 +37,14 @@ class DeploymentMetadata(BaseModel):
     database: Optional[DatabaseDeploymentMetadata] = None
     git: Optional[GitDeploymentMetadata] = None
     archive: Optional[ArchiveDeploymentMetadata] = None
-    __properties: ClassVar[List[str]] = ["trigger", "database", "git", "archive"]
+    proxy_ports: Optional[List[DeploymentProxyPortMetadata]] = None
+    __properties: ClassVar[List[str]] = [
+        "trigger",
+        "database",
+        "git",
+        "archive",
+        "proxy_ports",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +95,13 @@ class DeploymentMetadata(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of archive
         if self.archive:
             _dict["archive"] = self.archive.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in proxy_ports (list)
+        _items = []
+        if self.proxy_ports:
+            for _item_proxy_ports in self.proxy_ports:
+                if _item_proxy_ports:
+                    _items.append(_item_proxy_ports.to_dict())
+            _dict["proxy_ports"] = _items
         return _dict
 
     @classmethod
@@ -111,6 +126,12 @@ class DeploymentMetadata(BaseModel):
                 else None,
                 "archive": ArchiveDeploymentMetadata.from_dict(obj["archive"])
                 if obj.get("archive") is not None
+                else None,
+                "proxy_ports": [
+                    DeploymentProxyPortMetadata.from_dict(_item)
+                    for _item in obj["proxy_ports"]
+                ]
+                if obj.get("proxy_ports") is not None
                 else None,
             }
         )

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **database** | [**DatabaseDeploymentMetadata**](DatabaseDeploymentMetadata.md) |  | [optional] 
 **git** | [**GitDeploymentMetadata**](GitDeploymentMetadata.md) |  | [optional] 
 **archive** | [**ArchiveDeploymentMetadata**](ArchiveDeploymentMetadata.md) |  | [optional] 
+**proxy_ports** | [**List[DeploymentProxyPortMetadata]**](DeploymentProxyPortMetadata.md) |  | [optional] 
 
 ## Example
 

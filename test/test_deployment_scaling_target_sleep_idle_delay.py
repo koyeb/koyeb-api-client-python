@@ -38,7 +38,9 @@ class TestDeploymentScalingTargetSleepIdleDelay(unittest.TestCase):
         model = DeploymentScalingTargetSleepIdleDelay()
         if include_optional:
             return DeploymentScalingTargetSleepIdleDelay(
-                value = 56
+                value = 56,
+                deep_sleep_value = 56,
+                light_sleep_value = 56
             )
         else:
             return DeploymentScalingTargetSleepIdleDelay(

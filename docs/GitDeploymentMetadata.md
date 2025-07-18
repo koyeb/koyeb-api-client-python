@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **last_provisioned_deployment_id** | **str** |  | [optional] 
+**git_env** | [**GitEnvDeploymentMetadata**](GitEnvDeploymentMetadata.md) |  | [optional] 
 
 ## Example
 

@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **int** | Delay in seconds after which a service which received 0 request is scaled to 0. This is not configurable and must be set to 300 (5 minutes). Get in touch to tune it. | [optional] 
+**value** | **int** | DEPRECATED: use deep_sleep_value instead. Delay in seconds after which a service which received 0 request is put to deep sleep. | [optional] 
+**deep_sleep_value** | **int** | Delay in seconds after which a service which received 0 request is put to deep sleep. | [optional] 
+**light_sleep_value** | **int** | Delay in seconds after which a service which received 0 request is put to light sleep. | [optional] 
 
 ## Example
 

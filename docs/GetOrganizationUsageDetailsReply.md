@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **usage_details** | [**List[UsageDetails]**](UsageDetails.md) |  | [optional] 
+**database_details** | [**List[DatabaseUsageDetails]**](DatabaseUsageDetails.md) |  | [optional] 
 **limit** | **int** |  | [optional] 
 **offset** | **int** |  | [optional] 
 **count** | **int** |  | [optional] 

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**decline_organization_invitation**](ProfileApi.md#decline_organization_invitation) | **POST** /v1/account/organization_invitations/{id}/decline | Decline Organization Invitation
 [**get_current_organization**](ProfileApi.md#get_current_organization) | **GET** /v1/account/organization | Get Current Organization
 [**get_current_user**](ProfileApi.md#get_current_user) | **GET** /v1/account/profile | Get Current User
+[**get_idenfy_token**](ProfileApi.md#get_idenfy_token) | **GET** /v1/account/idenfy | Begin a session with iDenfy, emit an authToken
 [**get_o_auth_options**](ProfileApi.md#get_o_auth_options) | **GET** /v1/account/oauth | Get OAuth Providers
 [**get_user_organization_invitation**](ProfileApi.md#get_user_organization_invitation) | **GET** /v1/account/organization_invitations/{id} | Get User Organization Invitation
 [**list_user_organization_invitations**](ProfileApi.md#list_user_organization_invitations) | **GET** /v1/account/organization_invitations | List User Organization Invitations
@@ -329,6 +330,86 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**UserReply**](UserReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_idenfy_token**
+> GetIdenfyTokenReply get_idenfy_token()
+
+Begin a session with iDenfy, emit an authToken
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.get_idenfy_token_reply import GetIdenfyTokenReply
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+
+    try:
+        # Begin a session with iDenfy, emit an authToken
+        api_response = api_instance.get_idenfy_token()
+        print("The response of ProfileApi->get_idenfy_token:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->get_idenfy_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetIdenfyTokenReply**](GetIdenfyTokenReply.md)
 
 ### Authorization
 

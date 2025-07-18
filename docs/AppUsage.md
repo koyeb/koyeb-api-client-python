@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **app_id** | **str** |  | [optional] 
 **app_name** | **str** |  | [optional] 
 **services** | [**List[ServiceUsage]**](ServiceUsage.md) |  | [optional] 
+**databases** | [**List[DatabaseUsage]**](DatabaseUsage.md) |  | [optional] 
 
 ## Example
 

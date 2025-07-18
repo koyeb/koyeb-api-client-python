@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from koyeb.models.database_usage_details import DatabaseUsageDetails
 from koyeb.models.usage_details import UsageDetails
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,12 +31,14 @@ class GetOrganizationUsageDetailsReply(BaseModel):
     """  # noqa: E501
 
     usage_details: Optional[List[UsageDetails]] = None
+    database_details: Optional[List[DatabaseUsageDetails]] = None
     limit: Optional[StrictInt] = None
     offset: Optional[StrictInt] = None
     count: Optional[StrictInt] = None
     order: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "usage_details",
+        "database_details",
         "limit",
         "offset",
         "count",
@@ -86,6 +89,13 @@ class GetOrganizationUsageDetailsReply(BaseModel):
                 if _item_usage_details:
                     _items.append(_item_usage_details.to_dict())
             _dict["usage_details"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in database_details (list)
+        _items = []
+        if self.database_details:
+            for _item_database_details in self.database_details:
+                if _item_database_details:
+                    _items.append(_item_database_details.to_dict())
+            _dict["database_details"] = _items
         return _dict
 
     @classmethod
@@ -103,6 +113,12 @@ class GetOrganizationUsageDetailsReply(BaseModel):
                     UsageDetails.from_dict(_item) for _item in obj["usage_details"]
                 ]
                 if obj.get("usage_details") is not None
+                else None,
+                "database_details": [
+                    DatabaseUsageDetails.from_dict(_item)
+                    for _item in obj["database_details"]
+                ]
+                if obj.get("database_details") is not None
                 else None,
                 "limit": obj.get("limit"),
                 "offset": obj.get("offset"),

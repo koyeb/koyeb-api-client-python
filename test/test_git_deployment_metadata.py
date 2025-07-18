@@ -36,7 +36,11 @@ class TestGitDeploymentMetadata(unittest.TestCase):
         model = GitDeploymentMetadata()
         if include_optional:
             return GitDeploymentMetadata(
-                last_provisioned_deployment_id = ''
+                last_provisioned_deployment_id = '',
+                git_env = koyeb.models.git_env_deployment_metadata.GitEnvDeploymentMetadata(
+                    sha = '', 
+                    commit_author = '', 
+                    commit_message = '', )
             )
         else:
             return GitDeploymentMetadata(
