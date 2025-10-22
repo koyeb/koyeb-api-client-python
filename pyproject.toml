@@ -1,11 +1,11 @@
 [project]
 name = "koyeb"
-version = "2025.7.0"
+version = "2025.10.0"
 description = "Koyeb Rest API"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
 ]
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Koyeb Rest API"]
 requires-python = ">=3.9"
@@ -14,7 +14,7 @@ dependencies = [
   "urllib3 (>=2.1.0,<3.0.0)",
   "python-dateutil (>=2.8.2)",
   "pydantic (>=2)",
-  "typing-extensions (>=4.7.1)"
+  "typing-extensions (>=4.7.1)",
 ]
 
 [project.urls]

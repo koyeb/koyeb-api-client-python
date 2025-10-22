@@ -56,7 +56,7 @@ class QuotasApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReviewOrganizationCapacityReply:
-        """Review Organization Capacity
+        """DEPRECATED: Review Organization Capacity
 
 
         :param body: (required)
@@ -125,7 +125,7 @@ class QuotasApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReviewOrganizationCapacityReply]:
-        """Review Organization Capacity
+        """DEPRECATED: Review Organization Capacity
 
 
         :param body: (required)
@@ -194,7 +194,7 @@ class QuotasApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Review Organization Capacity
+        """DEPRECATED: Review Organization Capacity
 
 
         :param body: (required)

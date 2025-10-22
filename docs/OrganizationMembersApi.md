@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_organization_members**
-> ListOrganizationMembersReply list_organization_members(limit=limit, offset=offset, organization_id=organization_id, user_id=user_id)
+> ListOrganizationMembersReply list_organization_members(limit=limit, offset=offset, organization_id=organization_id, user_id=user_id, organization_statuses=organization_statuses)
 
 List organization members
 
@@ -48,10 +48,11 @@ with koyeb.ApiClient(configuration) as api_client:
     offset = 'offset_example' # str | (Optional) The offset in the list of item to return (optional)
     organization_id = 'organization_id_example' # str | (Optional) Filter for an organization (optional)
     user_id = 'user_id_example' # str | (Optional) Filter for an user (optional)
+    organization_statuses = ['organization_statuses_example'] # List[str] | (Optional) Filter for organization statuses (optional)
 
     try:
         # List organization members
-        api_response = api_instance.list_organization_members(limit=limit, offset=offset, organization_id=organization_id, user_id=user_id)
+        api_response = api_instance.list_organization_members(limit=limit, offset=offset, organization_id=organization_id, user_id=user_id, organization_statuses=organization_statuses)
         print("The response of OrganizationMembersApi->list_organization_members:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,6 +70,7 @@ Name | Type | Description  | Notes
  **offset** | **str**| (Optional) The offset in the list of item to return | [optional] 
  **organization_id** | **str**| (Optional) Filter for an organization | [optional] 
  **user_id** | **str**| (Optional) Filter for an user | [optional] 
+ **organization_statuses** | [**List[str]**](str.md)| (Optional) Filter for organization statuses | [optional] 
 
 ### Return type
 

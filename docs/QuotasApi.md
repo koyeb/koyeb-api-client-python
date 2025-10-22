@@ -4,13 +4,13 @@ All URIs are relative to *https://app.koyeb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**review_organization_capacity**](QuotasApi.md#review_organization_capacity) | **POST** /v1/quotas/capacity | Review Organization Capacity
+[**review_organization_capacity**](QuotasApi.md#review_organization_capacity) | **POST** /v1/quotas/capacity | DEPRECATED: Review Organization Capacity
 
 
 # **review_organization_capacity**
 > ReviewOrganizationCapacityReply review_organization_capacity(body)
 
-Review Organization Capacity
+DEPRECATED: Review Organization Capacity
 
 ### Example
 
@@ -47,7 +47,7 @@ with koyeb.ApiClient(configuration) as api_client:
     body = koyeb.ReviewOrganizationCapacityRequest() # ReviewOrganizationCapacityRequest | 
 
     try:
-        # Review Organization Capacity
+        # DEPRECATED: Review Organization Capacity
         api_response = api_instance.review_organization_capacity(body)
         print("The response of QuotasApi->review_organization_capacity:\n")
         pprint(api_response)

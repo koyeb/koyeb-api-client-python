@@ -33,6 +33,13 @@ class TestUsersApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_user_v2(self) -> None:
+        """Test case for delete_user_v2
+
+        V2 Delete user
+        """
+        pass
+
 
 if __name__ == "__main__":
     unittest.main()

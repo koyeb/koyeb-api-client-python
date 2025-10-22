@@ -38,7 +38,8 @@ class TestReviewOrganizationCapacityRequest(unittest.TestCase):
         model = ReviewOrganizationCapacityRequest()
         if include_optional:
             return ReviewOrganizationCapacityRequest(
-                plan = ''
+                plan = '',
+                trialing = True
             )
         else:
             return ReviewOrganizationCapacityRequest(

@@ -5,14 +5,17 @@ All URIs are relative to *https://app.koyeb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**accept_organization_invitation**](ProfileApi.md#accept_organization_invitation) | **POST** /v1/account/organization_invitations/{id}/accept | Accept Organization Invitation
+[**clear_idenfy_verification_result**](ProfileApi.md#clear_idenfy_verification_result) | **POST** /v1/account/idenfy | ClearIdenfyVerificationResult marks the current result for idenfy as superseded
 [**decline_organization_invitation**](ProfileApi.md#decline_organization_invitation) | **POST** /v1/account/organization_invitations/{id}/decline | Decline Organization Invitation
 [**get_current_organization**](ProfileApi.md#get_current_organization) | **GET** /v1/account/organization | Get Current Organization
 [**get_current_user**](ProfileApi.md#get_current_user) | **GET** /v1/account/profile | Get Current User
 [**get_idenfy_token**](ProfileApi.md#get_idenfy_token) | **GET** /v1/account/idenfy | Begin a session with iDenfy, emit an authToken
 [**get_o_auth_options**](ProfileApi.md#get_o_auth_options) | **GET** /v1/account/oauth | Get OAuth Providers
 [**get_user_organization_invitation**](ProfileApi.md#get_user_organization_invitation) | **GET** /v1/account/organization_invitations/{id} | Get User Organization Invitation
+[**get_user_settings**](ProfileApi.md#get_user_settings) | **GET** /v1/account/settings | 
 [**list_user_organization_invitations**](ProfileApi.md#list_user_organization_invitations) | **GET** /v1/account/organization_invitations | List User Organization Invitations
 [**list_user_organizations**](ProfileApi.md#list_user_organizations) | **GET** /v1/account/organizations | List User Organizations
+[**login_method**](ProfileApi.md#login_method) | **GET** /v1/account/login_method | Get the login method for an email address
 [**o_auth_callback**](ProfileApi.md#o_auth_callback) | **POST** /v1/account/oauth | Authenticate using OAuth
 [**resend_email_validation**](ProfileApi.md#resend_email_validation) | **POST** /v1/account/resend_validation | Resend Email Verification
 [**reset_password**](ProfileApi.md#reset_password) | **POST** /v1/account/reset_password | Reset Password
@@ -20,6 +23,9 @@ Method | HTTP request | Description
 [**update_password**](ProfileApi.md#update_password) | **POST** /v1/account/update_password | Update Password
 [**update_user**](ProfileApi.md#update_user) | **PUT** /v1/account/profile | Update User
 [**update_user2**](ProfileApi.md#update_user2) | **PATCH** /v1/account/profile | Update User
+[**update_user_settings**](ProfileApi.md#update_user_settings) | **PATCH** /v1/account/settings | 
+[**update_user_v2**](ProfileApi.md#update_user_v2) | **PUT** /v2/account/profile | Update User V2
+[**update_user_v22**](ProfileApi.md#update_user_v22) | **PATCH** /v2/account/profile | Update User V2
 [**validate**](ProfileApi.md#validate) | **POST** /v1/account/validate/{id} | Validate
 
 
@@ -84,6 +90,90 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AcceptOrganizationInvitationReply**](AcceptOrganizationInvitationReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clear_idenfy_verification_result**
+> object clear_idenfy_verification_result(body)
+
+ClearIdenfyVerificationResult marks the current result for idenfy as superseded
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.clear_idenfy_verification_result_request import ClearIdenfyVerificationResultRequest
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+    body = koyeb.ClearIdenfyVerificationResultRequest() # ClearIdenfyVerificationResultRequest | 
+
+    try:
+        # ClearIdenfyVerificationResult marks the current result for idenfy as superseded
+        api_response = api_instance.clear_idenfy_verification_result(body)
+        print("The response of ProfileApi->clear_idenfy_verification_result:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->clear_idenfy_verification_result: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ClearIdenfyVerificationResultRequest**](ClearIdenfyVerificationResultRequest.md)|  | 
+
+### Return type
+
+**object**
 
 ### Authorization
 
@@ -605,6 +695,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_user_settings**
+> GetUserSettingsReply get_user_settings()
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.get_user_settings_reply import GetUserSettingsReply
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+
+    try:
+        api_response = api_instance.get_user_settings()
+        print("The response of ProfileApi->get_user_settings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->get_user_settings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetUserSettingsReply**](GetUserSettingsReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_user_organization_invitations**
 > ListUserOrganizationInvitationsReply list_user_organization_invitations(limit=limit, offset=offset, statuses=statuses)
 
@@ -694,7 +861,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_organizations**
-> ListUserOrganizationsReply list_user_organizations(limit=limit, offset=offset, order=order, search=search)
+> ListUserOrganizationsReply list_user_organizations(limit=limit, offset=offset, order=order, search=search, statuses=statuses)
 
 List User Organizations
 
@@ -735,10 +902,11 @@ with koyeb.ApiClient(configuration) as api_client:
     offset = 'offset_example' # str | (Optional) Define pagination offset (optional)
     order = 'order_example' # str | (Optional) Sorts the list in the ascending or the descending order (optional)
     search = 'search_example' # str | (Optional) Fuzzy case-insensitive search based on organization name or organization id (optional)
+    statuses = ['statuses_example'] # List[str] | (Optional) Only return organizations which status match one in the list (optional)
 
     try:
         # List User Organizations
-        api_response = api_instance.list_user_organizations(limit=limit, offset=offset, order=order, search=search)
+        api_response = api_instance.list_user_organizations(limit=limit, offset=offset, order=order, search=search, statuses=statuses)
         print("The response of ProfileApi->list_user_organizations:\n")
         pprint(api_response)
     except Exception as e:
@@ -756,10 +924,95 @@ Name | Type | Description  | Notes
  **offset** | **str**| (Optional) Define pagination offset | [optional] 
  **order** | **str**| (Optional) Sorts the list in the ascending or the descending order | [optional] 
  **search** | **str**| (Optional) Fuzzy case-insensitive search based on organization name or organization id | [optional] 
+ **statuses** | [**List[str]**](str.md)| (Optional) Only return organizations which status match one in the list | [optional] 
 
 ### Return type
 
 [**ListUserOrganizationsReply**](ListUserOrganizationsReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **login_method**
+> LoginMethodReply login_method(email=email)
+
+Get the login method for an email address
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.login_method_reply import LoginMethodReply
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+    email = 'email_example' # str |  (optional)
+
+    try:
+        # Get the login method for an email address
+        api_response = api_instance.login_method(email=email)
+        print("The response of ProfileApi->login_method:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->login_method: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **str**|  | [optional] 
+
+### Return type
+
+[**LoginMethodReply**](LoginMethodReply.md)
 
 ### Authorization
 
@@ -1347,6 +1600,262 @@ with koyeb.ApiClient(configuration) as api_client:
         pprint(api_response)
     except Exception as e:
         print("Exception when calling ProfileApi->update_user2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**UpdateUserRequestUserUpdateBody**](UpdateUserRequestUserUpdateBody.md)|  | 
+ **update_mask** | **str**|  | [optional] 
+
+### Return type
+
+[**UserReply**](UserReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user_settings**
+> UpdateUserSettingsReply update_user_settings(body)
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.update_user_settings_reply import UpdateUserSettingsReply
+from koyeb.models.update_user_settings_request import UpdateUserSettingsRequest
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+    body = koyeb.UpdateUserSettingsRequest() # UpdateUserSettingsRequest | 
+
+    try:
+        api_response = api_instance.update_user_settings(body)
+        print("The response of ProfileApi->update_user_settings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->update_user_settings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateUserSettingsRequest**](UpdateUserSettingsRequest.md)|  | 
+
+### Return type
+
+[**UpdateUserSettingsReply**](UpdateUserSettingsReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user_v2**
+> UserReply update_user_v2(user, update_mask=update_mask)
+
+Update User V2
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.update_user_request_user_update_body import UpdateUserRequestUserUpdateBody
+from koyeb.models.user_reply import UserReply
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+    user = koyeb.UpdateUserRequestUserUpdateBody() # UpdateUserRequestUserUpdateBody | 
+    update_mask = 'update_mask_example' # str |  (optional)
+
+    try:
+        # Update User V2
+        api_response = api_instance.update_user_v2(user, update_mask=update_mask)
+        print("The response of ProfileApi->update_user_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->update_user_v2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**UpdateUserRequestUserUpdateBody**](UpdateUserRequestUserUpdateBody.md)|  | 
+ **update_mask** | **str**|  | [optional] 
+
+### Return type
+
+[**UserReply**](UserReply.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**400** | Validation error |  -  |
+**401** | Returned when the token is not valid. |  -  |
+**403** | Returned when the user does not have permission to access the resource. |  -  |
+**404** | Returned when the resource does not exist. |  -  |
+**500** | Returned in case of server error. |  -  |
+**503** | Service is unavailable. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user_v22**
+> UserReply update_user_v22(user, update_mask=update_mask)
+
+Update User V2
+
+### Example
+
+* Api Key Authentication (Bearer):
+
+```python
+import koyeb
+from koyeb.models.update_user_request_user_update_body import UpdateUserRequestUserUpdateBody
+from koyeb.models.user_reply import UserReply
+from koyeb.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app.koyeb.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = koyeb.Configuration(
+    host = "https://app.koyeb.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Bearer
+configuration.api_key['Bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with koyeb.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = koyeb.ProfileApi(api_client)
+    user = koyeb.UpdateUserRequestUserUpdateBody() # UpdateUserRequestUserUpdateBody | 
+    update_mask = 'update_mask_example' # str |  (optional)
+
+    try:
+        # Update User V2
+        api_response = api_instance.update_user_v22(user, update_mask=update_mask)
+        print("The response of ProfileApi->update_user_v22:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProfileApi->update_user_v22: %s\n" % e)
 ```
 
 

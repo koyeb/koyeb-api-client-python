@@ -49,6 +49,8 @@ class Quotas(BaseModel):
     access_reserved_subdomains: Optional[List[StrictStr]] = None
     proxy_ports: Optional[StrictInt] = None
     scale_to_zero: Optional[ScaleToZeroQuotas] = None
+    archives: Optional[StrictStr] = None
+    archive_max_size_mb: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "apps",
         "services",
@@ -68,6 +70,8 @@ class Quotas(BaseModel):
         "access_reserved_subdomains",
         "proxy_ports",
         "scale_to_zero",
+        "archives",
+        "archive_max_size_mb",
     ]
 
     model_config = ConfigDict(
@@ -168,6 +172,8 @@ class Quotas(BaseModel):
                 "scale_to_zero": ScaleToZeroQuotas.from_dict(obj["scale_to_zero"])
                 if obj.get("scale_to_zero") is not None
                 else None,
+                "archives": obj.get("archives"),
+                "archive_max_size_mb": obj.get("archive_max_size_mb"),
             }
         )
         return _obj

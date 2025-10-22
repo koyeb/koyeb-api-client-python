@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **organization_id** | **str** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
+**expires_at** | **datetime** |  | [optional] 
 
 ## Example
 

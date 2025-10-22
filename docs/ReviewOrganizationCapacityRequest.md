@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **plan** | **str** |  | [optional] 
+**trialing** | **bool** |  | [optional] 
 
 ## Example
 

@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **trialing** | **bool** |  | [optional] 
 **trial_starts_at** | **datetime** |  | [optional] 
 **trial_ends_at** | **datetime** |  | [optional] 
+**email_domain_allowlist** | **List[str]** |  | [optional] 
 
 ## Example
 

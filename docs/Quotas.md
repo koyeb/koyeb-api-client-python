@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **access_reserved_subdomains** | **List[str]** |  | [optional] 
 **proxy_ports** | **int** |  | [optional] 
 **scale_to_zero** | [**ScaleToZeroQuotas**](ScaleToZeroQuotas.md) |  | [optional] 
+**archives** | **str** |  | [optional] 
+**archive_max_size_mb** | **str** |  | [optional] 
 
 ## Example
 

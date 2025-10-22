@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **gpu** | [**CatalogGPUDetails**](CatalogGPUDetails.md) |  | [optional] 
 **service_types** | **List[str]** |  | [optional] 
 **volumes_enabled** | **bool** |  | [optional] 
+**light_sleep_enabled** | **bool** |  | [optional] 
 
 ## Example
 

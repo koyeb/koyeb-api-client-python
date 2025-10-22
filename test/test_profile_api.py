@@ -33,6 +33,13 @@ class TestProfileApi(unittest.TestCase):
         """
         pass
 
+    def test_clear_idenfy_verification_result(self) -> None:
+        """Test case for clear_idenfy_verification_result
+
+        ClearIdenfyVerificationResult marks the current result for idenfy as superseded
+        """
+        pass
+
     def test_decline_organization_invitation(self) -> None:
         """Test case for decline_organization_invitation
 
@@ -75,6 +82,10 @@ class TestProfileApi(unittest.TestCase):
         """
         pass
 
+    def test_get_user_settings(self) -> None:
+        """Test case for get_user_settings"""
+        pass
+
     def test_list_user_organization_invitations(self) -> None:
         """Test case for list_user_organization_invitations
 
@@ -86,6 +97,13 @@ class TestProfileApi(unittest.TestCase):
         """Test case for list_user_organizations
 
         List User Organizations
+        """
+        pass
+
+    def test_login_method(self) -> None:
+        """Test case for login_method
+
+        Get the login method for an email address
         """
         pass
 
@@ -135,6 +153,24 @@ class TestProfileApi(unittest.TestCase):
         """Test case for update_user2
 
         Update User
+        """
+        pass
+
+    def test_update_user_settings(self) -> None:
+        """Test case for update_user_settings"""
+        pass
+
+    def test_update_user_v2(self) -> None:
+        """Test case for update_user_v2
+
+        Update User V2
+        """
+        pass
+
+    def test_update_user_v22(self) -> None:
+        """Test case for update_user_v22
+
+        Update User V2
         """
         pass
 

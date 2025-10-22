@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resume_service**
-> object resume_service(id)
+> object resume_service(id, skip_build=skip_build, use_cache=use_cache)
 
 Resume Service
 
@@ -760,10 +760,12 @@ with koyeb.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = koyeb.ServicesApi(api_client)
     id = 'id_example' # str | The id of the service to pause.
+    skip_build = True # bool | If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened. (optional)
+    use_cache = True # bool |  (optional)
 
     try:
         # Resume Service
-        api_response = api_instance.resume_service(id)
+        api_response = api_instance.resume_service(id, skip_build=skip_build, use_cache=use_cache)
         print("The response of ServicesApi->resume_service:\n")
         pprint(api_response)
     except Exception as e:
@@ -778,6 +780,8 @@ with koyeb.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The id of the service to pause. | 
+ **skip_build** | **bool**| If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened. | [optional] 
+ **use_cache** | **bool**|  | [optional] 
 
 ### Return type
 

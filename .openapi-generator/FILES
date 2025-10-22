@@ -36,11 +36,14 @@ docs/CatalogInstanceUsageApi.md
 docs/CatalogInstancesApi.md
 docs/CatalogRegionsApi.md
 docs/CatalogUsage.md
+docs/ClearIdenfyVerificationResultRequest.md
 docs/ComposeApi.md
 docs/ComposeReply.md
 docs/ConfigFile.md
 docs/ConfirmPaymentAuthorizationReply.md
 docs/CouponsApi.md
+docs/CreateAccessTokenReply.md
+docs/CreateAccessTokenRequest.md
 docs/CreateAccountRequest.md
 docs/CreateApp.md
 docs/CreateAppReply.md
@@ -175,6 +178,7 @@ docs/GetServiceReply.md
 docs/GetSnapshotReply.md
 docs/GetSubscriptionReply.md
 docs/GetUserOrganizationInvitationReply.md
+docs/GetUserSettingsReply.md
 docs/GitDeploymentMetadata.md
 docs/GitEnvDeploymentMetadata.md
 docs/GitHubRegistryConfiguration.md
@@ -241,6 +245,8 @@ docs/ListUsageReply.md
 docs/ListUserOrganizationInvitationsReply.md
 docs/ListUserOrganizationsReply.md
 docs/LogEntry.md
+docs/LoginMethodReply.md
+docs/LoginMethodReplyMethod.md
 docs/LoginReply.md
 docs/LoginRequest.md
 docs/LogsApi.md
@@ -383,6 +389,8 @@ docs/UpdateServiceReply.md
 docs/UpdateSnapshotReply.md
 docs/UpdateSnapshotRequest.md
 docs/UpdateUserRequestUserUpdateBody.md
+docs/UpdateUserSettingsReply.md
+docs/UpdateUserSettingsRequest.md
 docs/UpsertSignupQualificationReply.md
 docs/UpsertSignupQualificationRequest.md
 docs/Usage.md
@@ -392,6 +400,7 @@ docs/User.md
 docs/UserFlags.md
 docs/UserReply.md
 docs/UserRoleRole.md
+docs/UserSettings.md
 docs/UsersApi.md
 docs/VerifyDockerImageReply.md
 docs/VerifyDockerImageReplyErrCode.md
@@ -470,9 +479,12 @@ koyeb/models/catalog_gpu_details.py
 koyeb/models/catalog_instance.py
 koyeb/models/catalog_instance_list_item.py
 koyeb/models/catalog_usage.py
+koyeb/models/clear_idenfy_verification_result_request.py
 koyeb/models/compose_reply.py
 koyeb/models/config_file.py
 koyeb/models/confirm_payment_authorization_reply.py
+koyeb/models/create_access_token_reply.py
+koyeb/models/create_access_token_request.py
 koyeb/models/create_account_request.py
 koyeb/models/create_app.py
 koyeb/models/create_app_reply.py
@@ -603,6 +615,7 @@ koyeb/models/get_service_reply.py
 koyeb/models/get_snapshot_reply.py
 koyeb/models/get_subscription_reply.py
 koyeb/models/get_user_organization_invitation_reply.py
+koyeb/models/get_user_settings_reply.py
 koyeb/models/git_deployment_metadata.py
 koyeb/models/git_env_deployment_metadata.py
 koyeb/models/git_hub_registry_configuration.py
@@ -666,6 +679,8 @@ koyeb/models/list_usage_reply.py
 koyeb/models/list_user_organization_invitations_reply.py
 koyeb/models/list_user_organizations_reply.py
 koyeb/models/log_entry.py
+koyeb/models/login_method_reply.py
+koyeb/models/login_method_reply_method.py
 koyeb/models/login_reply.py
 koyeb/models/login_request.py
 koyeb/models/manage_reply.py
@@ -786,6 +801,8 @@ koyeb/models/update_service_reply.py
 koyeb/models/update_snapshot_reply.py
 koyeb/models/update_snapshot_request.py
 koyeb/models/update_user_request_user_update_body.py
+koyeb/models/update_user_settings_reply.py
+koyeb/models/update_user_settings_request.py
 koyeb/models/upsert_signup_qualification_reply.py
 koyeb/models/upsert_signup_qualification_request.py
 koyeb/models/usage.py
@@ -794,6 +811,7 @@ koyeb/models/user.py
 koyeb/models/user_flags.py
 koyeb/models/user_reply.py
 koyeb/models/user_role_role.py
+koyeb/models/user_settings.py
 koyeb/models/verify_docker_image_reply.py
 koyeb/models/verify_docker_image_reply_err_code.py
 koyeb/py.typed
@@ -838,11 +856,14 @@ test/test_catalog_instance_usage_api.py
 test/test_catalog_instances_api.py
 test/test_catalog_regions_api.py
 test/test_catalog_usage.py
+test/test_clear_idenfy_verification_result_request.py
 test/test_compose_api.py
 test/test_compose_reply.py
 test/test_config_file.py
 test/test_confirm_payment_authorization_reply.py
 test/test_coupons_api.py
+test/test_create_access_token_reply.py
+test/test_create_access_token_request.py
 test/test_create_account_request.py
 test/test_create_app.py
 test/test_create_app_reply.py
@@ -977,6 +998,7 @@ test/test_get_service_reply.py
 test/test_get_snapshot_reply.py
 test/test_get_subscription_reply.py
 test/test_get_user_organization_invitation_reply.py
+test/test_get_user_settings_reply.py
 test/test_git_deployment_metadata.py
 test/test_git_env_deployment_metadata.py
 test/test_git_hub_registry_configuration.py
@@ -1043,6 +1065,8 @@ test/test_list_usage_reply.py
 test/test_list_user_organization_invitations_reply.py
 test/test_list_user_organizations_reply.py
 test/test_log_entry.py
+test/test_login_method_reply.py
+test/test_login_method_reply_method.py
 test/test_login_reply.py
 test/test_login_request.py
 test/test_logs_api.py
@@ -1185,6 +1209,8 @@ test/test_update_service_reply.py
 test/test_update_snapshot_reply.py
 test/test_update_snapshot_request.py
 test/test_update_user_request_user_update_body.py
+test/test_update_user_settings_reply.py
+test/test_update_user_settings_request.py
 test/test_upsert_signup_qualification_reply.py
 test/test_upsert_signup_qualification_request.py
 test/test_usage.py
@@ -1194,6 +1220,7 @@ test/test_user.py
 test/test_user_flags.py
 test/test_user_reply.py
 test/test_user_role_role.py
+test/test_user_settings.py
 test/test_users_api.py
 test/test_verify_docker_image_reply.py
 test/test_verify_docker_image_reply_err_code.py

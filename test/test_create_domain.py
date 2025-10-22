@@ -39,7 +39,7 @@ class TestCreateDomain(unittest.TestCase):
                 name = '',
                 type = 'AUTOASSIGNED',
                 app_id = '',
-                cloudflare = None,
+                cloudflare = koyeb.models.domain/load_balancer_cloudflare.Domain.LoadBalancerCloudflare(),
                 koyeb = koyeb.models.domain/load_balancer_koyeb.Domain.LoadBalancerKoyeb(
                     request_timeout_seconds = 56, )
             )

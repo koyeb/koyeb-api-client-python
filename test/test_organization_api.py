@@ -26,6 +26,13 @@ class TestOrganizationApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_access_token(self) -> None:
+        """Test case for create_access_token
+
+        CreateAccessToken
+        """
+        pass
+
     def test_create_budget(self) -> None:
         """Test case for create_budget
 

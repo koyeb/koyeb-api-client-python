@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,8 @@ class ReviewOrganizationCapacityRequest(BaseModel):
     """  # noqa: E501
 
     plan: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["plan"]
+    trialing: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["plan", "trialing"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,5 +80,7 @@ class ReviewOrganizationCapacityRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"plan": obj.get("plan")})
+        _obj = cls.model_validate(
+            {"plan": obj.get("plan"), "trialing": obj.get("trialing")}
+        )
         return _obj

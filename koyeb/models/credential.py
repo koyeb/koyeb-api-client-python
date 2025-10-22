@@ -39,6 +39,7 @@ class Credential(BaseModel):
     organization_id: Optional[StrictStr] = None
     updated_at: Optional[datetime] = None
     created_at: Optional[datetime] = None
+    expires_at: Optional[datetime] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "type",
@@ -49,6 +50,7 @@ class Credential(BaseModel):
         "organization_id",
         "updated_at",
         "created_at",
+        "expires_at",
     ]
 
     model_config = ConfigDict(
@@ -112,6 +114,7 @@ class Credential(BaseModel):
                 "organization_id": obj.get("organization_id"),
                 "updated_at": obj.get("updated_at"),
                 "created_at": obj.get("created_at"),
+                "expires_at": obj.get("expires_at"),
             }
         )
         return _obj

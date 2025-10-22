@@ -2351,6 +2351,13 @@ class ServicesApi:
     def resume_service(
         self,
         id: Annotated[StrictStr, Field(description="The id of the service to pause.")],
+        skip_build: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened."
+            ),
+        ] = None,
+        use_cache: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2369,6 +2376,10 @@ class ServicesApi:
 
         :param id: The id of the service to pause. (required)
         :type id: str
+        :param skip_build: If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.
+        :type skip_build: bool
+        :param use_cache:
+        :type use_cache: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2393,6 +2404,8 @@ class ServicesApi:
 
         _param = self._resume_service_serialize(
             id=id,
+            skip_build=skip_build,
+            use_cache=use_cache,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2421,6 +2434,13 @@ class ServicesApi:
     def resume_service_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The id of the service to pause.")],
+        skip_build: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened."
+            ),
+        ] = None,
+        use_cache: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2439,6 +2459,10 @@ class ServicesApi:
 
         :param id: The id of the service to pause. (required)
         :type id: str
+        :param skip_build: If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.
+        :type skip_build: bool
+        :param use_cache:
+        :type use_cache: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2463,6 +2487,8 @@ class ServicesApi:
 
         _param = self._resume_service_serialize(
             id=id,
+            skip_build=skip_build,
+            use_cache=use_cache,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2491,6 +2517,13 @@ class ServicesApi:
     def resume_service_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The id of the service to pause.")],
+        skip_build: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened."
+            ),
+        ] = None,
+        use_cache: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2509,6 +2542,10 @@ class ServicesApi:
 
         :param id: The id of the service to pause. (required)
         :type id: str
+        :param skip_build: If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.
+        :type skip_build: bool
+        :param use_cache:
+        :type use_cache: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2533,6 +2570,8 @@ class ServicesApi:
 
         _param = self._resume_service_serialize(
             id=id,
+            skip_build=skip_build,
+            use_cache=use_cache,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2556,6 +2595,8 @@ class ServicesApi:
     def _resume_service_serialize(
         self,
         id,
+        skip_build,
+        use_cache,
         _request_auth,
         _content_type,
         _headers,
@@ -2578,6 +2619,12 @@ class ServicesApi:
         if id is not None:
             _path_params["id"] = id
         # process the query parameters
+        if skip_build is not None:
+            _query_params.append(("skip_build", skip_build))
+
+        if use_cache is not None:
+            _query_params.append(("use_cache", use_cache))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter

@@ -65,7 +65,10 @@ class TestListUserOrganizationsReply(unittest.TestCase):
                         reprocess_after = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         trialing = True, 
                         trial_starts_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        trial_ends_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                        trial_ends_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        email_domain_allowlist = [
+                            ''
+                            ], )
                     ],
                 limit = 56,
                 offset = 56,

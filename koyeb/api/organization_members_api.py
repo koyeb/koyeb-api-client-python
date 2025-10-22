@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Optional
+from pydantic import Field, StrictStr, field_validator
+from typing import List, Optional
 from typing_extensions import Annotated
 from koyeb.models.list_organization_members_reply import ListOrganizationMembersReply
 from koyeb.models.remove_organization_member_reply import RemoveOrganizationMemberReply
@@ -57,6 +57,10 @@ class OrganizationMembersApi:
         user_id: Annotated[
             Optional[StrictStr], Field(description="(Optional) Filter for an user")
         ] = None,
+        organization_statuses: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter for organization statuses"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -80,6 +84,8 @@ class OrganizationMembersApi:
         :type organization_id: str
         :param user_id: (Optional) Filter for an user
         :type user_id: str
+        :param organization_statuses: (Optional) Filter for organization statuses
+        :type organization_statuses: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,6 +113,7 @@ class OrganizationMembersApi:
             offset=offset,
             organization_id=organization_id,
             user_id=user_id,
+            organization_statuses=organization_statuses,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -149,6 +156,10 @@ class OrganizationMembersApi:
         user_id: Annotated[
             Optional[StrictStr], Field(description="(Optional) Filter for an user")
         ] = None,
+        organization_statuses: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter for organization statuses"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -172,6 +183,8 @@ class OrganizationMembersApi:
         :type organization_id: str
         :param user_id: (Optional) Filter for an user
         :type user_id: str
+        :param organization_statuses: (Optional) Filter for organization statuses
+        :type organization_statuses: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -199,6 +212,7 @@ class OrganizationMembersApi:
             offset=offset,
             organization_id=organization_id,
             user_id=user_id,
+            organization_statuses=organization_statuses,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,6 +255,10 @@ class OrganizationMembersApi:
         user_id: Annotated[
             Optional[StrictStr], Field(description="(Optional) Filter for an user")
         ] = None,
+        organization_statuses: Annotated[
+            Optional[List[StrictStr]],
+            Field(description="(Optional) Filter for organization statuses"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -264,6 +282,8 @@ class OrganizationMembersApi:
         :type organization_id: str
         :param user_id: (Optional) Filter for an user
         :type user_id: str
+        :param organization_statuses: (Optional) Filter for organization statuses
+        :type organization_statuses: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -291,6 +311,7 @@ class OrganizationMembersApi:
             offset=offset,
             organization_id=organization_id,
             user_id=user_id,
+            organization_statuses=organization_statuses,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -317,6 +338,7 @@ class OrganizationMembersApi:
         offset,
         organization_id,
         user_id,
+        organization_statuses,
         _request_auth,
         _content_type,
         _headers,
@@ -324,7 +346,9 @@ class OrganizationMembersApi:
     ) -> RequestSerialized:
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+            "organization_statuses": "multi",
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -348,6 +372,9 @@ class OrganizationMembersApi:
 
         if user_id is not None:
             _query_params.append(("user_id", user_id))
+
+        if organization_statuses is not None:
+            _query_params.append(("organization_statuses", organization_statuses))
 
         # process the header parameters
         # process the form parameters

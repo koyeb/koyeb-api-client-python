@@ -74,7 +74,9 @@ class TestGetQuotasReply(unittest.TestCase):
                         deep_sleep_idle_delay_max = 56, 
                         is_light_sleep_enabled = True, 
                         light_sleep_idle_delay_min = 56, 
-                        light_sleep_idle_delay_max = 56, ), )
+                        light_sleep_idle_delay_max = 56, ), 
+                    archives = '', 
+                    archive_max_size_mb = '', )
             )
         else:
             return GetQuotasReply(

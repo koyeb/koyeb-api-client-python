@@ -65,6 +65,7 @@ class Organization(BaseModel):
     trialing: Optional[StrictBool] = None
     trial_starts_at: Optional[datetime] = None
     trial_ends_at: Optional[datetime] = None
+    email_domain_allowlist: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "address1",
@@ -94,6 +95,7 @@ class Organization(BaseModel):
         "trialing",
         "trial_starts_at",
         "trial_ends_at",
+        "email_domain_allowlist",
     ]
 
     model_config = ConfigDict(
@@ -180,6 +182,7 @@ class Organization(BaseModel):
                 "trialing": obj.get("trialing"),
                 "trial_starts_at": obj.get("trial_starts_at"),
                 "trial_ends_at": obj.get("trial_ends_at"),
+                "email_domain_allowlist": obj.get("email_domain_allowlist"),
             }
         )
         return _obj

@@ -29,7 +29,7 @@ class TestQuotasApi(unittest.TestCase):
     def test_review_organization_capacity(self) -> None:
         """Test case for review_organization_capacity
 
-        Review Organization Capacity
+        DEPRECATED: Review Organization Capacity
         """
         pass
 

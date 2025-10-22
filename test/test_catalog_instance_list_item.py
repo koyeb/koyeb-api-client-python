@@ -65,7 +65,8 @@ class TestCatalogInstanceListItem(unittest.TestCase):
                 service_types = [
                     ''
                     ],
-                volumes_enabled = True
+                volumes_enabled = True,
+                light_sleep_enabled = True
             )
         else:
             return CatalogInstanceListItem(

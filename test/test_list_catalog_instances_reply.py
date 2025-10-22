@@ -67,7 +67,8 @@ class TestListCatalogInstancesReply(unittest.TestCase):
                         service_types = [
                             ''
                             ], 
-                        volumes_enabled = True, )
+                        volumes_enabled = True, 
+                        light_sleep_enabled = True, )
                     ],
                 limit = 56,
                 offset = 56,

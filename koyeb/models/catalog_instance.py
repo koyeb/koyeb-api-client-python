@@ -60,6 +60,7 @@ class CatalogInstance(BaseModel):
     gpu: Optional[CatalogGPUDetails] = None
     service_types: Optional[List[StrictStr]] = None
     volumes_enabled: Optional[StrictBool] = None
+    light_sleep_enabled: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "description",
@@ -79,6 +80,7 @@ class CatalogInstance(BaseModel):
         "gpu",
         "service_types",
         "volumes_enabled",
+        "light_sleep_enabled",
     ]
 
     model_config = ConfigDict(
@@ -154,6 +156,7 @@ class CatalogInstance(BaseModel):
                 else None,
                 "service_types": obj.get("service_types"),
                 "volumes_enabled": obj.get("volumes_enabled"),
+                "light_sleep_enabled": obj.get("light_sleep_enabled"),
             }
         )
         return _obj
