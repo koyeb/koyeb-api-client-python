@@ -1,5 +1,5 @@
 [project]
-name = "koyeb"
+name = "koyeb-sdk"
 version = "2025.7.0"
 description = "Koyeb Rest API"
 authors = [
@@ -31,6 +31,9 @@ flake8 = ">= 4.0.0"
 types-python-dateutil = ">= 2.8.19.14"
 mypy = ">= 1.5"
 
+
+[tool.setuptools]
+packages = ["koyeb"]
 
 [build-system]
 requires = ["setuptools"]

@@ -161,14 +161,17 @@ Class | Method | HTTP request | Description
 *PersistentVolumesApi* | [**list_persistent_volumes**](docs/PersistentVolumesApi.md#list_persistent_volumes) | **GET** /v1/volumes | List all PersistentVolumes
 *PersistentVolumesApi* | [**update_persistent_volume**](docs/PersistentVolumesApi.md#update_persistent_volume) | **POST** /v1/volumes/{id} | Update a PersistentVolume
 *ProfileApi* | [**accept_organization_invitation**](docs/ProfileApi.md#accept_organization_invitation) | **POST** /v1/account/organization_invitations/{id}/accept | Accept Organization Invitation
+*ProfileApi* | [**clear_idenfy_verification_result**](docs/ProfileApi.md#clear_idenfy_verification_result) | **POST** /v1/account/idenfy | ClearIdenfyVerificationResult marks the current result for idenfy as superseded
 *ProfileApi* | [**decline_organization_invitation**](docs/ProfileApi.md#decline_organization_invitation) | **POST** /v1/account/organization_invitations/{id}/decline | Decline Organization Invitation
 *ProfileApi* | [**get_current_organization**](docs/ProfileApi.md#get_current_organization) | **GET** /v1/account/organization | Get Current Organization
 *ProfileApi* | [**get_current_user**](docs/ProfileApi.md#get_current_user) | **GET** /v1/account/profile | Get Current User
 *ProfileApi* | [**get_idenfy_token**](docs/ProfileApi.md#get_idenfy_token) | **GET** /v1/account/idenfy | Begin a session with iDenfy, emit an authToken
 *ProfileApi* | [**get_o_auth_options**](docs/ProfileApi.md#get_o_auth_options) | **GET** /v1/account/oauth | Get OAuth Providers
 *ProfileApi* | [**get_user_organization_invitation**](docs/ProfileApi.md#get_user_organization_invitation) | **GET** /v1/account/organization_invitations/{id} | Get User Organization Invitation
+*ProfileApi* | [**get_user_settings**](docs/ProfileApi.md#get_user_settings) | **GET** /v1/account/settings | 
 *ProfileApi* | [**list_user_organization_invitations**](docs/ProfileApi.md#list_user_organization_invitations) | **GET** /v1/account/organization_invitations | List User Organization Invitations
 *ProfileApi* | [**list_user_organizations**](docs/ProfileApi.md#list_user_organizations) | **GET** /v1/account/organizations | List User Organizations
+*ProfileApi* | [**login_method**](docs/ProfileApi.md#login_method) | **GET** /v1/account/login_method | Get the login method for an email address
 *ProfileApi* | [**o_auth_callback**](docs/ProfileApi.md#o_auth_callback) | **POST** /v1/account/oauth | Authenticate using OAuth
 *ProfileApi* | [**resend_email_validation**](docs/ProfileApi.md#resend_email_validation) | **POST** /v1/account/resend_validation | Resend Email Verification
 *ProfileApi* | [**reset_password**](docs/ProfileApi.md#reset_password) | **POST** /v1/account/reset_password | Reset Password
@@ -176,11 +179,14 @@ Class | Method | HTTP request | Description
 *ProfileApi* | [**update_password**](docs/ProfileApi.md#update_password) | **POST** /v1/account/update_password | Update Password
 *ProfileApi* | [**update_user**](docs/ProfileApi.md#update_user) | **PUT** /v1/account/profile | Update User
 *ProfileApi* | [**update_user2**](docs/ProfileApi.md#update_user2) | **PATCH** /v1/account/profile | Update User
+*ProfileApi* | [**update_user_settings**](docs/ProfileApi.md#update_user_settings) | **PATCH** /v1/account/settings | 
+*ProfileApi* | [**update_user_v2**](docs/ProfileApi.md#update_user_v2) | **PUT** /v2/account/profile | Update User V2
+*ProfileApi* | [**update_user_v22**](docs/ProfileApi.md#update_user_v22) | **PATCH** /v2/account/profile | Update User V2
 *ProfileApi* | [**validate**](docs/ProfileApi.md#validate) | **POST** /v1/account/validate/{id} | Validate
 *ProvisioningApi* | [**create_stage_attempt**](docs/ProvisioningApi.md#create_stage_attempt) | **POST** /v1/provisioning/{deployment_id}/status/{stage}/{attempt} | Create an attempt for a stage
 *ProvisioningApi* | [**declare_stage_progress**](docs/ProvisioningApi.md#declare_stage_progress) | **PATCH** /v1/provisioning/{deployment_id}/status/{stage}/{attempt} | Declare stage progress
 *ProvisioningApi* | [**declare_step_progress**](docs/ProvisioningApi.md#declare_step_progress) | **PATCH** /v1/provisioning/{deployment_id}/status/{stage}/{attempt}/{step} | Declare step progress
-*QuotasApi* | [**review_organization_capacity**](docs/QuotasApi.md#review_organization_capacity) | **POST** /v1/quotas/capacity | Review Organization Capacity
+*QuotasApi* | [**review_organization_capacity**](docs/QuotasApi.md#review_organization_capacity) | **POST** /v1/quotas/capacity | DEPRECATED: Review Organization Capacity
 *RegionalDeploymentsApi* | [**get_regional_deployment**](docs/RegionalDeploymentsApi.md#get_regional_deployment) | **GET** /v1/regional_deployments/{id} | Get Regional Deployment
 *RegionalDeploymentsApi* | [**list_regional_deployment_events**](docs/RegionalDeploymentsApi.md#list_regional_deployment_events) | **GET** /v1/regional_deployment_events | List Regional Deployment events
 *RegionalDeploymentsApi* | [**list_regional_deployments**](docs/RegionalDeploymentsApi.md#list_regional_deployments) | **GET** /v1/regional_deployments | List Regional Deployments
@@ -220,6 +226,7 @@ Class | Method | HTTP request | Description
 *UsagesApi* | [**get_organization_usage**](docs/UsagesApi.md#get_organization_usage) | **GET** /v1/usages | Get organization usage
 *UsagesApi* | [**get_organization_usage_details**](docs/UsagesApi.md#get_organization_usage_details) | **GET** /v1/usages/details | Get organization usage details
 *UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /v1/users/{id} | Delete user
+*UsersApi* | [**delete_user_v2**](docs/UsersApi.md#delete_user_v2) | **DELETE** /v2/users/{id} | V2 Delete user
 *ActivityApi* | [**get_account_activities**](docs/ActivityApi.md#get_account_activities) | **GET** /v1/account/activities | 
 *ActivityApi* | [**list_activities**](docs/ActivityApi.md#list_activities) | **GET** /v1/activities | List Activities
 *ActivityApi* | [**list_notifications**](docs/ActivityApi.md#list_notifications) | **GET** /v1/notifications | List Notifications
@@ -227,6 +234,7 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**manage**](docs/BillingApi.md#manage) | **GET** /v1/billing/manage | 
 *BillingApi* | [**next_invoice**](docs/BillingApi.md#next_invoice) | **GET** /v1/billing/next_invoice | Experimental: Fetch next invoice
 *InviteApi* | [**create_invite**](docs/InviteApi.md#create_invite) | **POST** /v1/account/invite | 
+*OrganizationApi* | [**create_access_token**](docs/OrganizationApi.md#create_access_token) | **POST** /v1/organizations/{id}/access_token | CreateAccessToken
 *OrganizationApi* | [**create_budget**](docs/OrganizationApi.md#create_budget) | **POST** /v1/organizations/{organization_id}/budget | Create Budget
 *OrganizationApi* | [**create_organization**](docs/OrganizationApi.md#create_organization) | **POST** /v1/organizations | Create Organization
 *OrganizationApi* | [**deactivate_organization**](docs/OrganizationApi.md#deactivate_organization) | **POST** /v1/organizations/{id}/deactivate | Deactivate an Organization
@@ -276,9 +284,12 @@ Class | Method | HTTP request | Description
  - [CatalogInstance](docs/CatalogInstance.md)
  - [CatalogInstanceListItem](docs/CatalogInstanceListItem.md)
  - [CatalogUsage](docs/CatalogUsage.md)
+ - [ClearIdenfyVerificationResultRequest](docs/ClearIdenfyVerificationResultRequest.md)
  - [ComposeReply](docs/ComposeReply.md)
  - [ConfigFile](docs/ConfigFile.md)
  - [ConfirmPaymentAuthorizationReply](docs/ConfirmPaymentAuthorizationReply.md)
+ - [CreateAccessTokenReply](docs/CreateAccessTokenReply.md)
+ - [CreateAccessTokenRequest](docs/CreateAccessTokenRequest.md)
  - [CreateAccountRequest](docs/CreateAccountRequest.md)
  - [CreateApp](docs/CreateApp.md)
  - [CreateAppReply](docs/CreateAppReply.md)
@@ -409,6 +420,7 @@ Class | Method | HTTP request | Description
  - [GetSnapshotReply](docs/GetSnapshotReply.md)
  - [GetSubscriptionReply](docs/GetSubscriptionReply.md)
  - [GetUserOrganizationInvitationReply](docs/GetUserOrganizationInvitationReply.md)
+ - [GetUserSettingsReply](docs/GetUserSettingsReply.md)
  - [GitDeploymentMetadata](docs/GitDeploymentMetadata.md)
  - [GitEnvDeploymentMetadata](docs/GitEnvDeploymentMetadata.md)
  - [GitHubRegistryConfiguration](docs/GitHubRegistryConfiguration.md)
@@ -472,6 +484,8 @@ Class | Method | HTTP request | Description
  - [ListUserOrganizationInvitationsReply](docs/ListUserOrganizationInvitationsReply.md)
  - [ListUserOrganizationsReply](docs/ListUserOrganizationsReply.md)
  - [LogEntry](docs/LogEntry.md)
+ - [LoginMethodReply](docs/LoginMethodReply.md)
+ - [LoginMethodReplyMethod](docs/LoginMethodReplyMethod.md)
  - [LoginReply](docs/LoginReply.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [ManageReply](docs/ManageReply.md)
@@ -592,6 +606,8 @@ Class | Method | HTTP request | Description
  - [UpdateSnapshotReply](docs/UpdateSnapshotReply.md)
  - [UpdateSnapshotRequest](docs/UpdateSnapshotRequest.md)
  - [UpdateUserRequestUserUpdateBody](docs/UpdateUserRequestUserUpdateBody.md)
+ - [UpdateUserSettingsReply](docs/UpdateUserSettingsReply.md)
+ - [UpdateUserSettingsRequest](docs/UpdateUserSettingsRequest.md)
  - [UpsertSignupQualificationReply](docs/UpsertSignupQualificationReply.md)
  - [UpsertSignupQualificationRequest](docs/UpsertSignupQualificationRequest.md)
  - [Usage](docs/Usage.md)
@@ -600,6 +616,7 @@ Class | Method | HTTP request | Description
  - [UserFlags](docs/UserFlags.md)
  - [UserReply](docs/UserReply.md)
  - [UserRoleRole](docs/UserRoleRole.md)
+ - [UserSettings](docs/UserSettings.md)
  - [VerifyDockerImageReply](docs/VerifyDockerImageReply.md)
  - [VerifyDockerImageReplyErrCode](docs/VerifyDockerImageReplyErrCode.md)
 
