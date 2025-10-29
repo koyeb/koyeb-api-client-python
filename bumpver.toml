@@ -1,12 +1,9 @@
 [tool.bumpver]
-current_version = "2025.7.0"
-version_pattern = "YYYY.MM.PATCH[PYTAGNUM]"
+current_version = "1.0.0"
+version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit = false
 tag = false
 push = false
 
 [tool.bumpver.file_patterns]
-"Makefile" = [
-    "PACKAGE_VERSION?={version}",
-]
-
+"Makefile" = ["PACKAGE_VERSION?={version}"]
