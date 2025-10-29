@@ -10,6 +10,11 @@ PACKAGE_VERSION?=1.0.1
 gen-api-client:
 	docker run --rm -v `pwd`/spec:/spec -v `pwd`:/builder openapitools/openapi-generator-cli:${OPENAPI_GENERATOR_VERSION} generate --git-user-id ${GIT_USER_ID} --git-repo-id ${GIT_REPO_ID} -i /spec/openapi.json -g python -o /builder --package-name koyeb.api --additional-properties packageVersion=${PACKAGE_VERSION} --additional-properties licenseInfo="Apache-2.0" --additional-properties generateSourceCodeOnly=true
 
+
+.PHONY: gen-docs
+gen-docs:
+	./scripts/generate_docs.sh
+
 .PHONY: format
 format:
 	black koyeb test
