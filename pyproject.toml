@@ -37,6 +37,12 @@ packages = ["koyeb"]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[dependency-groups]
+dev = [
+    "flake8>=7.3.0",
+    "pytest>=8.4.2",
+]
+
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
 
