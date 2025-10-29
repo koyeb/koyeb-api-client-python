@@ -1,24 +1,22 @@
 [project]
 name = "koyeb-sdk"
 version = "1.0.0"
-description = "Koyeb Rest API"
-authors = [
-  {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
-]
+description = "Koyeb python sdk"
+authors = [{ name = "Koyeb team", email = "support@koyeb.com" }]
 license = "Apache-2.0"
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Koyeb Rest API"]
+keywords = ["Koyeb", "Koyeb API client", "SDK", "API client"]
 requires-python = ">=3.9"
 
 dependencies = [
   "urllib3 (>=2.1.0,<3.0.0)",
   "python-dateutil (>=2.8.2)",
   "pydantic (>=2)",
-  "typing-extensions (>=4.7.1)"
+  "typing-extensions (>=4.7.1)",
 ]
 
 [project.urls]
-Repository = "https://github.com/koyeb/koyeb-api-client-python"
+Repository = "https://github.com/koyeb/koyeb-python-sdk"
 
 [tool.poetry]
 requires-poetry = ">=2.0"
@@ -81,9 +79,7 @@ disallow_any_generics = true
 #warn_return_any = true
 
 [[tool.mypy.overrides]]
-module = [
-  "koyeb.configuration",
-]
+module = ["koyeb.configuration"]
 warn_unused_ignores = true
 strict_equality = true
 extra_checks = true
