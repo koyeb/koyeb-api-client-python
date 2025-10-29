@@ -21,7 +21,10 @@ format:
 .PHONY: spec/openapi.json
 spec/openapi.json:
 	mkdir -p api/v1/koyeb
-	#curl -s $(KOYEB_API)/public.swagger.json > spec/openapi.json
+
+.PHONY: fetch-spec
+fetch-spec:
+	curl -s $(KOYEB_API)/public.swagger.json > spec/openapi.json
 
 test:
 	python -m unitest
